@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "InnerCore Docs v2",
   "devDependencies": {
-    "docsify-cli": "^4.4.3",
+    "docsify-cli": "^4.4.2",
     "grunt": "^1.4.1",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-concat": "^2.0.0",

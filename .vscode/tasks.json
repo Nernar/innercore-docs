@@ -6,7 +6,7 @@
         {
             "label": "Run typedoc",
             "type": "shell",
-            "command": "grunt docs",
+            "command": "grunt typedoc",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -15,9 +15,6 @@
         {
             "label": "Initialize Environment",
             "type": "shell",
-            "options": {
-                "cwd": "documentation"
-            },
             "command": "npm install --safe-dev",
             "group": {
                 "kind": "build",
