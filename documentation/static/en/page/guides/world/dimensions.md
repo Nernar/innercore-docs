@@ -46,7 +46,7 @@ In this minimalistic example we are creating a single generation layer between y
 
 ## Single Layer Generation
 
-![Generation Example #1](../../../assets/images/pages/dimensions-1.jpg)
+![Generation Example #1](../../../../images/dimensions-1.jpg)
 
 ```js
 var generator = Dimensions.newGenerator({
@@ -91,10 +91,10 @@ Thus, the `octaves: {count: 4, scale: 40}` gets transformed into:
 
 ```js
 octaves: {
-    {scale: 0.025, weight: 0.5333, seed: 0},
-    {scale: 0.05, weight: 0.2667, seed: 1},
-    {scale: 0.1, weight: 0.1333, seed: 2},
-    {scale: 0.2, weight: 0.0667, seed: 3}
+    { scale: 0.025, weight: 0.5333, seed: 0 },
+    { scale: 0.05, weight: 0.2667, seed: 1 },
+    { scale: 0.1, weight: 0.1333, seed: 2 },
+    { scale: 0.2, weight: 0.0667, seed: 3 }
 }
 ```
 
@@ -106,24 +106,24 @@ To better understand how this function works, let's take a couple of examples (y
 yConversion: [
     [0, 0.5],
     [1, -0.5],
-];
+]
 ```
 
 Creates a landscape where most of the blocks are concentrated in the bottom part of the layer:
 
-![Generation Example #2](../../../assets/images/pages/dimensions-2.jpg)
+![Generation Example #2](../../../../images/dimensions-2.jpg)
 
 ```js
 yConversion: [
     [0, 0.5],
     [0.5, -0.5],
     [1, 0.5],
-];
+]
 ```
 
 Creates a landscape where most of the blocks are concentrated in the bottom and the top parts of the layer, leaving the middle empty:
 
-![Generation Example #3](../../../assets/images/pages/dimensions-3.jpg)
+![Generation Example #3](../../../../images/dimensions-3.jpg)
 
 ```js
 yConversion: [
@@ -132,16 +132,16 @@ yConversion: [
     [0.5, 0.3],
     [0.75, -0.3],
     [1, 0.5],
-];
+]
 ```
 
 Creates a more complex landscape like the one displayed on the image:
 
-![Generation Example #4](../../../assets/images/pages/dimensions-4.jpg)
+![Generation Example #4](../../../../images/dimensions-4.jpg)
 
 ## Dimension Materials
 
-![Generation Example #5](../../../assets/images/pages/dimensions-5.jpg)
+![Generation Example #5](../../../../images/dimensions-5.jpg)
 
 ```js
 var generator = Dimensions.newGenerator({
@@ -192,7 +192,7 @@ Materials noise can be used for single generation layer to consist of blocks of 
 
 When you need a more complex generation, you can use multiple layers. Layers are generated in the order they were listed in the description object, so you should want to generate a water layer at first. Let's take a look at some example:
 
-![Generation Example #6](../../../assets/images/pages/dimensions-6.jpg)
+![Generation Example #6](../../../../images/dimensions-6.jpg)
 
 ```js
 var generator = Dimensions.newGenerator({
@@ -241,14 +241,14 @@ dimension.setGenerator(generator);
 
 In this example we have three layers of generation:
 
--   Solid water layer at the height of 64
--   Grass layer with cover, a base landscape
--   Stone layer, a mountainous landscape with an additional heightmap
+- Solid water layer at the height of 64
+- Grass layer with cover, a base landscape
+- Stone layer, a mountainous landscape with an additional heightmap
 
 Heightmap is a 2-dimensional (x, z) noise that is used to generate a general height scheme of the layer. In our example it is used to generate mountains only time to time. Note that we use 1 and -1 as values of `yConversion` function of grass layer to make the landscape more flat.
 
 To make mountains less rounded, we can change the count of octaves of the stone layer. Say, we had 6 octaves in the stone layer, the generation should look like this:
 
-![Generation Example #7](../../../assets/images/pages/dimensions-7.jpg)
+![Generation Example #7](../../../../images/dimensions-7.jpg)
 
 However, you should always think twice before adding a lot of octaves and layers. Massive generation requires more time for calculations, so it is generally better to use layer conversions and heightmap of the existing layer then create multiple layers with more noise octaves.
