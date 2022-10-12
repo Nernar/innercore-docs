@@ -1,7 +1,7 @@
 {
   "name": "core-engine-api",
-  "version": "2.0.0",
-  "description": "InnerCore Docs v2",
+  "version": "2.1.0",
+  "description": "Inner Core Docs",
   "devDependencies": {
     "docsify-cli": "^4.4.2",
     "grunt": "^1.4.1",
@@ -15,11 +15,15 @@
     "typescript": "^4.5.4",
     "underscore.string": "^3.3.6"
   },
+  "resolutions": {
+    "minimist": "^1.2.7"
+  },
   "scripts": {
     "serve-docs": "docsify serve ./documentation/static",
     "serve-out": "docsify serve ./out",
     "build": "grunt docs_api",
-    "build-serve": "npm run build && npm run serve-out"
+    "build-serve": "npm run build && npm run serve-out",
+    "preinstall": "npx npm-force-resolutions"
   },
   "repository": {
     "type": "git",

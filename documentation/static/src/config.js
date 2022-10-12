@@ -1,37 +1,27 @@
-const GIT_SRC = 'mineprogramming/innercore-docs';
-const GIT_TEST_SRC = 'TMM-Corporation/innercore-docs';
 window.$docsify = {
-  name: 'InnerCore v2.1 Docs',
-  repo: GIT_SRC,
+  name: 'Inner Core Docs',
+  repo: 'mineprogramming/innercore-docs',
   loadSidebar: 'config/_sidebar.md',
   loadNavbar: 'config/_navbar.md',
   subMaxLevel: 4,
   relativePath: true,
-  // autoHeader: true,
-  // routerMode: 'history',
+  autoHeader: true,
   nameLink: {
     '/ru/': '#/ru/',
     '/en/': '#/en/',
     '/': '#/'
   },
   alias: {
-    // mineprogramming/innercore-docs
-    '/': `https://raw.githubusercontent.com/${GIT_SRC}/gh-pages/`,
-    '/ru/.*?config/_navbar.md': `https://raw.githubusercontent.com/${GIT_SRC}/gh-pages/ru/config/_navbar.md`,
-    '/ru/.*?config/_sidebar.md': `https://raw.githubusercontent.com/${GIT_SRC}/gh-pages/ru/config/_sidebar.md`,
-    '/.*?config/_navbar.md': `https://raw.githubusercontent.com/${GIT_SRC}/gh-pages/en/config/_navbar.md`,
-    '/.*?config/_sidebar.md': `https://raw.githubusercontent.com/${GIT_SRC}/gh-pages/en/config/_sidebar.md`
-    // '.*README.md': './README.md',
-    // '/': '#/en/',
-    // '.*/en/(_navbar)|(.)': 'https://raw.githubusercontent.com/mineprogramming/innercore-docs/gh-pages/$2',
-    // '.*/ru/(_sidebar)|(.)': 'https://raw.githubusercontent.com/mineprogramming/innercore-docs/gh-pages/$2'
+    '/ru/(.*/|)config/(.*)': '/ru/config/$2',
+    '/(en/|)(.*/|)config/(.*)': '/en/config/$3',
+    '/.*/src/(.*)': '/src/$1'
   },
   themeable: {
     readyTransition: true, // default
     responsiveTables: true // default
   },
+  // https://github.com/jperasmus/docsify-copy-code
   copyCode: {
-    //https://github.com/jperasmus/docsify-copy-code
     buttonText: {
       '/zh-cn/': '点击复制',
       '/ru/': 'Скопировать в буфер обмена',
@@ -41,7 +31,7 @@ window.$docsify = {
     },
     errorText: {
       '/zh-cn/': '错误',
-      '/ru/': 'ошибка',
+      '/ru/': 'Ошибка',
       '/': 'Error'
     },
     successText: {
@@ -52,8 +42,8 @@ window.$docsify = {
       '/': 'Copied'
     }
   },
+  // https://jhildenbiddle.github.io/docsify-tabs
   tabs: {
-    // https://jhildenbiddle.github.io/docsify-tabs/#/
     persist: true, // default
     sync: true, // default
     theme: 'classic', // default
@@ -61,8 +51,8 @@ window.$docsify = {
     tabHeadings: true // default
   },
   timeUpdater: {
-    text: '>Last Modify: {docsify-updated}',
-    formatUpdated: '{YYYY}/{MM}/{DD}'
+    text: '> Last Modify: {docsify-updated}',
+    formatUpdated: '{DD}.{MM}.{YYYY}'
   },
   plugins: [
     function (hook, vm) {
@@ -74,10 +64,9 @@ window.$docsify = {
         } else if (/jsdelivr\.net/.test(vm.route.file)) {
           url = vm.route.file.replace('cdn.jsdelivr.net/gh', 'github.com').replace('@gh-pages', '/blob/gh-pages');
         } else {
-          url = `https://github.com/${GIT_SRC}/blob/gh-pages/${vm.route.file}`;
+          url = 'https://github.com/mineprogramming/innercore-docs/blob/gh-pages/' + vm.route.file;
         }
-        var editHtml = '[:memo: Edit Document](' + url + ')\n';
-        return editHtml + html;
+        return html + '\n\n[:memo: Edit Document](' + url + ')';
       });
     }
   ]

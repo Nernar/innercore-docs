@@ -15,7 +15,7 @@
         {
             "label": "Initialize Environment",
             "type": "shell",
-            "command": "npm install --safe-dev",
+            "command": "npm run preinstall && npm install --save-dev",
             "group": {
                 "kind": "build",
                 "isDefault": true

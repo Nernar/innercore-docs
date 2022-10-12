@@ -18,7 +18,7 @@ module.exports = function (grunt) {
       build: {
         options: {
           out: './out/api/',
-          name: 'Core Engine v2.1 API',
+          name: 'Core Engine API',
           readme: './README.md',
           theme: 'default',
           'validation.invalidLink': true,
@@ -36,12 +36,6 @@ module.exports = function (grunt) {
             flatten: true,
             src: 'documentation/core-engine/headers/*',
             dest: 'out/headers/'
-          },
-          {
-            expand: true,
-            flatten: true,
-            src: 'documentation/static/core-engine/images/*',
-            dest: 'out/api/assets/images/pages/'
           },
           {
             expand: true,
