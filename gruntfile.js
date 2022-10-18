@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     typedoc: {
       build: {
         options: {
-          out: './out/api/',
+          out: './docs/api/',
           name: 'Core Engine API',
           readme: './README.md',
           theme: 'default',
@@ -35,23 +35,23 @@ module.exports = function (grunt) {
             expand: true,
             flatten: true,
             src: 'documentation/core-engine/headers/*',
-            dest: 'out/headers/'
-          },
-          {
-            expand: true,
-            src: '**/*',
-            cwd: 'documentation/static/',
-            dest: 'out'
+            dest: 'docs/headers'
           },
           {
             expand: true,
             src: 'README.md',
-            dest: 'out/en'
+            dest: 'docs/en'
           },
           {
             expand: true,
             src: 'README.md',
-            dest: 'out'
+            dest: 'docs'
+          },
+          {
+            expand: true,
+            src: 'changelog.md',
+            cwd: 'docs/en/page/apps/innercore',
+            dest: 'docs/ru/page/apps/innercore'
           }
         ]
       }
