@@ -1,3 +1,0 @@
-- Language
-  - [:us: English](/)
-  - [:ru: Русский](/ru/)
