@@ -1,4 +1,4 @@
-# nernar.github.io
+# nernar.github.io/api
 
 Inner Core, Core Engine and Horizon documentation implemented in one place. Make it simple, keep it clean. This site powered by GitHub Pages, built with :heart: and Typedoc.
 
