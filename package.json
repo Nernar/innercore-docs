@@ -5,10 +5,10 @@
   "description": "Inner Core API Reference",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nernar/nernar.github.io.git#master"
+    "url": "git+https://github.com/Nernar/API.git#master"
   },
   "bugs": {
-    "url": "https://github.com/Nernar/nernar.github.io/issues"
+    "url": "https://github.com/Nernar/API/issues"
   },
   "homepage": "https://t.me/ntInsideChat",
   "license": "GPL-3.0-or-later",
@@ -19,8 +19,7 @@
   "scripts": {
     "prebuild-theme": "wireit",
     "prebuild-declarations": "wireit",
-    "typedoc": "wireit",
-    "build": "wireit"
+    "typedoc": "wireit"
   },
   "wireit": {
     "prebuild-theme": {
@@ -57,15 +56,6 @@
       ],
       "output": [
         "docs"
-      ]
-    },
-    "build": {
-      "command": "tsx tools/link_references.ts",
-      "files": [
-        "docs/**/*"
-      ],
-      "dependencies": [
-        "typedoc"
       ]
     }
   },

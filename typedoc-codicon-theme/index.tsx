@@ -57,7 +57,7 @@ class CodiconThemeContext extends DefaultThemeRenderContext {
 	override footer: () => JSX.Element = () => (
 		<div class="container tsd-generator">
 			<p>
-				{`Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and `}
+				{`Copyright © ${new Date().getFullYear()} Nernar. Copyright © 2020 #mineprogramming. Built with \u2764 and `}
 				<a href="https://typedoc.org/" target="_blank">
 					TypeDoc
 				</a>
