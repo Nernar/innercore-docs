@@ -177,6 +177,14 @@ declare namespace Item {
     function getName(id: number, data: number, encode: any): string;
 
     /**
+     * Natural armor points, that also is displayed above hotbar.
+     * @param id numeric item ID
+     * @returns Natural armor half points.
+     * @since 2.4.0b119
+     */
+    function getArmorValue(id: number): number;
+
+    /**
      * @param id numeric item ID
      * @returns `true`, if an item with such ID exists, `false` otherwise.
      */
@@ -231,8 +239,6 @@ declare namespace Item {
      */
     function setEnchantType(id: number | string, enchant: number, value: number): void;
 
-    function setArmorDamageable(damageable: boolean): void;
-
     /**
      * Specifies what items can be used to repair this item in the anvil.
      * @param id string or numeric item ID
@@ -269,6 +275,8 @@ declare namespace Item {
      */
     function setLiquidClip(id: number | string, enabled: boolean): void;
 
+    function setArmorDamageable(damageable: boolean): void;
+
     /**
      * @deprecated No longer supported.
      */
@@ -280,6 +288,30 @@ declare namespace Item {
      * @since 2.0.4b35
      */
     function setAllowedInOffhand(id: number | string, allowed: boolean): void;
+
+    /**
+     * 
+     * @param id 
+     * @param should 
+     * @since 2.4.0b119
+     */
+    function setShouldDespawn(id: number | string, should: boolean): void;
+
+    /**
+     * 
+     * @param id 
+     * @param resistant 
+     * @since 2.4.0b119
+     */
+    function setFireResistant(id: number | string, resistant: boolean): void;
+
+    /**
+     * 
+     * @param id 
+     * @param explodable 
+     * @since 2.4.0b119
+     */
+    function setExplodable(id: number | string, explodable: boolean): void;
 
     /**
      * Sets additional properties for the item, uses Minecraft mechanisms to

@@ -269,6 +269,17 @@ declare namespace Particles {
     function addFarParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
 
     /**
+     * Spawns {@link EParticleType.ITEM_BREAK} particles at
+     * a given location with a given item in world.
+     * @param id numeric item ID
+     * @param data item data
+     * @remarks
+     * Called only on the client side! Use packets to spawn particles for multiple players.
+     * @since 2.4.0b119
+     */
+    function addBreakingItemParticle(id: number, data: number, x: number, y: number, z: number): void;
+
+    /**
      * Spawnds particles in line with specified gapness.
      * @param type particle type's numeric ID; if you want to spawn vanilla particles,
      * see {@link EParticleType} enums
