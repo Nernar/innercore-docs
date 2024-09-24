@@ -5,15 +5,21 @@
  */
 declare namespace Entity {
     /**
-     * @returns An array of all loaded entities UIDs.
+     * @returns An array of all server entities UIDs.
      */
     function getAll(): number[];
 
     /**
-     * @returns An array of all loaded entities UIDs.
+     * @returns An array of all server entities UIDs.
      * @deprecated Consider using {@link Entity.getAll} instead.
      */
     function getAllJS(): number[];
+
+    /**
+     * @returns An array of all client entities UIDs.
+     * @since 2.4.0b120
+     */
+    function getAllLocal(): number[];
 
     /**
      * @deprecated Use attributes instead, or {@link Saver}.
