@@ -62,6 +62,7 @@ declare class CustomBiome {
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
      * @returns Reference to itself to be used in sequential calls.
+     * @since 2.4.0b120
      */
     setSkyColor(r: number, g: number, b: number): CustomBiome;
 
