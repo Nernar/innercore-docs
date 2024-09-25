@@ -115,13 +115,19 @@ declare class SyncedNetworkData {
      */
     setClients(clients: NetworkConnectedClientList): void;
     /**
-     * Sends changed data values.
+     * Same as {@link SyncedNetworkData.sendChanges}.
      */
     apply(): void;
     /**
-     * Same as {@link SyncedNetworkData.apply}.
+     * Sends changed data values.
      */
     sendChanges(): void;
+    /**
+     * Sends changed data values for specific client (dirty data remains).
+     * @param client connected client to server
+     * @since 2.3.1b116-3
+     */
+    sendChangesForClient(client: NetworkClient): void;
 
     /**
      * Adds event that catches changes of any data values on both sides.
@@ -153,4 +159,17 @@ declare class SyncedNetworkData {
      * Global verifier that was set via {@link SyncedNetworkData.setGlobalVerifier}.
      */
     getGlobalVerifier(): SyncedNetworkData.DataVerifierFunction;
+
+    /**
+     * @returns Serialized object data which are in object.
+     * @since 2.3.1b116-3
+     */
+    toJSON(): string;
+
+    /**
+     * Replaces existing data with those that are in given object.
+     * @param json serialized object data
+     * @since 2.3.1b116-3
+     */
+    fromJSON(json: string): void;
 }
