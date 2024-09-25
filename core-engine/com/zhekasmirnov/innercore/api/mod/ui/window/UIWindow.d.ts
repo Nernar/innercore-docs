@@ -407,6 +407,11 @@ declare module com {
                                  * Sets listener to be notified about window opening/closing events.
                                  */
                                 setEventListener(listener: UI.WindowEventListener | IWindowEventListener): void;
+                                /**
+                                 * Gets listener to be notified about window opening/closing events.
+                                 * @since 2.3.1b116
+                                 */
+                                getEventListener(): UI.WindowEventListener | IWindowEventListener;
 
                                 runCachePreparation(async: boolean): void;
                                 /**
