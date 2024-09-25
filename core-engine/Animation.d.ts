@@ -107,6 +107,7 @@ declare namespace Animation {
         /**
          * Loads animation in the world registering it as an {@link Updatable}.
          * @param func function to be used as {@link Updatable.update} function
+         * @since 2.3.1b116 (client-side)
          */
         loadCustom(func: () => void): void;
 
