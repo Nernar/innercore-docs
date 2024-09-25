@@ -2,6 +2,15 @@
  * Module that provides some general game-related functions.
  */
 declare namespace Game {
+
+    /**
+     * Allows you to determine whether current instance of game has
+     * a client or not (clientless game requires a server core, e.g.
+     * [Zote Core (GitHub)](https://github.com/reider745/zotecoreloader)).
+     * @since 2.3.1b116
+     */
+    function isDedicatedServer(): boolean;
+
     /**
      * Prevents current callback function from being called in Minecraft.
      * For most callbacks it prevents default game behavior.
