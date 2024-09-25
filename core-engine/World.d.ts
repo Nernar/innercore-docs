@@ -223,6 +223,7 @@ declare namespace World {
 
     /**
      * @returns Current world's time in ticks.
+     * @since 2.3.1b116-3 (client-side)
      */
     function getWorldTime(): number;
 
