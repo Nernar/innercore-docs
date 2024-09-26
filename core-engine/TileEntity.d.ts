@@ -303,6 +303,18 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     sendResponse: (packetName: string, someData: object) => void;
     /**
+     * Called when player connects to server.
+     * @param client connected player client
+     * @since 2.3.1b116-3
+     */
+    onConnectionPlayer: (client: NetworkClient) => void;
+    /**
+     * Called when player disconnects from server.
+     * @param client disconnected player client
+     * @since 2.3.1b116-3
+     */
+    onDisconnectionPlayer: (client: NetworkClient) => void;
+    /**
      * BlockSource object to manipulate TileEntity's position in world.
      */
     blockSource: BlockSource;
