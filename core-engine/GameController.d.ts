@@ -6,6 +6,7 @@
 declare namespace GameController {
 
 	/**
+	 * @remarks Can break a block that breaks instantly.
 	 */
 	function startDestroyBlock(x: number, y: number, z: number, side: number): boolean;
 
@@ -15,6 +16,7 @@ declare namespace GameController {
 	function continueDestroyBlock(x: number, y: number, z: number, side: number): boolean;
 
 	/**
+	 * Interrupts destruction animation.
 	 */
 	function stopDestroyBlock(x: number, y: number, z: number): void;
 
