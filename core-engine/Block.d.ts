@@ -159,7 +159,14 @@ declare namespace Block {
 			 * @default "nameId_bucket"
 			 */
 			id?: string,
-			texture: { name: string, meta?: number }
+			texture: { name: string, meta?: number },
+			/**
+			 * An item that can capture liquid (including when using
+			 * a dispenser and obtaining it with your hand).
+			 * @default 325
+			 * @since 2.3.1b116
+			 */
+			emptyId?: number
 		},
 		/**
 		 * Whether to add liquid block to creative inventory.
@@ -191,18 +198,20 @@ declare namespace Block {
 	function convertItemToBlockId(id: number): number;
 
 	/**
-	 * Same as {@link Block.registerClickFunction}, but only numeric block ID can be passed.
-	 * @since 2.2.1b104
-	 */
-	function registerClickFunctionForID(id: number, func: ClickFunction): void;
-
-	/**
 	 * Defines custom behavior when the player clicks on the block with definite ID.
-	 * @param nameId block's numeric or string ID
+	 * @param numericId block's numeric ID
 	 * @param func function that will be called when the player clicks the block with given ID
 	 * @since 2.2.1b104
 	 */
-	function registerClickFunction(nameId: string | number, func: ClickFunction): void;
+	function registerClickFunctionForID(numericId: number, func: ClickFunction): void;
+
+	/**
+	 * Defines custom behavior when the player clicks on the block with definite ID.
+	 * @param id block's numeric or string ID
+	 * @param func function that will be called when the player clicks the block with given ID
+	 * @since 2.2.1b104
+	 */
+	function registerClickFunction(id: string | number, func: ClickFunction): void;
 
 	/**
 	 * Function used to define how the block will behave when the player clicks on it.
@@ -217,15 +226,9 @@ declare namespace Block {
 	}
 
 	/**
-	 * Same as {@link Block.registerDropFunction} but accepts only numeric 
-	 * tile ID as the first param.
-	 */
-	function registerDropFunctionForID(numericID: number, dropFunc: DropFunction, level?: number): boolean;
-
-	/**
 	 * Registers function used by Core Engine to determine block drop for the 
 	 * specified block ID.
-	 * @param nameID tile string or numeric ID
+	 * @param numericId tile numeric ID
 	 * @param dropFunc function to be called to determine what will be dropped 
 	 * when the block is broken
 	 * @param level if level is specified and is not 0, digging level of the
@@ -233,7 +236,20 @@ declare namespace Block {
 	 * @returns `true`, if specified string or numeric ID exists and the function
 	 * was registered correctly, `false` otherwise.
 	 */
-	function registerDropFunction(nameID: string | number, dropFunc: DropFunction, level?: number): boolean;
+	function registerDropFunctionForID(numericId: number, dropFunc: DropFunction, level?: number): boolean;
+
+	/**
+	 * Registers function used by Core Engine to determine block drop for the 
+	 * specified block ID.
+	 * @param id tile string or numeric ID
+	 * @param dropFunc function to be called to determine what will be dropped 
+	 * when the block is broken
+	 * @param level if level is specified and is not 0, digging level of the
+	 * block is additionally set
+	 * @returns `true`, if specified string or numeric ID exists and the function
+	 * was registered correctly, `false` otherwise.
+	 */
+	function registerDropFunction(id: string | number, dropFunc: DropFunction, level?: number): boolean;
 
 	/**
 	 * Function used to determine block drop.
@@ -253,21 +269,26 @@ declare namespace Block {
 	}
 
 	/**
-	 * Same as {@link Block.registerPopResourcesFunction} but accepts only numeric 
-	 * tile ID as the first param.
-	 */
-	function registerPopResourcesFunctionForID(numericID: number, func: PopResourcesFunction): boolean;
-
-	/**
 	 * Registered function used by Core Engine to determine block drop for the
 	 * specified block ID.
-	 * @param nameID tile string or numeric ID
+	 * @param numericId tile numeric ID
 	 * @param func function to be called when a block in the world is broken by
 	 * environment (explosions, pistons, etc.)
 	 * @returns `true`, if specified string or numeric ID exists and the function
 	 * was registered correctly, `false` otherwise.
 	 */
-	function registerPopResourcesFunction(nameID: string | number, func: PopResourcesFunction): boolean;
+	function registerPopResourcesFunctionForID(numericId: number, func: PopResourcesFunction): boolean;
+
+	/**
+	 * Registered function used by Core Engine to determine block drop for the
+	 * specified block ID.
+	 * @param id tile string or numeric ID
+	 * @param func function to be called when a block in the world is broken by
+	 * environment (explosions, pistons, etc.)
+	 * @returns `true`, if specified string or numeric ID exists and the function
+	 * was registered correctly, `false` otherwise.
+	 */
+	function registerPopResourcesFunction(id: string | number, func: PopResourcesFunction): boolean;
 
 	/**
 	 * Function used to determine when block is broken by
@@ -283,60 +304,66 @@ declare namespace Block {
 	}
 
 	/**
-	 * Same as {@link Block.registerEntityInsideFunction} but accepts only numeric
-	 * tile ID as the first param.
-	 * @since 2.0.2b26
-	 */
-	function registerEntityInsideFunctionForID(numericID: number, func: EntityInsideFunction): boolean;
-
-	/**
 	 * Registers function on entity being inside the block. Can be used to create portals.
-	 * @param nameID tile string or numeric ID
+	 * @param numericId tile string or numeric ID
 	 * @param func function to be called when entity is inside the block
 	 * @returns `true`, if the function was registered correctly, `false` otherwise.
 	 * @since 2.0.2b26
 	 */
-	function registerEntityInsideFunction(nameID: string | number, func: EntityInsideFunction): boolean;
+	function registerEntityInsideFunctionForID(numericId: number, func: EntityInsideFunction): boolean;
+
+	/**
+	 * Registers function on entity being inside the block. Can be used to create portals.
+	 * @param id tile string or numeric ID
+	 * @param func function to be called when entity is inside the block
+	 * @returns `true`, if the function was registered correctly, `false` otherwise.
+	 * @since 2.0.2b26
+	 */
+	function registerEntityInsideFunction(id: string | number, func: EntityInsideFunction): boolean;
 
 	interface EntityInsideFunction {
 		(blockCoords: Vector, block: Tile, entity: number): void
 	}
 
 	/**
-	 * Same as {@link Block.registerEntityStepOnFunction} but accepts only numeric
-	 * tile ID as the first param.
-	 * @since 2.0.2b26
+	 * Registers function on entity step on the block.
+	 * @param numericId tile numeric ID
+	 * @param func function to be called when entity step on the block
+	 * @returns `true`, if the function was registered correctly, `false` otherwise.
+	 * @since 2.3.1b116 (implemented in 2.0.2b26)
 	 */
-	function registerEntityStepOnFunctionForID(id: number, func: EntityStepOnFunction): boolean;
+	function registerEntityStepOnFunctionForID(numericId: number, func: EntityStepOnFunction): boolean;
 
 	/**
 	 * Registers function on entity step on the block.
-	 * @param numericID tile string or numeric ID
+	 * @param id tile string or numeric ID
 	 * @param func function to be called when entity step on the block
 	 * @returns `true`, if the function was registered correctly, `false` otherwise.
-	 * @since 2.0.2b26
+	 * @since 2.3.1b116 (implemented in 2.0.2b26)
 	 */
-	function registerEntityStepOnFunction(numericID: string | number, func: EntityStepOnFunction): boolean;
+	function registerEntityStepOnFunction(id: string | number, func: EntityStepOnFunction): boolean;
 
 	interface EntityStepOnFunction {
 		(coords: Vector, block: Tile, entity: number): void
 	}
 
 	/**
-	 * Same as {@link Block.registerNeighbourChangeFunction} but accepts only numeric
-	 * tile ID as the first param.
-	 * @since 2.0.2b26
-	 */
-	function registerNeighbourChangeFunctionForID(id: number, func: NeighbourChangeFunction): boolean;
-
-	/**
 	 * Registers function on neighbour blocks updates.
-	 * @param nameID tile string or numeric ID
+	 * @param numericId tile numeric ID
 	 * @param func function to be called when neighbour block updates
 	 * @returns `true`, if the function was registered correctly, `false` otherwise.
 	 * @since 2.0.2b26
 	 */
-	function registerNeighbourChangeFunction(nameID: string | number, func: NeighbourChangeFunction): boolean;
+	function registerNeighbourChangeFunctionForID(numericId: number, func: NeighbourChangeFunction): boolean;
+
+	/**
+	 * Registers function on neighbour blocks updates.
+	 * @param id tile string or numeric ID
+	 * @param func function to be called when neighbour block updates
+	 * @returns `true`, if the function was registered correctly, `false` otherwise.
+	 * @since 2.0.2b26
+	 */
+	function registerNeighbourChangeFunction(id: string | number, func: NeighbourChangeFunction): boolean;
 
 	/**
 	 * Function used to check block's neighbours changes.
@@ -355,19 +382,22 @@ declare namespace Block {
 	function getDropFunction(id: number): Block.DropFunction;
 
 	/**
-	 * Same as {@link Block.setDestroyLevel} but accepts only numeric 
-	 * tile ID as the first param.
+	 * Registers a default destroy function for the specified block, considering
+	 * it's digging level.
+	 * @param numericId tile numeric ID
+	 * @param level digging level of the block
+	 * @param resetData if true, the block is dropped with data equals to 0
 	 */
-	function setDestroyLevelForID(id: number, level: number, resetData?: boolean): void;
+	function setDestroyLevelForID(numericId: number, level: number, resetData?: boolean): void;
 
 	/**
 	 * Registers a default destroy function for the specified block, considering
 	 * it's digging level.
-	 * @param nameID tile string ID
+	 * @param id tile string or numeric ID
 	 * @param level digging level of the block
 	 * @param resetData if true, the block is dropped with data equals to 0
 	 */
-	function setDestroyLevel(nameID: string | number, level: number, resetData?: boolean): void;
+	function setDestroyLevel(id: string | number, level: number, resetData?: boolean): void;
 
 	/**
 	 * Sets destroy time for the block with specified ID.
@@ -383,10 +413,10 @@ declare namespace Block {
 	function getMaterial(id: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns `true`, if block is solid, `false` otherwise.
 	 */
-	function isSolid(numericID: number): boolean;
+	function isSolid(numericId: number): boolean;
 
 	/**
 	 * @returns Whether the block of given ID can contain liquid inside.
@@ -400,52 +430,52 @@ declare namespace Block {
 	function canBeExtraBlock(id: number): boolean;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Destroy time of the block, in ticks.
 	 */
-	function getDestroyTime(numericID: number): number;
+	function getDestroyTime(numericId: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Explosion resistance of the block.
 	 */
-	function getExplosionResistance(numericID: number): number;
+	function getExplosionResistance(numericId: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Friction of the block.
 	 */
-	function getFriction(numericID: number): number;
+	function getFriction(numericId: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Translucency of the block.
 	 */
-	function getTranslucency(numericID: number): number;
+	function getTranslucency(numericId: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Light level, emitted by block, from 0 to 15.
 	 */
-	function getLightLevel(numericID: number): number;
+	function getLightLevel(numericId: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Light opacity of the block, from 0 to 15.
 	 */
-	function getLightOpacity(numericID: number): number;
+	function getLightOpacity(numericId: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Render layer of the block.
 	 */
-	function getRenderLayer(numericID: number): number;
+	function getRenderLayer(numericId: number): number;
 
 	/**
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @returns Render type of the block.
 	 */
-	function getRenderType(numericID: number): number;
+	function getRenderType(numericId: number): number;
 
 	function getBlockAtlasTextureCoords(str: string, int: number): BlockAtlasTextureCoords;
 
@@ -456,10 +486,10 @@ declare namespace Block {
 	/**
 	 * Temporarily sets destroy time for block, saving the old value for the 
 	 * further usage.
-	 * @param numericID numeric block ID
+	 * @param numericId numeric block ID
 	 * @param time new destroy time in ticks
 	 */
-	function setTempDestroyTime(numericID: number, time: number): void;
+	function setTempDestroyTime(numericId: number, time: number): void;
 
 	/**
 	 * Registers material and digging level for the specified block.
@@ -522,17 +552,18 @@ declare namespace Block {
 	function getBlockDropViaItem(block: Tile, item: ItemInstance, coords: Vector, region: BlockSource): ItemInstanceArray[];
 
 	/**
-	 * Same as {@link Block.registerPlaceFunction} but accepts only numeric 
-	 * tile ID as the first param.
+	 * Registers function to be called when the block is placed in the world.
+	 * @param numericId block numeric ID
+	 * @param func function to be called when the block is placed in the world
 	 */
-	function registerPlaceFunctionForID(block: number, func: PlaceFunction): void;
+	function registerPlaceFunctionForID(numericId: number, func: PlaceFunction): void;
 
 	/**
 	 * Registers function to be called when the block is placed in the world.
-	 * @param nameID block numeric or string ID
+	 * @param id block numeric or string ID
 	 * @param func function to be called when the block is placed in the world
 	 */
-	function registerPlaceFunction(nameID: string | number, func: PlaceFunction): void;
+	function registerPlaceFunction(id: string | number, func: PlaceFunction): void;
 
 	/**
 	 * @returns Place function of the block with given numeric ID,
@@ -556,25 +587,26 @@ declare namespace Block {
 	}
 
 	/**
-	 * Sets block box shape.
+	 * Sets block box shape, like {@like Block.setShape},
+	 * but in voxel objects for each coordinate.
 	 * @param id block numeric ID
-	 * @param pos1 block lower corner position, in voxels (1/16 of the block)
-	 * @param pos2 block upper conner position, in voxels (1/16 of the block)
-	 * @param data block optional data
+	 * @param pos1 block lower corner position
+	 * @param pos2 block upper conner position
+	 * @param data block optional data (or -1)
 	 */
 	function setBlockShape(id: number, pos1: Vector, pos2: Vector, data?: number): void;
 
 	/**
-	 * Same as {@link Block.setBlockShape}, but accepts coordinates as scalar 
-	 * params, not objects.
+	 * Sets block box shape via scalar coordinates,
+	 * usually presented in voxels (1/16 of block).
 	 * @param id block numeric ID
-	 * @param data block data
+	 * @param data block optional data (or -1)
 	 */
 	function setShape(id: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, data?: number): void;
 
 	/**
-	 * Creates a new special type using specified params and registers it by 
-	 * name.
+	 * Creates a new special type using specified params
+	 * and optionally registers it by name.
 	 * @param description special type properties
 	 * @param nameKey string name to register the special type
 	 * @returns Special type name.
