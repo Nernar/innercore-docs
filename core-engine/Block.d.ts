@@ -587,7 +587,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Sets block box shape, like {@like Block.setShape},
+	 * Sets block box shape, like {@link Block.setShape},
 	 * but in voxel objects for each coordinate.
 	 * @param id block numeric ID
 	 * @param pos1 block lower corner position
