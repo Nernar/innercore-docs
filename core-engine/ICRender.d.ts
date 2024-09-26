@@ -153,7 +153,12 @@ declare namespace ICRender {
 	/**
 	 * Common superclass for all condition classes.
 	 */
-	abstract class CONDITION { }
+	abstract class CONDITION {
+		/**
+		 * @since 2.3.1b116
+		 */
+		constructor(ptr: number);
+	}
 
 	/**
 	 * Condition depending on random value.
