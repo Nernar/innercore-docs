@@ -13,7 +13,7 @@ declare namespace Player {
     /**
      * @deprecated Use attributes and {@link Entity.getNameTag} instead.
      */
-    function getNameForEnt(ent: number): string;
+    function getNameForEnt(entityUid: number): string;
 
     /**
      * @deprecated Use attributes and {@link Entity.getNameTag} instead.
@@ -29,7 +29,7 @@ declare namespace Player {
     /**
      * @returns `true` if specified entity is of player type, `false` otherwise.
      */
-    function isPlayer(ent: number): boolean;
+    function isPlayer(entityUid: number): boolean;
 
     /**
      * Fetches information about the objects player is currently pointing.
@@ -53,6 +53,14 @@ declare namespace Player {
          */
         entity: number
     };
+
+    /**
+     * Simulates local player rotation by specified delta.
+     * @param deltaX horizontal radians offset
+     * @param deltaY vertical radians offset
+     * @since 2.4.0b120 (implemented in 2.3.1b116)
+     */
+    function localPlayerTurn(deltaX: number, deltaY: number): void;
 
     /**
      * @deprecated Consider use {@link Player.getInventorySlot} instead.
@@ -359,9 +367,9 @@ declare namespace Player {
 
     /**
      * Sets player's camera to the specified entity.
-     * @param ent entity ID
+     * @param entityUid entity ID
      */
-    function setCameraEntity(ent: number): void;
+    function setCameraEntity(entityUid: number): void;
 
     /**
      * Resets player's camera if it was previously set to another entity.
@@ -371,29 +379,29 @@ declare namespace Player {
     /**
      * Sets some of the player's abilities. If the argument is of type
      * boolean, sets the ability as the boolean one, otherwise as numeric one.
-     * @param ability ability name constant, should be one of the 
-     * {@link EPlayerAbility} constants
-     * @param value the value to be set for the ability. Can be either boolean
+     * @param ability ability name constant, should be
+     * one of the {@link EPlayerAbility} constants
+     * @param value the value to be set for the ability; can be either boolean
      * or number, depending on the ability
      * @since 2.0.3b33
      */
     function setAbility(ability: string, value: boolean | number): void;
 
     /**
-     * Gets one of the player's abilities in a form of floating-point
-     * number.
-     * @param ability ability name constant, should be one of the 
-     * {@link EPlayerAbility} constants
-     * @returns Current value of the ability in a form of floating-point
-     * number.
+     * Gets one of the player's abilities in a form
+     * of floating-point number.
+     * @param ability ability name constant, should be
+     * one of the {@link EPlayerAbility} constants
+     * @returns Current value of the ability in a form
+     * of floating-point number.
      * @since 2.0.3b33
      */
     function getFloatAbility(ability: string): number;
 
     /**
      * Gets one of the player's abilities in a boolean form.
-     * @param ability ability name constant, should be one of the 
-     * {@link EPlayerAbility} constants
+     * @param ability ability name constant, should be
+     * one of the {@link EPlayerAbility} constants
      * @returns Current value of the ability in a boolean form.
      * @since 2.0.3b33
      */
