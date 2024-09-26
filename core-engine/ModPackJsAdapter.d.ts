@@ -37,6 +37,11 @@ declare namespace ModPack {
 
         getIconFile(): java.io.File;
 
+        /**
+         * @since 2.3.1b116
+         */
+        getExternalServersFile(): java.io.File;
+
         getManifest(): ModPackManifest;
 
         getPreferences(): ModPackPreferences;
