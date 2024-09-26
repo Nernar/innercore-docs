@@ -152,8 +152,9 @@ declare namespace ICRender {
 
 	/**
 	 * Common superclass for all condition classes.
+	 * @internal
 	 */
-	abstract class CONDITION {
+	class CONDITION {
 		/**
 		 * @since 2.3.1b116
 		 */
@@ -217,4 +218,25 @@ declare namespace ICRender {
 	 * Constructs new {@link ICRender.AND} condition.
 	 */
 	function AND(...conditions: CONDITION[]): CONDITION;
+
+	/**
+	 * Constructs new {@link ICRender.BlockState} condition that uses
+	 * block state data (it must match the value) to display.
+	 * @param x is relative x coordinate
+	 * @param y is relative y coordinate
+	 * @param z is relative z coordinate
+	 * @param state one of {@link EBlockStates} values of relative block
+	 * @param value value to match selected state
+	 * @since 2.3.1b116
+	 */
+	function BlockState(x: number, y: number, z: number, state: number, value: number): CONDITION;
+
+	/**
+	 * Constructs new {@link ICRender.BlockState} condition that uses
+	 * block state data (it must match the value) to display.
+	 * @param state one of {@link EBlockStates} values
+	 * @param value value to match selected state
+	 * @since 2.3.1b116
+	 */
+	function BlockState(state: number, value: number): CONDITION;
 }
