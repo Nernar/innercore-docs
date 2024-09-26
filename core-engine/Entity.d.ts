@@ -24,33 +24,44 @@ declare namespace Entity {
     /**
      * @deprecated Use attributes instead, or {@link Saver}.
      */
-    function getExtra(ent: number, name: string): null;
+    function getExtra(entityUid: number, name: string): null;
 
     /**
      * @deprecated Use attributes instead, or {@link Saver}.
      */
-    function putExtra(ent: number, name: string, extra?: object): void;
+    function putExtra(entityUid: number, name: string, extra?: object): void;
 
     /**
      * @deprecated Use attributes instead, or {@link Saver}.
      */
-    function getExtraJson(ent: number, name: string): object;
+    function getExtraJson(entityUid: number, name: string): object;
 
     /**
      * @deprecated Use attributes instead, or {@link Saver}.
      */
-    function putExtraJson(ent: number, name: string, obj: object): void;
+    function putExtraJson(entityUid: number, name: string, obj: object): void;
 
     /**
-     * Adds an effect to the mob.
-     * @param effectId effect ID, should be one
-     * one of {@link EPotionEffect} values.
+     * Adds an effect to entity.
+     * @param effectId effect ID, should be one one of {@link EPotionEffect} values
      * @param effectData effect amplifier
      * @param effectTime effect time in ticks
      * @param ambience if true, particles are ambient
      * @param particles if true, particles are not displayed
      */
-    function addEffect(ent: number, effectId: number, effectData: number, effectTime: number, ambience?: boolean, particles?: boolean): void;
+    function addEffect(entityUid: number, effectId: number, effectData: number, effectTime: number, ambience?: boolean, particles?: boolean): void;
+
+    /**
+     * Adds an effect to entity.
+     * @param effectId effect ID, should be one one of {@link EPotionEffect} values
+     * @param effectData effect amplifier
+     * @param effectTime effect time in ticks
+     * @param ambience if true, particles are ambient
+     * @param particles if true, particles are not displayed
+     * @param effectAnimation if true, flashing are displayed
+     * @since 2.3.1b116
+     */
+    function addEffect(entityUid: number, effectId: number, effectData: number, effectTime: number, ambience: boolean, particles: boolean, effectAnimation: boolean): void;
 
     /**
      * @param effectId numeric ID of the potion effect,
@@ -77,12 +88,12 @@ declare namespace Entity {
      * Clears effect, applied to the mob.
      * @param id effect ID, should be one of the {@link EPotionEffect}
      */
-    function clearEffect(ent: number, id: number): void;
+    function clearEffect(entityUid: number, id: number): void;
 
     /**
      * Clears all effects of the mob.
      */
-    function clearEffects(ent: number): void;
+    function clearEffects(entityUid: number): void;
 
     enum DamageSources {
         /**
@@ -189,29 +200,29 @@ declare namespace Entity {
      * @param properties.attacker entity that caused damage, determines actor of damage source
      * @param properties.bool1 if `true`, damage can be reduced by armor
      */
-    function damageEntity(ent: number, damage: number, cause?: DamageSources | number, properties?: { attacker?: number, bool1?: boolean }): void;
+    function damageEntity(entityUid: number, damage: number, cause?: DamageSources | number, properties?: { attacker?: number, bool1?: boolean }): void;
 
     /**
      * Adds specified health amount to the entity.
      * @param heal health to be added to entity, in half-hearts
      */
-    function healEntity(ent: number, heal: number): void;
+    function healEntity(entityUid: number, heal: number): void;
 
     /**
      * @returns Numeric entity type, one of the {@link EEntityType}.
      */
-    function getType(ent: number): number;
+    function getType(entityUid: number): number;
 
     /**
      * @returns String entity type, like `minecraft:chicken<>` (`<namespace>:<identifier>[<attributes>]`).
      */
-    function getTypeName(ent: number): string;
+    function getTypeName(entityUid: number): string;
 
     /**
      * @returns String type for entities defined via add-ons or numeric type for
      * all the other entities.
      */
-    function getTypeUniversal(ent: number): number | string;
+    function getTypeUniversal(entityUid: number): number | string;
 
     /**
      * @returns String type for entities defined via add-ons, otherwise `null`.
@@ -220,19 +231,19 @@ declare namespace Entity {
      * test entities manually with {@link Entity.getTypeName} or use {@link BlockSource.listEntitiesInAABB}
      * with appropriate arguments.
      */
-    function getTypeAddon(ent: number): Nullable<string>;
+    function getTypeAddon(entityUid: number): Nullable<string>;
 
     /**
      * @returns Compound tag for the specified entity.
      * @since 2.0.5b44
      */
-    function getCompoundTag(ent: number): Nullable<NBT.CompoundTag>;
+    function getCompoundTag(entityUid: number): Nullable<NBT.CompoundTag>;
 
     /**
      * Sets compound tag for the specified entity.
      * @since 2.0.5b44
      */
-    function setCompoundTag(ent: number, tag: NBT.CompoundTag): void;
+    function setCompoundTag(entityUid: number, tag: NBT.CompoundTag): void;
 
     /**
      * Sets hitbox to the entity. Hitboxes defines entity collisions
@@ -240,20 +251,20 @@ declare namespace Entity {
      * @param w hitbox width and length
      * @param h hitbox height
      */
-    function setHitbox(ent: number, w: number, h: number): void;
+    function setHitbox(entityUid: number, w: number, h: number): void;
 
     /**
      * @returns `true` if specified entity is loaded within any player chunks
      * (not despawned or unloaded) and identifier is valid.
      */
-    function isExist(ent: number): boolean;
+    function isExist(entityUid: number): boolean;
 
     /**
      * @returns Current dimension numeric ID, one of the {@link EDimension} 
      * values or custom dimension ID.
      * @since 2.0.4b35
      */
-    function getDimension(ent: number): number;
+    function getDimension(entityUid: number): number;
 
     /**
      * Spawns vanilla entity on the specified coordinates.
@@ -320,66 +331,66 @@ declare namespace Entity {
     /**
      * Removes entity from the world.
      */
-    function remove(ent: number): void;
+    function remove(entityUid: number): void;
 
     /**
      * @returns Custom entity object by it's numeric entity UID.
      * @deprecated Not supported anymore, use behavior packs.
      */
-    function getCustom(ent: number): CustomEntity;
+    function getCustom(entityUid: number): CustomEntity;
 
     /**
      * @deprecated Use attributes instead.
      */
-    function getAge(ent: number): number;
+    function getAge(entityUid: number): number;
 
     /**
      * @deprecated Use attributes instead.
      */
-    function setAge(ent: number, age: number): void;
+    function setAge(entityUid: number, age: number): void;
 
     /**
      * @deprecated Use NBT instead.
      */
-    function getSkin(ent: number): string;
+    function getSkin(entityUid: number): string;
 
     /**
      * Sets mob skin.
      * @param skin skin name, full path in the resourcepack (mod assets)
      * @deprecated Use NBT or resource packs instead.
      */
-    function setSkin(ent: number, skin: string): void;
+    function setSkin(entityUid: number, skin: string): void;
 
     /**
      * Sets mob skin, uses {@link Texture} object.
      * @deprecated Use NBT or resource packs instead.
      */
-    function setTexture(ent: number, texture: Texture): void;
+    function setTexture(entityUid: number, texture: Texture): void;
 
     /**
      * @returns Entity render type, should be one of the 
      * {@link EMobRenderType} values.
      */
-    function getRender(ent: number): number;
+    function getRender(entityUid: number): number;
 
     /**
      * Sets entity render type.
      * @param render entity render type, should be one of the 
      * {@link EMobRenderType} values
      */
-    function setRender(ent: number, render: number): void;
+    function setRender(entityUid: number, render: number): void;
 
     /**
      * Makes rider ride entity.
-     * @param entity ridden entity
-     * @param rider rider entity
+     * @param entityUid ridden entity
+     * @param riderUid rider entity
      */
-    function rideAnimal(entity: number, rider: number): void;
+    function rideAnimal(entityUid: number, riderUid: number): void;
 
     /**
      * @returns Entity name tag or player name.
      */
-    function getNameTag(ent: number): string;
+    function getNameTag(entityUid: number): string;
 
     /**
      * Sets custom entity name tag. Custom entity tags are
@@ -387,67 +398,68 @@ declare namespace Entity {
      * using label.
      * @param tag name tag to be set to the entity
      */
-    function setNameTag(ent: number, tag: string): void;
+    function setNameTag(entityUid: number, tag: string): void;
 
     /**
      * Gets the attack target of current entity.
      * @returns Target entity's unique ID.
      */
-    function getTarget(ent: number): number;
+    function getTarget(entityUid: number): number;
 
     /**
      * Sets the attack target for current entity. Works only for mobs that
      * actually can attack.
-     * @param target target entity's unique ID
+     * @param targetUid target entity's unique ID
      */
-    function setTarget(ent: number, target: number): void;
+    function setTarget(entityUid: number, targetUid: number): void;
 
     /**
      * @returns `true`, if entity was immobilized.
+     * @since 2.3.1b116-3
      */
-    function getMobile(ent: number): boolean;
+    function getMobile(entityUid: number): boolean;
 
     /**
      * Sets entity's immobile state.
      * @param mobile if `true`, entity can move, otherwise it is immobilized
      */
-    function setMobile(ent: number, mobile: boolean): void;
+    function setMobile(entityUid: number, mobile: boolean): void;
 
     /**
      * @returns `true` if entity is sneaking, `false` otherwise.
      */
-    function getSneaking(ent: number): boolean;
+    function getSneaking(entityUid: number): boolean;
 
     /**
      * Sets entity's sneaking state, supported slightly
      * entities, resource pack render controlling it.
      * @param sneak if `true`, entity becomes sneaking, else not
      */
-    function setSneaking(ent: number, sneak: boolean): void;
+    function setSneaking(entityUid: number, sneak: boolean): void;
 
     /**
      * @returns Entity that is riding the specified entity.
      */
-    function getRider(ent: number): number;
+    function getRider(entityUid: number): number;
 
     /**
      * @returns Entity that is ridden by specified entity.
      */
-    function getRiding(ent: number): number;
+    function getRiding(entityUid: number): number;
 
     /**
      * Puts entity on fire.
      * @param fire duration (in ticks) of the fire
      * @param force should always be true
      */
-    function setFire(ent: number, fire: number, force: boolean): void;
+    function setFire(entityUid: number, fire: number, force: boolean): void;
 
     /**
      * @returns An object that allows to manipulate entity health.
      * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
      * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead.
      */
-    function health(ent: number): EntityHealth;
+    function health(entityUid: number): EntityHealth;
 
     /**
      * Class used to manipulate entity's health.
@@ -484,55 +496,55 @@ declare namespace Entity {
     /**
      * @returns Entity's current health value.
      */
-    function getHealth(ent: number): number;
+    function getHealth(entityUid: number): number;
 
     /**
      * Sets entity's current health value.
      * @param health health value to be set
      */
-    function setHealth(ent: number, health: number): void;
+    function setHealth(entityUid: number, health: number): void;
 
     /**
      * @returns Entity's maximum health value.
      */
-    function getMaxHealth(ent: number): number;
+    function getMaxHealth(entityUid: number): number;
 
     /**
      * Sets entity's maximum health value.
      */
-    function setMaxHealth(ent: number, health: number): void;
+    function setMaxHealth(entityUid: number, health: number): void;
 
     /**
      * Sets the specified coordinates as a new position for the entity.
      * No checks are performed.
      */
-    function setPosition(ent: number, x: number, y: number, z: number): void;
+    function setPosition(entityUid: number, x: number, y: number, z: number): void;
 
     /**
      * @returns Entity position.
      */
-    function getPosition(ent: number): Vector;
+    function getPosition(entityUid: number): Vector;
 
     /**
      * Updates current entity position by specified coordinates.
      */
-    function addPosition(ent: number, x: number, y: number, z: number): void;
+    function addPosition(entityUid: number, x: number, y: number, z: number): void;
 
     /**
      * Set current entity's velocity using velocity vector.
      */
-    function setVelocity(ent: number, x: number, y: number, z: number): void;
+    function setVelocity(entityUid: number, x: number, y: number, z: number): void;
 
     /**
      * Get current entity's velocity using velocity vector.
      * @returns Containing current entity's velocity.
      */
-    function getVelocity(ent: number): Vector;
+    function getVelocity(entityUid: number): Vector;
 
     /**
      * Updates current entity's velocity by specified value.
      */
-    function addVelocity(ent: number, x: number, y: number, z: number): void;
+    function addVelocity(entityUid: number, x: number, y: number, z: number): void;
 
     /**
      * @returns Distance in blocks between the two coordinate sets.
@@ -542,7 +554,7 @@ declare namespace Entity {
     /**
      * @returns Distance between specified entity and a fixed coordinate set.
      */
-    function getDistanceToCoords(ent: number, coords: Vector): number;
+    function getDistanceToCoords(entityUid: number, coords: Vector): number;
 
     /**
      * @returns Distance in blocks between two entities.
@@ -553,19 +565,19 @@ declare namespace Entity {
      * @returns Distance between player and entity, counting only x and z values
      * (y value is ignored).
      */
-    function getXZPlayerDis(ent: number): number;
+    function getXZPlayerDis(entityUid: number): number;
 
     /**
      * @returns Entity's look angle in radians.
      */
-    function getLookAngle(ent: number): LookAngle;
+    function getLookAngle(entityUid: number): LookAngle;
 
     /**
      * Sets specified pitch and yaw as look angle for the entity.
      * @param yaw look angle yaw in radians
      * @param pitch look angle pitch in radians
      */
-    function setLookAngle(ent: number, yaw: number, pitch: number): void;
+    function setLookAngle(entityUid: number, yaw: number, pitch: number): void;
 
     /**
      * Transforms look angle into look vector.
@@ -577,42 +589,42 @@ declare namespace Entity {
     /**
      * @returns Look vector for the entity.
      */
-    function getLookVector(ent: number): Vector;
+    function getLookVector(entityUid: number): Vector;
 
     /**
      * @returns Look angle between entity and static coordinates.
      */
-    function getLookAt(ent: number, x: number, y: number, z: number): LookAngle;
+    function getLookAt(entityUid: number, x: number, y: number, z: number): LookAngle;
 
     /**
      * Sets entity look angle to look at specified coordinates.
      */
-    function lookAt(ent: number, x: number, y: number, z: number): void;
+    function lookAt(entityUid: number, x: number, y: number, z: number): void;
 
     /**
      * Same as {@link Entity.lookAt} but uses Vector as param type.
      * @param coords 
      */
-    function lookAtCoords(ent: number, coords: Vector): void;
+    function lookAtCoords(entityUid: number, coords: Vector): void;
 
     /**
      * Makes entity move to the target coordinates.
      * @param params additional move parameters
      */
-    function moveToTarget(ent: number, target: Vector, params: MoveParams): void;
+    function moveToTarget(entityUid: number, target: Vector, params: MoveParams): void;
 
     /**
      * Makes entity move using pitch/yaw angle to determine direction.
      * @param angle angle to define entity's direction
      * @param params additional move parameters
      */
-    function moveToAngle(ent: number, angle: LookAngle, params: MoveParams): void;
+    function moveToAngle(entityUid: number, angle: LookAngle, params: MoveParams): void;
 
     /**
      * Makes entity move towards it's current look angle.
      * @param params additional move parameters
      */
-    function moveToLook(ent: number, params: MoveParams): void;
+    function moveToLook(entityUid: number, params: MoveParams): void;
 
     /**
      * Interface used to specify how entity should move.
@@ -639,7 +651,7 @@ declare namespace Entity {
      * @returns Object that contains normalized moving vector, moving speed and
      * moving xz speed (with no Y coordinate).
      */
-    function getMovingVector(ent: number): MovingVector;
+    function getMovingVector(entityUid: number): MovingVector;
 
     /**
      * Interface used to return entity's current moving vector and some
@@ -676,7 +688,7 @@ declare namespace Entity {
      * Retrieves entity look angle in the form of pitch/yaw angle. No other
      * information included to the resulting object.
      */
-    function getMovingAngle(ent: number): LookAngle;
+    function getMovingAngle(entityUid: number): LookAngle;
 
     /**
      * @deprecated Nothing to perform here anymore.
@@ -709,14 +721,14 @@ declare namespace Entity {
     /**
      * @deprecated Consider use {@link Entity.getCarriedItem} instead.
      */
-    function getInventory(ent: number, handleNames?: boolean, handleEnchant?: boolean): void;
+    function getInventory(entityUid: number, handleNames?: boolean, handleEnchant?: boolean): void;
 
     /**
      * @param slot armor slot index, should be one of the {@link EArmorType} 
      * values
      * @returns Armor slot contents for entity.
      */
-    function getArmorSlot(ent: number, slot: number): ItemInstance;
+    function getArmorSlot(entityUid: number, slot: number): ItemInstance;
 
     /**
      * Sets armor slot contents for the entity.
@@ -727,12 +739,12 @@ declare namespace Entity {
      * @param data item data
      * @param extra item extra
      */
-    function setArmorSlot(ent: number, slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
+    function setArmorSlot(entityUid: number, slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
      * @returns Entity's current carried item information.
      */
-    function getCarriedItem(ent: number): ItemInstance;
+    function getCarriedItem(entityUid: number): ItemInstance;
 
     /**
      * Sets current carried item for the entity.
@@ -741,12 +753,12 @@ declare namespace Entity {
      * @param data item data
      * @param extra item extra
      */
-    function setCarriedItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
+    function setCarriedItem(entityUid: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
      * @returns Entity's current offhand item information.
      */
-    function getOffhandItem(ent: number): ItemInstance;
+    function getOffhandItem(entityUid: number): ItemInstance;
 
     /**
      * Sets current offhand item for the entity.
@@ -755,13 +767,13 @@ declare namespace Entity {
      * @param data item data
      * @param extra item extra
      */
-    function setOffhandItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
+    function setOffhandItem(entityUid: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
      * Gets item from specified drop entity
      * @returns Instance that is in the dropped item.
      */
-    function getDroppedItem(ent: number): ItemInstance;
+    function getDroppedItem(entityUid: number): ItemInstance;
 
     /**
      * Sets item to the specified drop entity
@@ -770,7 +782,7 @@ declare namespace Entity {
      * @param data item data
      * @param extra item extra
      */
-    function setDroppedItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
+    function setDroppedItem(entityUid: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
      * @deprecated Use callbacks and {@link Entity.getAll} instead.
@@ -797,7 +809,7 @@ declare namespace Entity {
      * @returns Object used to manipulate entity's attributes.
      * @since 2.0.3b33
      */
-    function getAttribute(ent: number, attribute: Attributes | string): AttributeInstance;
+    function getAttribute(entityUid: number, attribute: Attributes | string): AttributeInstance;
 
     /**
      * Interface used to modify attribute values.
@@ -851,7 +863,7 @@ declare namespace Entity {
      * the way to get there.
      * @since 2.0.3b33
      */
-    function getPathNavigation(ent: number): PathNavigation;
+    function getPathNavigation(entityUid: number): PathNavigation;
 
     /**
      * Object used to build path and move mobs to the required coordinates using
