@@ -1,5 +1,6 @@
 /**
- * Module used to save data between world sessions.
+ * Module used to save data between world sessions,
+ * different worlds has their own saves.
  */
 declare namespace Saver {
     /**
@@ -8,78 +9,190 @@ declare namespace Saver {
      * world sessions. If you want to store primitives, use an object to wrap
      * them.
      * @param name saves scope name
-     * @param loadFunc function used to load saved data
-     * @param saveFunc function used to save data
+     * @param load function used to load saved data
+     * @param save function used to save data
      * 
      * @example
      * ```js
      * let thirst = 20;
-     * Saver.addSavesScope("thirst", 
+     * Saver.addSavesScope("thirst_library.thirst", 
      *     function read(scope) {
      *         thirst = scope ? scope.thirst : 20;
      *     },
      *     function save() {
-     *         return { "thirst": thirst };
+     *         return { thirst: thirst };
      *     }
      * );
      * ```
      */
-    function addSavesScope(name: string, loadFunc: LoadScopeFunc, saveFunc: SaveScopeFunc): void;
+    function addSavesScope(name: string, load: ScopeLoadFunction, save: ScopeSaveFunction): void;
 
     /**
      * Registers object as scope saver.
      * @param name saves scope name
-     * @param saver object that implements {@link Saver.ScopeSaver} interface and 
-     * can be loaded and saved via it's functions calls
+     * @param saver object that implements {@link Saver.IScopeSaver}
+     * interface and can be loaded and saved via it's functions calls
      */
-    function registerScopeSaver(name: string, saver: any): ScopeSaver;
+    function registerScopeSaver(name: string, saver: IScopeSaver): void;
 
-    function registerObjectSaver(name: string, saver: any): void;
+    /**
+     * Registers object as object instance saver.
+     * @param name saves scope name
+     * @param saver object that implements {@link Saver.IObjectSaver}
+     * interface and can be loaded and saved via it's functions calls
+     * @returns Saver identifier of your object instance.
+     * 
+     * @example
+     * ```js
+     * function PedestalTile(type) {
+     *     this.type = type;
+     *     Saver.registerObject(this, PedestalTile.saverId);
+     * }
+     * PedestalTile.saverId = Saver.registerObjectSaver("mystical_agriculture.pedestal", {
+     *     read(obj) {
+     *         return new PedestalTile(obj.type);
+     *     },
+     *     save(instance) {
+     *         return { type: instance.type };
+     *     }
+     * });
+     * ```
+     */
+    function registerObjectSaver(name: string, saver: IObjectSaver): number;
 
-    function registerObject(obj: any, saverId: any): void;
+    /**
+     * Registers object to be saved with a given saver
+     * by identifier received from {@link Saver.registerObjectSaver}.
+     * @param obj target object instance
+     * @param saverId to be used on saving
+     */
+    function registerObject(obj: any, saverId: number): void;
 
-    function setObjectIgnored(obj: any, ignore: any): void;
+    /**
+     * Changes registered via {@link Saver.registerObject} instance
+     * behavior to object be skippable or not.
+     * @param obj target object instance
+     * @param ignore should be skipped on saving
+     */
+    function setObjectIgnored(obj: any, ignore: boolean): void;
 
+    /**
+     * Converts present object hieracly via registered
+     * {@link Saver.registerScopeSaver} and {@link Saver.registerObjectSaver}
+     * instances recursively to serialized data.
+     * @returns Serialized object hieracly transformed to string.
+     */
     function serializeToString(obj: any): string;
 
-    function serialize<T>(obj: T): T;
+    /**
+     * Converts present object hieracly via registered
+     * {@link Saver.registerScopeSaver} and {@link Saver.registerObjectSaver}
+     * instances recursively to serialized data.
+     * @returns Serialized object hieracly.
+     */
+    function serialize(obj: any): object;
 
+    /**
+     * Converts present transformed to string serialized object
+     * via registered {@link Saver.registerScopeSaver} and
+     * {@link Saver.registerObjectSaver} recursively to instance hieracly.
+     * @returns Deserialized object instance hieracly.
+     */
     function deserializeFromString(str: string): any;
 
-    function deserialize<T>(obj: T): T;
-
     /**
-     * Function that returns object representing created scope. No
-     * primitives are allowed as return value.
+     * Converts present serialized object via registered {@link Saver.registerScopeSaver}
+     * and {@link Saver.registerObjectSaver} recursively to instance hieracly.
+     * @returns Deserialized object instance hieracly.
      */
-    type SaveScopeFunc =
-        /**
-         * @returns Data to be saved.
-         */
-        () => object;
+    function deserialize(obj: object): any;
 
     /**
-     * Function that loads data from scope.
+     * Function that loads data from saves scope.
      */
-    type LoadScopeFunc = (
+    interface ScopeLoadFunction {
         /**
-         * @param scope data 
+         * @param scope object data from saves
          */
-        scope: Nullable<object>
-    ) => void;
+        (scope: object): void
+    }
 
     /**
-     * Interface that should be implemented to pass the object as 
+     * Function used to save data.
+     */
+    interface ScopeSaveFunction {
+        /**
+         * @returns Object data to be serialized in saves scope.
+         */
+        (): Nullable<object>
+    }
+
+    /**
+     * Function that returns default data to be passed
+     * to {@link ScopeLoadFunction} if there is no previous data.
+     * @since 2.3.1b116-3
+     */
+    interface DefaultSavesFunction {
+        (): Nullable<object>
+    }
+
+    /**
+     * Interface that should be implemented to pass object as 
      * {@link Saver.registerScopeSaver} parameter.
      */
-    interface ScopeSaver {
+    interface IScopeSaver {
         /**
-         * Function used to load saved data.
+         * Function that loads data from saves scope.
          */
-        read: LoadScopeFunc,
+        read: ScopeLoadFunction,
         /**
          * Function used to save data.
          */
-        save: SaveScopeFunc
+        save: ScopeSaveFunction,
+        /**
+         * Function that returns default data to be passed
+         * to {@link read} if there is no previous data.
+         * @since 2.3.1b116-3
+         */
+        getDefaultSaves?: DefaultSavesFunction
+    }
+
+    /**
+     * Function that converts serialized data
+     * from saves scope to your object instance.
+     */
+    interface ObjectLoadFunction {
+        /**
+         * @param obj object data from saves
+         * @returns Instance of newly instantiated object.
+         */
+        (obj: object): any
+    }
+
+    /**
+     * Function used to save serialized data of your object instance.
+     */
+    interface ObjectSaveFunction {
+        /**
+         * @param instance instance of your object to be saved
+         * @returns Object data to be serialized in saves scope.
+         */
+        (instance: any): object
+    }
+
+    /**
+     * Interface that should be implemented to pass object as 
+     * {@link Saver.registerObjectSaver} parameter.
+     */
+    interface IObjectSaver {
+        /**
+         * Function that converts serialized data
+         * from saves scope to your object instance.
+         */
+        read: ObjectLoadFunction,
+        /**
+         * Function used to save serialized data of your object instance.
+         */
+        save: ObjectSaveFunction
     }
 }
