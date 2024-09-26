@@ -18,25 +18,31 @@
 <li><a href="Saver.html">Saver</a></li></ul>
 <h1>Namespace Saver</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Module used to save data between world sessions.</p>
+<div class="tsd-comment tsd-typography"><p>Module used to save data between world sessions,
+different worlds has their own saves.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L10236">core-engine.d.ts:10236</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L10272">core-engine.d.ts:10272</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Interfaces</h3>
-<div class="tsd-index-list"><a href="../interfaces/Saver.ScopeSaver.html" class="tsd-index-link">
-<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Saver</span></a>
-</div></section>
-<section class="tsd-index-section">
-<h3 class="tsd-index-heading">Type Aliases</h3>
-<div class="tsd-index-list"><a href="../types/Saver.LoadScopeFunc.html" class="tsd-index-link">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Load<wbr/>Scope<wbr/>Func</span></a>
-<a href="../types/Saver.SaveScopeFunc.html" class="tsd-index-link">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Save<wbr/>Scope<wbr/>Func</span></a>
+<div class="tsd-index-list"><a href="../interfaces/Saver.DefaultSavesFunction.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Default<wbr/>Saves<wbr/>Function</span></a>
+<a href="../interfaces/Saver.IObjectSaver.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IObject<wbr/>Saver</span></a>
+<a href="../interfaces/Saver.IScopeSaver.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IScope<wbr/>Saver</span></a>
+<a href="../interfaces/Saver.ObjectLoadFunction.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Load<wbr/>Function</span></a>
+<a href="../interfaces/Saver.ObjectSaveFunction.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Save<wbr/>Function</span></a>
+<a href="../interfaces/Saver.ScopeLoadFunction.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Load<wbr/>Function</span></a>
+<a href="../interfaces/Saver.ScopeSaveFunction.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Save<wbr/>Function</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Functions</h3>
@@ -150,6 +156,8 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Native</span></a></li>
 <li><a href="Network.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network</span></a></li>
+<li><a href="NetworkEntity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="Particles.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Particles</span></a></li>
 <li><a href="Player.html">
@@ -167,12 +175,20 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Saver</span></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../interfaces/Saver.ScopeSaver.html">
-<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Saver</span></a></li>
-<li><a href="../types/Saver.LoadScopeFunc.html">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Load<wbr/>Scope<wbr/>Func</span></a></li>
-<li><a href="../types/Saver.SaveScopeFunc.html">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Save<wbr/>Scope<wbr/>Func</span></a></li>
+<li><a href="../interfaces/Saver.DefaultSavesFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Default<wbr/>Saves<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.IObjectSaver.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IObject<wbr/>Saver</span></a></li>
+<li><a href="../interfaces/Saver.IScopeSaver.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IScope<wbr/>Saver</span></a></li>
+<li><a href="../interfaces/Saver.ObjectLoadFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Load<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ObjectSaveFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Save<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ScopeLoadFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Load<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ScopeSaveFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Save<wbr/>Function</span></a></li>
 <li><a href="../functions/Saver.addSavesScope.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>add<wbr/>Saves<wbr/>Scope</span></a></li>
 <li><a href="../functions/Saver.deserialize.html">
@@ -287,7 +303,7 @@
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Client</span></a></li>
 <li><a href="../classes/NetworkConnectedClientList.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Connected<wbr/>Client<wbr/>List</span></a></li>
-<li><a href="../classes/NetworkEntity.html">
+<li><a href="../classes/NetworkEntity-1.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../classes/NetworkEntityType.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity<wbr/>Type</span></a></li>

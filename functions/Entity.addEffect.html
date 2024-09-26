@@ -20,19 +20,18 @@
 <h1>Function addEffect</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="addEffect"><span class="tsd-kind-call-signature">add<wbr/>Effect</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ent</span>, <span class="tsd-kind-parameter">effectId</span>, <span class="tsd-kind-parameter">effectData</span>, <span class="tsd-kind-parameter">effectTime</span>, <span class="tsd-kind-parameter">ambience</span><span class="tsd-signature-symbol">?</span>, <span class="tsd-kind-parameter">particles</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#addEffect" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="addEffect"><span class="tsd-kind-call-signature">add<wbr/>Effect</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">entityUid</span>, <span class="tsd-kind-parameter">effectId</span>, <span class="tsd-kind-parameter">effectData</span>, <span class="tsd-kind-parameter">effectTime</span>, <span class="tsd-kind-parameter">ambience</span><span class="tsd-signature-symbol">?</span>, <span class="tsd-kind-parameter">particles</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#addEffect" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Adds an effect to the mob.</p>
+<div class="tsd-comment tsd-typography"><p>Adds an effect to entity.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">ent</span>: <span class="tsd-signature-type">number</span></h5></li>
+<h5><span class="tsd-kind-parameter">entityUid</span>: <span class="tsd-signature-type">number</span></h5></li>
 <li>
 <h5><span class="tsd-kind-parameter">effectId</span>: <span class="tsd-signature-type">number</span></h5>
-<div class="tsd-comment tsd-typography"><p>effect ID, should be one
-one of <a href="../enums/EPotionEffect.html" class="tsd-kind-enum">EPotionEffect</a> values.</p>
+<div class="tsd-comment tsd-typography"><p>effect ID, should be one one of <a href="../enums/EPotionEffect.html" class="tsd-kind-enum">EPotionEffect</a> values</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li>
 <li>
@@ -58,7 +57,52 @@ one of <a href="../enums/EPotionEffect.html" class="tsd-kind-enum">EPotionEffect
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L16561">core-engine.d.ts:16561</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L16847">core-engine.d.ts:16847</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="addEffect-1"><span class="tsd-kind-call-signature">add<wbr/>Effect</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">entityUid</span>, <span class="tsd-kind-parameter">effectId</span>, <span class="tsd-kind-parameter">effectData</span>, <span class="tsd-kind-parameter">effectTime</span>, <span class="tsd-kind-parameter">ambience</span>, <span class="tsd-kind-parameter">particles</span>, <span class="tsd-kind-parameter">effectAnimation</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#addEffect-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Adds an effect to entity.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">entityUid</span>: <span class="tsd-signature-type">number</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">effectId</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>effect ID, should be one one of <a href="../enums/EPotionEffect.html" class="tsd-kind-enum">EPotionEffect</a> values</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">effectData</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>effect amplifier</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">effectTime</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>effect time in ticks</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">ambience</span>: <span class="tsd-signature-type">boolean</span></h5>
+<div class="tsd-comment tsd-typography"><p>if true, particles are ambient</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">particles</span>: <span class="tsd-signature-type">boolean</span></h5>
+<div class="tsd-comment tsd-typography"><p>if true, particles are not displayed</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">effectAnimation</span>: <span class="tsd-signature-type">boolean</span></h5>
+<div class="tsd-comment tsd-typography"><p>if true, flashing are displayed</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Since</h4><p>2.3.1b116</p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L16858">core-engine.d.ts:16858</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -359,6 +403,8 @@ one of <a href="../enums/EPotionEffect.html" class="tsd-kind-enum">EPotionEffect
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Native</span></a></li>
 <li><a href="../modules/Network.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network</span></a></li>
+<li><a href="../modules/NetworkEntity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../modules/Particles.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Particles</span></a></li>
 <li><a href="../modules/Player.html">
@@ -469,7 +515,7 @@ one of <a href="../enums/EPotionEffect.html" class="tsd-kind-enum">EPotionEffect
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Client</span></a></li>
 <li><a href="../classes/NetworkConnectedClientList.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Connected<wbr/>Client<wbr/>List</span></a></li>
-<li><a href="../classes/NetworkEntity.html">
+<li><a href="../classes/NetworkEntity-1.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../classes/NetworkEntityType.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity<wbr/>Type</span></a></li>

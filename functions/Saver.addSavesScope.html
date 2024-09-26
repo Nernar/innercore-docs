@@ -20,7 +20,7 @@
 <h1>Function addSavesScope</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="addSavesScope"><span class="tsd-kind-call-signature">add<wbr/>Saves<wbr/>Scope</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">loadFunc</span>, <span class="tsd-kind-parameter">saveFunc</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#addSavesScope" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="addSavesScope"><span class="tsd-kind-call-signature">add<wbr/>Saves<wbr/>Scope</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">load</span>, <span class="tsd-kind-parameter">save</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#addSavesScope" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Creates saves scope, a universal data storage container. This storage
 container should be used whenever you need to save some data between
@@ -36,22 +36,22 @@ them.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">loadFunc</span>: <a href="../types/Saver.LoadScopeFunc.html" class="tsd-signature-type tsd-kind-type-alias">LoadScopeFunc</a></h5>
+<h5><span class="tsd-kind-parameter">load</span>: <a href="../interfaces/Saver.ScopeLoadFunction.html" class="tsd-signature-type tsd-kind-interface">ScopeLoadFunction</a></h5>
 <div class="tsd-comment tsd-typography"><p>function used to load saved data</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">saveFunc</span>: <a href="../types/Saver.SaveScopeFunc.html" class="tsd-signature-type tsd-kind-type-alias">SaveScopeFunc</a></h5>
+<h5><span class="tsd-kind-parameter">save</span>: <a href="../interfaces/Saver.ScopeSaveFunction.html" class="tsd-signature-type tsd-kind-interface">ScopeSaveFunction</a></h5>
 <div class="tsd-comment tsd-typography"><p>function used to save data</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography">
-<h4>Example</h4><pre><code class="language-js"><span class="hl-0">let</span><span class="hl-1"> </span><span class="hl-6">thirst</span><span class="hl-1"> = </span><span class="hl-4">20</span><span class="hl-1">;</span><br/><span class="hl-6">Saver</span><span class="hl-1">.</span><span class="hl-2">addSavesScope</span><span class="hl-1">(</span><span class="hl-3">&quot;thirst&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-0">function</span><span class="hl-1"> </span><span class="hl-2">read</span><span class="hl-1">(</span><span class="hl-6">scope</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-6">thirst</span><span class="hl-1"> = </span><span class="hl-6">scope</span><span class="hl-1"> ? </span><span class="hl-6">scope</span><span class="hl-1">.</span><span class="hl-6">thirst</span><span class="hl-1"> : </span><span class="hl-4">20</span><span class="hl-1">;</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-0">function</span><span class="hl-1"> </span><span class="hl-2">save</span><span class="hl-1">() {</span><br/><span class="hl-1">        </span><span class="hl-8">return</span><span class="hl-1"> { </span><span class="hl-3">&quot;thirst&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-6">thirst</span><span class="hl-1"> };</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">);</span>
+<h4>Example</h4><pre><code class="language-js"><span class="hl-0">let</span><span class="hl-1"> </span><span class="hl-6">thirst</span><span class="hl-1"> = </span><span class="hl-4">20</span><span class="hl-1">;</span><br/><span class="hl-6">Saver</span><span class="hl-1">.</span><span class="hl-2">addSavesScope</span><span class="hl-1">(</span><span class="hl-3">&quot;thirst_library.thirst&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-0">function</span><span class="hl-1"> </span><span class="hl-2">read</span><span class="hl-1">(</span><span class="hl-6">scope</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-6">thirst</span><span class="hl-1"> = </span><span class="hl-6">scope</span><span class="hl-1"> ? </span><span class="hl-6">scope</span><span class="hl-1">.</span><span class="hl-6">thirst</span><span class="hl-1"> : </span><span class="hl-4">20</span><span class="hl-1">;</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-0">function</span><span class="hl-1"> </span><span class="hl-2">save</span><span class="hl-1">() {</span><br/><span class="hl-1">        </span><span class="hl-8">return</span><span class="hl-1"> { </span><span class="hl-6">thirst:</span><span class="hl-1"> </span><span class="hl-6">thirst</span><span class="hl-1"> };</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">);</span>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L10259">core-engine.d.ts:10259</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L10295">core-engine.d.ts:10295</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -143,6 +143,8 @@ them.</p>
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Native</span></a></li>
 <li><a href="../modules/Network.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network</span></a></li>
+<li><a href="../modules/NetworkEntity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../modules/Particles.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Particles</span></a></li>
 <li><a href="../modules/Player.html">
@@ -160,12 +162,20 @@ them.</p>
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Saver</span></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../interfaces/Saver.ScopeSaver.html">
-<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Saver</span></a></li>
-<li><a href="../types/Saver.LoadScopeFunc.html">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Load<wbr/>Scope<wbr/>Func</span></a></li>
-<li><a href="../types/Saver.SaveScopeFunc.html">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Save<wbr/>Scope<wbr/>Func</span></a></li>
+<li><a href="../interfaces/Saver.DefaultSavesFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Default<wbr/>Saves<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.IObjectSaver.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IObject<wbr/>Saver</span></a></li>
+<li><a href="../interfaces/Saver.IScopeSaver.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IScope<wbr/>Saver</span></a></li>
+<li><a href="../interfaces/Saver.ObjectLoadFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Load<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ObjectSaveFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Save<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ScopeLoadFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Load<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ScopeSaveFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Save<wbr/>Function</span></a></li>
 <li><a href="Saver.addSavesScope.html" class="current">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>add<wbr/>Saves<wbr/>Scope</span></a></li>
 <li><a href="Saver.deserialize.html">
@@ -280,7 +290,7 @@ them.</p>
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Client</span></a></li>
 <li><a href="../classes/NetworkConnectedClientList.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Connected<wbr/>Client<wbr/>List</span></a></li>
-<li><a href="../classes/NetworkEntity.html">
+<li><a href="../classes/NetworkEntity-1.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../classes/NetworkEntityType.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity<wbr/>Type</span></a></li>

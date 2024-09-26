@@ -27,7 +27,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">LiquidDescriptor</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19876">core-engine.d.ts:19876</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20175">core-engine.d.ts:20175</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -58,13 +58,24 @@
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member"><a id="bucket" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>bucket</span><a href="#bucket" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">bucket</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">id</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">texture</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span><br/><span>        </span><span class="tsd-kind-property">meta</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span><br/><span>        </span><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></div>
+<div class="tsd-signature"><span class="tsd-kind-property">bucket</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">emptyId</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">id</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">texture</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span><br/><span>        </span><span class="tsd-kind-property">meta</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span><br/><span>        </span><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></div>
 <div class="tsd-comment tsd-typography"><p>Optional section, if added, this will create fully
 functional (including dispensers) bucket items.</p>
 </div>
 <div class="tsd-type-declaration">
 <h4>Type declaration</h4>
 <ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">empty<wbr/>Id</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>An item that can capture liquid (including when using
+a dispenser and obtaining it with your hand).</p>
+</div>
+<div class="tsd-comment tsd-typography">
+<h4>Default</h4><pre><code class="language-ts"><span class="hl-4">325</span>
+</code><button>Copy</button></pre>
+
+<h4>Since</h4><p>2.3.1b116</p>
+</div></li>
 <li class="tsd-parameter">
 <h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-property">id</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 <div class="tsd-comment tsd-typography"><p>Optional, name ID for bucket item.</p>
@@ -84,7 +95,7 @@ functional (including dispensers) bucket items.</p>
 <h4>Since</h4><p>2.2.1b103</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19930">core-engine.d.ts:19930</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20229">core-engine.d.ts:20229</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="flowing" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>flowing</span><a href="#flowing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">flowing</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">id</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">texture</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></div>
@@ -111,7 +122,7 @@ for dynamic ones, texture must look like
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19912">core-engine.d.ts:19912</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20211">core-engine.d.ts:20211</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="inCreative" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>in<wbr/>Creative</span><a href="#inCreative" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">in<wbr/>Creative</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
@@ -122,7 +133,7 @@ for dynamic ones, texture must look like
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19942">core-engine.d.ts:19942</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20248">core-engine.d.ts:20248</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="isRenewable" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>is<wbr/>Renewable</span><a href="#isRenewable" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Renewable</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
@@ -135,12 +146,12 @@ for dynamic ones, texture must look like
 <h4>Since</h4><p>2.2.1b103</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19891">core-engine.d.ts:19891</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20190">core-engine.d.ts:20190</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="modelTextures" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>model<wbr/>Textures</span><a href="#modelTextures" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">model<wbr/>Textures</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19944">core-engine.d.ts:19944</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20250">core-engine.d.ts:20250</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="name-1" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>name</span><a href="#name-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
@@ -148,7 +159,7 @@ for dynamic ones, texture must look like
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19880">core-engine.d.ts:19880</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20179">core-engine.d.ts:20179</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="still" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>still</span><a href="#still" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">still</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">id</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">texture</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></div>
@@ -174,7 +185,7 @@ textures must be of standard block texture format.</p>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19896">core-engine.d.ts:19896</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20195">core-engine.d.ts:20195</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="tickDelay" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>tick<wbr/>Delay</span><a href="#tickDelay" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">tick<wbr/>Delay</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
@@ -185,12 +196,12 @@ textures must be of standard block texture format.</p>
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19885">core-engine.d.ts:19885</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20184">core-engine.d.ts:20184</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="uiTextures" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>ui<wbr/>Textures</span><a href="#uiTextures" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">ui<wbr/>Textures</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L19943">core-engine.d.ts:19943</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L20249">core-engine.d.ts:20249</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -421,6 +432,8 @@ textures must be of standard block texture format.</p>
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Native</span></a></li>
 <li><a href="../modules/Network.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network</span></a></li>
+<li><a href="../modules/NetworkEntity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../modules/Particles.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Particles</span></a></li>
 <li><a href="../modules/Player.html">
@@ -531,7 +544,7 @@ textures must be of standard block texture format.</p>
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Client</span></a></li>
 <li><a href="../classes/NetworkConnectedClientList.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Connected<wbr/>Client<wbr/>List</span></a></li>
-<li><a href="../classes/NetworkEntity.html">
+<li><a href="../classes/NetworkEntity-1.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../classes/NetworkEntityType.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity<wbr/>Type</span></a></li>

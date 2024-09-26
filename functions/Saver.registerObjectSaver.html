@@ -20,18 +20,32 @@
 <h1>Function registerObjectSaver</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="registerObjectSaver"><span class="tsd-kind-call-signature">register<wbr/>Object<wbr/>Saver</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">saver</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#registerObjectSaver" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="registerObjectSaver"><span class="tsd-kind-call-signature">register<wbr/>Object<wbr/>Saver</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">saver</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#registerObjectSaver" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Registers object as object instance saver.</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>saves scope name</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">saver</span>: <span class="tsd-signature-type">any</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">saver</span>: <a href="../interfaces/Saver.IObjectSaver.html" class="tsd-signature-type tsd-kind-interface">IObjectSaver</a></h5>
+<div class="tsd-comment tsd-typography"><p>object that implements <a href="../interfaces/Saver.IObjectSaver.html" class="tsd-kind-interface">IObjectSaver</a>
+interface and can be loaded and saved via it&#39;s functions calls</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><p>Saver identifier of your object instance.</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-js"><span class="hl-0">function</span><span class="hl-1"> </span><span class="hl-2">PedestalTile</span><span class="hl-1">(</span><span class="hl-6">type</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-0">this</span><span class="hl-1">.</span><span class="hl-6">type</span><span class="hl-1"> = </span><span class="hl-6">type</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-6">Saver</span><span class="hl-1">.</span><span class="hl-2">registerObject</span><span class="hl-1">(</span><span class="hl-0">this</span><span class="hl-1">, </span><span class="hl-6">PedestalTile</span><span class="hl-1">.</span><span class="hl-6">saverId</span><span class="hl-1">);</span><br/><span class="hl-1">}</span><br/><span class="hl-6">PedestalTile</span><span class="hl-1">.</span><span class="hl-6">saverId</span><span class="hl-1"> = </span><span class="hl-6">Saver</span><span class="hl-1">.</span><span class="hl-2">registerObjectSaver</span><span class="hl-1">(</span><span class="hl-3">&quot;mystical_agriculture.pedestal&quot;</span><span class="hl-1">, {</span><br/><span class="hl-1">    </span><span class="hl-2">read</span><span class="hl-1">(</span><span class="hl-6">obj</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-8">return</span><span class="hl-1"> </span><span class="hl-0">new</span><span class="hl-1"> </span><span class="hl-2">PedestalTile</span><span class="hl-1">(</span><span class="hl-6">obj</span><span class="hl-1">.</span><span class="hl-6">type</span><span class="hl-1">);</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-2">save</span><span class="hl-1">(</span><span class="hl-6">instance</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-8">return</span><span class="hl-1"> { </span><span class="hl-6">type:</span><span class="hl-1"> </span><span class="hl-6">instance</span><span class="hl-1">.</span><span class="hl-6">type</span><span class="hl-1"> };</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">});</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/9a3cb00/declarations/core-engine.d.ts#L10267">core-engine.d.ts:10267</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/448f6f7/declarations/core-engine.d.ts#L10326">core-engine.d.ts:10326</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -123,6 +137,8 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Native</span></a></li>
 <li><a href="../modules/Network.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network</span></a></li>
+<li><a href="../modules/NetworkEntity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../modules/Particles.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Particles</span></a></li>
 <li><a href="../modules/Player.html">
@@ -140,12 +156,20 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Saver</span></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../interfaces/Saver.ScopeSaver.html">
-<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Saver</span></a></li>
-<li><a href="../types/Saver.LoadScopeFunc.html">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Load<wbr/>Scope<wbr/>Func</span></a></li>
-<li><a href="../types/Saver.SaveScopeFunc.html">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Save<wbr/>Scope<wbr/>Func</span></a></li>
+<li><a href="../interfaces/Saver.DefaultSavesFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Default<wbr/>Saves<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.IObjectSaver.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IObject<wbr/>Saver</span></a></li>
+<li><a href="../interfaces/Saver.IScopeSaver.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IScope<wbr/>Saver</span></a></li>
+<li><a href="../interfaces/Saver.ObjectLoadFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Load<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ObjectSaveFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Object<wbr/>Save<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ScopeLoadFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Load<wbr/>Function</span></a></li>
+<li><a href="../interfaces/Saver.ScopeSaveFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Scope<wbr/>Save<wbr/>Function</span></a></li>
 <li><a href="Saver.addSavesScope.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>add<wbr/>Saves<wbr/>Scope</span></a></li>
 <li><a href="Saver.deserialize.html">
@@ -260,7 +284,7 @@
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Client</span></a></li>
 <li><a href="../classes/NetworkConnectedClientList.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Connected<wbr/>Client<wbr/>List</span></a></li>
-<li><a href="../classes/NetworkEntity.html">
+<li><a href="../classes/NetworkEntity-1.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity</span></a></li>
 <li><a href="../classes/NetworkEntityType.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity<wbr/>Type</span></a></li>
