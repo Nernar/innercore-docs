@@ -2,7 +2,7 @@
 /**
  * Class to manipulate with separate players.
  * @remarks
- * It is temporary! It exists only 1 server tick!
+ * It is temporary! Most methods works only 1 server tick!
  */
 declare class PlayerActor {
     constructor(playerUid: number);
@@ -154,4 +154,90 @@ declare class PlayerActor {
      */
     getItemUseStartupProgress(): number;
 
+    /**
+     * @returns `true` if player has operator permissions
+     * @since 2.3.1b116
+     */
+    isOperator(): boolean;
+
+    /**
+     * Sets some of the player's abilities.
+     * @param ability ability name constant, should be
+     * one of the {@link EPlayerAbility} constants
+     * @param value the value to be set for the ability
+     * @remarks
+     * Server-side analogue of {@link Player.setAbility}.
+     * @since 2.3.1b116
+     */
+    setPlayerBooleanAbility(ability: string, value: boolean): void;
+
+    /**
+     * Sets some of the player's abilities.
+     * @param ability ability name constant, should be
+     * one of the {@link EPlayerAbility} constants
+     * @param value the value to be set for the ability
+     * @remarks
+     * Server-side analogue of {@link Player.setAbility}.
+     * @since 2.3.1b116
+     */
+    setPlayerFloatAbility(ability: string, value: number): void;
+
+    /**
+     * Gets one of the player's abilities in a boolean form.
+     * @param ability ability name constant, should be
+     * one of the {@link EPlayerAbility} constants
+     * @returns Current value of the ability in a boolean form.
+     * @remarks
+     * Server-side analogue of {@link Player.getBooleanAbility}.
+     * @since 2.3.1b116
+     */
+    getPlayerBooleanAbility(ability: string): boolean;
+
+    /**
+     * Gets one of the player's abilities in a form
+     * of floating-point number.
+     * @param ability ability name constant, should be
+     * one of the {@link EPlayerAbility} constants
+     * @returns Current value of the ability in a form
+     * of floating-point number.
+     * @remarks
+     * Server-side analogue of {@link Player.getFloatAbility}.
+     * @since 2.3.1b116
+     */
+    getPlayerFloatAbility(ability: string): number;
+
+    /**
+     * @returns `true` if player is allowed to fly, `false` otherwise.
+     * @since 2.3.1b116
+     * @remarks
+     * Server-side analogue of {@link Player.getFlyingEnabled}.
+     */
+    canFly(): boolean;
+    
+    /**
+     * Enables or disables player's ability to fly.
+     * @param enabled whether the player can fly or not
+     * @since 2.3.1b116
+     * @remarks
+     * Server-side analogue of {@link Player.setFlyingEnabled}.
+     */
+    setCanFly(enabled: boolean): void;
+
+    /**
+     * @returns `true` if player is flying, `false` otherwise.
+     * @since 2.3.1b116
+     * @remarks
+     * Server-side analogue of {@link Player.getFlying}.
+     */
+    isFlying(): boolean;
+
+    /**
+     * Changes player's current flying state, call {@link PlayerActor.setCanFly}
+     * to be able to set this property to `true`.
+     * @param enabled whether the player should fly or not
+     * @since 2.3.1b116
+     * @remarks
+     * Server-side analogue of {@link Player.setFlying}.
+     */
+    setFlying(enabled: boolean): void;
 }
