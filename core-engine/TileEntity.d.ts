@@ -241,6 +241,20 @@ declare namespace TileEntity {
         requireMoreLiquid?: (liquid: string, amount: number) => void;
 
         /**
+         * Called when player connects to server.
+         * @param client connected player client
+         * @since 2.3.1b116-3
+         */
+        onConnectionPlayer?: (client: NetworkClient) => void;
+
+        /**
+         * Called when player disconnects from server.
+         * @param client disconnected player client
+         * @since 2.3.1b116-3
+         */
+        onDisconnectionPlayer?: (client: NetworkClient) => void;
+
+        /**
          * Any other user-defined methods and properties.
          */
         [key: string]: any;
@@ -303,27 +317,15 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     sendResponse: (packetName: string, someData: object) => void;
     /**
-     * Called when player connects to server.
-     * @param client connected player client
-     * @since 2.3.1b116-3
-     */
-    onConnectionPlayer: (client: NetworkClient) => void;
-    /**
-     * Called when player disconnects from server.
-     * @param client disconnected player client
-     * @since 2.3.1b116-3
-     */
-    onDisconnectionPlayer: (client: NetworkClient) => void;
-    /**
      * BlockSource object to manipulate TileEntity's position in world.
      */
     blockSource: BlockSource;
     /**
      * SyncedNetworkData object of the TileEntity.
      */
-    networkData: SyncedNetworkData;
+    readonly networkData: SyncedNetworkData;
     /**
      * NetworkEntity object of the TileEntity.
      */
-    networkEntity: NetworkEntity;
+    readonly networkEntity: NetworkEntity;
 }
