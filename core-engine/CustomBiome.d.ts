@@ -12,6 +12,20 @@ declare class CustomBiome {
     static getAllCustomBiomes(): java.util.Map<String, CustomBiome>;
 
     /**
+     * Called when server detection packet received.
+     * @internal
+     * @since 2.3.1b116
+     */
+    static updateNativeId(json: org.json.JSONObject): void;
+
+    /**
+     * Called when server stopped to cleanup biome synced IDs.
+     * @internal
+     * @since 2.3.1b116
+     */
+    static reset(): void;
+
+    /**
      * @returns Whether biome is invalid.
      */
     isInvalid(): boolean;
