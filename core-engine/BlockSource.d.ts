@@ -31,7 +31,7 @@ declare class BlockSource {
 
 	/**
 	 * @returns BlockSource for the current client.
-	 * @since 2.1.0b57
+	 * @since 2.1.0b57 (caching since 2.3.1b115)
 	 */
 	static getCurrentClientRegion(): Nullable<BlockSource>;
 
@@ -44,6 +44,7 @@ declare class BlockSource {
 	/**
 	 * 
 	 * @param pointer 
+	 * @since 2.3.1b115
 	 */
 	static getFromServerCallbackPointer(pointer: number): Nullable<BlockSource>;
 
@@ -366,6 +367,8 @@ declare class BlockSource {
 	canSeeSky(x: number, y: number, z: number): boolean;
 
 	/**
+	 * @param type entity type, since 2.3.1b115 could be used
+	 * to fetch all entities via `0` or `256`
 	 * @returns Iterator of entity IDs in given box,
 	 * that are equal to the given type, if blacklist value is `false`,
 	 * and all except the entities of the given type, if blacklist value is `true`.
@@ -376,17 +379,21 @@ declare class BlockSource {
 	 * @param namespace entity namespace, e.g. "minecraft"
 	 * @param type entity type, e.g. "chicken"
 	 * @returns Iterator of entity IDs in given box, that are equal to the given type.
+	 * @since 2.3.1b115
 	 */
-	fetchEntitiesOfTypeInAABBfetchEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, namespace: string, type: string): number[];
+	fetchEntitiesOfTypeInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, namespace: string, type: string): number[];
 
 	/**
 	 * @param type namespaced entity type, e.g. "minecraft:chicken"; if there is
 	 * no namespace, default "minecraft" will be used instead, e.g. "chicken"
 	 * @returns Iterator of entity IDs in given box, that are equal to the given type.
+	 * @since 2.3.1b115
 	 */
-	fetchEntitiesOfTypeInAABBfetchEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: string): number[];
+	fetchEntitiesOfTypeInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: string): number[];
 
 	/**
+	 * @param type entity type, since 2.3.1b115 could be used
+	 * to fetch all entities via `0` or `256`
 	 * @returns List of entity IDs in given box,
 	 * that are equal to the given type, if blacklist value is `false`,
 	 * and all except the entities of the given type, if blacklist value is `true`.
@@ -398,6 +405,7 @@ declare class BlockSource {
 	 * @param namespace entity namespace, e.g. "minecraft"
 	 * @param type entity type, e.g. "chicken"
 	 * @returns List of entity IDs in given box, that are equal to the given type.
+	 * @since 2.3.1b115
 	 */
 	listEntitiesOfTypeInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, namespace: string, type: string): number[];
 
@@ -405,6 +413,7 @@ declare class BlockSource {
 	 * @param type namespaced entity type, e.g. "minecraft:chicken"; if there is
 	 * no namespace, default "minecraft" will be used instead, e.g. "chicken"
 	 * @returns List of entity IDs in given box, that are equal to the given type.
+	 * @since 2.3.1b115
 	 */
 	listEntitiesOfTypeInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: string): number[];
 
