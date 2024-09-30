@@ -76,14 +76,14 @@ declare namespace CustomEnchant {
          * Defines the function that will be called, when item with following enchantment is used for attack.
          * The function must return bonus damage dealt to the victim.
          * @returns Reference to itself to be used in sequential calls.
-         * @beta This method is highly experimental right now.
+	     * @since 2.3.1b115 (implemented in 2.2.1b105)
          */
         setAttackDamageBonusProvider(func: AttackDamageBonusProvider): EnchantSetupInterface;
 
         /**
          * Defines the function that will be called after the item with following enchantment is used for attack.
          * @returns Reference to itself to be used in sequential calls.
-         * @beta This method is highly experimental right now.
+	     * @since 2.3.1b115 (implemented in 2.2.1b105)
          */
         setPostAttackCallback(func: DamageCallback): EnchantSetupInterface;
 
@@ -92,7 +92,7 @@ declare namespace CustomEnchant {
          * with following enchantment, is hit.
          * The function must return bonus protection value.
          * @returns Reference to itself to be used in sequential calls.
-         * @beta This method is highly experimental right now.
+	     * @since 2.3.1b115 (implemented in 2.2.1b105)
          */
         setProtectionBonusProvider(func: ProtectionBonusProvider): EnchantSetupInterface;
 
@@ -100,7 +100,7 @@ declare namespace CustomEnchant {
          * Defines the function that will be called, when the entity wearing item
          * with following enchantment, is hit.
          * @returns Reference to itself to be used in sequential calls.
-         * @beta This method is highly experimental right now.
+	     * @since 2.3.1b115 (implemented in 2.2.1b105)
          */
         setPostHurtCallback(func: DamageCallback): EnchantSetupInterface;
 

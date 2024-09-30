@@ -129,22 +129,22 @@ declare namespace Callback {
     function addCallback(name: "NativeGuiChanged", func: NativeGuiChangedFunction, priority?: number): void;
 
     /**
-     * @since 2.2.1b105
+     * @since 2.3.1b115 (implemented in 2.2.1b105)
      */
     function addCallback(name: "EnchantPostAttack", func: CustomEnchant.DamageCallback, priority?: number): void;
 
     /**
-     * @since 2.2.1b105
+ * @since 2.3.1b115 (implemented in 2.2.1b105)
      */
     function addCallback(name: "EnchantGetProtectionBonus", func: CustomEnchant.ProtectionBonusProvider, priority?: number): void;
 
     /**
-     * @since 2.2.1b105
+     * @since 2.3.1b115 (implemented in 2.2.1b105)
      */
     function addCallback(name: "EnchantGetDamageBonus", func: CustomEnchant.AttackDamageBonusProvider, priority?: number): void;
 
     /**
-     * @since 2.2.1b105
+     * @since 2.3.1b115 (implemented in 2.2.1b105)
      */
     function addCallback(name: "EnchantPostHurt", func: CustomEnchant.DamageCallback, priority?: number): void;
 
