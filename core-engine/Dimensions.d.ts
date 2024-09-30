@@ -170,6 +170,16 @@ declare namespace Dimensions {
         setGenerateModStructures(value: boolean): CustomGenerator;
 
         /**
+         * Determines whether the generator should generate underground
+         * and/or underwater caves as part of its result.
+         * Wworks only with the "overworld"1" and "flat" base types.
+         * @param caves generate caves
+         * @param underwaterCaves generate large caves and canyons
+	     * @since 2.3.1b115
+         */
+        setGenerateCaves(caves: boolean, underwaterCaves?: boolean): CustomDimension;
+
+        /**
          * Sets terrain generator object used for the landscape generation.
          * @param generator terrain generator to be used with current landscape 
          * generator or removes terrain generator, if the value is null
