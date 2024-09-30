@@ -42,6 +42,12 @@ declare module com {
                             export interface WindowLocationDescription extends IWindowLocation {
                                 forceScrollX?: boolean, forceScrollY?: boolean,
                                 /**
+                                 * Determines whether the interface needs to be resized based
+                                 * on its size or a global unit system should be used.
+                                 * @since 2.3.1b115
+                                 */
+                                globalScale?: boolean,
+                                /**
                                  * Paddings are distances from the window bounds to the elements in the
                                  * window.
                                  */
@@ -67,6 +73,12 @@ declare module com {
                                 static readonly PADDING_TOP: number;
                                 forceScrollX: boolean;
                                 forceScrollY: boolean;
+                                /**
+                                 * Determines whether the interface needs to be resized based
+                                 * on its size or a global unit system should be used.
+                                 * @since 2.3.1b115
+                                 */
+                                globalScale: boolean;
                                 /**
                                  * Window height.
                                  */

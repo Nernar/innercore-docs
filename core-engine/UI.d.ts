@@ -401,6 +401,20 @@ declare module UI {
         static put(name: string, bitmap: android.graphics.Bitmap): void;
     }
 
+	/**
+	 * Determines the overall size of game interface, which can vary
+	 * depending on specific settings that are in place.
+	 * @since 2.3.1b115
+	 */
+	export function getMinecraftUiScale(): number;
+
+	/**
+	 * Defines the size of interface relative to the {@link UI.getMinecraftUiScale},
+	 * with dimensions specified in units used within Inner Core interfaces.
+	 * @since 2.3.1b115
+	 */
+	export function getRelMinecraftUiScale(): number;
+
     /**
 	 * Same as {@link UI.getScreenHeight}.
 	 */
