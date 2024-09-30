@@ -133,7 +133,20 @@ declare interface ItemModel {
 
     getShaderUniforms(): ShaderUniformSet;
 
+    /**
+     * Determines whether an item should be displayed as a sprite within
+     * inventory, or if a model should be used instead, which can be
+     * particularly relevant for items such as blocks.
+     */
     setSpriteUiRender(isSprite: boolean): ItemModel;
+
+    /**
+     * Determines whether an item being held in the hand should be displayed
+     * as a sprite, or if a model should be used instead, which can be
+     * particularly relevant for items such as blocks.
+	 * @since 2.3.1b115
+     */
+    setSpriteHandRender(isSprite: boolean): ItemModel;
 
     /**
      * Sets item's model to display both in the inventory and in hand.
