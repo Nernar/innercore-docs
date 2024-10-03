@@ -2,7 +2,7 @@
  * @since 2.3.1b115
  */
 declare namespace ECS {
-	function getEntityManager(): any;
+	function getEntityManager(): EcsEntityManager;
 	function getTypeName(id: number): string;
 	function getTypeId(name: string): number;
 	/**
@@ -63,19 +63,19 @@ declare interface EcsEntityManager {
 	/* static */ TAG: java.lang.Object;
 	createEntity(): number;
 	removeEntity(entity: number): void;
-	detachEntity(entity: number): any /* ComponentCollection */;
-	extend(entity: number, components: any /* ComponentCollection */): void;
-	shrink(entity: number, components: any /* RemoveComponents */): void;
-	removeAllEntitiesWithComponents(query: any /* Query */): void;
-	performVariadicQuery(query: any /* Query */, consumer: ECS.VariadicQueryConsumer): void;
-	performQuery(query: any /* Query */, consumer: ECS.FixedQueryConsumer0): void;
-	performQuery<T1>(query: any /* Query */, consumer: ECS.FixedQueryConsumer1<T1>): void;
-	performQuery<T1, T2>(query: any /* Query */, consumer: ECS.FixedQueryConsumer2<T1, T2>): void;
-	performQuery<T1, T2, T3>(query: any /* Query */, consumer: ECS.FixedQueryConsumer3<T1, T2, T3>): void;
-	performQuery<T1, T2, T3, T4>(query: any /* Query */, consumer: ECS.FixedQueryConsumer4<T1, T2, T3, T4>): void;
-	performQuery<T1, T2, T3, T4, T5>(query: any /* Query */, consumer: ECS.FixedQueryConsumer5<T1, T2, T3, T4, T5>): void;
-	performQuery<T1, T2, T3, T4, T5, T6>(query: any /* Query */, consumer: ECS.FixedQueryConsumer6<T1, T2, T3, T4, T5, T6>): void;
-	getComponents(entity: number, query: any /* Query */): any[];
+	detachEntity(entity: number): EcsAddComponents;
+	extend(entity: number, components: EcsAddComponents): void;
+	shrink(entity: number, components: EcsRemoveComponents): void;
+	removeAllEntitiesWithComponents(query: EcsQuery): void;
+	performVariadicQuery(query: EcsQuery, consumer: ECS.VariadicQueryConsumer): void;
+	performQuery(query: EcsQuery, consumer: ECS.FixedQueryConsumer0): void;
+	performQuery<T1>(query: EcsQuery, consumer: ECS.FixedQueryConsumer1<T1>): void;
+	performQuery<T1, T2>(query: EcsQuery, consumer: ECS.FixedQueryConsumer2<T1, T2>): void;
+	performQuery<T1, T2, T3>(query: EcsQuery, consumer: ECS.FixedQueryConsumer3<T1, T2, T3>): void;
+	performQuery<T1, T2, T3, T4>(query: EcsQuery, consumer: ECS.FixedQueryConsumer4<T1, T2, T3, T4>): void;
+	performQuery<T1, T2, T3, T4, T5>(query: EcsQuery, consumer: ECS.FixedQueryConsumer5<T1, T2, T3, T4, T5>): void;
+	performQuery<T1, T2, T3, T4, T5, T6>(query: EcsQuery, consumer: ECS.FixedQueryConsumer6<T1, T2, T3, T4, T5, T6>): void;
+	getComponents(entity: number, query: EcsQuery): any[];
 	getComponent(entity: number, index: number): any;
 }
 
@@ -97,7 +97,7 @@ declare class IntFlatMap {
  * @since 2.3.1b115
  */
 declare class EcsQuery {
-	constructor(/*...queries*/);
+	constructor(...queries: object[]);
 }
 
 /**
@@ -105,6 +105,12 @@ declare class EcsQuery {
  */
 declare class EcsAddComponents {
 	constructor();
+	addComponent(type: number | string, value: any): EcsAddComponents;
+	addComponent<T>(type: java.lang.Class<T>, value: T): EcsAddComponents;
+	setTypes(...types: number[] | string[]): EcsAddComponents;
+	setTypes(...types: java.lang.Class<any>[]): EcsAddComponents;
+	setValues(...values: object[]): EcsAddComponents;
+	empty(): boolean;
 }
 
 /**
@@ -112,6 +118,11 @@ declare class EcsAddComponents {
  */
 declare class EcsRemoveComponents {
 	constructor();
+	addComponent(type: number | string): EcsRemoveComponents;
+	addComponent(type: java.lang.Class<any>): EcsRemoveComponents;
+	setTypes(...types: number[] | string[]): EcsRemoveComponents;
+	setTypes(...types: java.lang.Class<any>[]): EcsRemoveComponents;
+	empty(): boolean;
 }
 
 /**
@@ -124,11 +135,11 @@ declare class EcsActionQueue {
 	removeEntity(entity: number): EcsActionQueue;
 	addComponent(entity: number, type: number | string, value: any): EcsActionQueue;
 	addComponent(entity: number, type: java.lang.Class<any>, value: any): EcsActionQueue;
-	extend(entity: number, components: any /* TODO: ComponentCollection */): EcsActionQueue;
+	extend(entity: number, components: EcsAddComponents): EcsActionQueue;
 	extend(entity: number, types: number[], values: any[], count: number): EcsActionQueue;
 	removeComponent(entity: number, type: number | string): EcsActionQueue;
 	removeComponent(entity: number, type: java.lang.Class<any>): EcsActionQueue;
-	shrink(entity: number, components: any /* TODO: RemoveComponents */): EcsActionQueue;
+	shrink(entity: number, components: EcsRemoveComponents): EcsActionQueue;
 	shrink(entity: number, types: number[], count: number): EcsActionQueue;
 	flush(): void;
 	clear(): void;
