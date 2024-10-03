@@ -1,7 +1,8 @@
 /**
  * Module containing enums that can make user code more readable.
- * @deprecated Consider specified sub-enum to determine which
- * rellocation must be used.
+ * @remarks
+ * Consider specified sub-enum to determine which version
+ * specific rellocation must be used.
  */
 declare namespace Native {
     /**
@@ -9,10 +10,10 @@ declare namespace Native {
      * @deprecated Use {@link EArmorType} instead.
      */
     enum ArmorType {
-        boots = 3,
-        chestplate = 1,
         helmet = 0,
-        leggings = 2
+        chestplate = 1,
+        leggings = 2,
+        boots = 3
     }
 
     /**
@@ -20,11 +21,31 @@ declare namespace Native {
      * @deprecated Use {@link EItemCategory} instead.
      */
     enum ItemCategory {
+        /**
+         * @since 2.3.0b112
+         */
+        CONSTRUCTION = 1,
+        /**
+         * @since 2.3.0b112
+         */
+        NATURE = 2,
         DECORATION = 2,
+        /**
+         * @since 2.3.0b112
+         */
+        EQUIPMENT = 3,
+        TOOL = 3,
+        MATERIAL = 4,
+        /**
+         * @since 2.3.0b112
+         */
+        ITEMS = 4,
         FOOD = 4,
-        INTERNAL = 0,
-        MATERIAL = 1,
-        TOOL = 3
+        INTERNAL = 5,
+        /**
+         * @since 2.3.0b112
+         */
+        COMMAND_ONLY = 5
     }
 
     /**
@@ -32,69 +53,68 @@ declare namespace Native {
      * @deprecated Use {@link EParticleType} instead.
      */
     enum ParticleType {
-        angryVillager = 32,
         bubble = 1,
-        cloud = 4,
-        crit = 2,
-        dripLava = 24,
-        dripWater = 23,
-        enchantmenttable = 32,
-        fallingDust = 26,
-        flame = 7,
-        happyVillager = 33,
-        heart = 17,
-        hugeexplosion = 14,
-        hugeexplosionSeed = 15,
-        ink = 25,
-        itemBreak = 12,
-        largeexplode = 5,
-        lava = 8,
-        mobFlame = 16,
-        note = 36,
-        portal = 20,
-        rainSplash = 21,
-        redstone = 10,
-        slime = 30,
-        smoke = 4,
-        smoke2 = 9,
-        snowballpoof = 13,
-        spell = 29,
-        spell2 = 28,
-        spell3 = 27,
-        splash = 22,
-        suspendedTown = 19,
-        terrain = 16,
-        waterWake = 31
+        cloud = 5,
+        smoke = 6,
+        flame = 8,
+        lava = 9,
+        smoke2 = 10,
+        redstone = 11,
+        snowballpoof = 14,
+        hugeexplosion = 15,
+        hugeexplosionSeed = 16,
+        mobFlame = 17,
+        heart = 18,
+        terrain = 19,
+        suspendedTown = 20,
+        portal = 21,
+        rainSplash = 23,
+        dripWater = 24,
+        splash = 25,
+        dripLava = 27,
+        ink = 28,
+        fallingDust = 29,
+        spell3 = 30,
+        spell2 = 31,
+        spell = 32,
+        slime = 34,
+        waterWake = 35,
+        angryVillager = 36,
+        happyVillager = 37,
+        enchantmenttable = 38,
+        note = 40,
+        crit = 41,
+        itemBreak = 42,
+        largeexplode = 61
     }
 
     /**
      * Defines text colors and font styles for chat and tip messages.
-     * @deprecated Use {@link EColor} instead.
      */
     enum Color {
-        AQUA = "§b",
         BEGIN = "§",
         BLACK = "§0",
-        BLUE = "§9",
-        BOLD = "§l",
-        DARK_AQUA = "§3",
         DARK_BLUE = "§1",
-        DARK_GRAY = "§8",
         DARK_GREEN = "§2",
-        DARK_PURPLE = "§5",
+        DARK_AQUA = "§3",
         DARK_RED = "§4",
+        DARK_PURPLE = "§5",
         GOLD = "§6",
         GRAY = "§7",
+        DARK_GRAY = "§8",
+        BLUE = "§9",
         GREEN = "§a",
-        ITALIC = "§o",
-        LIGHT_PURPLE = "§d",
-        OBFUSCATED = "§k",
+        AQUA = "§b",
         RED = "§c",
-        RESET = "§r",
+        LIGHT_PURPLE = "§d",
+        YELLOW = "§e",
+        WHITE = "§f",
+        OBFUSCATED = "§k",
+        BOLD = "§l",
         STRIKETHROUGH = "§m",
         UNDERLINE = "§n",
-        WHITE = "§f",
-        YELLOW = "§e"
+        ITALIC = "§o",
+        RESET = "§r"
     }
 
     /**
@@ -102,107 +122,170 @@ declare namespace Native {
      * @deprecated Use {@link EEntityType} instead.
      */
     enum EntityType {
-        AREA_EFFECT_CLOUD = 95,
-        ARMOR_STAND = 61,
-        ARROW = 80,
-        BAT = 19,
-        BLAZE = 43,
-        BOAT = 90,
-        CAT = 75,
-        CAVE_SPIDER = 40,
-        CHEST_MINECART = 98,
         CHICKEN = 10,
-        COD = 112,
-        COMMAND_BLOCK_MINECART = 100,
         COW = 11,
-        CREEPER = 33,
-        DOLPHIN = 31,
+        PIG = 12,
+        SHEEP = 13,
+        WOLF = 14,
+        VILLAGER = 15,
+        MUSHROOM_COW = 16,
+        SQUID = 17,
+        RABBIT = 18,
+        BAT = 19,
+        IRON_GOLEM = 20,
+        SNOW_GOLEM = 21,
+        OCELOT = 22,
+        HORSE = 23,
         DONKEY = 24,
-        DRAGON_FIREBOLL = 79,
-        DROWNED = 110,
-        EGG = 82,
+        MULE = 25,
+        SKELETON_HORSE = 26,
+        ZOMBIE_HORSE = 27,
+        POLAR_BEAR = 28,
+        LLAMA = 29,
+        PARROT = 30,
+        DOLPHIN = 31,
+        ZOMBIE = 32,
+        CREEPER = 33,
+        SKELETON = 34,
+        SPIDER = 35,
+        PIG_ZOMBIE = 36,
+        SLIME = 37,
         ENDERMAN = 38,
-        ENDERMITE = 55,
-        ENDER_CRYSTAL = 71,
-        ENDER_DRAGON = 53,
+        SILVERFISH = 39,
+        CAVE_SPIDER = 40,
+        GHAST = 41,
+        LAVA_SLIME = 42,
+        BLAZE = 43,
+        ZOMBIE_VILLAGER = 44,
+        /**
+         * @since 2.3.0b112
+         */
+        WITCH = 45,
+        /**
+         * @deprecated Mistypo.
+         */
+        WHITCH = 45,
+        STRAY = 46,
+        HUSK = 47,
+        /**
+         * @since 2.3.0b112
+         */
+        WITHER_SKELETON = 48,
+        /**
+         * @deprecated Mistypo.
+         */
+        WHITHER_SKELETON = 48,
+        GUARDIAN = 49,
+        /**
+         * @since 2.3.0b112
+         */
+        ELDER_GUARDIAN = 50,
+        /**
+         * @deprecated Mistypo.
+         */
         ENDER_GUARDIAN = 50,
-        ENDER_GUARDIAN_GHOST = 120,
+        /**
+         * @since 2.3.0b112
+         */
+        WITHER = 52,
+        /**
+         * @deprecated Mistypo.
+         */
+        WHITHER = 52,
+        ENDER_DRAGON = 53,
+        SHULKER = 54,
+        ENDERMITE = 55,
+        VINDICATOR = 57,
+        PHANTOM = 58,
+        RAVAGER = 59,
+        ARMOR_STAND = 61,
+        PLAYER = 63,
+        ITEM = 64,
+        PRIMED_TNT = 65,
+        FALLING_BLOCK = 66,
+        MOVING_BLOCK = 67,
+        EXPERIENCE_POTION = 68,
+        EXPERIENCE_ORB = 69,
+        EYE_OF_ENDER_SIGNAL = 70,
+        ENDER_CRYSTAL = 71,
+        FIREWORKS_ROCKET = 72,
+        THROWN_TRIDENT = 73,
+        TURTLE = 74,
+        CAT = 75,
+        SHULKER_BULLET = 76,
+        FISHING_HOOK = 77,
+        /**
+         * @since 2.3.0b112
+         */
+        DRAGON_FIREBALL = 79,
+        /**
+         * @deprecated Mistypo.
+         */
+        DRAGON_FIREBOLL = 79,
+        ARROW = 80,
+        SNOWBALL = 81,
+        EGG = 82,
+        PAINTING = 83,
+        MINECART = 84,
+        FIREBALL = 85,
+        THROWN_POTION = 86,
         ENDER_PEARL = 87,
+        LEASH_KNOT = 88,
+        /**
+         * @since 2.3.0b112
+         */
+        WITHER_SKULL = 89,
+        /**
+         * @deprecated Mistypo.
+         */
+        WHITHER_SKULL = 89,
+        BOAT = 90,
+        /**
+         * @since 2.3.0b112
+         */
+        WITHER_SKULL_DANGEROUS = 91,
+        /**
+         * @deprecated Mistypo.
+         */
+        WHITHER_SKULL_DANGEROUS = 91,
+        LIGHTNING_BOLT = 93,
+        SMALL_FIREBALL = 94,
+        AREA_EFFECT_CLOUD = 95,
+        HOPPER_MINECART = 96,
+        TNT_COMMAND = 97,
+        CHEST_MINECART = 98,
+        COMMAND_BLOCK_MINECART = 100,
+        LINGERING_POTION = 101,
+        LLAMA_SPLIT = 102,
         EVOCATION_FANG = 103,
         EVOCATION_ILLAGER = 104,
-        EXPERIENCE_ORB = 69,
-        EXPERIENCE_POTION = 68,
-        EYE_OF_ENDER_SIGNAL = 70,
-        FALLING_BLOCK = 66,
-        FIREBALL = 85,
-        FIREWORKS_ROCKET = 72,
-        FISHING_HOOK = 77,
-        GHAST = 41,
-        GUARDIAN = 49,
-        HOPPER_MINECART = 96,
-        HORSE = 23,
-        HUSK = 47,
-        IRON_GOLEM = 20,
-        ITEM = 64,
-        LAVA_SLIME = 42,
-        LEASH_KNOT = 88,
-        LIGHTNING_BOLT = 93,
-        LINGERING_POTION = 101,
-        LLAMA = 29,
-        LLAMA_SPLIT = 102,
-        MINECART = 84,
-        MOVING_BLOCK = 67,
-        MULE = 25,
-        MUSHROOM_COW = 16,
-        OCELOT = 22,
-        PAINTING = 83,
-        PANDA = 113,
-        PARROT = 30,
-        PHANTOM = 58,
-        PIG = 12,
-        PIG_ZOMBIE = 36,
-        PILLAGER = 114,
-        PLAYER = 1,
-        POLAR_BEAR = 28,
-        PRIMED_TNT = 65,
-        PUFFERFISH = 108,
-        RABBIT = 18,
-        RAVAGER = 59,
-        SALMON = 109,
-        SHEEP = 13,
-        SHIELD = 117,
-        SHULKER = 54,
-        SHULKER_BULLET = 76,
-        SILVERFISH = 39,
-        SKELETON = 34,
-        SKELETON_HORSE = 26,
-        SLIME = 37,
-        SMALL_FIREBALL = 94,
-        SNOWBALL = 81,
-        SNOW_GOLEM = 21,
-        SPIDER = 35,
-        SQUID = 17,
-        STRAY = 46,
-        THROWN_POTION = 86,
-        THROWN_TRIDENT = 73,
-        TNT_COMMAND = 97,
-        TROPICALFISH = 111,
-        TURTLE = 74,
         VEX = 105,
-        VILLAGER = 15,
+        PUFFERFISH = 108,
+        SALMON = 109,
+        DROWNED = 110,
+        TROPICALFISH = 111,
+        COD = 112,
+        PANDA = 113,
+        PILLAGER = 114,
         VILLAGER_V2 = 115,
-        VINDICATOR = 57,
+        /**
+         * @since 2.3.0b112
+         */
+        ZOMBIE_VILLAGER_V2 = 116,
+        /**
+         * @deprecated Mistypo.
+         */
+        ZOMBIE_VILLAGE_V2 = 116,
+        SHIELD = 117,
         WANDERING_TRADER = 118,
-        WHITCH = 45,
-        WHITHER = 52,
-        WHITHER_SKELETON = 48,
-        WHITHER_SKULL = 89,
-        WHITHER_SKULL_DANGEROUS = 91,
-        WOLF = 14,
-        ZOMBIE = 32,
-        ZOMBIE_HORSE = 27,
-        ZOMBIE_VILLAGER = 44,
-        ZOMBIE_VILLAGE_V2 = 116
+        /**
+         * @since 2.3.0b112
+         */
+        ELDER_GUARDIAN_GHOST = 120,
+        /**
+         * @deprecated Mistypo.
+         */
+        ENDER_GUARDIAN_GHOST = 120
     }
 
     /**
@@ -210,53 +293,53 @@ declare namespace Native {
      * @deprecated Use {@link EMobRenderType} instead.
      */
     enum MobRenderType {
-        arrow = 25,
-        bat = 10,
-        blaze = 18,
-        boat = 35,
-        camera = 48,
+        tnt = 2,
+        human = 3,
+        item = 4,
         chicken = 5,
         cow = 6,
-        creeper = 22,
-        egg = 28,
-        enderman = 24,
-        expPotion = 45,
-        experienceOrb = 40,
-        fallingTile = 33,
-        fireball = 37,
-        fishHook = 26,
-        ghast = 17,
-        human = 3,
-        ironGolem = 42,
-        item = 4,
-        lavaSlime = 16,
-        lightningBolt = 41,
-        map = 50,
-        minecart = 34,
         mushroomCow = 7,
-        ocelot = 43,
-        painting = 32,
         pig = 8,
-        player = 27,
-        rabbit = 46,
         sheep = 9,
-        silverfish = 21,
-        skeleton = 19,
-        slime = 23,
-        smallFireball = 38,
-        snowGolem = 44,
-        snowball = 29,
-        spider = 20,
-        squid = 36,
-        thrownPotion = 31,
-        tnt = 2,
-        unknownItem = 30,
-        villager = 12,
-        villagerZombie = 39,
-        witch = 47,
+        bat = 10,
         wolf = 11,
+        villager = 12,
         zombie = 14,
-        zombiePigman = 15
+        zombiePigman = 15,
+        lavaSlime = 16,
+        ghast = 17,
+        blaze = 18,
+        skeleton = 19,
+        spider = 20,
+        silverfish = 21,
+        creeper = 22,
+        slime = 23,
+        enderman = 24,
+        arrow = 25,
+        fishHook = 26,
+        player = 27,
+        egg = 28,
+        snowball = 29,
+        unknownItem = 30,
+        thrownPotion = 31,
+        painting = 32,
+        fallingTile = 33,
+        minecart = 34,
+        boat = 35,
+        squid = 36,
+        fireball = 37,
+        smallFireball = 38,
+        villagerZombie = 39,
+        experienceOrb = 40,
+        lightningBolt = 41,
+        ironGolem = 42,
+        ocelot = 43,
+        snowGolem = 44,
+        expPotion = 45,
+        rabbit = 46,
+        witch = 47,
+        camera = 48,
+        map = 50
     }
 
     /**
@@ -264,35 +347,35 @@ declare namespace Native {
      * @deprecated Use {@link EPotionEffect} instead.
      */
     enum PotionEffect {
-        absorption = 22,
-        bad_omen = 28,
-        blindness = 15,
-        conduit_power = 26,
-        confusion = 9,
-        damageBoost = 5,
-        damageResistance = 11,
-        digSlowdown = 4,
-        digSpeed = 3,
-        fatal_poison = 25,
-        fireResistance = 12,
-        harm = 7,
-        heal = 6,
-        healthBoost = 21,
-        hunger = 17,
-        invisibility = 14,
-        jump = 8,
-        levitation = 24,
-        movementSlowdown = 2,
         movementSpeed = 1,
-        nightVision = 16,
-        poison = 19,
+        movementSlowdown = 2,
+        digSpeed = 3,
+        digSlowdown = 4,
+        damageBoost = 5,
+        heal = 6,
+        harm = 7,
+        jump = 8,
+        confusion = 9,
         regeneration = 10,
-        saturation = 23,
-        slow_falling = 27,
-        village_hero = 29,
+        damageResistance = 11,
+        fireResistance = 12,
         waterBreathing = 13,
+        invisibility = 14,
+        blindness = 15,
+        nightVision = 16,
+        hunger = 17,
         weakness = 18,
-        wither = 20
+        poison = 19,
+        wither = 20,
+        healthBoost = 21,
+        absorption = 22,
+        saturation = 23,
+        levitation = 24,
+        fatal_poison = 25,
+        conduit_power = 26,
+        slow_falling = 27,
+        bad_omen = 28,
+        village_hero = 29
     }
 
     /**
@@ -300,9 +383,13 @@ declare namespace Native {
      * @deprecated Use {@link EDimension} instead.
      */
     enum Dimension {
-        END = 2,
+        NORMAL = 0,
+        /**
+         * @since 2.3.0b112
+         */
+        OVERWORLD = 0,
         NETHER = 1,
-        NORMAL = 0
+        END = 2
     }
 
     /**
@@ -310,8 +397,8 @@ declare namespace Native {
      * @deprecated Use {@link EItemAnimation} instead.
      */
     enum ItemAnimation {
-        bow = 4,
-        normal = 0
+        normal = 0,
+        bow = 4
     }
 
     /**
@@ -320,11 +407,11 @@ declare namespace Native {
      */
     enum BlockSide {
         DOWN = 0,
-        EAST = 5,
+        UP = 1,
         NORTH = 2,
         SOUTH = 3,
-        UP = 1,
-        WEST = 4
+        WEST = 4,
+        EAST = 5
     }
 
     /**
@@ -332,39 +419,39 @@ declare namespace Native {
      * @deprecated Use {@link EEnchantment} instead.
      */
     enum Enchantment {
-        AQUA_AFFINITY = 7,
-        BANE_OF_ARTHROPODS = 11,
-        BINDING_CURSE = 27,
-        BLAST_PROTECTION = 3,
-        CHANNELING = 32,
-        DEPTH_STRIDER = 8,
-        EFFICIENCY = 15,
-        FEATHER_FALLING = 2,
-        FIRE_ASPECT = 13,
+        PROTECTION = 0,
         FIRE_PROTECTION = 1,
-        FLAME = 21,
-        FORTUNE = 18,
-        FROST_WALKER = 25,
-        IMPALING = 29,
-        INFINITY = 22,
+        FEATHER_FALLING = 2,
+        BLAST_PROTECTION = 3,
+        PROJECTILE_PROTECTION = 4,
+        THORNS = 5,
+        RESPIRATION = 6,
+        AQUA_AFFINITY = 7,
+        DEPTH_STRIDER = 8,
+        SHARPNESS = 9,
+        SMITE = 10,
+        BANE_OF_ARTHROPODS = 11,
         KNOCKBACK = 12,
+        FIRE_ASPECT = 13,
         LOOTING = 14,
-        LOYALTY = 31,
+        EFFICIENCY = 15,
+        SILK_TOUCH = 16,
+        UNBREAKING = 17,
+        FORTUNE = 18,
+        POWER = 19,
+        PUNCH = 20,
+        FLAME = 21,
+        INFINITY = 22,
         LUCK_OF_THE_SEA = 23,
         LURE = 24,
+        FROST_WALKER = 25,
         MENDING = 26,
-        POWER = 19,
-        PROJECTILE_PROTECTION = 4,
-        PROTECTION = 0,
-        PUNCH = 20,
-        RESPIRATION = 6,
+        BINDING_CURSE = 27,
+        VANISHING_CURSE = 28,
+        IMPALING = 29,
         RIPTIDE = 30,
-        SHARPNESS = 9,
-        SILK_TOUCH = 16,
-        SMITE = 10,
-        THORNS = 5,
-        UNBREAKING = 17,
-        VANISHING_CURSE = 28
+        LOYALTY = 31,
+        CHANNELING = 32
     }
 
     /**
@@ -373,21 +460,21 @@ declare namespace Native {
      * @deprecated Use {@link EEnchantType} instead.
      */
     enum EnchantType {
-        all = 16383,
-        axe = 512,
-        book = 16383,
-        boots = 4,
-        bow = 32,
-        chestplate = 8,
-        fishingRod = 4096,
-        flintAndSteel = 256,
         helmet = 1,
-        hoe = 64,
         leggings = 2,
-        pickaxe = 1024,
+        boots = 4,
+        chestplate = 8,
+        weapon = 16,
+        bow = 32,
+        hoe = 64,
         shears = 128,
+        flintAndSteel = 256,
+        axe = 512,
+        pickaxe = 1024,
         shovel = 2048,
-        weapon = 16
+        fishingRod = 4096,
+        all = 16383,
+        book = 16383
     }
 
     /**
@@ -395,17 +482,17 @@ declare namespace Native {
      * @deprecated Use {@link EBlockRenderLayer} instead.
      */
     enum BlockRenderLayer {
-        alpha = 4099,
-        alpha_seasons = 5,
-        alpha_single_side = 4,
-        blend = 6,
-        doubleside = 2,
-        far = 9,
-        opaque = 0,
-        opaque_seasons = 1,
-        seasons_far = 10,
-        seasons_far_alpha = 11,
-        water = 7
+        doubleside = 0,
+        water = 1,
+        blend = 2,
+        opaque = 3,
+        far = opaque,
+        alpha = 4,
+        opaque_seasons = 6,
+        seasons_far = opaque_seasons,
+        alpha_seasons = 7,
+        seasons_far_alpha = alpha_seasons,
+        alpha_single_side = 8
     }
 
     /**
@@ -435,24 +522,24 @@ declare namespace Native {
      * @deprecated Use {@link EPlayerAbility} instead.
      */
     enum PlayerAbility {
-        INVULNERABLE = "invulnerable",
-        FLYING = "flying",
-        INSTABUILD = "instabuild",
-        LIGHTNING = "lightning",
-        FLYSPEED = "flySpeed",
-        WALKSPEED = "walkSpeed",
-        NOCLIP = "noclip",
-        MAYFLY = "mayfly",
-        WORLDBUILDER = "worldbuilder",
-        MUTED = "mute",
-        BUILD = "build",
-        MINE = "mine",
-        DOORS_AND_SWITCHES = "doorsandswitches",
-        OPEN_CONTAINERS = "opencontainers",
-        ATTACK_PLAYERS = "attackplayers",
         ATTACK_MOBS = "attackmobs",
+        ATTACK_PLAYERS = "attackplayers",
+        BUILD = "build",
+        DOORS_AND_SWITCHES = "doorsandswitches",
+        FLYING = "flying",
+        FLYSPEED = "flySpeed",
+        INSTABUILD = "instabuild",
+        INVULNERABLE = "invulnerable",
+        LIGHTNING = "lightning",
+        MAYFLY = "mayfly",
+        MINE = "mine",
+        MUTED = "mute",
+        NOCLIP = "noclip",
         OPERATOR_COMMANDS = "op",
-        TELEPORT = "teleport"
+        OPEN_CONTAINERS = "opencontainers",
+        TELEPORT = "teleport",
+        WALKSPEED = "walkSpeed",
+        WORLDBUILDER = "worldbuilder"
     }
 
     /**
@@ -460,13 +547,13 @@ declare namespace Native {
      */
     enum TileEntityType {
         NONE = -1,
-        BEACON = 21,
-        BREWING_STAND = 8,
-        CAULDRON = 16,
         CHEST = 0,
-        DISPENSER = 13,
         FURNACE = 1,
         HOPPER = 2,
+        BREWING_STAND = 8,
+        DISPENSER = 13,
+        CAULDRON = 16,
+        BEACON = 21,
         JUKEBOX = 33,
         LECTERN = 37
     }
