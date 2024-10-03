@@ -15,16 +15,19 @@ declare enum EArmorType {
  */
 declare enum EBlockRenderLayer {
     DOUBLE_SIDE = 0,
-    RAY_TRACED_WATER = 1,
-    BLEND = 2,
-    OPAQUE = 3,
-    ALPHA = 4,
-    OPAQUE_SEASONS = 6,
-    ALPHA_SEASONS = 7,
-    ALPHA_SINGLE_SIDE = 8,
-    END_PORTAL = 9,
-    BARRIER = 10,
-    STRUCTURE_VOID = 11
+    BLEND = 1,
+    OPAQUE = 2,
+    ALPHA = 3,
+    /**
+     * @since 2.3.0b112
+     */
+    ALPHA_TEST = 4,
+    OPAQUE_SEASONS = 5,
+    ALPHA_SEASONS = 6,
+    ALPHA_SINGLE_SIDE = 7,
+    END_PORTAL = 8,
+    BARRIER = 9,
+    STRUCTURE_VOID = 10
 }
 
 /**
@@ -77,8 +80,8 @@ declare enum EBlockStates {
     BUTTON_PRESSED_BIT = 29,
     CONDITIONAL_BIT = 30,
     DAMAGE = 31,
-    DOOR_HINGE_HIT = 32,
-    UPPER_BLOCK_HIT = 33,
+    DOOR_HINGE_BIT = 32,
+    UPPER_BLOCK_BIT = 33,
     END_PORTAL_EYE_BIT = 34,
     EXPLODE_BIT = 35,
     FILL_LEVEL = 36,
@@ -164,31 +167,32 @@ declare enum EBlockStates {
 /**
  * Defines text colors and font styles for chat and tip messages.
  * @since 2.2.1b89
+ * @deprecated Use {@link Native.Color}, because enum is mistyped.
  */
 declare enum EColor {
-    AQUA = "§b",
-    BEGIN = "§",
-    BLACK = "§0",
-    BLUE = "§9",
-    BOLD = "§l",
-    DARK_AQUA = "§3",
-    DARK_BLUE = "§1",
-    DARK_GRAY = "§8",
-    DARK_GREEN = "§2",
-    DARK_PURPLE = "§5",
-    DARK_RED = "§4",
-    GOLD = "§6",
-    GRAY = "§7",
-    GREEN = "§a",
-    ITALIC = "§o",
-    LIGHT_PURPLE = "§d",
-    OBFUSCATED = "§k",
-    RED = "§c",
-    RESET = "§r",
-    STRIKETHROUGH = "§m",
-    UNDERLINE = "§n",
-    WHITE = "§f",
-    YELLOW = "§e",
+    BEGIN = "в§",
+    BLACK = "в§0",
+    DARK_BLUE = "в§1",
+    DARK_GREEN = "в§2",
+    DARK_AQUA = "в§3",
+    DARK_RED = "в§4",
+    DARK_PURPLE = "в§5",
+    GOLD = "в§6",
+    GRAY = "в§7",
+    DARK_GRAY = "в§8",
+    BLUE = "в§9",
+    GREEN = "в§a",
+    AQUA = "в§b",
+    RED = "в§c",
+    LIGHT_PURPLE = "в§d",
+    YELLOW = "в§e",
+    WHITE = "в§f",
+    OBFUSCATED = "в§k",
+    BOLD = "в§l",
+    STRIKETHROUGH = "в§m",
+    UNDERLINE = "в§n",
+    ITALIC = "в§o",
+    RESET = "в§r"
 }
 
 /**
@@ -197,6 +201,10 @@ declare enum EColor {
  */
 declare enum EDimension {
     NORMAL = 0,
+    /**
+     * @since 2.3.0b112
+     */
+    OVERWORLD = 0,
     NETHER = 1,
     END = 2
 }
@@ -206,7 +214,7 @@ declare enum EDimension {
  * @since 2.2.1b89
  */
 declare enum EEnchantType {
-    HELMET = 0,
+    HELMET = 1,
     LEGGINGS = 2,
     BOOTS = 4,
     CHESTPLATE = 8,
@@ -268,7 +276,6 @@ declare enum EEnchantment {
  * @since 2.2.1b89
  */
 declare enum EEntityType {
-    PLAYER = 63,
     CHICKEN = 10,
     COW = 11,
     PIG = 12,
@@ -304,12 +311,40 @@ declare enum EEntityType {
     LAVA_SLIME = 42,
     BLAZE = 43,
     ZOMBIE_VILLAGER = 44,
+    /**
+     * @since 2.3.0b112
+     */
+    WITCH = 45,
+    /**
+     * @deprecated Mistypo.
+     */
     WHITCH = 45,
     STRAY = 46,
     HUSK = 47,
+    /**
+     * @since 2.3.0b112
+     */
+    WITHER_SKELETON = 48,
+    /**
+     * @deprecated Mistypo.
+     */
     WHITHER_SKELETON = 48,
     GUARDIAN = 49,
+    /**
+     * @since 2.3.0b112
+     */
+    ELDER_GUARDIAN = 50,
+    /**
+     * @deprecated Mistypo.
+     */
     ENDER_GUARDIAN = 50,
+    /**
+     * @since 2.3.0b112
+     */
+    WITHER = 52,
+    /**
+     * @deprecated Mistypo.
+     */
     WHITHER = 52,
     ENDER_DRAGON = 53,
     SHULKER = 54,
@@ -318,11 +353,12 @@ declare enum EEntityType {
     PHANTOM = 58,
     RAVAGER = 59,
     ARMOR_STAND = 61,
+    PLAYER = 63,
     ITEM = 64,
     PRIMED_TNT = 65,
     FALLING_BLOCK = 66,
     MOVING_BLOCK = 67,
-    EXPERIENCE_BOTTLE = 68,
+    EXPERIENCE_POTION = 68,
     EXPERIENCE_ORB = 69,
     EYE_OF_ENDER_SIGNAL = 70,
     ENDER_CRYSTAL = 71,
@@ -332,6 +368,13 @@ declare enum EEntityType {
     CAT = 75,
     SHULKER_BULLET = 76,
     FISHING_HOOK = 77,
+    /**
+     * @since 2.3.0b112
+     */
+    DRAGON_FIREBALL = 79,
+    /**
+     * @deprecated Mistypo.
+     */
     DRAGON_FIREBOLL = 79,
     ARROW = 80,
     SNOWBALL = 81,
@@ -342,8 +385,22 @@ declare enum EEntityType {
     THROWN_POTION = 86,
     ENDER_PEARL = 87,
     LEASH_KNOT = 88,
+    /**
+     * @since 2.3.0b112
+     */
+    WITHER_SKULL = 89,
+    /**
+     * @deprecated Mistypo.
+     */
     WHITHER_SKULL = 89,
     BOAT = 90,
+    /**
+     * @since 2.3.0b112
+     */
+    WITHER_SKULL_DANGEROUS = 91,
+    /**
+     * @deprecated Mistypo.
+     */
     WHITHER_SKULL_DANGEROUS = 91,
     LIGHTNING_BOLT = 93,
     SMALL_FIREBALL = 94,
@@ -365,9 +422,23 @@ declare enum EEntityType {
     PANDA = 113,
     PILLAGER = 114,
     VILLAGER_V2 = 115,
+    /**
+     * @since 2.3.0b112
+     */
+    ZOMBIE_VILLAGER_V2 = 116,
+    /**
+     * @deprecated Mistypo.
+     */
     ZOMBIE_VILLAGE_V2 = 116,
     SHIELD = 117,
     WANDERING_TRADER = 118,
+    /**
+     * @since 2.3.0b112
+     */
+    ELDER_GUARDIAN_GHOST = 120,
+    /**
+     * @deprecated Mistypo.
+     */
     ENDER_GUARDIAN_GHOST = 120
 }
 
@@ -399,7 +470,35 @@ declare enum EGameMode {
  */
 declare enum EItemAnimation {
     NORMAL = 0,
-    BOW = 4
+    /**
+     * @since 2.3.1b115
+     */
+    NONE = 0,
+    /**
+     * @since 2.3.1b115
+     */
+    EAT = 1,
+    /**
+     * @since 2.3.1b115
+     */
+    DRINK = 2,
+    /**
+     * @since 2.3.1b115
+     */
+    BLOCK = 3,
+    BOW = 4,
+    /**
+     * @since 2.3.1b115
+     */
+    CAMERA = 5,
+    /**
+     * @since 2.3.1b115
+     */
+    SPEAR = 6,
+    /**
+     * @since 2.3.1b115
+     */
+    CROSSBOW = 9
 }
 
 /**
@@ -407,11 +506,31 @@ declare enum EItemAnimation {
  * @since 2.2.1b89
  */
 declare enum EItemCategory {
-    INTERNAL = 0,
-    MATERIAL = 1,
-    DECORATION = 2,
-    TOOL = 3,
-    FOOD = 4
+    /**
+     * @since 2.3.0b112
+     */
+    CONSTRUCTION = 1,
+    /**
+     * @since 2.3.0b112
+     */
+    NATURE = 2,
+	DECORATION = 2,
+    /**
+     * @since 2.3.0b112
+     */
+	EQUIPMENT = 3,
+	TOOL = 3,
+	MATERIAL = 4,
+    /**
+     * @since 2.3.0b112
+     */
+	ITEMS = 4,
+	FOOD = 4,
+	INTERNAL = 5,
+    /**
+     * @since 2.3.0b112
+     */
+	COMMAND_ONLY = 5
 }
 
 /**
@@ -493,38 +612,42 @@ declare enum ENbtDataType {
  */
 declare enum EParticleType {
     BUBBLE = 1,
-    CRIT = 2,
-    CLOUD = 4,
-    SMOKE = 4,
-    LARGEEXPLODE = 5,
-    FLAME = 7,
-    LAVA = 8,
-    SMOKE2 = 9,
-    REDSTONE = 10,
-    ITEM_BREAK = 11,
-    SNOWBALLPOOF = 12,
-    HUGEEXPLOSION = 13,
-    HUGEEXPLOSION_SEED = 14,
-    MOB_FLAME = 15,
-    TERRAIN = 16,
-    HEART = 17,
-    SUSPENDED_TOWN = 18,
-    PORTAL = 20,
-    RAIN_SPLASH = 21,
-    SPLASH = 22,
-    DRIP_WATER = 23,
-    DRIP_LAVA = 24,
-    INK = 25,
-    FALLING_DUST = 26,
-    SPELL3 = 27,
-    SPELL2 = 28,
-    SPELL = 29,
-    SLIME = 30,
-    WATER_WAKE = 31,
-    ANGRY_VILLAGER = 32,
-    HAPPY_VILLAGER = 33,
-    ENCHANTMENTTABLE = 34,
-    NOTE = 36
+    CLOUD = 5,
+    SMOKE = 6,
+    FLAME = 8,
+    LAVA = 9,
+    SMOKE2 = 10,
+    REDSTONE = 11,
+    SNOWBALLPOOF = 14,
+    HUGEEXPLOSION = 15,
+    HUGEEXPLOSION_SEED = 16,
+    MOB_FLAME = 17,
+    HEART = 18,
+    TERRAIN = 19,
+    SUSPENDED_TOWN = 20,
+    PORTAL = 21,
+    RAIN_SPLASH = 23,
+    DRIP_WATER = 24,
+    SPLASH = 25,
+    DRIP_LAVA = 27,
+    INK = 28,
+    FALLING_DUST = 29,
+    SPELL3 = 30,
+    SPELL2 = 31,
+    SPELL = 32,
+    SLIME = 34,
+    WATER_WAKE = 35,
+    ANGRY_VILLAGER = 36,
+    HAPPY_VILLAGER = 37,
+    ENCHANTMENTTABLE = 38,
+    NOTE = 40,
+    CRIT = 41,
+    ITEM_BREAK = 42,
+    /**
+     * @since 2.3.0b112
+     */
+    SOUL_FLAME = 53,
+    LARGEEXPLODE = 61
 }
 
 /**
@@ -598,10 +721,126 @@ declare enum ETileEntityType {
     CHEST = 0,
     FURNACE = 1,
     HOPPER = 2,
+    /**
+     * @since 2.3.1b115
+     */
+    NETHER_REACTOR = 3,
+    /**
+     * @since 2.3.1b115
+     */
+    SIGN = 4,
+    /**
+     * @since 2.3.1b115
+     */
+    MOB_SPAWNER = 5,
+    /**
+     * @since 2.3.1b115
+     */
+    SKULL = 6,
+    /**
+     * @since 2.3.1b115
+     */
+    FLOWER_POT = 7,
     BREWING_STAND = 8,
+    /**
+     * @since 2.3.1b115
+     */
+    ENCHANTING_TABLE = 9,
+    /**
+     * @since 2.3.1b115
+     */
+    DAYLIGHT_DETECTOR = 10,
+    /**
+     * @since 2.3.1b115
+     */
+    MUSIC_BLOCK = 11,
+    /**
+     * @since 2.3.1b115
+     */
+    COMPARATOR = 12,
     DISPENSER = 13,
+    /**
+     * @since 2.3.1b115
+     */
+    DROPPER = 14,
+    /**
+     * @since 2.3.1b115
+     */
+    HOPPER2 = 15,
     CAULDRON = 16,
+    /**
+     * @since 2.3.1b115
+     */
+    ITEM_FRAME = 17,
+    /**
+     * @since 2.3.1b115
+     */
+    PISTON = 18,
+    /**
+     * @since 2.3.1b115
+     */
+    CHALKBOARD = 20,
     BEACON = 21,
+    /**
+     * @since 2.3.1b115
+     */
+    END_PORTAL = 22,
+    /**
+     * @since 2.3.1b115
+     */
+    END_GATEWAY = 24,
+    /**
+     * @since 2.3.1b115
+     */
+    COMMAND_BLOCK = 26,
+    /**
+     * @since 2.3.1b115
+     */
+    BED = 27,
+    /**
+     * @since 2.3.1b115
+     */
+    STRUCTURE_BLOCK = 32,
     JUKEBOX = 33,
-    LECTERN = 37
+    /**
+     * @since 2.3.1b115
+     */
+    CHEMISTRY_TABLE = 34,
+    /**
+     * @since 2.3.1b115
+     */
+    CONDUIT_BLOCK = 35,
+    /**
+     * @since 2.3.1b115
+     */
+    JIGSAW = 36,
+    LECTERN = 37,
+    /**
+     * @since 2.3.1b115
+     */
+    BLAST_FURNACE = 38,
+    /**
+     * @since 2.3.1b115
+     */
+    SMOKER = 39,
+    /**
+     * @since 2.3.1b115
+     */
+    BELL = 40,
+    /**
+     * @since 2.3.1b115
+     */
+    CAMPFIRE = 41,
+    /**
+     * @since 2.3.1b115
+     */
+    BARREL = 42,
+    /**
+     * @since 2.3.1b115
+     */
+    BEEHIVE = 43,
+    /**
+     * @since 2.3.1b115
+     */
+    LODESTONE = 44
 }
