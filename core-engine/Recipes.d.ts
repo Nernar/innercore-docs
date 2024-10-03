@@ -40,6 +40,14 @@ declare namespace Recipes {
     function addShaped(result: ItemInstance, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string): WorkbenchShapedRecipe;
 
     /**
+     * @see {@link Recipes.addShaped} for details.
+     * @param vanilla should be recipe considered as vanilla,
+     * custom logic callback will be ignored in that case
+     * @since 2.2.1b110
+     */
+    function addShapedGeneric(result: ItemInstance, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string, vanilla?: boolean): WorkbenchShapedRecipe;
+
+    /**
      * Same as {@link Recipes.addShaped}, but you can specify result as three
      * separate values corresponding to ID, count and data.
      */
@@ -63,6 +71,14 @@ declare namespace Recipes {
      * ```
      */
     function addShapeless(result: ItemInstance, data: { id: number, data: number }[], func?: CraftingFunction, prefix?: string): WorkbenchShapelessRecipe;
+
+    /**
+     * @see {@link Recipes.addShapeless} for details.
+     * @param vanilla should be recipe considered as vanilla,
+     * custom logic callback will be ignored in that case
+     * @since 2.2.1b110
+     */
+    function addShapelessGeneric(result: ItemInstance, data: { id: number, data: number }[], func?: CraftingFunction, prefix?: string, vanilla?: boolean): WorkbenchShapelessRecipe;
 
     /**
      * Deletes recipe by it's result.
