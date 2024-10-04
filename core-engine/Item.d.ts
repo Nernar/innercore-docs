@@ -157,8 +157,16 @@ declare namespace Item {
     /**
      * @param id numeric item ID
      * @returns Maximum stack size for the specified item.
+     * @deprecated Use same function with data parameter.
      */
     function getMaxStack(id: number): number;
+
+    /**
+     * @param id numeric item ID
+     * @returns Maximum stack size for the specified item.
+     * @since 2.2.0b1 pre-alpha
+     */
+    function getMaxStack(id: number, data: number): number;
 
     /**
      * @param id numeric item ID
