@@ -134,7 +134,7 @@ declare namespace Callback {
     function addCallback(name: "EnchantPostAttack", func: CustomEnchant.DamageCallback, priority?: number): void;
 
     /**
- * @since 2.3.1b115 (implemented in 2.2.1b105)
+     * @since 2.3.1b115 (implemented in 2.2.1b105)
      */
     function addCallback(name: "EnchantGetProtectionBonus", func: CustomEnchant.ProtectionBonusProvider, priority?: number): void;
 
@@ -182,6 +182,9 @@ declare namespace Callback {
 
     function addCallback(name: "CustomBlockTessellation", func: CustomBlockTessellationFunction, priority?: number): void;
 
+    /**
+     * @since 2.2.1b106
+     */
     function addCallback(name: "LocalPlayerTick", func: PlayerTickFunction, priority?: number): void;
 
     function addCallback(name: "ServerPlayerTick", func: PlayerTickFunction, priority?: number): void;
@@ -258,18 +261,30 @@ declare namespace Callback {
 
     function addCallback(name: "EntityPickUpDrop", func: EntityPickUpDropFunction, priority?: number): void;
 
+    /**
+     * @since 2.2.1b106
+     */
     function addCallback(name: "LocalPlayerLoaded", func: PlayerFunction, priority?: number): void;
 
     function addCallback(name: "ServerPlayerLoaded", func: PlayerFunction, priority?: number): void;
 
     function addCallback(name: "ServerPlayerLeft", func: PlayerFunction, priority?: number): void;
 
+    /**
+     * @since 2.2.1b106
+     */
     function addCallback(name: "LocalPlayerChangedDimension", func: PlayerChangedDimensionFunction, priority?: number): void;
 
     function addCallback(name: "PlayerChangedDimension", func: PlayerChangedDimensionFunction, priority?: number): void;
 
+    /**
+     * @since 2.2.1b106
+     */
     function addCallback(name: "LocalPlayerEat", func: PlayerEatFunction, priority?: number): void;
 
+    /**
+     * @since 2.2.1b106
+     */
     function addCallback(name: "ServerPlayerEat", func: PlayerEatFunction, priority?: number): void;
 
     function addCallback(name: "GenerateCustomDimensionChunk", func: GenerateCustomDimensionChunkFunction, priority?: number): void;
