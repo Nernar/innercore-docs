@@ -1,6 +1,6 @@
 /**
  * Defines armor type and armor slot index in player's inventory.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EArmorType {
     HELMET = 0,
@@ -11,7 +11,7 @@ declare enum EArmorType {
 
 /**
  * Defines possible render layers (display methods) for blocks.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EBlockRenderLayer {
     DOUBLE_SIDE = 0,
@@ -32,7 +32,7 @@ declare enum EBlockRenderLayer {
 
 /**
  * Defines numeric representation for each block side.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EBlockSide {
     DOWN = 0,
@@ -166,7 +166,7 @@ declare enum EBlockStates {
 
 /**
  * Defines text colors and font styles for chat and tip messages.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  * @deprecated Use {@link Native.Color}, because enum is mistyped.
  */
 declare enum EColor {
@@ -197,7 +197,7 @@ declare enum EColor {
 
 /**
  * Defines numeric representation for three vanilla dimensions.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EDimension {
     NORMAL = 0,
@@ -211,7 +211,7 @@ declare enum EDimension {
 
 /**
  * Defines what enchantments can or cannot be applied to every instrument type.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EEnchantType {
     HELMET = 1,
@@ -233,7 +233,7 @@ declare enum EEnchantType {
 
 /**
  * Defines numeric IDs of all vanilla enchantments.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EEnchantment {
     PROTECTION = 0,
@@ -273,7 +273,7 @@ declare enum EEnchantment {
 
 /**
  * Defines all vanilla entity type numeric IDs.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EEntityType {
     CHICKEN = 10,
@@ -444,7 +444,7 @@ declare enum EEntityType {
 
 /**
  * Defines possible game difficulties.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EGameDifficulty {
     PEACEFUL = 0,
@@ -455,7 +455,7 @@ declare enum EGameDifficulty {
 
 /**
  * Defines possible game modes.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EGameMode {
     SURVIVAL = 0,
@@ -466,7 +466,7 @@ declare enum EGameMode {
 
 /**
  * Defines item animation types.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EItemAnimation {
     NORMAL = 0,
@@ -503,7 +503,7 @@ declare enum EItemAnimation {
 
 /**
  * Defines vanilla item categories in creative inventory.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EItemCategory {
     /**
@@ -535,7 +535,7 @@ declare enum EItemCategory {
 
 /**
  * Defines vanilla mob render types.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EMobRenderType {
     TNT = 2,
@@ -589,7 +589,7 @@ declare enum EMobRenderType {
 
 /**
  * Defines numeric representation for each NBT data type.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum ENbtDataType {
     TYPE_END_TAG = 0,
@@ -608,7 +608,7 @@ declare enum ENbtDataType {
 
 /**
  * Defines all existing vanilla particles.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EParticleType {
     BUBBLE = 1,
@@ -652,7 +652,7 @@ declare enum EParticleType {
 
 /**
  * Defines player's abilities.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EPlayerAbility {
     ATTACK_MOBS = "attackmobs",
@@ -677,7 +677,7 @@ declare enum EPlayerAbility {
 
 /**
  * Defines vanilla potion effects.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum EPotionEffect {
     MOVEMENT_SPEED = 1,
@@ -714,7 +714,7 @@ declare enum EPotionEffect {
 /**
  * Defines numeric representation for vanilla TileEntity types.
  * Use {@link NativeTileEntity} class to work with them.
- * @since 2.2.1b89
+ * @since 2.2.0b75
  */
 declare enum ETileEntityType {
     NONE = -1,

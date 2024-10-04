@@ -55,8 +55,17 @@ declare module com {
                          */
                         setSlot(id: number, count: number, data: number): void;
                         setSlot(id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>): void;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         resetSavingEnabled(): void;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         setSavingEnabled(enabled: boolean): void;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         isSavingEnabled(): boolean;
                         /**
                          * @returns Numeric ID of the item in slot.

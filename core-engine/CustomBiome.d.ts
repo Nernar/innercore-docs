@@ -8,6 +8,7 @@ declare class CustomBiome {
     /**
      * @returns Object instance, with all custom
      * biomes registered by every mod.
+     * @since 2.2.1b93
      */
     static getAllCustomBiomes(): java.util.Map<String, CustomBiome>;
 
@@ -161,6 +162,7 @@ declare class CustomBiome {
      * @param id block's tile ID
      * @param data block data
      * @returns Reference to itself to be used in sequential calls.
+     * @since 2.2.0b1 pre-alpha
      */
     setSeaFloorBlock(id: number, data: number): CustomBiome;
 
@@ -179,17 +181,19 @@ declare class CustomBiome {
      * Sets the average depth of the sea floor in this biome.
      * @param depth depth of the see floor by Y-axis.
      * @returns Reference to itself to be used in sequential calls.
+     * @since 2.2.0b1 pre-alpha
      */
     setSeaFloorDepth(depth: number): CustomBiome;
 
     /**
      * Sets the average depth of the something in this biome.
-     * @param param some integer parameter.
+     * @param depth surface depth parameter.
      * @returns Reference to itself to be used in sequential calls.
      * @default 7
      * @deprecated Use {@link CustomBiome.setSeaFloorDepth} instead.
+     * @since 2.2.0b1 pre-alpha
      */
-    setSurfaceParam(param: number): CustomBiome;
+    setSurfaceParam(depth: number): CustomBiome;
 
     /**
      * Defines the server-side biome params from given JSON string.
@@ -234,6 +238,7 @@ declare class CustomBiome {
      *     }
      * }));
      * ```
+     * @since 2.2.0b1 pre-alpha
      */
     setServerJson(json: string): CustomBiome;
 
@@ -254,6 +259,7 @@ declare class CustomBiome {
      *     "fog_identifier": "environmental:environmental_cherry"
      * }));
      * ```
+     * @since 2.2.0b1 pre-alpha
      */
     setClientJson(json: string): CustomBiome;
 }

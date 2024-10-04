@@ -19,6 +19,9 @@ declare namespace LowLevelUtils {
 	function forceNativeCrash(): void;
 	function isDefaultPrevented(): boolean;
 	function isMainThreadStopped(): boolean;
+	/**
+	 * @since 2.2.0b76
+	 */
 	function evalInScope(code: string, scope: object, name: string): object;
 	function addRuntimePack(type: string, name: string): string;
 

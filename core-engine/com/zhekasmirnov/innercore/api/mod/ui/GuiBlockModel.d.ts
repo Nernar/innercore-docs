@@ -19,6 +19,9 @@ declare module com {
                             updateShape(shape: unlimited.BlockShape): void;
                             genTexture(): android.graphics.Bitmap;
                             addToMesh(mesh: NativeRenderMesh, x: number, y: number, z: number): void;
+                            /**
+                             * @since 2.2.0b75
+                             */
                             addToRenderModelPart(modelPart: NativeRenderer.ModelPart, x: number, y: number, z: number): void;
                             static createModelForBlockVariant(variant: unlimited.BlockVariant): GuiBlockModel;
                         }

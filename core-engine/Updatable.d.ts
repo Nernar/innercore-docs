@@ -29,7 +29,7 @@ declare namespace Updatable {
      * @returns ArrayList instance containing all defined 
      * {@link Updatable} objects.
      */
-    function getAll(): java.util.ArrayList<Updatable>;
+    function getAll(): java.util.List<Updatable>;
 
     /**
      * @returns Current thread tick number.

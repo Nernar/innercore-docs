@@ -259,6 +259,9 @@ declare namespace Callback {
 
     function addCallback(name: "AppSuspended", func: { (): void }, priority?: number): void;
 
+    /**
+     * @since 2.2.1b88
+     */
     function addCallback(name: "EntityPickUpDrop", func: EntityPickUpDropFunction, priority?: number): void;
 
     /**
@@ -843,6 +846,7 @@ declare namespace Callback {
      * @param dropEntity dropped item's entity
      * @param dropStack ItemInstance of the drop entity
      * @param count what count?
+     * @since 2.2.1b88
      */
     interface EntityPickUpDropFunction {
         (entity: number, dropEntity: number, dropStack: ItemInstance, count: number)

@@ -66,6 +66,7 @@ declare class PlayerActor {
 
     /**
      * @returns Whether the player is a valid entity.
+     * @since 2.2.0b75 (not working before)
      */
     isValid(): boolean;
 

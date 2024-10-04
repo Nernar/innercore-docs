@@ -1,5 +1,6 @@
 /**
  * Class to work with vanilla blocks parameters.
+ * @since 2.2.1b89
  */
 declare class BlockState implements Tile {
 

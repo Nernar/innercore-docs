@@ -3,6 +3,7 @@
  * It is a model that consists of parts, same as in {@link Render},
  * but more abstract, allows creating root parts instead of
  * inheritance from old humanoid model.
+ * @since 2.2.0b75
  */
 declare class ActorRenderer {
     /**
