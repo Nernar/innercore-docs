@@ -67,8 +67,9 @@ declare class BlockState implements Tile {
      * Adds states to the following object
      * from given map instance.
      * @returns BlockState object itself.
+     * @since 2.2.1b102
      */
-    addStates(states: java.util.Map<unknown, number>): BlockState;
+    addStatesMap(states: java.util.Map<unknown, number>): BlockState;
 
     /**
      * Adds states to the following object
@@ -85,7 +86,7 @@ declare class BlockState implements Tile {
     getStates(): java.util.Map<number, number>;
 
     /**
-     * @returns All NAMED states from following object
+     * @returns All named states from following object
      * in {@link java.util.Map} instance.
      */
     getNamedStates(): java.util.Map<string, number>;
@@ -97,10 +98,10 @@ declare class BlockState implements Tile {
     getStatesScriptable(): { [key: string]: number };
 
     /**
-     * @returns All NAMED states from following object
+     * @returns All named states from following object
      * in JS object instance.
      */
-    getNamedStatesScriptable(): {[key: string]: number};
+    getNamedStatesScriptable(): { [key: string]: number };
 
     /**
      * @returns String representation of the following object.
