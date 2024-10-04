@@ -89,7 +89,7 @@ declare class BlockSource {
 	setDestroyParticlesEnabled(enabled: boolean): void;
 
 	/**
-	 * 
+	 * @since 2.2.1b102
 	 */
 	getDestroyParticlesEnabled(): boolean;
 
@@ -106,6 +106,7 @@ declare class BlockSource {
 	 * @param x X coord of the block
 	 * @param y Y coord of the block
 	 * @param z Z coord of the block
+	 * @since 2.2.1b96
 	 */
 	getBlockID(x: number, y: number, z: number): number;
 
@@ -138,7 +139,15 @@ declare class BlockSource {
 	 * @param id ID of the block to set
 	 * @param data data of the block to set
 	 */
-	setBlock(x: number, y: number, z: number, id: number, data?: number): void;
+	setBlock(x: number, y: number, z: number, id: number, data: number): void;
+
+	/**
+	 * Sets block on coords.
+	 * @param id ID of the block to set
+	 * @param data data of the block to set
+	 * @since 2.2.1b95
+	 */
+	setBlock(x: number, y: number, z: number, id: number): void;
 
 	/**
 	 * Sets block by given {@link BlockState} on coords.
@@ -160,44 +169,14 @@ declare class BlockSource {
 	setExtraBlock(x: number, y: number, z: number, state: BlockState): void;
 
 	/**
-	 * 
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @param state 
-	 * @param delay 
-	 * @param todo 
+	 * @since 2.2.1b102
 	 */
-	addToTickingQueue(x: number, y: number, z: number, state: BlockState, delay: number, todo: number): void;
+	addToTickingQueue(x: number, y: number, z: number, state: BlockState, delay: number, todo?: number): void;
 
 	/**
-	 * 
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @param delay 
-	 * @param todo 
+	 * @since 2.2.1b102
 	 */
-	addToTickingQueue(x: number, y: number, z: number, delay: number, todo: number): void;
-
-	/**
-	 * 
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @param state 
-	 * @param delay 
-	 */
-	addToTickingQueue(x: number, y: number, z: number, state: BlockState, delay: number): void;
-
-	/**
-	 * 
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @param delay 
-	 */
-	addToTickingQueue(x: number, y: number, z: number, delay: number): void;
+	addToTickingQueue(x: number, y: number, z: number, delay: number, todo?: number): void;
 
 	/**
 	 * 
@@ -397,7 +376,6 @@ declare class BlockSource {
 	 * @returns List of entity IDs in given box,
 	 * that are equal to the given type, if blacklist value is `false`,
 	 * and all except the entities of the given type, if blacklist value is `true`.
-	 * @since 2.2.1b100
 	 */
 	listEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type?: number, blacklist?: boolean): number[];
 
