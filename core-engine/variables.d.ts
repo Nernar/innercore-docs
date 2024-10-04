@@ -1,4 +1,10 @@
 /**
+ * Minecraft version code, for now, always `16`.
+ * @since 2.2.0b75
+ */
+declare var __version__: number;
+
+/**
  * Mostly internal variable determined to be useful for control
  * mod lifecycle, configuration and executables.
  */
