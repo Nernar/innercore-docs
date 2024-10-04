@@ -28,7 +28,7 @@ declare module com {
                             (container: ItemContainer, client: NetworkClient): void;
                         }
                         export interface ServerOnOpenListener {
-                            (container: ItemContainer, client: NetworkClient, str: string): void;
+                            (container: ItemContainer, client: NetworkClient, screenName: string): void;
                         }
                         export interface Transaction {
                             (container: ItemContainer, str: string): void;
@@ -279,6 +279,9 @@ declare module com {
                          * @returns `false` if container supports multiplayer, `true` otherwise.
                          */
                         isLegacyContainer(): false;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         asLegacyContainer(allSlots: boolean): innercore.api.mod.ui.container.Container;
                         asLegacyContainer(): innercore.api.mod.ui.container.Container;
                         setWorkbenchFieldPrefix(prefix: string): void;
