@@ -10,6 +10,9 @@ declare module com {
                             constructor(resolution: number);
                             constructor();
                             addBox(box: GuiBlockModel.Box): void;
+                            /**
+                             * @since 2.2.1b96
+                             */
                             clear(): void;
                             constructor(textures: string[], ids: number[], shape: unlimited.BlockShape);
                             constructor(textures: string[], ids: number[]);

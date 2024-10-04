@@ -282,8 +282,20 @@ declare module com {
                         asLegacyContainer(allSlots: boolean): innercore.api.mod.ui.container.Container;
                         asLegacyContainer(): innercore.api.mod.ui.container.Container;
                         setWorkbenchFieldPrefix(prefix: string): void;
+                        /**
+                         * @since 2.2.1b106
+                         */
+                        setWorkbenchFieldSize(workbenchFieldSize: number): void;
                         getFieldSlot(index: number): innercore.api.mod.ui.container.AbstractSlot;
+                        /**
+                         * @since 2.2.1b108
+                         */
+                        getFieldSlot(x: number, y: number): innercore.api.mod.ui.container.AbstractSlot;
                         asScriptableField(): innercore.api.mod.ui.container.AbstractSlot[];
+                        /**
+                         * @since 2.2.1b106
+                         */
+                        getWorkbenchFieldSize(): number;
                     }
                 }
             }

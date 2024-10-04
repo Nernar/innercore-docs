@@ -27,10 +27,12 @@ declare module com {
                                  */
                                 needClean?: boolean,
                                 /**
+                                 * @default 0.82
                                  * @since 2.2.1b96
                                  */
                                 iconScale?: number,
                                 /**
+                                 * @default false
                                  * @since 2.2.1b96
                                  */
                                 disablePixelPerfect?: boolean,

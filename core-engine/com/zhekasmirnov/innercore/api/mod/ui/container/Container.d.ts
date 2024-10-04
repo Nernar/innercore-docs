@@ -269,9 +269,18 @@ declare module com {
                                  */
                                 getFieldSlot(slot: number): Slot;
                                 /**
+                                 * @since 2.2.1b108
+                                 */
+                                getFieldSlot(x: number, y: number): AbstractSlot;
+                                /**
                                  * @returns JS array of all slots.
                                  */
                                 asScriptableField(): Slot[];
+                                /**
+                                 * @returns `9`
+                                 * @since 2.2.1b106
+                                 */
+                                getWorkbenchFieldSize(): number;
                                 /**
                                  * @returns `false` if container supports multiplayer, `true` otherwise.
                                  */

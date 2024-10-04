@@ -14,6 +14,14 @@ declare module com {
                                 });
                                 asScriptableField(): ui.container.AbstractSlot[];
                                 getFieldSlot(i: number): ui.container.AbstractSlot;
+                                /**
+                                 * @since 2.2.1b108
+                                 */
+                                getFieldSlot(x: number, y: number): innercore.api.mod.ui.container.AbstractSlot;
+                                /**
+                                 * @since 2.2.1b106
+                                 */
+                                getWorkbenchFieldSize(): number;
                             }
                         }
                     }
