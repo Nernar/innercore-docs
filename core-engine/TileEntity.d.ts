@@ -71,7 +71,23 @@ declare namespace TileEntity {
      * @returns `true` if the it was destroyed successfully, `false`
      * otherwise.
      */
-    function destroyTileEntity(tileEntity: TileEntity, fromDestroyBlock?: boolean, isDropAllowed?: boolean): boolean;
+    function destroyTileEntity(tileEntity: TileEntity): boolean;
+
+    /**
+     * Destroys {@link TileEntity}, dropping it's container.
+     * @returns `true` if the it was destroyed successfully, `false`
+     * otherwise.
+     * @since 2.2.0b82
+     */
+    function destroyTileEntity(tileEntity: TileEntity, fromDestroyBlock: boolean): boolean;
+
+    /**
+     * Destroys {@link TileEntity}, dropping it's container.
+     * @returns `true` if the it was destroyed successfully, `false`
+     * otherwise.
+     * @since 2.2.0b83
+     */
+    function destroyTileEntity(tileEntity: TileEntity, fromDestroyBlock: boolean, isDropAllowed: boolean): boolean;
 
     /**
      * If the block on the specified coordinates is a {@link TileEntity}, destroys
@@ -79,7 +95,7 @@ declare namespace TileEntity {
      * @returns `true` if the it was destroyed successfully, `false`
      * otherwise.
      */
-    function destroyTileEntityAtCoords(x: number, y: number, z: number, region?: BlockSource): boolean;
+    function destroyTileEntityAtCoords(x: number, y: number, z: number, region?: BlockSource, isDropAllowed?: boolean): boolean;
 
     /**
      * Checks whether the {@link TileEntity} is in the loaded chunk or not.
@@ -279,35 +295,35 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
      * X coord of the TileEntity in it's dimension.
      */
-    readonly x: number,
+    readonly x: number;
     /**
      * Y coord of the TileEntity in it's dimension.
      */
-    readonly y: number,
+    readonly y: number;
     /**
      * Z coord of the TileEntity in it's dimension.
      */
-    readonly z: number,
+    readonly z: number;
     /**
      * Dimension where the TileEntity is located.
      */
-    readonly dimension: number,
+    readonly dimension: number;
     /**
      * Block ID of TileEntity.
      */
-    readonly blockID: number,
+    readonly blockID: number;
     /**
      * TileEntity data values object.
      */
-    data: Scriptable,
+    data: Scriptable;
     /**
      * TileEntity's item container.
      */
-    container: ItemContainer | UI.Container,
+    container: ItemContainer | UI.Container;
     /**
      * TileEntity's liquid storage.
      */
-    liquidStorage: LiquidRegistry.Storage,
+    liquidStorage: LiquidRegistry.Storage;
     /**
      * `true` if TileEntity is loaded in the world.
      */
@@ -331,6 +347,13 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     sendResponse: (packetName: string, someData: object) => void;
     /**
+     * Gets useful string representation of tile, that is used for
+     * displaying errors, etc.
+     * @since 2.2.1b92
+     * @internal
+     */
+    _to_string: () => string;
+    /**
      * BlockSource object to manipulate TileEntity's position in world.
      */
     blockSource: BlockSource;
@@ -339,7 +362,15 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     readonly networkData: SyncedNetworkData;
     /**
-     * NetworkEntity object of the TileEntity.
+     * Instance of {@link networkEntityType} for the TileEntity.
      */
     readonly networkEntity: NetworkEntity;
+    /**
+     * NetworkEntityType object of the TileEntity.
+     */
+    readonly networkEntityType: NetworkEntityType;
+    /**
+     * @since 2.2.1b92
+     */
+    readonly networkEntityTypeName: string;
 }
