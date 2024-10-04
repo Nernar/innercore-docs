@@ -20,7 +20,23 @@
 <h1>Function getBlockByLiquid</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="getBlockByLiquid"><span class="tsd-kind-call-signature">get<wbr/>Block<wbr/>By<wbr/>Liquid</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">liquidId</span>, <span class="tsd-kind-parameter">isStatic</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#getBlockByLiquid" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="getBlockByLiquid"><span class="tsd-kind-call-signature">get<wbr/>Block<wbr/>By<wbr/>Liquid</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">liquidId</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#getBlockByLiquid" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">liquidId</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><p>Numeric ID of the liquid block by given <a href="../modules/LiquidRegistry.html" class="tsd-kind-namespace">LiquidRegistry</a> string ID.</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Remarks</h4><p>This function will return <code>0</code> if no liquid with given string ID exists.</p>
+
+<h4>Since</h4><p>2.2.1b102</p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/b1fffbb/declarations/core-engine.d.ts#L15588">core-engine.d.ts:15588</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="getBlockByLiquid-1"><span class="tsd-kind-call-signature">get<wbr/>Block<wbr/>By<wbr/>Liquid</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">liquidId</span>, <span class="tsd-kind-parameter">isStatic</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#getBlockByLiquid-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -28,7 +44,7 @@
 <li>
 <h5><span class="tsd-kind-parameter">liquidId</span>: <span class="tsd-signature-type">string</span></h5></li>
 <li>
-<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">isStatic</span>: <span class="tsd-signature-type">boolean</span></h5>
+<h5><span class="tsd-kind-parameter">isStatic</span>: <span class="tsd-signature-type">boolean</span></h5>
 <div class="tsd-comment tsd-typography"><p>static liquid block ID will be returned, otherwise
 the dynamic block ID will be returned</p>
 </div>
@@ -37,9 +53,11 @@ the dynamic block ID will be returned</p>
 
 <div class="tsd-comment tsd-typography">
 <h4>Remarks</h4><p>This function will return <code>0</code> if no liquid with given string ID exists.</p>
+
+<h4>Since</h4><p>2.2.1b103</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/09f1228/declarations/core-engine.d.ts#L15399">core-engine.d.ts:15399</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/b1fffbb/declarations/core-engine.d.ts#L15597">core-engine.d.ts:15597</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -120,6 +138,12 @@ the dynamic block ID will be returned</p>
 <ul class="tsd-nested-navigation">
 <li><a href="../classes/LiquidRegistry.Storage.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Storage</span></a></li>
+<li><a href="../interfaces/LiquidRegistry.LiquidData.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Liquid<wbr/>Data</span></a></li>
+<li><a href="../variables/LiquidRegistry.LiquidByBlock.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>Liquid<wbr/>By<wbr/>Block</span></a></li>
+<li><a href="../variables/LiquidRegistry.liquids.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>liquids</span></a></li>
 <li><a href="LiquidRegistry.getBlockByLiquid.html" class="current">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Block<wbr/>By<wbr/>Liquid</span></a></li>
 <li><a href="LiquidRegistry.getEmptyItem.html">
@@ -198,6 +222,8 @@ the dynamic block ID will be returned</p>
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Updatable</span></a></li>
 <li><a href="../modules/World.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>World</span></a></li>
+<li><a href="../modules/WorldRenderer.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>World<wbr/>Renderer</span></a></li>
 <li><a href="../modules/com.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>com</span></a></li>
 <li><a href="../enums/EArmorType.html">
@@ -374,6 +400,8 @@ the dynamic block ID will be returned</p>
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__name__</span></a></li>
 <li><a href="../variables/__packdir__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__packdir__</span></a></li>
+<li><a href="../variables/__version__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__version__</span></a></li>
 <li><a href="ConfigureMultiplayer.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>Configure<wbr/>Multiplayer</span></a></li>
 <li><a href="EXPORT.html">
