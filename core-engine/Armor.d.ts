@@ -74,7 +74,15 @@ declare namespace Armor {
      * @returns Item object to change armor item, if nothing is returned,
      * armor will not be changed.
      */
-    function registerOnTickListener(id: number, func: ArmorGeneralFunction): ItemInstance | void;
+    function registerOnTickListener(id: number, func: ArmorGeneralFunction): void;
+
+	/**
+     * This event is called every tick for local player that has this armor put on.
+     * @returns Item object to change armor item, if nothing is returned,
+     * armor will not be changed.
+     * @since 2.2.1b106
+     */
+    function registerOnLocalTickListener(id: number, func: ArmorGeneralFunction): void;
 
     interface ArmorHurtFunction {
         (item: ItemInstance, slot: number, player: number, value: number, type: number, attacker: number, bool1: boolean, bool2: boolean): void
@@ -85,7 +93,7 @@ declare namespace Armor {
      * @returns Item object to change armor item, if nothing is returned,
      * armor will not be changed.
      */
-    function registerOnHurtListener(id: number, func: ArmorHurtFunction): ItemInstance | void;
+    function registerOnHurtListener(id: number, func: ArmorHurtFunction): void;
 
     /**
      * This event is called when player takes on this armor, or spawns with it.
@@ -93,9 +101,21 @@ declare namespace Armor {
     function registerOnTakeOnListener(id: number, func: ArmorGeneralFunction): void;
 
     /**
+     * This event is called when local player takes on this armor, or spawns with it.
+     * @since 2.2.1b106
+     */
+    function registerLocalOnTakeOnListener(id: number, func: ArmorGeneralFunction): void;
+
+    /**
      * This event is called when player takes off or changes this armor item.
      */
     function registerOnTakeOffListener(id: number, func: ArmorGeneralFunction): void;
+
+    /**
+     * This event is called when local player takes off or changes this armor item.
+     * @since 2.2.1b106
+     */
+    function registerLocalOnTakeOffListener(id: number, func: ArmorGeneralFunction): void;
 
     interface IArmorCallback {
         tick(slot: ItemInstance, index: number, armorInfo: Armor.IArmorInfo): boolean;
