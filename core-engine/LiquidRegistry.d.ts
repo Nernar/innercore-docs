@@ -1,15 +1,37 @@
 declare namespace LiquidRegistry {
-    function registerLiquid(key: string, name: string, uiTextures: string[], modelTextures?: string[]): void;
-    function getLiquidData(key: string): any;
+    /**
+     * @internal
+     */
+    const liquids: { [key: string]: LiquidData };
+    function registerLiquid(key: string, name?: string, uiTextures?: string[], modelTextures?: string[]): void;
+    function getLiquidData(key: string): LiquidData;
     function isExists(key: string): boolean;
     function getLiquidName(key: string): string;
     function getLiquidUITexture(key: string, width: number, height: number): string;
     function getLiquidUIBitmap(key: string, width: number, height: number): android.graphics.Bitmap;
+    /**
+     * @since 2.2.1b102
+     */
     function registerBlock(liquid: string, blockId: number, isDynamic: boolean): void;
     function registerItem(liquid: string, empty: { id: number, data: number }, full: { id: number, data: number }): void;
     function getEmptyItem(id: number, data: number): { id: number, data: number, liquid: string };
     function getItemLiquid(id: number, data: number): string;
     function getFullItem(id: number, data: number, liquid: string): { id: number, data: number };
+
+    interface LiquidData {
+        key: string,
+        name: string,
+        uiTextures: string[],
+        addUITexture(name: string): void,
+        modelTextures: string[],
+        addModelTexture(name: string): void,
+        blockId: number,
+        /**
+         * @since 2.2.1b103
+         */
+        staticBlockId: number,
+        uiCache: object
+    }
 
     class Storage {
         /**
@@ -51,8 +73,17 @@ declare namespace LiquidRegistry {
     /**
      * @returns String ID of a liquid for given block,
      * or `null`, if a block with given ID is not a liquid.
+     * @since 2.2.1b102
      */
     function getLiquidByBlock(id: number): Nullable<string>;
+
+    /**
+     * @returns Numeric ID of the liquid block by given {@link LiquidRegistry} string ID.
+     * @remarks
+     * This function will return `0` if no liquid with given string ID exists.
+     * @since 2.2.1b102
+     */
+    function getBlockByLiquid(liquidId: string): number;
 
     /**
      * @param isStatic static liquid block ID will be returned, otherwise
@@ -60,7 +91,8 @@ declare namespace LiquidRegistry {
      * @returns Numeric ID of the liquid block by given {@link LiquidRegistry} string ID.
      * @remarks
      * This function will return `0` if no liquid with given string ID exists.
+     * @since 2.2.1b103
      */
-    function getBlockByLiquid(liquidId: string, isStatic?: boolean): number;
+    function getBlockByLiquid(liquidId: string, isStatic: boolean): number;
 
 }
