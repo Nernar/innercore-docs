@@ -19,6 +19,14 @@ declare module com {
                          */
                         constructor(path: string);
                         /**
+                         * @since 2.2.1b96
+                         */
+                        getPath(): string;
+                        /**
+                         * @since 2.2.1b96
+                         */
+                        reload(): void;
+                        /**
                          * Writes configuration JSON to the file.
                          */
                         save(): void;
