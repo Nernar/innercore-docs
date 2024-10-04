@@ -389,6 +389,7 @@ declare namespace Entity {
 
     /**
      * @returns Entity name tag or player name.
+     * @since 2.2.1b97 (not working before)
      */
     function getNameTag(entityUid: number): string;
 
@@ -971,19 +972,27 @@ declare namespace Entity {
     }
 
     /**
+     * Path navigation result, which is used in result callback:
+     * 
+     * Result code | Meaning
+     * ---|---
+     * 0 | Path successfully completed
+     * 1 | Cannot reach target, no available path
+     * 2 | Cannot reach target, out of range
+     * 3 | Entity has been unloaded or removed
+     * 4 | Cancelled by `stop()` or similar method
+     * 5 | Player left level or server closed
+     * 6 | Result function will be replaced
+     */
+    type PathNavigationResultCode = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
+    /**
      * Occurs when path navigation is finished or aborted.
      * @param navigation {@link Entity.PathNavigation} that the handler is attached to
-     * @param result result code, one of the following:
-     * 
-     * 0 - success; you can call {@link Entity.PathNavigation.moveToCoords},
-     * {@link Entity.PathNavigation.moveToEntity} methods to resume path
-     * 
-     * 2 - entity was removed from the world
-     * 
-     * 4 - player left the world
+     * @param result result code, see {@link PathNavigationResultCode} for details
      */
     interface PathNavigationResultFunction {
-        (navigation: PathNavigation, result: number): void
+        (navigation: PathNavigation, result: PathNavigationResultCode): void
     }
 
     /**
