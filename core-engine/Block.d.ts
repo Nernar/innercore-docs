@@ -98,6 +98,7 @@ declare namespace Block {
 
 	/**
 	 * Object to specify needed params for custom liquid block.
+	 * @since 2.2.1b102
 	 */
 	interface LiquidDescriptor {
 		/**
@@ -159,6 +160,10 @@ declare namespace Block {
 			 * @default "nameId_bucket"
 			 */
 			id?: string,
+			/**
+			 * Name of the filled with liquid bucket to be displayed.
+			 */
+			name?: string,
 			texture: { name: string, meta?: number },
 			/**
 			 * An item that can capture liquid (including when using
@@ -166,7 +171,19 @@ declare namespace Block {
 			 * @default 325
 			 * @since 2.3.1b116
 			 */
-			emptyId?: number
+			emptyId?: number,
+			/**
+			 * @default "bucket.fill_water"
+			 */
+			fillSound?: string,
+			/**
+			 * @default "bucket.empty_water"
+			 */
+			emptySound?: string,
+			/**
+			 * If `true`, bucket cannot be obtained from creative inventory.
+			 */
+			isTech?: boolean
 		},
 		/**
 		 * Whether to add liquid block to creative inventory.
@@ -201,7 +218,7 @@ declare namespace Block {
 	 * Defines custom behavior when the player clicks on the block with definite ID.
 	 * @param numericId block's numeric ID
 	 * @param func function that will be called when the player clicks the block with given ID
-	 * @since 2.2.1b104
+	 * @since 2.2.1b103 (TODO: changelog says it 104)
 	 */
 	function registerClickFunctionForID(numericId: number, func: ClickFunction): void;
 
@@ -209,7 +226,7 @@ declare namespace Block {
 	 * Defines custom behavior when the player clicks on the block with definite ID.
 	 * @param id block's numeric or string ID
 	 * @param func function that will be called when the player clicks the block with given ID
-	 * @since 2.2.1b104
+	 * @since 2.2.1b103 (TODO: changelog says it 104)
 	 */
 	function registerClickFunction(id: string | number, func: ClickFunction): void;
 
@@ -408,7 +425,7 @@ declare namespace Block {
 
 	/**
 	 * @returns Given block's material numeric ID.
-	 * @since 2.2.1b100
+	 * @since 2.2.1b101 (TODO: fix in changelog)
 	 */
 	function getMaterial(id: number): number;
 
@@ -420,12 +437,14 @@ declare namespace Block {
 
 	/**
 	 * @returns Whether the block of given ID can contain liquid inside.
+	 * @since 2.2.1b95
 	 */
 	function canContainLiquid(id: number): boolean;
 
 	/**
 	 * @returns Whether the block of given ID can be an extra block 
 	 * (it's the block that can be set inside of another blocks, for ex. water and other liquids).
+	 * @since 2.2.1b95
 	 */
 	function canBeExtraBlock(id: number): boolean;
 
