@@ -48,6 +48,14 @@ declare namespace Recipes {
     function addShapedGeneric(result: ItemInstance, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string, vanilla?: boolean): WorkbenchShapedRecipe;
 
     /**
+     * Recipes considered as vanilla completely ignores
+     * custom logic callbacks.
+     * @see {@link Recipes.addShaped} for details.
+     * @since 2.2.1b108
+     */
+    function addShapedVanilla(result: ItemInstance, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string): WorkbenchShapedRecipe;
+
+    /**
      * Same as {@link Recipes.addShaped}, but you can specify result as three
      * separate values corresponding to ID, count and data.
      */
@@ -79,6 +87,14 @@ declare namespace Recipes {
      * @since 2.2.1b110
      */
     function addShapelessGeneric(result: ItemInstance, data: { id: number, data: number }[], func?: CraftingFunction, prefix?: string, vanilla?: boolean): WorkbenchShapelessRecipe;
+
+    /**
+     * Recipes considered as vanilla completely ignores
+     * custom logic callbacks.
+     * @see {@link Recipes.addShapeless} for details.
+     * @since 2.2.1b108
+     */
+    function addShapelessVanilla(result: ItemInstance, data: { id: number, data: number }[], func?: CraftingFunction, prefix?: string): WorkbenchShapelessRecipe;
 
     /**
      * Deletes recipe by it's result.
@@ -193,11 +209,13 @@ declare namespace Recipes {
 
     /**
      * @returns Collection object with all registered workbench recipes.
+     * @since 2.2.1b96
      */
     function getAllWorkbenchRecipes(): java.util.Collection<WorkbenchRecipe>;
 
     /**
      * @returns Collection object with all registered furnace recipes.
+     * @since 2.2.1b96
      */
     function getAllFurnaceRecipes(): java.util.Collection<FurnaceRecipe>;
 
@@ -450,14 +468,23 @@ declare namespace Recipes {
          * @param slot slot index
          * @returns Workbench slot instance by slot index.
          */
-        getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.Slot,
+        getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.AbstractSlot;
+
+        /**
+         * @since 2.2.1b108
+         */
+        getFieldSlot(x: number, y: number): com.zhekasmirnov.innercore.api.mod.ui.container.AbstractSlot;
 
         /**
          * @returns JS array of all slots.
          */
-        asScriptableField(): com.zhekasmirnov.innercore.api.mod.ui.container.Slot[]
-    }
+        asScriptableField(): com.zhekasmirnov.innercore.api.mod.ui.container.Slot[];
 
+        /**
+         * @since 2.2.1b106
+         */
+        getWorkbenchFieldSize(): number;
+    }
 
     /**
      * Object used to work with workbench field in the craft function.
@@ -485,6 +512,11 @@ declare namespace Recipes {
          * @returns `true`, if crafting event was prevented, `false` otherwise.
          */
         isPrevented(): boolean;
+
+        /**
+         * @since 2.2.1b106
+         */
+        getFieldSize(): number;
     }
 
     /**
@@ -497,6 +529,13 @@ declare namespace Recipes {
          * @returns `true` if recipe entry matches the slot.
          */
         isMatching(slot: com.zhekasmirnov.innercore.api.mod.ui.container.Slot): boolean;
+
+        /**
+         * @param slot slot to compare with
+         * @returns `true` if recipe entry matches the slot.
+         * @since 2.2.1b108
+         */
+        isMatching(slot: Nullable<com.zhekasmirnov.innercore.api.mod.ui.container.Slot>): boolean;
 
         /**
          * @param entry entry to compare with
