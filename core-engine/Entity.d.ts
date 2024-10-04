@@ -767,6 +767,7 @@ declare namespace Entity {
      * @param count item count
      * @param data item data
      * @param extra item extra
+     * @since 2.2.1b93 (not working before)
      */
     function setOffhandItem(entityUid: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
@@ -896,59 +897,60 @@ declare namespace Entity {
          * @returns Whether the entity can pass doors.
          */
         canPassDoors(): boolean;
-
         /**
          * Sets entity's door passing ability.
          */
-        setCanPassDoors(value: boolean): PathNavigation;
+        setCanPassDoors(can: boolean): PathNavigation;
 
         isRiverFollowing(): boolean;
-        setIsRiverFollowing(value: boolean): PathNavigation;
+        setIsRiverFollowing(follow: boolean): PathNavigation;
 
         /**
          * @returns Whether the entity can open doors.
          */
         canOpenDoors(): boolean;
-
         /**
          * Sets entity's door opening ability.
          */
-        setCanOpenDoors(value: boolean): PathNavigation;
+        setCanOpenDoors(can: boolean): PathNavigation;
 
+        /**
+         * @since 2.2.1b93
+         */
+        getAvoidSun(): boolean;
         /**
          * Sets entity's sun avoiding.
          */
-        setAvoidSun(value: boolean): PathNavigation;
+        setAvoidSun(avoid: boolean): PathNavigation;
 
         /**
          * @returns Whether the entity avoids water.
          */
         getAvoidWater(): boolean;
-
         /**
          * Sets entity's water avoiding.
          */
-        setAvoidWater(value: boolean): PathNavigation;
+        setAvoidWater(avoid: boolean): PathNavigation;
 
-        setEndPathRadius(value: boolean): PathNavigation;
+        setEndPathRadius(radius: number): PathNavigation;
 
         getCanSink(): boolean;
-        setCanSink(value: boolean): PathNavigation;
+        setCanSink(can: boolean): PathNavigation;
 
         getAvoidDamageBlocks(): boolean;
-        setAvoidDamageBlocks(value: boolean): PathNavigation;
+        setAvoidDamageBlocks(avoid: boolean): PathNavigation;
 
         getCanFloat(): boolean;
-        setCanFloat(value: boolean): PathNavigation;
+        setCanFloat(can: boolean): PathNavigation;
 
         isAmphibious(): boolean;
-        setIsAmphibious(value: boolean): PathNavigation;
+        setIsAmphibious(amphibious: boolean): PathNavigation;
 
         getAvoidPortals(): boolean;
-        setAvoidPortals(value: boolean): PathNavigation;
+        setAvoidPortals(avoid: boolean): PathNavigation;
 
         getCanBreach(): boolean;
-        setCanBreach(value: boolean): PathNavigation;
+        setCanBreach(can: boolean): PathNavigation;
 
         /**
          * @returns Whether entity can jump.
@@ -958,7 +960,7 @@ declare namespace Entity {
         /**
          * Enables or disables entity's jumping ability.
          */
-        setCanJump(value: boolean): PathNavigation;
+        setCanJump(can: boolean): PathNavigation;
 
         /**
          * @returns Entity's speed value.
@@ -968,7 +970,66 @@ declare namespace Entity {
         /**
          * Sets entity's speed value.
          */
-        setSpeed(value: number): PathNavigation;
+        setSpeed(speed: number): PathNavigation;
+
+        /**
+         * @since 2.2.1b93
+         */
+        getCanPathOverLava(): boolean;
+        /**
+         * @since 2.2.1b93
+         */
+        setCanPathOverLava(can: boolean): PathNavigation;
+
+        /**
+         * @since 2.2.1b93
+         */
+        getCanWalkInLava(): boolean;
+        /**
+         * @since 2.2.1b93
+         */
+        setCanWalkInLava(can: boolean): PathNavigation;
+
+        /**
+         * @since 2.2.1b93
+         */
+        getCanOpenIronDoors(): boolean;
+        /**
+         * @since 2.2.1b93
+         */
+        setCanOpenIronDoors(can: boolean): PathNavigation;
+
+        /**
+         * @since 2.2.1b93
+         */
+        getHasEndPathRadius(): boolean;
+        /**
+         * @since 2.2.1b93
+         */
+        setHasEndPathRadius(has: boolean): PathNavigation;
+
+        /**
+         * @since 2.2.1b93
+         */
+        getTerminationThreshold(): number;
+        /**
+         * @since 2.2.1b93
+         */
+        getTerminationThreshold(threshold: number): PathNavigation;
+
+        /**
+         * @since 2.2.1b93
+         */
+        getTickTimeout(): number;
+        /**
+         * @since 2.2.1b93
+         */
+        setTickTimeout(ticks: number): PathNavigation;
+
+        /**
+         * @since 2.2.1b93
+         */
+        isStuck(ticks: number): boolean;
     }
 
     /**
