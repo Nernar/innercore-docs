@@ -6,6 +6,20 @@ declare namespace TileEntity {
     /**
      * @internal
      */
+    const tileEntityPrototypes: { [blockId: number]: TileEntityPrototype };
+    /**
+     * @internal
+     */
+    const tileEntityList: TileEntity[];
+    /**
+     * @internal
+     * @since 2.2.1b106
+     */
+    const tileEntityCacheMap: { [location: string]: TileEntity };
+
+    /**
+     * @internal
+     */
     function resetEngine(): void;
 
     /**

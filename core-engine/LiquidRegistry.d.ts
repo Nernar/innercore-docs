@@ -12,9 +12,15 @@ declare namespace LiquidRegistry {
     function getFullItem(id: number, data: number, liquid: string): { id: number, data: number };
 
     class Storage {
-        liquidAmounts: { [key: string]: number };
-        liquidLimits: { [key: string]: number };
-        tileEntity: TileEntity;
+        /**
+         * @internal
+         */
+        readonly liquidAmounts: { [key: string]: number };
+        /**
+         * @internal
+         */
+        readonly liquidLimits: { [key: string]: number };
+        readonly tileEntity: TileEntity;
         constructor(tileEntity: TileEntity);
         setParent(tileEntity: TileEntity): void;
         getParent(): TileEntity;
@@ -35,6 +41,12 @@ declare namespace LiquidRegistry {
         addLiquid(liquid: string, amount: number, onlyFullAmount?: boolean): number;
         getLiquid(liquid: string, amount: number, onlyFullAmount?: boolean): number;
     }
+
+    /**
+     * @since 2.2.1b102
+     * @internal
+     */
+    const LiquidByBlock: { [blockId: number]: string };
 
     /**
      * @returns String ID of a liquid for given block,

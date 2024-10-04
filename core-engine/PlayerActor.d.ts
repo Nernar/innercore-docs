@@ -60,6 +60,11 @@ declare class PlayerActor {
     spawnExpOrbs(x: number, y: number, z: number, value: number): void;
 
     /**
+     * @since 2.2.1b102
+     */
+    getPointer(): number;
+
+    /**
      * @returns Whether the player is a valid entity.
      */
     isValid(): boolean;
@@ -140,17 +145,17 @@ declare class PlayerActor {
     setScore(value: number): void;
 
     /**
-     * @since 2.2.1b100
+     * @since 2.2.1b101 (TODO: fix in changelog)
      */
     getItemUseDuration(): number;
 
     /**
-     * @since 2.2.1b100
+     * @since 2.2.1b101 (TODO: fix in changelog)
      */
     getItemUseIntervalProgress(): number;
 
     /**
-     * @since 2.2.1b100
+     * @since 2.2.1b101 (TODO: fix in changelog)
      */
     getItemUseStartupProgress(): number;
 
