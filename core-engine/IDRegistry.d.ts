@@ -39,10 +39,33 @@ declare namespace IDRegistry {
     function genItemID(name: string): number;
 
     /**
-     * Gets item or block string ID by it's numeric ID.
+     * Gets known modded item or block string ID by it's numeric ID.
      * @param id numeric item or block ID
      */
     function getNameByID(id: number): string;
+
+    /**
+     * Gets unique identifier of item or block string ID by it's numeric ID.
+     * IDs represented in format `type:identifier#extra`, e.g.
+     * `item:ruby_shovel` or `block:ancient_debris#negative`,
+     * @param id numeric item or block ID
+     * @since 2.2.1b94
+     */
+    function getStringIdAndTypeForItemId(id: number): Nullable<string>;
+
+    /**
+     * Gets ID type by specific numeric ID.
+     * @param id numeric item or block ID
+     * @since 2.2.1b94
+     */
+    function getTypeForItemId(id: number): Nullable<"block" | "item">;
+
+    /**
+     * Gets item or block string ID by it's numeric ID.
+     * @param id numeric item or block ID
+     * @since 2.2.1b94
+     */
+    function getStringIdForItemId(id: number): Nullable<string>;
 
     /**
      * Ensures given ID is a tile ID, not a block ID. It is generally recommended
@@ -63,6 +86,7 @@ declare namespace IDRegistry {
     /**
      * @param id numeric item or block ID
      * @returns `true` if item is vanilla Minecraft item, `false` otherwise.
+     * @since 2.2.1b102
      */
     function isVanilla(id: number): boolean;
 
@@ -71,6 +95,7 @@ declare namespace IDRegistry {
      * @param id numeric item or block ID
      * @returns String in format `"type:string_id"` or
      * `"type:string_id#extra_information"`.
+     * @deprecated Use {@link IDRegistry.getStringIdAndTypeForItemId} instead.
      */
     function getIdInfo(id: number): string;
 
