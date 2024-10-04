@@ -48,10 +48,12 @@ declare namespace ICRender {
 
 	class Model {
 		/**
-		 * Constructs a base model that will be displayed.
+		 * Constructs a base model that will be displayed in world.
 		 * @param model optional model to be added without additional conditions
 		 */
 		constructor(model?: BlockRenderer.Model);
+
+		getPtr(): number;
 
 		/**
 		 * Adds block model as an entry to the {@link ICRender}. You can then call
@@ -66,6 +68,11 @@ declare namespace ICRender {
 		 * @returns Created {@link ICRender.RenderEntry} object.
 		 */
 		addEntry(mesh?: RenderMesh): RenderEntry;
+
+		/**
+		 * @since 2.2.1b96
+		 */
+		clear(): void;
 	}
 
 	/**
@@ -127,10 +134,22 @@ declare namespace ICRender {
 	 */
 	class CollisionShape {
 		/**
+		 * Constructs a base model that will be raycasted in world.
+		 */
+		constructor();
+
+		getPtr(): number;
+
+		/**
 		 * Adds new entry to the collision shape. You can then call
 		 * {@link ICRender.CollisionEntry.setCondition CollisionEntry.setCondition} to specify when to display the entry.
 		 */
 		addEntry(): CollisionEntry;
+
+		/**
+		 * @since 2.2.1b96
+		 */
+		clear(): void;
 	}
 
 	/**
