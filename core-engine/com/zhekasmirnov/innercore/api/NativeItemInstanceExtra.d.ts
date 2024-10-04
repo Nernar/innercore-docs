@@ -71,6 +71,7 @@ declare module com {
                      * @param id enchantment ID, one of the {@link EEnchantment} constants
                      * @param level enchantment level, generally between 1 and 5
                      * @returns Enchantment name by it's ID and level.
+                     * @since 2.2.1b94 (not worked before)
                      */
                     getEnchantName(id: number, level: number): string;
                     getRawEnchants(): number[][];

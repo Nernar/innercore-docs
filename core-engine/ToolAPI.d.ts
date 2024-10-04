@@ -499,6 +499,10 @@ declare namespace ToolAPI {
          * Specifies the amount of additional experience that is dropped when
          * player breaks block with specified item.
          */
-        experience: number
+        experience: number,
+        /**
+         * @since 2.2.1b106
+         */
+        all: { [id: number]: number }
     }
 }

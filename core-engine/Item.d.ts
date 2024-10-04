@@ -187,6 +187,7 @@ declare namespace Item {
     /**
      * @param id numeric item ID
      * @returns `true`, if an item with such ID exists, `false` otherwise.
+     * @since 2.2.1b94 (not worked before)
      */
     function isValid(id: number): boolean;
 
