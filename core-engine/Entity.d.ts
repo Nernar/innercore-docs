@@ -370,6 +370,7 @@ declare namespace Entity {
     /**
      * @returns Entity render type, should be one of the 
      * {@link EMobRenderType} values.
+     * @deprecated Use resource packs instead.
      */
     function getRender(entityUid: number): number;
 
@@ -377,6 +378,7 @@ declare namespace Entity {
      * Sets entity render type.
      * @param render entity render type, should be one of the 
      * {@link EMobRenderType} values
+     * @deprecated Use resource packs instead.
      */
     function setRender(entityUid: number, render: number): void;
 
