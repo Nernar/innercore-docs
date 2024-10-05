@@ -20,32 +20,37 @@
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>Module used to manipulate player. Player is also an entity in Minecraft, so
 you can use all the functions from <a href="Entity.html" class="tsd-kind-namespace">Entity</a> module as well. To get player&#39;s
-entity ID, call <a href="../functions/Player.get.html" class="tsd-kind-function">get</a> function.</p>
+entity uid, call <a href="../functions/Player.getLocal.html" class="tsd-kind-function">getLocal</a> or <a href="../functions/Player.getServer.html" class="tsd-kind-function">getServer</a> depends on usage.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/b1fffbb/declarations/core-engine.d.ts#L11781">core-engine.d.ts:11781</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L11781">core-engine.d.ts:11781</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Classes</h3>
-<div class="tsd-index-list"><a href="../classes/Player.PlayerExhaustion.html" class="tsd-index-link deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Exhaustion</span></a>
-<a href="../classes/Player.PlayerExperience.html" class="tsd-index-link deprecated">
+<div class="tsd-index-list"><a href="../classes/Player.PlayerExperience.html" class="tsd-index-link deprecated">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Experience</span></a>
-<a href="../classes/Player.PlayerFlying.html" class="tsd-index-link deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Flying</span></a>
-<a href="../classes/Player.PlayerHealth.html" class="tsd-index-link deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Health</span></a>
-<a href="../classes/Player.PlayerHunger.html" class="tsd-index-link deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Hunger</span></a>
-<a href="../classes/Player.PlayerLevel.html" class="tsd-index-link deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Level</span></a>
-<a href="../classes/Player.PlayerSaturation.html" class="tsd-index-link deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Saturation</span></a>
-<a href="../classes/Player.PlayerScore.html" class="tsd-index-link deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Score</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Interfaces</h3>
+<div class="tsd-index-list"><a href="../interfaces/Player.PlayerExhaustion.html" class="tsd-index-link deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Exhaustion</span></a>
+<a href="../interfaces/Player.PlayerFlying.html" class="tsd-index-link deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Flying</span></a>
+<a href="../interfaces/Player.PlayerHealth.html" class="tsd-index-link deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Health</span></a>
+<a href="../interfaces/Player.PlayerHunger.html" class="tsd-index-link deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Hunger</span></a>
+<a href="../interfaces/Player.PlayerLevel.html" class="tsd-index-link deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Level</span></a>
+<a href="../interfaces/Player.PlayerSaturation.html" class="tsd-index-link deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Saturation</span></a>
+<a href="../interfaces/Player.PlayerScore.html" class="tsd-index-link deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Score</span></a>
+<a href="../interfaces/Player.PointedData.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Pointed<wbr/>Data</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Functions</h3>
@@ -97,10 +102,8 @@ entity ID, call <a href="../functions/Player.get.html" class="tsd-kind-function"
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Inventory<wbr/>Slot</span></a>
 <a href="../functions/Player.getLevel.html" class="tsd-index-link">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Level</span></a>
-<a href="../functions/Player.getName.html" class="tsd-index-link">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Name</span></a>
-<a href="../functions/Player.getNameForEnt.html" class="tsd-index-link">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Name<wbr/>For<wbr/>Ent</span></a>
+<a href="../functions/Player.getLocal.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Local</span></a>
 <a href="../functions/Player.getOffhandItem.html" class="tsd-index-link">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Offhand<wbr/>Item</span></a>
 <a href="../functions/Player.getPointed.html" class="tsd-index-link">
@@ -113,6 +116,8 @@ entity ID, call <a href="../functions/Player.get.html" class="tsd-kind-function"
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Score</span></a>
 <a href="../functions/Player.getSelectedSlotId.html" class="tsd-index-link">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Selected<wbr/>Slot<wbr/>Id</span></a>
+<a href="../functions/Player.getServer.html" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Server</span></a>
 <a href="../functions/Player.getVelocity.html" class="tsd-index-link">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Velocity</span></a>
 <a href="../functions/Player.health.html" class="tsd-index-link">
@@ -274,22 +279,24 @@ entity ID, call <a href="../functions/Player.get.html" class="tsd-kind-function"
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Player</span></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../classes/Player.PlayerExhaustion.html" class="deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Exhaustion</span></a></li>
 <li><a href="../classes/Player.PlayerExperience.html" class="deprecated">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Experience</span></a></li>
-<li><a href="../classes/Player.PlayerFlying.html" class="deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Flying</span></a></li>
-<li><a href="../classes/Player.PlayerHealth.html" class="deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Health</span></a></li>
-<li><a href="../classes/Player.PlayerHunger.html" class="deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Hunger</span></a></li>
-<li><a href="../classes/Player.PlayerLevel.html" class="deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Level</span></a></li>
-<li><a href="../classes/Player.PlayerSaturation.html" class="deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Saturation</span></a></li>
-<li><a href="../classes/Player.PlayerScore.html" class="deprecated">
-<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Score</span></a></li>
+<li><a href="../interfaces/Player.PlayerExhaustion.html" class="deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Exhaustion</span></a></li>
+<li><a href="../interfaces/Player.PlayerFlying.html" class="deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Flying</span></a></li>
+<li><a href="../interfaces/Player.PlayerHealth.html" class="deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Health</span></a></li>
+<li><a href="../interfaces/Player.PlayerHunger.html" class="deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Hunger</span></a></li>
+<li><a href="../interfaces/Player.PlayerLevel.html" class="deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Level</span></a></li>
+<li><a href="../interfaces/Player.PlayerSaturation.html" class="deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Saturation</span></a></li>
+<li><a href="../interfaces/Player.PlayerScore.html" class="deprecated">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Score</span></a></li>
+<li><a href="../interfaces/Player.PointedData.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Pointed<wbr/>Data</span></a></li>
 <li><a href="../functions/Player.addExperience.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>add<wbr/>Experience</span></a></li>
 <li><a href="../functions/Player.addItemToInventory.html">
@@ -338,10 +345,8 @@ entity ID, call <a href="../functions/Player.get.html" class="tsd-kind-function"
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Inventory<wbr/>Slot</span></a></li>
 <li><a href="../functions/Player.getLevel.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Level</span></a></li>
-<li><a href="../functions/Player.getName.html">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Name</span></a></li>
-<li><a href="../functions/Player.getNameForEnt.html">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Name<wbr/>For<wbr/>Ent</span></a></li>
+<li><a href="../functions/Player.getLocal.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Local</span></a></li>
 <li><a href="../functions/Player.getOffhandItem.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Offhand<wbr/>Item</span></a></li>
 <li><a href="../functions/Player.getPointed.html">
@@ -354,6 +359,8 @@ entity ID, call <a href="../functions/Player.get.html" class="tsd-kind-function"
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Score</span></a></li>
 <li><a href="../functions/Player.getSelectedSlotId.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Selected<wbr/>Slot<wbr/>Id</span></a></li>
+<li><a href="../functions/Player.getServer.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Server</span></a></li>
 <li><a href="../functions/Player.getVelocity.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Velocity</span></a></li>
 <li><a href="../functions/Player.health.html">
