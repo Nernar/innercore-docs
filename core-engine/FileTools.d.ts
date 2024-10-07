@@ -81,7 +81,7 @@ declare namespace FileTools {
      * @param name asset name
      * @returns Asset contents or `null` if asset doesn't exist.
      */
-    function ReadTextAsset(name: string): string;
+    function ReadTextAsset(name: string): Nullable<string>;
 
     /**
      * Reads high-resolution (as-is) bitmap from asset by it's full name.
@@ -96,7 +96,7 @@ declare namespace FileTools {
      * @param name asset name
      * @returns JArray of bytes read from assets or null if asset doesn't exist.
      */
-    function ReadBytesAsset(name: string): native.Array<jbyte>;
+    function ReadBytesAsset(name: string): Nullable<native.Array<jbyte>>;
 
     /**
      * Lists children directories for the specified path.
@@ -136,13 +136,13 @@ declare namespace FileTools {
      * @param dir home-relative or absolute path to the file
      * @returns Object represents JSON value read from JSON file.
      */
-    function ReadJSON(dir: string): any;
+    function ReadJSON(dir: string): object;
 
     /**
      * Writes object to file as JSON.
      * @param dir home-relative or absolute path to the file
      * @param obj object to be written to the file as JSON
-     * @param beautify if true, output JSON is beautified with tabs
+     * @param beautify if `true`, output JSON is beautified with tabs
      */
-    function WriteJSON(dir: string, obj: any, beautify: boolean): void;
+    function WriteJSON(dir: string, obj: object, beautify?: boolean): void;
 }

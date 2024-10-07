@@ -3,15 +3,24 @@
  */
 declare namespace ModAPI {
     /**
+     * Collects registered APIs objects, use {@link ModAPI.requireAPI}
+     * to directly access required instance.
+     * @internal
+     */
+    let modAPIs: {
+        [name: string]: { api: string, descr: ModDocumentation }
+    };
+
+    /**
      * Registers new API for the mod and invokes mod API callback.
      * @param name API name used to import it in the other mods
      * @param api object that is shared with the other mods. May contain other 
      * objects, methods, variables, etc. Sometimes it is useful to provide the 
      * ability to run third party code in your own mod, you can create a method
      * that provides such possibility: 
-     * ```ts
-     * requireGlobal: function(command){
-     *     return eval(command);
+     * ```js
+     * requireGlobal(command) {
+     *  return eval(command);
      * }
      * ``` 
      * @param descr simple documentation for the mod API
@@ -31,9 +40,11 @@ declare namespace ModAPI {
      * `null` otherwise.
      * @example
      * Importing API registered by IndustrialCraft PE:
-     * ```ts
+     * ```js
      * let ICore = null;
-     * ModAPI.addAPICallback("ICore", api => (ICore = api));
+     * ModAPI.addAPICallback("ICore", function(api) {
+     *  ICore = api;
+     * });
      * ```
      * When using ICore variable from the example, be sure to check it for `null`
      * because Industrial Craft PE may not be installed on the user's phone.
@@ -49,11 +60,27 @@ declare namespace ModAPI {
     function requireGlobal(name: string): any;
 
     /**
+     * Objects used to represent mod API documentation.
+     * @deprecated Writing documentation that way not recommended.
+     */
+    interface ModDocumentation {
+        /**
+         * Full name of the API.
+         */
+        name: string,
+        /**
+         * Object containing descriptions of methods and properties of the API, 
+         * where keys are methods and properties names and values are their descriptions.
+         */
+        props: object
+    }
+
+    /**
      * @param name API name
      * @returns Documentation for the specified mod API.
      * @deprecated Writing documentation that way is not better.
      */
-    function requireAPIdoc(name: string): ModDocumentation;
+    function requireAPIdoc(name: string): Nullable<ModDocumentation>;
 
     /**
      * Fetches information about the method or property of mod API.
@@ -66,16 +93,6 @@ declare namespace ModAPI {
     function requireAPIPropertyDoc(name: string, prop: string): Nullable<string>;
 
     /**
-     * @deprecated No longer supported.
-     */
-    function getModByName(modName: string): void;
-
-    /**
-     * @deprecated No longer supported.
-     */
-    function isModLoaded(modName: string): void;
-
-    /**
      * Adds callback for the specified mod API.
      * @param apiName API name
      * @param func callback that is called when API is loaded
@@ -86,26 +103,6 @@ declare namespace ModAPI {
          */
         api: object
     ) => void): void;
-
-    /**
-     * @deprecated No longer supported.
-     */
-    function addModCallback(modName: string, func: any): void;
-
-    /**
-     * @deprecated No longer supported.
-     */
-    function getModList(): void;
-
-    /**
-     * @deprecated No longer supported.
-     */
-    function getModPEList(): void;
-
-    /**
-     * @deprecated No longer supported.
-     */
-    function addTexturePack(path: any): void;
 
     /**
      * Recursively copies (duplicates) the value to the new one.
@@ -128,40 +125,48 @@ declare namespace ModAPI {
      * Recursively clones object to the new one counting call depth and
      * interrupting copying after 7th recursion call.
      * @param source an object to be cloned
-     * @param deep if `true`, copies the object recursively
-     * @param rec current recursion state, if > 6, recursion stops; default 
+     * @param recursive if `true`, copies the object recursively
+     * @param depth current recursion state, if > 6, recursion stops; default 
      * value is 0
      * @returns Cloned object, all the properties that are less then then 8 in
      * depth, get copied.
      */
-    function cloneObject<T extends object>(source: T, deep?: boolean, rec?: number): T;
+    function cloneObject<T extends object>(source: T, recursive?: boolean, depth?: number): T;
 
     /**
      * Same as {@link ModAPI.cloneObject}, but if call depth is more then
      * 6, inserts `"stackoverflow"` string value otherwise.
      */
-    function debugCloneObject<T>(source: T, deep?: boolean, rec?: number): T | string;
+    function debugCloneObject<T>(source: T, recursive?: boolean, depth?: number): T | string;
 
     /**
-     * Objects used to represent mod API documentation.
-     * @deprecated Writing documentation that way is not better.
+     * @deprecated No longer supported.
      */
-    interface ModDocumentation {
-        /**
-         * Full name of the API.
-         */
-        name: string,
-        /**
-         * Object containing descriptions of methods and properties of the API, 
-         * where keys are methods and properties names and values are their descriptions.
-         */
-        props: object
-    }
+    function getModByName(modName: string): void;
 
     /**
-     * Collects registered APIs objects, use {@link ModAPI.requireAPI}
-     * to directly access required instance.
-     * @internal
+     * @deprecated No longer supported.
      */
-    let modAPIs: { [name: string]: { api: string, descr: { name: object, props: object } } }
+    function isModLoaded(modName: string): void;
+
+    /**
+     * @deprecated No longer supported.
+     */
+    function addModCallback(modName: string, func: any): void;
+
+    /**
+     * @deprecated No longer supported.
+     */
+    function getModList(): string[];
+
+    /**
+     * @deprecated No longer supported.
+     */
+    function getModPEList(): string[];
+
+    /**
+     * @deprecated No longer supported.
+     */
+    function addTexturePack(path: any): void;
+
 }

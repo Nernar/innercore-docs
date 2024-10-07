@@ -4,15 +4,24 @@
  */
 declare namespace Threading {
     /**
-     * Function used to format error messages in a custom way.
+     * Running threads, use {@link Threading.getThread} to directly
+     * access required thread by name.
      * @internal
      */
-    type ErrorMessageFormatFunction =
+    let threads: {
+        [name: string]: java.lang.Thread
+    };
+
+    /**
+     * Function used to format error messages in a custom way.
+     */
+    interface ErrorMessageFormatFunction {
         /**
          * @param error java.lang.Throwable instance or javascript exception
          * @param priority current thread priority
          */
-        (error: any, priority: number) => string;
+        (error: any, priority: number): string;
+    }
 
     /**
      * Function used to create formatted error message with the full debug
@@ -33,7 +42,7 @@ declare namespace Threading {
      * user interfaces
      * @param priority priority of the thread (integer value). The higher 
      * priority is, the quicker the task will be executed. Default value is 0
-     * @param isErrorFatal if true, all errors in the thread are considered 
+     * @param isErrorFatal if `true`, all errors in the thread are considered 
      * fatal and lead to fatal error AlertDialog, formatted with *formatFunc*
      * @param formatFunc function that formats exceptions in the thread to 
      * display in fatal error AlertDialog
@@ -47,11 +56,4 @@ declare namespace Threading {
      * @returns Instance representing the thread.
      */
     function getThread(name: string): Nullable<java.lang.Thread>;
-
-    /**
-     * Running threads, use {@link Threading.getThread} to directly
-     * access required thread by name.
-     * @internal
-     */
-    let threads: { [name: string]: java.lang.Thread };
 }

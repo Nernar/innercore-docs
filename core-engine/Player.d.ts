@@ -418,6 +418,7 @@ declare namespace Player {
     /**
      * Sets player's exhaustion.
      * @param value exhaustion value to be set
+     * @since 2.0.1b17 (not worked before)
      * @deprecated Client-side only, use {@link PlayerActor.setExhaustion} instead.
      */
     function setExhaustion(value: number): void;
@@ -455,6 +456,7 @@ declare namespace Player {
     /**
      * Sets player's hunger.
      * @param value hunger value to be set
+     * @since 2.0.1b17 (not worked before)
      * @deprecated Client-side only, use {@link PlayerActor.setHunger} instead.
      */
     function setHunger(value: number): void;
@@ -492,6 +494,7 @@ declare namespace Player {
     /**
      * Sets player's saturation.
      * @param value saturation value to be set
+     * @since 2.0.1b17 (not worked before)
      * @deprecated Client-side only, use {@link PlayerActor.setSaturation} instead.
      */
     function setSaturation(value: number): void;
