@@ -56,3 +56,8 @@ interface Updatable {
      */
     [key: string]: any;
 }
+
+/**
+ * @deprecated Use {@link Updatable} instead.
+ */
+declare const UpdatableAPI: typeof Updatable;
