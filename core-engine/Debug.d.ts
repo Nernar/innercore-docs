@@ -22,19 +22,19 @@ declare namespace Debug {
      * Writes general debug message (in green) to local player in chat.
      * @param message message to be displayed
      */
-    function message(message: string): void;
+    function message(message: any): void;
 
     /**
      * Writes warning debug message (in gold) to local player in chat.
      * @param message message to be displayed
      */
-    function warning(message: string): void;
+    function warning(message: any): void;
 
     /**
      * Writes error debug message (in red) to local player in chat.
      * @param message message to be displayed
      */
-    function error(message: string): void;
+    function error(message: any): void;
 
     /**
      * Writes several comma-separated values to local player in chat as
@@ -50,7 +50,7 @@ declare namespace Debug {
      * displayed
      * @param title title of the AlertDialog
      */
-    function bitmap(bitmap: android.graphics.Bitmap, title: string): void;
+    function bitmap(bitmap: android.graphics.Bitmap, title?: any): void;
 
     /**
      * Writes several values in JSON format to the selectable

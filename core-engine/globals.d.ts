@@ -123,11 +123,10 @@ declare function getMCPEVersion(): {
 };
 
 /**
- * Displays android.widget.Toast with specified message. If this function is called
- * more then once, messages are stacked and displayed together.
- * @param arg 
+ * Displays {@link android.widget.Toast} with specified message. If this function
+ * is called more then once, messages are stacked and displayed together.
  */
-declare function alert(arg: any): any;
+declare function alert(message: any): void;
 
 /**
  * Library declaration, specifies all the information about library it is called from.
