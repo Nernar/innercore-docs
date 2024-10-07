@@ -198,7 +198,8 @@ declare class CustomBiome {
     /**
      * Defines the server-side biome params from given JSON string.
      * @returns Reference to itself to be used in sequential calls.
-     * @throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
+     * @throws Java {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
+     * 
      * @example
      * Many thanks to DansZbar2 for the example!
      * ```js
@@ -245,7 +246,8 @@ declare class CustomBiome {
     /**
      * Defines the client-side biome params from given JSON string.
      * @returns Reference to itself to be used in sequential calls.
-     * @throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
+     * @throws Java {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
+     * 
      * @example
      * Many thanks to DansZbar2 for the example!
      * ```js

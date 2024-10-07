@@ -75,8 +75,8 @@ declare namespace Item {
     function createFoodItem(nameID: string, name: string, texture: TextureData, params?: FoodParams): NativeItem;
 
     /**
-     * @deprecated Use {@link Item.createItem} and {@link Recipes.addFurnaceFuel}
-     * instead.
+     * @deprecated Use {@link Item.createItem} and
+     * {@link Recipes.addFurnaceFuel} instead.
      * @throws Unsupported usage.
      */
     function createFuelItem(nameID: string, name: string, texture: TextureData, params?: ItemParams): void;
