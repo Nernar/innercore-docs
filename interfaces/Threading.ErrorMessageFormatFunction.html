@@ -17,28 +17,36 @@
 <li><a href="../index.html">Core Engine</a></li>
 <li><a href="../modules/Threading.html">Threading</a></li>
 <li><a href="Threading.ErrorMessageFormatFunction.html">ErrorMessageFormatFunction</a></li></ul>
-<h1>Type alias ErrorMessageFormatFunction</h1></div>
-<div class="tsd-signature"><span class="tsd-kind-type-alias">Error<wbr/>Message<wbr/>Format<wbr/>Function</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span>, <span class="tsd-kind-parameter">priority</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span></div>
-<div class="tsd-type-declaration">
-<h4>Type declaration</h4>
-<ul class="tsd-parameters">
-<li class="tsd-parameter-signature">
-<ul class="tsd-signatures">
-<li class="tsd-signature" id="__type.__type-1"><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span>, <span class="tsd-kind-parameter">priority</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-<li class="tsd-description"><code class="tsd-tag ts-flagInternal">Internal</code> 
+<h1>Interface ErrorMessageFormatFunction</h1></div>
+<section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>Function used to format error messages in a custom way.</p>
 </div>
+<div class="tsd-comment tsd-typography"></div></section>
+<section class="tsd-panel tsd-hierarchy">
+<h4>Hierarchy</h4>
+<ul class="tsd-hierarchy">
+<li><span class="target">ErrorMessageFormatFunction</span></li></ul></section>
+<section class="tsd-panel">
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="ErrorMessageFormatFunction"><span class="tsd-kind-call-signature">Error<wbr/>Message<wbr/>Format<wbr/>Function</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">error</span>, <span class="tsd-kind-parameter">priority</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#ErrorMessageFormatFunction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-description">
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">error</span>: <span class="tsd-signature-type">any</span></h5></li>
+<h5><span class="tsd-kind-parameter">error</span>: <span class="tsd-signature-type">any</span></h5>
+<div class="tsd-comment tsd-typography"><p>java.lang.Throwable instance or javascript exception</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">priority</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h5><span class="tsd-kind-parameter">priority</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>current thread priority</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-<div class="tsd-comment tsd-typography"></div></li></ul></li></ul></div><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ebf4fd3/declarations/core-engine.d.ts#L10386">core-engine.d.ts:10386</a></li></ul></aside></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L10398">core-engine.d.ts:10398</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -160,7 +168,7 @@
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
 <li><a href="Threading.ErrorMessageFormatFunction.html" class="current">
-<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Error<wbr/>Message<wbr/>Format<wbr/>Function</span></a></li>
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Error<wbr/>Message<wbr/>Format<wbr/>Function</span></a></li>
 <li><a href="../variables/Threading.threads.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>threads</span></a></li>
 <li><a href="../functions/Threading.formatFatalErrorMessage.html">
@@ -289,53 +297,53 @@
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Synced<wbr/>Network<wbr/>Data</span></a></li>
 <li><a href="../classes/Texture.html" class="deprecated">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Texture</span></a></li>
-<li><a href="../interfaces/BlockPosition.html">
+<li><a href="BlockPosition.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Block<wbr/>Position</span></a></li>
-<li><a href="../interfaces/Color.html">
+<li><a href="Color.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Color</span></a></li>
-<li><a href="../interfaces/EcsArmorItemComponent.html">
+<li><a href="EcsArmorItemComponent.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Ecs<wbr/>Armor<wbr/>Item<wbr/>Component</span></a></li>
-<li><a href="../interfaces/EcsBlockComponent.html">
+<li><a href="EcsBlockComponent.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Ecs<wbr/>Block<wbr/>Component</span></a></li>
-<li><a href="../interfaces/EcsComponent.html">
+<li><a href="EcsComponent.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Ecs<wbr/>Component</span></a></li>
-<li><a href="../interfaces/EcsEntityManager.html">
+<li><a href="EcsEntityManager.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Ecs<wbr/>Entity<wbr/>Manager</span></a></li>
-<li><a href="../interfaces/EcsItemComponent.html">
+<li><a href="EcsItemComponent.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Ecs<wbr/>Item<wbr/>Component</span></a></li>
-<li><a href="../interfaces/GameObjectPrototype.html">
+<li><a href="GameObjectPrototype.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Game<wbr/>Object<wbr/>Prototype</span></a></li>
-<li><a href="../interfaces/ItemInstance.html">
+<li><a href="ItemInstance.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Instance</span></a></li>
-<li><a href="../interfaces/ItemModel-1.html">
+<li><a href="ItemModel-1.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Model</span></a></li>
-<li><a href="../interfaces/LookAngle.html">
+<li><a href="LookAngle.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Look<wbr/>Angle</span></a></li>
-<li><a href="../interfaces/NativeTileEntity.html">
+<li><a href="NativeTileEntity.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Native<wbr/>Tile<wbr/>Entity</span></a></li>
-<li><a href="../interfaces/Tile.html">
+<li><a href="Tile.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile</span></a></li>
-<li><a href="../interfaces/TileEntity-1.html">
+<li><a href="TileEntity-1.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile<wbr/>Entity</span></a></li>
-<li><a href="../interfaces/Updatable-1.html">
+<li><a href="Updatable-1.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Updatable</span></a></li>
-<li><a href="../interfaces/Vector.html">
+<li><a href="Vector.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Vector</span></a></li>
-<li><a href="../interfaces/Weather.html">
+<li><a href="Weather.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Weather</span></a></li>
-<li><a href="ArmorType.html">
+<li><a href="../types/ArmorType.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Armor<wbr/>Type</span></a></li>
-<li><a href="DefaultRenderTemplate.html">
+<li><a href="../types/DefaultRenderTemplate.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Default<wbr/>Render<wbr/>Template</span></a></li>
-<li><a href="ItemInstanceArray.html">
+<li><a href="../types/ItemInstanceArray.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Item<wbr/>Instance<wbr/>Array</span></a></li>
-<li><a href="Nullable.html">
+<li><a href="../types/Nullable.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Nullable</span></a></li>
-<li><a href="Scriptable.html">
+<li><a href="../types/Scriptable.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Scriptable</span></a></li>
-<li><a href="TransferPolicy.html">
+<li><a href="../types/TransferPolicy.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Transfer<wbr/>Policy</span></a></li>
-<li><a href="jbyte.html">
+<li><a href="../types/jbyte.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>jbyte</span></a></li>
 <li><a href="../variables/BlockID.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>BlockID</span></a></li>
