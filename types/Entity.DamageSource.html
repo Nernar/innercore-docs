@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Attributes | Core Engine</title><meta name="description" content="Documentation for Core Engine"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><link rel="stylesheet" href="../assets/codicon.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>DamageSource | Core Engine</title><meta name="description" content="Documentation for Core Engine"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><link rel="stylesheet" href="../assets/codicon.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
 <div class="tsd-toolbar-contents container">
 <div class="table-cell" id="tsd-search" data-base="..">
 <div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption">
@@ -16,90 +16,174 @@
 <ul class="tsd-breadcrumb">
 <li><a href="../index.html">Core Engine</a></li>
 <li><a href="../modules/Entity.html">Entity</a></li>
-<li><a href="Entity.Attributes.html">Attributes</a></li></ul>
-<h1>Enumeration Attributes</h1></div><aside class="tsd-sources">
+<li><a href="Entity.DamageSource.html">DamageSource</a></li></ul>
+<h1>Type alias DamageSource</h1></div>
+<div class="tsd-signature"><span class="tsd-kind-type-alias">Damage<wbr/>Source</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">0</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">2</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">3</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">4</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">5</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">6</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">7</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">8</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">9</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">10</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">11</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">12</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">13</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">14</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">15</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">16</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">17</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">18</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">19</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">20</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">21</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">22</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">23</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">24</span></div>
+<div class="tsd-comment tsd-typography"><p>Damage sources, which are used to determine entity damage type:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Message</th>
+<th>Translation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>Generic</td>
+<td>&quot;death.attack.generic&quot; (fallback damage source)</td>
+<td>* died</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Cactus</td>
+<td>&quot;death.attack.cactus&quot; (only when standing on cactus)</td>
+<td>* was pricked to death</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mob</td>
+<td>&quot;death.attack.mob&quot;</td>
+<td>* was slain by *</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Impact</td>
+<td>n/a</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>In Wall</td>
+<td>&quot;death.attack.inWall&quot;</td>
+<td>* suffocated in a wall</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fall</td>
+<td>&quot;death.attack.fall&quot; OR &quot;death.fell.accident.generic&quot;</td>
+<td>* hit the ground too hard OR * fell from a high place</td>
+</tr>
+<tr>
+<td>6</td>
+<td>In Fire</td>
+<td>&quot;death.attack.inFire&quot;</td>
+<td>* went up in flames</td>
+</tr>
+<tr>
+<td>7</td>
+<td>On Fire</td>
+<td>&quot;death.attack.onFire&quot;</td>
+<td>* burned to death</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Lava</td>
+<td>&quot;death.attack.lava&quot;</td>
+<td>* tried to swim in lava</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Drown</td>
+<td>&quot;death.attack.drown&quot;</td>
+<td>* drowned</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Explosion</td>
+<td>&quot;death.attack.explosion&quot;</td>
+<td>* blew up</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Explosion (Player)</td>
+<td>&quot;death.attack.explosion&quot;</td>
+<td>* was blown up by *</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Out Of World</td>
+<td>&quot;death.attack.outOfWorld&quot;</td>
+<td>* fell out of the world</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Command</td>
+<td>n/a</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Magic</td>
+<td>&quot;death.attack.magic&quot;</td>
+<td>* was killed by magic</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Wither</td>
+<td>&quot;death.attack.wither&quot;</td>
+<td>* withered away</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Starve</td>
+<td>&quot;death.attack.starve&quot;</td>
+<td>* starved to death</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Anvil</td>
+<td>&quot;death.attack.anvil&quot;</td>
+<td>* was squashed by a falling anvil</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Thorns</td>
+<td>&quot;death.attack.thorns&quot;</td>
+<td>* was killed trying to hurt *</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Projectile</td>
+<td>n/a</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>Falling Block</td>
+<td>&quot;death.attack.fallingBlock&quot;</td>
+<td>* was squashed by a falling block</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Fly Into Wall</td>
+<td>&quot;death.attack.flyIntoWall&quot;</td>
+<td>* experienced kinetic energy</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Magma</td>
+<td>&quot;death.attack.magma&quot;</td>
+<td>* discovered floor was lava</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Fireworks</td>
+<td>&quot;death.attack.fireworks&quot;</td>
+<td>* went off with a bang</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Lightning Bolt</td>
+<td>&quot;death.attack.lightningBolt&quot;</td>
+<td>* was struck by lightning</td>
+</tr>
+</tbody></table>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18157">core-engine.d.ts:18157</a></li></ul></aside>
-<section class="tsd-panel-group tsd-index-group">
-<section class="tsd-panel tsd-index-panel">
-<details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
-<h5 class="tsd-index-heading uppercase" role="button" aria-expanded="false" tabIndex=0><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 5.50969L8 11.6609L14.5 5.50969L12.5466 3.66086L8 7.96494L3.45341 3.66086L1.5 5.50969Z" fill="var(--color-text)"></path></svg> Index</h5></summary>
-<div class="tsd-accordion-details">
-<section class="tsd-index-section">
-<h3 class="tsd-index-heading">Enumeration Members</h3>
-<div class="tsd-index-list"><a href="Entity.Attributes.html#ABSORPTION" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>ABSORPTION</span></a>
-<a href="Entity.Attributes.html#ATTACK_DAMAGE" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>ATTACK_<wbr/>DAMAGE</span></a>
-<a href="Entity.Attributes.html#FOLLOW_RANGE" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>FOLLOW_<wbr/>RANGE</span></a>
-<a href="Entity.Attributes.html#HEALTH" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>HEALTH</span></a>
-<a href="Entity.Attributes.html#JUMP_STRENGTH" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>JUMP_<wbr/>STRENGTH</span></a>
-<a href="Entity.Attributes.html#KNOCKBACK_RESISTANCE" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>KNOCKBACK_<wbr/>RESISTANCE</span></a>
-<a href="Entity.Attributes.html#LAVA_MOVEMENT" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>LAVA_<wbr/>MOVEMENT</span></a>
-<a href="Entity.Attributes.html#LUCK" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>LUCK</span></a>
-<a href="Entity.Attributes.html#MOVEMENT" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>MOVEMENT</span></a>
-<a href="Entity.Attributes.html#UNDERWATER_MOVEMENT" class="tsd-index-link">
-<div class="codicon codicon-symbol-enum-member tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>UNDERWATER_<wbr/>MOVEMENT</span></a>
-</div></section></div></details></section></section>
-<section class="tsd-panel-group tsd-member-group">
-<h2>Enumeration Members</h2>
-<section class="tsd-panel tsd-member"><a id="ABSORPTION" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>ABSORPTION</span><a href="#ABSORPTION" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">ABSORPTION</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:absorption&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18164">core-engine.d.ts:18164</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="ATTACK_DAMAGE" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>ATTACK_<wbr/>DAMAGE</span><a href="#ATTACK_DAMAGE" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">ATTACK_<wbr/>DAMAGE</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:attack_damage&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18166">core-engine.d.ts:18166</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="FOLLOW_RANGE" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>FOLLOW_<wbr/>RANGE</span><a href="#FOLLOW_RANGE" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">FOLLOW_<wbr/>RANGE</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:follow_range&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18158">core-engine.d.ts:18158</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="HEALTH" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>HEALTH</span><a href="#HEALTH" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">HEALTH</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:health&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18165">core-engine.d.ts:18165</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="JUMP_STRENGTH" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>JUMP_<wbr/>STRENGTH</span><a href="#JUMP_STRENGTH" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">JUMP_<wbr/>STRENGTH</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:jump_strength&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18167">core-engine.d.ts:18167</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="KNOCKBACK_RESISTANCE" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>KNOCKBACK_<wbr/>RESISTANCE</span><a href="#KNOCKBACK_RESISTANCE" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">KNOCKBACK_<wbr/>RESISTANCE</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:knockback_resistance&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18163">core-engine.d.ts:18163</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="LAVA_MOVEMENT" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>LAVA_<wbr/>MOVEMENT</span><a href="#LAVA_MOVEMENT" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">LAVA_<wbr/>MOVEMENT</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:lava_movement&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18160">core-engine.d.ts:18160</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="LUCK" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>LUCK</span><a href="#LUCK" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">LUCK</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:luck&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18159">core-engine.d.ts:18159</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="MOVEMENT" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>MOVEMENT</span><a href="#MOVEMENT" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">MOVEMENT</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:movement&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18162">core-engine.d.ts:18162</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="UNDERWATER_MOVEMENT" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>UNDERWATER_<wbr/>MOVEMENT</span><a href="#UNDERWATER_MOVEMENT" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-enum-member">UNDERWATER_<wbr/>MOVEMENT</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;minecraft:underwater_movement&quot;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/caeca5d/declarations/core-engine.d.ts#L18161">core-engine.d.ts:18161</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/9220111/declarations/core-engine.d.ts#L17610">core-engine.d.ts:17610</a></li></ul></aside></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -152,10 +236,6 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Entity</span></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="Entity.Attributes.html" class="current">
-<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Attributes</span></a></li>
-<li><a href="Entity.DamageSources.html">
-<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Damage<wbr/>Sources</span></a></li>
 <li><a href="../classes/Entity.EntityHealth.html" class="deprecated">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Entity<wbr/>Health</span></a></li>
 <li><a href="../interfaces/Entity.AttributeInstance.html">
@@ -170,7 +250,11 @@
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Path<wbr/>Navigation</span></a></li>
 <li><a href="../interfaces/Entity.PathNavigationResultFunction.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Path<wbr/>Navigation<wbr/>Result<wbr/>Function</span></a></li>
-<li><a href="../types/Entity.PathNavigationResultCode.html">
+<li><a href="Entity.Attribute.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Attribute</span></a></li>
+<li><a href="Entity.DamageSource.html" class="current">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Damage<wbr/>Source</span></a></li>
+<li><a href="Entity.PathNavigationResultCode.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Path<wbr/>Navigation<wbr/>Result<wbr/>Code</span></a></li>
 <li><a href="../functions/Entity.addEffect.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>add<wbr/>Effect</span></a></li>
@@ -442,49 +526,49 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>World<wbr/>Renderer</span></a></li>
 <li><a href="../modules/com.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>com</span></a></li>
-<li><a href="EArmorType.html">
+<li><a href="../enums/EArmorType.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EArmor<wbr/>Type</span></a></li>
-<li><a href="EBlockRenderLayer.html">
+<li><a href="../enums/EBlockRenderLayer.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>Render<wbr/>Layer</span></a></li>
-<li><a href="EBlockSide.html">
+<li><a href="../enums/EBlockSide.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>Side</span></a></li>
-<li><a href="EBlockStates.html">
+<li><a href="../enums/EBlockStates.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>States</span></a></li>
-<li><a href="EColor.html" class="deprecated">
+<li><a href="../enums/EColor.html" class="deprecated">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EColor</span></a></li>
-<li><a href="EDimension.html">
+<li><a href="../enums/EDimension.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EDimension</span></a></li>
-<li><a href="EEnchantType.html">
+<li><a href="../enums/EEnchantType.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEnchant<wbr/>Type</span></a></li>
-<li><a href="EEnchantment.html">
+<li><a href="../enums/EEnchantment.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEnchantment</span></a></li>
-<li><a href="EEntityType.html">
+<li><a href="../enums/EEntityType.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEntity<wbr/>Type</span></a></li>
-<li><a href="EGameDifficulty.html">
+<li><a href="../enums/EGameDifficulty.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EGame<wbr/>Difficulty</span></a></li>
-<li><a href="EGameMode.html">
+<li><a href="../enums/EGameMode.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EGame<wbr/>Mode</span></a></li>
-<li><a href="EItemAnimation.html">
+<li><a href="../enums/EItemAnimation.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EItem<wbr/>Animation</span></a></li>
-<li><a href="EItemCategory.html">
+<li><a href="../enums/EItemCategory.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EItem<wbr/>Category</span></a></li>
-<li><a href="EMobRenderType.html">
+<li><a href="../enums/EMobRenderType.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EMob<wbr/>Render<wbr/>Type</span></a></li>
-<li><a href="ENbtDataType.html">
+<li><a href="../enums/ENbtDataType.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>ENbt<wbr/>Data<wbr/>Type</span></a></li>
-<li><a href="EParticleType.html">
+<li><a href="../enums/EParticleType.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EParticle<wbr/>Type</span></a></li>
-<li><a href="EPlayerAbility.html">
+<li><a href="../enums/EPlayerAbility.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EPlayer<wbr/>Ability</span></a></li>
-<li><a href="EPotionEffect.html">
+<li><a href="../enums/EPotionEffect.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EPotion<wbr/>Effect</span></a></li>
-<li><a href="ETileEntityType.html">
+<li><a href="../enums/ETileEntityType.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>ETile<wbr/>Entity<wbr/>Type</span></a></li>
-<li><a href="VanillaBlockID.html">
+<li><a href="../enums/VanillaBlockID.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>BlockID</span></a></li>
-<li><a href="VanillaItemID.html">
+<li><a href="../enums/VanillaItemID.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>ItemID</span></a></li>
-<li><a href="VanillaTileID.html">
+<li><a href="../enums/VanillaTileID.html">
 <div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>TileID</span></a></li>
 <li><a href="../classes/ActorRenderer-1.html">
 <div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Actor<wbr/>Renderer</span></a></li>
@@ -580,19 +664,19 @@
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Vector</span></a></li>
 <li><a href="../interfaces/Weather.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Weather</span></a></li>
-<li><a href="../types/ArmorType.html">
+<li><a href="ArmorType.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Armor<wbr/>Type</span></a></li>
-<li><a href="../types/DefaultRenderTemplate.html">
+<li><a href="DefaultRenderTemplate.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Default<wbr/>Render<wbr/>Template</span></a></li>
-<li><a href="../types/ItemInstanceArray.html">
+<li><a href="ItemInstanceArray.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Item<wbr/>Instance<wbr/>Array</span></a></li>
-<li><a href="../types/Nullable.html">
+<li><a href="Nullable.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Nullable</span></a></li>
-<li><a href="../types/Scriptable.html">
+<li><a href="Scriptable.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Scriptable</span></a></li>
-<li><a href="../types/TransferPolicy.html">
+<li><a href="TransferPolicy.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Transfer<wbr/>Policy</span></a></li>
-<li><a href="../types/jbyte.html">
+<li><a href="jbyte.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>jbyte</span></a></li>
 <li><a href="../variables/BlockID.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>BlockID</span></a></li>
@@ -604,6 +688,8 @@
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>Entity<wbr/>Manager</span></a></li>
 <li><a href="../variables/ItemID.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>ItemID</span></a></li>
+<li><a href="../variables/UpdatableAPI.html" class="deprecated">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>UpdatableAPI</span></a></li>
 <li><a href="../variables/__config__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__config__</span></a></li>
 <li><a href="../variables/__dir__.html">
