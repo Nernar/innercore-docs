@@ -1,7 +1,8 @@
 /**
- * Module used to manipulate player. Player is also an entity in Minecraft, so 
+ * Module used to manipulate local player. Player is also an entity in Minecraft, so 
  * you can use all the functions from {@link Entity} module as well. To get player's 
  * entity uid, call {@link Player.getLocal} or {@link Player.getServer} depends on usage.
+ * Most of the methods are client-side, use {@link PlayerActor} instead.
  */
 declare namespace Player {
     /**
@@ -39,7 +40,7 @@ declare namespace Player {
 
     /**
      * @returns `true` if specified entity is of player type, `false` otherwise.
-     * @deprecated Works only with local player, use {@link Entity.getTypeName} instead.
+     * @deprecated Works only with local player, use {@link Entity.getType} instead.
      */
     function isPlayer(entityUid: number): boolean;
 
@@ -92,6 +93,7 @@ declare namespace Player {
      * @param extra item extra
      * @param preventDrop if set to false, function drops items that could not be 
      * added to player's inventory, destroys them otherwise
+     * @deprecated Client-side only, use {@link PlayerActor.addItemToInventory} instead.
      */
     function addItemToInventory(id: number, count: number, data: number, extra?: ItemExtraData, preventDrop?: boolean): void;
 
@@ -106,6 +108,8 @@ declare namespace Player {
      * @param count item count
      * @param data item data
      * @param extra item extra
+     * @deprecated Client-side only, use {@link PlayerActor.setInventorySlot}
+     * or {@link Entity.setCarriedItem} instead.
      */
     function setCarriedItem(id: number, count: number, data: number, extra?: ItemExtraData): void;
 
@@ -120,13 +124,16 @@ declare namespace Player {
      * @param count item count
      * @param data item data
      * @param extra item extra
+     * @deprecated Client-side only, use {@link Entity.setOffhandItem} instead.
      */
     function setOffhandItem(id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
      * Decreases carried item count by specified number.
-     * @param count amount of items to decrease carried item by, default value 
-     * is 1
+     * @param count amount of items to decrease carried item by,
+     * default value is `1`
+     * @deprecated Client-side only, use {@link PlayerActor.setInventorySlot}
+     * or {@link Entity.setCarriedItem} instead.
      */
     function decreaseCarriedItem(count?: number): void;
 
@@ -143,6 +150,7 @@ declare namespace Player {
      * @param count item count
      * @param data item data
      * @param extra item extra
+     * @deprecated Client-side only, use {@link PlayerActor.setInventorySlot} instead.
      */
     function setInventorySlot(slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
@@ -161,6 +169,7 @@ declare namespace Player {
      * @param count item count
      * @param data item data
      * @param extra item extra
+     * @deprecated Client-side only, use {@link PlayerActor.setArmor} instead.
      */
     function setArmorSlot(slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
@@ -176,27 +185,21 @@ declare namespace Player {
     function setSelectedSlotId(slot: number): void;
 
     /**
-     * Sets specified coordinates as player's position.
-     */
-    function setPosition(x: number, y: number, z: number): void;
-
-    /**
      * @returns Current player's position.
      */
     function getPosition(): Vector;
 
     /**
-     * Changes current player position by specified vector.
+     * Sets specified coordinates as player's position.
+     * @deprecated Client-side only, use {@link Entity.setPosition} instead.
      */
-    function addPosition(x: number, y: number, z: number): void;
+    function setPosition(x: number, y: number, z: number): void;
 
     /**
-     * Set player's velocity using velocity vector.
-     * @param x velocity
-     * @param y velocity
-     * @param z velocity
+     * Changes current player position by specified vector.
+     * @deprecated Client-side only, use {@link Entity.addPosition} instead.
      */
-    function setVelocity(x: number, y: number, z: number): void;
+    function addPosition(x: number, y: number, z: number): void;
 
     /**
      * Get player's velocity.
@@ -205,7 +208,17 @@ declare namespace Player {
     function getVelocity(): Vector;
 
     /**
+     * Set player's velocity using velocity vector.
+     * @param x velocity
+     * @param y velocity
+     * @param z velocity
+     * @deprecated Client-side only, use {@link Entity.setVelocity} instead.
+     */
+    function setVelocity(x: number, y: number, z: number): void;
+
+    /**
      * Updates current entity's velocity by specified values.
+     * @deprecated Client-side only, use {@link Entity.addVelocity} instead.
      */
     function addVelocity(x: number, y: number, z: number): void;
 
@@ -248,12 +261,14 @@ declare namespace Player {
     /**
      * Sets player's experience.
      * @param exp experience value to be set
+     * @deprecated Client-side only, use {@link PlayerActor.setExperience} instead.
      */
     function setExperience(exp: number): void;
 
     /**
      * Adds specified amount of experience to the current value.
      * @param exp amount to be added
+     * @deprecated Client-side only, use {@link PlayerActor.addExperience} instead.
      */
     function addExperience(exp: number): void;
 
@@ -296,12 +311,14 @@ declare namespace Player {
     /**
      * Sets player's level.
      * @param level level value to be set
+     * @deprecated Client-side only, use {@link PlayerActor.setLevel} instead.
      */
     function setLevel(level: number): void;
 
     /**
      * Adds specified amount of level to the current value.
      * @param level amount to be added
+     * @deprecated Client-side only, use {@link PlayerActor.setLevel} instead.
      */
     function addLevel(level: number): void;
 
@@ -352,6 +369,7 @@ declare namespace Player {
     /**
      * Enables or disables player's ability to fly.
      * @param enabled whether the player can fly or not
+     * @deprecated Client-side only, use {@link PlayerActor.setCanFly} instead.
      */
     function setFlyingEnabled(enabled: boolean): void;
 
@@ -400,6 +418,7 @@ declare namespace Player {
     /**
      * Sets player's exhaustion.
      * @param value exhaustion value to be set
+     * @deprecated Client-side only, use {@link PlayerActor.setExhaustion} instead.
      */
     function setExhaustion(value: number): void;
 
@@ -436,6 +455,7 @@ declare namespace Player {
     /**
      * Sets player's hunger.
      * @param value hunger value to be set
+     * @deprecated Client-side only, use {@link PlayerActor.setHunger} instead.
      */
     function setHunger(value: number): void;
 
@@ -472,6 +492,7 @@ declare namespace Player {
     /**
      * Sets player's saturation.
      * @param value saturation value to be set
+     * @deprecated Client-side only, use {@link PlayerActor.setSaturation} instead.
      */
     function setSaturation(value: number): void;
 
@@ -508,6 +529,8 @@ declare namespace Player {
     /**
      * Sets player's health.
      * @param value Health value to be set.
+     * @deprecated Client-side only, use {@link Entity.healEntity}
+     * and {@link Entity.damageEntity} instead.
      */
     function setHealth(value: number): void;
 
@@ -563,6 +586,8 @@ declare namespace Player {
      * @param value the value to be set for the ability; can be either boolean
      * or number, depending on the ability
      * @since 2.0.3b33
+     * @deprecated Client-side only, use {@link PlayerActor.setPlayerBooleanAbility}
+     * and {@link PlayerActor.setPlayerFloatAbility} instead.
      */
     function setAbility(ability: string, value: boolean | number): void;
 
