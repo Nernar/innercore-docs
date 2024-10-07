@@ -272,16 +272,14 @@ declare namespace Entity {
      * @param skin skin to set for the entity. Leave empty or null to use 
      * default skin of the mob
      * @returns Numeric ID of spawn entity or -1 if entity was not created.
-     * @remarks
-     * Local method, use {@link BlockSource.spawnEntity} instead.
+     * @deprecated Client-side method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawn(x: number, y: number, z: number, type: number, skin?: Nullable<string>): number;
 
     /**
      * Same as {@link Entity.spawn}, but uses {@link Vector} object to represent
      * coordinates.
-     * @remarks
-     * Local method, use {@link BlockSource.spawnEntity} instead.
+     * @deprecated Client-side method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawnAtCoords(coords: Vector, type: number, skin?: string): void;
 
@@ -290,7 +288,7 @@ declare namespace Entity {
      * to controllers via extra param.
      * @param name custom entity string ID
      * @param extra object that contains some data for the controllers
-     * @deprecated You've should implement addon entity and spawn it with
+     * @deprecated You are should implement addon entity and spawn it with
      * {@link BlockSource.spawnEntity} instead.
      */
     function spawnCustom(name: string, x: number, y: number, z: number, extra?: object): CustomEntity;
@@ -298,7 +296,7 @@ declare namespace Entity {
     /**
      * Same as {@link Entity.spawnCustom}, but uses {@link Vector} object to represent
      * coordinates.
-     * @deprecated You've should implement addon entity and spawn it with
+     * @deprecated You are should implement addon entity and spawn it with
      * {@link BlockSource.spawnEntity} instead.
      */
     function spawnCustomAtCoords(name: string, coords: Vector, extra?: any): CustomEntity;
@@ -306,8 +304,7 @@ declare namespace Entity {
     /**
      * Spawns custom entity defined in behavior packs or game itself.
      * @returns Instance to performing commands on entity.
-     * @remarks
-     * Local method, use {@link BlockSource.spawnEntity} instead.
+     * @deprecated Client-side method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawnAddon(x: number, y: number, z: number, name: string): AddonEntityRegistry.AddonEntity;
 
@@ -315,8 +312,7 @@ declare namespace Entity {
      * Same as {@link Entity.spawnAddon}, but uses {@link Vector} object to represent
      * coordinates.
      * @returns Instance to performing commands on entity.
-     * @remarks
-     * Local method, use {@link BlockSource.spawnEntity} instead.
+     * @deprecated Client-side method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawnAddonAtCoords(coords: Vector, name: string): AddonEntityRegistry.AddonEntity;
 

@@ -2,13 +2,14 @@
  * Module used to manage custom entities added via add-ons.
  * @since 2.0.1b18
  * @remarks
- * Depends on local player dimension, highly recommended replace it
+ * Depends on local player dimension, highly recommended to replace it
  * with {@link BlockSource.spawnEntity} and {@link Entity.getTypeName}.
  */
 declare namespace AddonEntityRegistry {
     /**
      * Spawns an entity defined via add-on on the specified coordinates.
      * @param nameID entity name ID, as defined from add-on
+     * @deprecated Client-side method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawn(x: number, y: number, z: number, nameID: string): number;
 
