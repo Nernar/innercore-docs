@@ -426,8 +426,12 @@ declare module UI {
     export function getScreenHeight(): number;
     
     /**
-	 * @returns Current {@link android.app.Activity} instance that can be used as 
-	 * {@link android.content.Context} wherever required.
+	 * Returns the currently running Android Activity, which can be
+	 * used for various actions: opening dialogs, instantiating widgets,
+	 * and many other operations with {@link android.content.Context}.
+	 * @remarks
+	 * It is not recommended to use it if it is possible to find
+	 * a replacement in the presented Inner Core API.
 	 */
     export function getContext(): android.app.Activity;
 
