@@ -681,9 +681,9 @@ declare namespace NBT {
             Max: number;
             Min: number;
             /**
-             * One of {@link Entity.Attributes} or your custom one.
+             * One of {@link Entity.Attribute} or your custom one.
              */
-            Name: Entity.Attributes | string;
+            Name: Entity.Attribute | string;
         }
 
         interface IBlockEntity extends Scriptable {

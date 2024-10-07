@@ -95,112 +95,55 @@ declare namespace Entity {
      */
     function clearEffects(entityUid: number): void;
 
-    enum DamageSources {
-        /**
-         * `"death.attack.generic"`
-         * @remarks
-         * Default damage source if anything else not found.
-         */
-        GENERIC = 0,
-        /**
-         * `"death.attack.cactus"` (only when standing on cactus)
-         */
-        CACTUS = 1,
-        /**
-         * `"death.attack.mob"`
-         */
-        MOB = 2,
-        IMPACT = 3,
-        /**
-         * `"death.attack.inWall"`
-         */
-        IN_WALL = 4,
-        /**
-         * `"death.attack.fall"` and `"death.fell.accident.generic"`
-         */
-        FALL = 5,
-        /**
-         * `"death.attack.inFire"`
-         */
-        IN_FIRE = 6,
-        /**
-         * `"death.attack.onFire"`
-         */
-        ON_FIRE = 7,
-        /**
-         * `"death.attack.lava"`
-         */
-        LAVA = 8,
-        /**
-         * `"death.attack.drown"`
-         */
-        DROWN = 9,
-        /**
-         * `"death.attack.explosion"`
-         */
-        EXPLOSION = 10,
-        /**
-         * `"death.attack.explosion"`
-         */
-        EXPLOSION_PLAYER = 11,
-        /**
-         * `"death.attack.outOfWorld"`
-         */
-        OUT_OF_WORLD = 12,
-        COMMAND = 13,
-        /**
-         * `"death.attack.magic"`
-         */
-        MAGIC = 14,
-        /**
-         * `"death.attack.wither"`
-         */
-        WITHER = 15,
-        /**
-         * `"death.attack.starve"`
-         */
-        STARVE = 16,
-        /**
-         * `"death.attack.anvil"`
-         */
-        ANVIL = 17,
-        /**
-         * `"death.attack.thorns"`
-         */
-        THORNS = 18,
-        PROJECTILE = 19,
-        /**
-         * `"death.attack.fallingBlock"`
-         */
-        FALLING_BLOCK = 20,
-        /**
-         * `"death.attack.flyIntoWall"`
-         */
-        FLY_INTO_WALL = 21,
-        /**
-         * `"death.attack.magma"`
-         */
-        MAGMA = 22,
-        /**
-         * `"death.attack.fireworks"`
-         */
-        FIREWORKS = 23,
-        /**
-         * `"death.attack.lightningBolt"`
-         */
-        LIGHTNING_BOLT = 24,
-        OVER_TIME = 4294967295
-    }
+    /**
+     * Damage sources, which are used to determine entity damage type:
+     * 
+     * Type | Name | Message | Translation
+     * ---|---|---|---
+     * 0 | Generic | "death.attack.generic" (fallback damage source) | * died
+     * 1 | Cactus | "death.attack.cactus" (only when standing on cactus) | * was pricked to death
+     * 2 | Mob | "death.attack.mob" | * was slain by *
+     * 3 | Impact | n/a
+     * 4 | In Wall | "death.attack.inWall" | * suffocated in a wall
+     * 5 | Fall | "death.attack.fall" OR "death.fell.accident.generic" | * hit the ground too hard OR * fell from a high place
+     * 6 | In Fire | "death.attack.inFire" | * went up in flames
+     * 7 | On Fire | "death.attack.onFire" | * burned to death
+     * 8 | Lava | "death.attack.lava" | * tried to swim in lava
+     * 9 | Drown | "death.attack.drown" | * drowned
+     * 10 | Explosion | "death.attack.explosion" | * blew up
+     * 11 | Explosion (Player) | "death.attack.explosion" | * was blown up by *
+     * 12 | Out Of World | "death.attack.outOfWorld" | * fell out of the world
+     * 13 | Command | n/a
+     * 14 | Magic | "death.attack.magic" | * was killed by magic
+     * 15 | Wither | "death.attack.wither" | * withered away
+     * 16 | Starve | "death.attack.starve" | * starved to death
+     * 17 | Anvil | "death.attack.anvil" | * was squashed by a falling anvil
+     * 18 | Thorns | "death.attack.thorns" | * was killed trying to hurt *
+     * 19 | Projectile | n/a
+     * 20 | Falling Block | "death.attack.fallingBlock" | * was squashed by a falling block
+     * 21 | Fly Into Wall | "death.attack.flyIntoWall" | * experienced kinetic energy
+     * 22 | Magma | "death.attack.magma" | * discovered floor was lava
+     * 23 | Fireworks | "death.attack.fireworks" | * went off with a bang
+     * 24 | Lightning Bolt | "death.attack.lightningBolt" | * was struck by lightning
+     */
+    type DamageSource = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24;
 
     /**
      * Damages entity.
      * @param damage damage value in half-hearts
-     * @param cause existing damage source or any inclusive value between 25 and 32
+     * @param cause existing {@link DamageSource} or any inclusive value between 25 and 32
      * @param properties additional damage source properties
-     * @param properties.attacker entity that caused damage, determines actor of damage source
-     * @param properties.bool1 if `true`, damage can be reduced by armor
      */
-    function damageEntity(entityUid: number, damage: number, cause?: DamageSources | number, properties?: { attacker?: number, bool1?: boolean }): void;
+    function damageEntity(entityUid: number, damage: number, cause?: DamageSource | number, properties?: {
+        /**
+         * Entity that caused damage, determines actor of damage source.
+         */
+        attacker?: number,
+        /**
+         * If `true`, damage can be reduced by armor.
+         */
+        bool1?: boolean
+    }): void;
 
     /**
      * Adds specified health amount to the entity.
@@ -789,30 +732,20 @@ declare namespace Entity {
      */
     function getProjectileItem(projectile: number): ItemInstance;
 
-    enum Attributes {
-        FOLLOW_RANGE = "minecraft:follow_range",
-        LUCK = "minecraft:luck",
-        LAVA_MOVEMENT = "minecraft:lava_movement",
-        UNDERWATER_MOVEMENT = "minecraft:underwater_movement",
-        MOVEMENT = "minecraft:movement",
-        KNOCKBACK_RESISTANCE = "minecraft:knockback_resistance",
-        ABSORPTION = "minecraft:absorption",
-        HEALTH = "minecraft:health",
-        ATTACK_DAMAGE = "minecraft:attack_damage",
-        JUMP_STRENGTH = "minecraft:jump_strength"
-    }
+    type Attribute = "minecraft:follow_range" | "minecraft:luck" | "minecraft:lava_movement" | "minecraft:underwater_movement" | "minecraft:movement" | "minecraft:knockback_resistance" | "minecraft:absorption" | "minecraft:health" | "minecraft:attack_damage" | "minecraft:jump_strength";
 
     /**
      * Creates an object used to change entity's attributes.
      * @param entity entity uid
-     * @param attribute one of {@link Attributes} or your custom one
+     * @param attribute one of {@link Attribute} or your custom one
      * @returns Object used to manipulate entity's attributes.
      * @since 2.0.3b33
      */
-    function getAttribute(entityUid: number, attribute: Attributes | string): AttributeInstance;
+    function getAttribute(entityUid: number, attribute: Attribute | string): AttributeInstance;
 
     /**
      * Interface used to modify attribute values.
+     * @since 2.0.3b33
      */
     interface AttributeInstance {
 
