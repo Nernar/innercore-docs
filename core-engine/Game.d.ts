@@ -2,6 +2,17 @@
  * Module that provides some general game-related functions.
  */
 declare namespace Game {
+    /**
+     * `true` if developer mode was enabled in Inner Core config.
+     * @internal
+     */
+    let isDeveloperMode: boolean;
+
+    /**
+     * `true` if Inner Core config allows spending items in creative.
+     * @internal
+     */
+    let spendItemsInCreative: boolean;
 
     /**
      * Allows you to determine whether current instance of game has
@@ -29,14 +40,14 @@ declare namespace Game {
      * Message can be formatted using {@link EColor} values.
      * @param message message to be displayed
      */
-    function message(message: string): void;
+    function message(message: any): void;
 
     /**
      * Writes message above the hot bar.
      * Message can be formatted using {@link EColor} values.
      * @param message message to be displayed
      */
-    function tipMessage(message: string): void;
+    function tipMessage(message: any): void;
 
     /**
      * Displays {@link android.app.AlertDialog} with given message and dialog title.
@@ -45,7 +56,7 @@ declare namespace Game {
      * @param message message to be displayed
      * @param title title before message
      */
-    function dialogMessage(message: string, title: string): void;
+    function dialogMessage(message: any, title: any): void;
 
     /**
      * Sets game difficulty, one of {@link EGameDifficulty} values.
@@ -71,35 +82,26 @@ declare namespace Game {
     function getGameMode(): number;
 
     /**
-     * @returns String containing current Minecraft version.
+     * String containing current Minecraft version.
+	 * @returns `"1.16.201"` or `"1.11.4"`
      */
     function getMinecraftVersion(): string;
 
     /**
-     * @returns String containing current Core Engine version (2.1).
+     * String containing current Core Engine version.
+     * @returns `"2.1"`
      */
     function getEngineVersion(): string;
 
     /**
-     * `true` if developer mode was enabled in Inner Core config.
-     * @internal
-     */
-    let isDeveloperMode: boolean;
-
-    /**
-     * `true` if Inner Core config allows spending items in creative.
-     * @internal
-     */
-    let spendItemsInCreative: boolean;
-
-    /**
-     * @returns `true` if item spending allowed (player must be in creative).
+     * @returns `true` if item spending allowed or player in creative.
      */
     function isItemSpendingAllowed(playerUid?: number): boolean;
 
     /**
+	 * Emulates native pressing of the back button inside
+	 * the game, for example, necessary to close current window.
      * @since 2.0.4b35
      */
     function simulateBackPressed(): void;
-
 }

@@ -9,8 +9,7 @@ declare namespace LowLevelUtils {
 	 */
 	function getNetwork(): typeof Network;
 	/**
-	 * Emulates native pressing of the back button inside
-	 * the game, for example, necessary to close current window.
+	 * Same as {@link Game.simulateBackPressed}.
 	 */
 	function simulateBackPressed(): void;
 	/**
@@ -33,7 +32,7 @@ declare namespace LowLevelUtils {
 	 */
 	function debugBmp(bitmap: android.graphics.Bitmap): void;
 	/**
-	 * @returns `"1.16.201"` or `"1.11.4"`
+	 * Same as {@link Game.getMinecraftVersion}.
 	 */
 	function getMinecraftVersion(): string;
 	/**
