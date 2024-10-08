@@ -6,7 +6,9 @@ declare namespace TileEntity {
     /**
      * @internal
      */
-    const tileEntityPrototypes: { [blockId: number]: TileEntityPrototype };
+    const tileEntityPrototypes: {
+        [blockId: number]: TileEntityPrototype
+    };
     /**
      * @internal
      */
@@ -15,15 +17,18 @@ declare namespace TileEntity {
      * @internal
      * @since 2.2.1b106
      */
-    const tileEntityCacheMap: { [location: string]: TileEntity };
+    const tileEntityCacheMap: {
+        [location: string]: TileEntity
+    };
 
     /**
+     * Clears active game tile list, maintaining updatable states.
      * @internal
      */
     function resetEngine(): void;
 
     /**
-     * Registers block as a TileEntity
+     * Registers block as a ticking tile entity.
      * @param blockID numeric block ID to be used
      * @param customPrototype a set of defining parameters
      * behavior
@@ -120,9 +125,50 @@ declare namespace TileEntity {
     function checkTileEntityForIndex(index: number): void;
 
     /**
+     * Interface passed to {@link TileEntity.registerPrototype} function
+     * as `client` property.
+     */
+    interface LocalTileEntityPrototype extends Scriptable {
+        /**
+         * Called when the client copy is created.
+         * @since 2.0.2b29
+         */
+        load?: () => void,
+        /**
+         * Called on destroying the client copy.
+         * @since 2.0.2b29
+         */
+        unload?: () => void,
+        /**
+         * Called every tick on client thread; you cannot set
+         * tick later if there is no function at all.
+         */
+        tick?: () => void,
+
+        /**
+         * Events that receive packets on the client side.
+         */
+        events?: {
+            /**
+             * Example of the client packet event function.
+             */
+            [packetName: string]: (packetData: any, packetExtra: any) => void;
+        },
+        /**
+         * Events of the container's client copy.
+         */
+        containerEvents?: {
+            /**
+             * Example of the client container event function.
+             */
+            [eventName: string]: (container: ItemContainer, window: UI.Window | UI.StandartWindow | UI.StandardWindow | UI.TabbedWindow | null, windowContent: UI.WindowContent | null, eventData: any) => void;
+        }
+    }
+
+    /**
      * Interface passed to {@link TileEntity.registerPrototype} function.
      */
-    interface TileEntityPrototype {
+    interface TileEntityPrototype extends Scriptable {
 		/**
          * Use ItemContainer that supports multiplayer.
          */
@@ -130,58 +176,11 @@ declare namespace TileEntity {
         /**
          * Default data values, will be initially added to {@link TileEntity.data} field.
          */
-        defaultValues?: Scriptable,
-        /**
-         * Called when a {@link TileEntity} is created.
-         */
-		created?: () => void,
-
+        defaultValues?: Scriptable;
 		/**
-         * Client TileEntity prototype copy.
+         * Client tile entity prototype copy.
          */
-        client?: {
-            /**
-             * Called when the client copy is created.
-             * @since 2.0.2b29
-             */
-            load?: () => void,
-            /**
-             * Called on destroying the client copy.
-             * @since 2.0.2b29
-             */
-            unload?: () => void,
-            /**
-             * Called when every client ticking.
-             * @since 2.0.2b29
-             */
-            onCheckerTick?: (isInitialized: boolean, isLoaded: boolean, wasLoaded: boolean) => void,
-            /**
-             * Called every tick on client thread.
-             */
-            tick?: () => void,
-            /**
-             * Events that receive packets on the client side.
-             */
-            events?: {
-                /**
-                 * Example of the client packet event function.
-                 */
-                [packetName: string]: (packetData: any, packetExtra: any) => void;
-            },
-            /**
-             * Events of the container's client copy.
-             */
-            containerEvents?: {
-                /**
-                 * Example of the client container event function.
-                 */
-                [eventName: string]: (container: ItemContainer, window: UI.Window | UI.StandartWindow | UI.StandardWindow | UI.TabbedWindow | null, windowContent: UI.WindowContent | null, eventData: any) => void;
-            }
-            /**
-              * Any other user-defined methods and properties.
-              */
-            [key: string]: any
-        },
+        client?: LocalTileEntityPrototype;
 
         /**
          * Events that receive packets on the server side.
@@ -192,7 +191,7 @@ declare namespace TileEntity {
              * 'this.sendResponse' method is only available here.
              */
             [packetName: string]: (packetData: any, packetExtra: any, connectedClient: NetworkClient) => void;
-        },
+        };
 
         /**
          * Events of the container on the server side.
@@ -202,17 +201,37 @@ declare namespace TileEntity {
              * Example of the server container event function.
              */
             [eventName: string]: (container: ItemContainer, window: UI.Window | UI.StandartWindow | UI.StandardWindow | UI.TabbedWindow | null, windowContent: UI.WindowContent | null, eventData: any) => void;
-        }
+        };
 
         /**
-         * Called when a {@link TileEntity} is initialised in the world.
+         * Called when a {@link TileEntity} is created.
          */
-        init?: () => void,
+		created?: () => void;
+        /**
+         * Called when a {@link TileEntity} is initialized in the world.
+         */
+        init?: () => void;
+        /**
+         * Called when the client copy is created.
+         * @since 2.0.2b29
+         */
+        load?: () => void;
+        /**
+         * Called on destroying the client copy.
+         * @since 2.0.2b29
+         */
+        unload?: () => void;
 
         /**
          * Called every tick and should be used for all the updates of the {@link TileEntity}.
          */
-        tick?: () => void,
+        tick?: () => void;
+
+        /**
+         * Called before every tile ticking to remove them.
+         * @since 2.0.2b29
+         */
+        onCheckerTick?: (isInitialized: boolean, isLoaded: boolean, wasLoaded: boolean) => void;
 
         /**
          * Called when player uses some item on a {@link TileEntity}.
@@ -220,25 +239,25 @@ declare namespace TileEntity {
          * the next handlers. Return `true` if you don't want the user interface
          * to be opened.
          */
-        click?: (id: number, count: number, data: number, coords: Callback.ItemUseCoordinates, player: number, extra: ItemExtraData) => boolean | void,
+        click?: (id: number, count: number, data: number, coords: Callback.ItemUseCoordinates, player: number, extra: ItemExtraData) => boolean | void;
 
         /**
          * Occurs when a block of the {@link TileEntity} is being destroyed. See
          * {@link Callback.DestroyBlockFunction} for details.
          */
-        destroyBlock?: (coords: Callback.ItemUseCoordinates, player: number) => void,
+        destroyBlock?: (coords: Callback.ItemUseCoordinates, player: number) => void;
 
         /**
          * Occurs when the {@link TileEntity} should handle redstone signal. See
          * {@link Callback.RedstoneSignalFunction} for details.
          */
-        redstone?: (params: { power: number, signal: number, onLoad: boolean }) => void,
+        redstone?: (params: Callback.RedstoneSignalParams) => void;
 
         /**
          * Occurs when a projectile entity hits the {@link TileEntity}. See
          * {@link Callback.ProjectileHitFunction} for details.
          */
-        projectileHit?: (coords: Callback.ItemUseCoordinates, target: Callback.ProjectileHitTarget) => void,
+        projectileHit?: (coords: Callback.ItemUseCoordinates, target: Callback.ProjectileHitTarget) => void;
 
         /**
          * Occurs when the {@link TileEntity} is being destroyed.
@@ -251,19 +270,19 @@ declare namespace TileEntity {
         /**
          * Called to get the {@link UI.IWindow} object for the current {@link TileEntity}. The
          * window is then opened within {@link TileEntity.container} when the player clicks it.
-		 * @deprecated Client method only.
+		 * @deprecated Client-side method only.
          */
-		getGuiScreen?: () => com.zhekasmirnov.innercore.api.mod.ui.window.IWindow;
+		getGuiScreen?: () => Nullable<UI.IWindow>;
 
 		/**
          * Called on server side and returns UI name to open on click.
          */
-        getScreenName?: (player: number, coords: Vector) => string;
+        getScreenName?: (player: number, coords: Vector) => Nullable<string>;
 
         /**
          * Called on client side, returns the window to open.
          */
-        getScreenByName?: (screenName?: string) => com.zhekasmirnov.innercore.api.mod.ui.window.IWindow;
+        getScreenByName?: (screenName?: string) => Nullable<UI.IWindow>;
 
         /**
          * Called when more liquid is required.
@@ -283,59 +302,156 @@ declare namespace TileEntity {
          * @since 2.3.1b116-3
          */
         onDisconnectionPlayer?: (client: NetworkClient) => void;
-
-        /**
-         * Any other user-defined methods and properties.
-         */
-        [key: string]: any;
     }
 }
 
 declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
-     * X coord of the TileEntity in it's dimension.
+     * X coord of the tile in it's dimension.
      */
     readonly x: number;
     /**
-     * Y coord of the TileEntity in it's dimension.
+     * Y coord of the tile in it's dimension.
      */
     readonly y: number;
     /**
-     * Z coord of the TileEntity in it's dimension.
+     * Z coord of the tile in it's dimension.
      */
     readonly z: number;
     /**
-     * Dimension where the TileEntity is located.
+     * Dimension where the tile is located.
      */
     readonly dimension: number;
     /**
-     * Block ID of TileEntity.
+     * Block ID of tile.
      */
     readonly blockID: number;
     /**
-     * TileEntity data values object.
+     * BlockSource object to manipulate tile position in world.
+     */
+    blockSource: BlockSource;
+    /**
+     * SyncedNetworkData object of the tile.
+     */
+    readonly networkData: SyncedNetworkData;
+    /**
+     * Instance of {@link networkEntityType} for the tile.
+     */
+    readonly networkEntity: NetworkEntity;
+    /**
+     * NetworkEntityType object of the tile.
+     */
+    readonly networkEntityType: NetworkEntityType;
+    /**
+     * @since 2.2.1b92
+     */
+    readonly networkEntityTypeName: string;
+    /**
+     * Tile data values object.
      */
     data: Scriptable;
     /**
-     * TileEntity's item container.
+     * Default data values, will be initially added to {@link TileEntity.data} field.
+     */
+    defaultValues: Scriptable;
+    /**
+     * Tile item container.
      */
     container: ItemContainer | UI.Container;
     /**
-     * TileEntity's liquid storage.
+     * Tile liquid storage.
      */
     liquidStorage: LiquidRegistry.Storage;
     /**
-     * `true` if TileEntity is loaded in the world.
+     * `true` if tile is loaded in the world.
      */
     isLoaded: boolean;
     /**
-     * `true` if TileEntity was destroyed.
+     * `true` if tile has been destroyed.
      */
     remove: boolean;
     /**
-     * Destroys the TileEntity prototype.
+     * `true` if tile cannot tick, update functions will
+     * not work in that case.
      */
-    selfDestroy: () => void;
+    noupdate: boolean;
+    /**
+     * Called when a {@link TileEntity} is created.
+     */
+    created: () => void,
+    /**
+     * Called when a {@link TileEntity} is initialized in the world.
+     */
+    init: () => void,
+    /**
+     * Called when the client copy is created.
+     * @since 2.0.2b29
+     */
+    load: () => void,
+    /**
+     * Called on destroying the client copy.
+     * @since 2.0.2b29
+     */
+    unload: () => void,
+    /**
+     * Called every tick to {@link TileEntity.TileEntityPrototype.tick} each
+     * tile if {@link TileEntity.noupdate} not active.
+     */
+    update: () => void,
+    /**
+     * Called before every tile ticking to remove them.
+     * @since 2.0.2b29
+     */
+    onCheckerTick: (isInitialized: boolean, isLoaded: boolean, wasLoaded: boolean) => void,
+    /**
+     * Called when player uses some item on a {@link TileEntity}.
+     * @returns `true` if the event is handled and should not be propagated to
+     * the next handlers. Return `true` if you don't want the user interface
+     * to be opened.
+     */
+    click: (id: number, count: number, data: number, coords: Callback.ItemUseCoordinates, player: number, extra: ItemExtraData) => boolean | void,
+    /**
+     * Occurs when a block of the {@link TileEntity} is being destroyed. See
+     * {@link Callback.DestroyBlockFunction} for details.
+     */
+    destroyBlock: (coords: Callback.ItemUseCoordinates, player: number) => void,
+    /**
+     * Occurs when the {@link TileEntity} should handle redstone signal. See
+     * {@link Callback.RedstoneSignalFunction} for details.
+     */
+    redstone: (params: Callback.RedstoneSignalParams) => void,
+    /**
+     * Occurs when a projectile entity hits the {@link TileEntity}. See
+     * {@link Callback.ProjectileHitFunction} for details.
+     */
+    projectileHit: (coords: Callback.ItemUseCoordinates, target: Callback.ProjectileHitTarget) => void,
+    /**
+     * Occurs when the {@link TileEntity} is being destroyed.
+     * @returns `true` to prevent it.
+     * {@link TileEntity} object from destroying (but if the block was destroyed, returning
+     * true from this function doesn't replace the missing block with a new one)
+     */
+    destroy: () => boolean | void;
+    /**
+     * Called to get the {@link UI.IWindow} object for the current {@link TileEntity}. The
+     * window is then opened within {@link TileEntity.container} when the player clicks it.
+     * @deprecated Client-side method only.
+     */
+    getGuiScreen: () => Nullable<UI.IWindow>;
+    /**
+     * Called on client side, returns the window to open.
+     */
+    getScreenByName: (screenName?: string) => Nullable<UI.IWindow>;
+    /**
+     * Emulates click on this tile, calling {@link TileEntity.TileEntityPrototype.click}
+     * or opening screen otherwise if window has present.
+     * @returns `true` if clicked or screen opened success, `false` otherwise
+     */
+    onItemClick: (id: number, count: number, data: number, coords: Callback.ItemUseCoordinates, player: number, extra: Nullable<ItemExtraData>) => boolean | void;
+    /**
+     * Called when more liquid is required.
+     */
+    requireMoreLiquid: (liquid: string, amount: number) => void;
     /**
      * Sends the packet from server to all clients.
      */
@@ -347,30 +463,47 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     sendResponse: (packetName: string, someData: object) => void;
     /**
-     * Gets useful string representation of tile, that is used for
-     * displaying errors, etc.
-     * @since 2.2.1b92
-     * @internal
+     * Destroys the tile prototype.
      */
-    _to_string: () => string;
+    selfDestroy: () => void;
+}
+
+declare interface LocalTileEntity extends TileEntity.LocalTileEntityPrototype {
     /**
-     * BlockSource object to manipulate TileEntity's position in world.
+     * X coord of the tile in it's dimension.
      */
-    blockSource: BlockSource;
+    readonly x: number;
     /**
-     * SyncedNetworkData object of the TileEntity.
+     * Y coord of the tile in it's dimension.
+     */
+    readonly y: number;
+    /**
+     * Z coord of the tile in it's dimension.
+     */
+    readonly z: number;
+    /**
+     * Dimension where the tile is located.
+     */
+    readonly dimension: number;
+    /**
+     * SyncedNetworkData object of the tile.
      */
     readonly networkData: SyncedNetworkData;
     /**
-     * Instance of {@link networkEntityType} for the TileEntity.
+     * Instance of {@link networkEntityType} for the tile.
      */
     readonly networkEntity: NetworkEntity;
     /**
-     * NetworkEntityType object of the TileEntity.
+     * `true` if tile has been destroyed.
      */
-    readonly networkEntityType: NetworkEntityType;
+    remove: boolean;
     /**
-     * @since 2.2.1b92
+     * `true` if tile cannot tick, update functions will
+     * not work in that case.
      */
-    readonly networkEntityTypeName: string;
+    noupdate: boolean;
+    /**
+     * Sends the packet from client to server.
+     */
+    sendPacket: (name: string, data: object) => void;
 }
