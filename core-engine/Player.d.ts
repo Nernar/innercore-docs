@@ -29,7 +29,13 @@ declare namespace Player {
     function getServer(): number;
 
     // TODO: Unimplemented methods, at least for b121.
+    // /**
+    //  * Returns name for specified entity, which is also known as name tag.
+    //  */
     // function getNameForEnt(entityUid: number): string;
+    // /**
+    //  * Returns name for local player, which is also known as name tag.
+    //  */
     // function getName(): void;
 
     /**
