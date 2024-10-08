@@ -31,45 +31,51 @@ declare namespace GenerationUtils {
      * Generates random coordinates inside specified chunk.
      * @param cx chunk x coordinate
      * @param cz chunk z coordinate
-     * @param lowest lowest possible y coordinate. Default is 0
-     * @param highest highest possible y coordinate. Default is 128
+     * @param lowest lowest possible y coordinate; default is `0`
+     * @param highest highest possible y coordinate; default is `128`
      */
     function randomCoords(cx: number, cz: number, lowest?: number, highest?: number): Vector;
 
     /**
-     * Finds nearest to the specified y coordinate empty space on the specified
+     * Finds limited to the specified y coordinate empty space on the specified
      * x and z coordinates.
      */
     function findSurface(x: number, y: number, z: number): Vector;
 
     /**
-     * Finds nearest to y=128 coordinate empty space on the specified x and z
+     * Finds limited to `y=128` coordinate empty space on the specified x and z
      * coordinates.
      */
     function findHighSurface(x: number, z: number): Vector;
 
     /**
-     * Finds nearest to y=64 coordinate empty space on the specified x and z
+     * Finds limited to `y=64` coordinate empty space on the specified x and z
      * coordinates.
      */
     function findLowSurface(x: number, z: number): Vector;
 
-    function lockInBlock(id: number, data: number, checkerTile: any, checkerMode: any): void;
+    // /**
+    //  * Locked via {@link GenerationUtils.lockInBlock} block, air by default.
+    //  */
+    // const __lockedReal: Tile;
+    // /**
+    //  * Changes block to be locked when generating new chunk, unused
+    //  * since upgrading to new Inner Core generation.
+    //  */
+    // function lockInBlock(id: number, data: number, checkerBlock?: number, inverse?: boolean): void;
+    // /**
+    //  * Locks block at specified location, which are changed via
+    //  * {@link GenerationUtils.lockInBlock} call.
+    //  */
+    // function setLockedBlock(x: number, y: number, z: number): void;
 
-    function setLockedBlock(x: number, y: number, z: number): void;
-
-    /**
-     * Generates ore vein on the specified coordinates using specified params.
-     * @param params generation params
-     * @deprecated Consider using {@link GenerationUtils.generateOre} instead.
-     */
-    function genMinable(x: number, y: number, z: number, params: {
+    interface IMinableParams {
         /**
-         * Ore tile ID.
+         * Ore block numeric identifier.
          */
         id: number,
         /**
-         * Ore data.
+         * Ore block data.
          */
         data: number,
         /**
@@ -77,47 +83,71 @@ declare namespace GenerationUtils {
          * generated in the air. Use this to debug ore generation in
          * the superflat worlds.
          */
-        noStoneCheck?: number,
+        noStoneCheck?: number
+    }
+
+    interface MinableAmountParams extends IMinableParams {
         /**
-         * Amount of the ore to be generated.
+         * Amount of the ore to be generated, minimum allowed value is `1`.
+         * Use at least `6` to be able to find generated ore vein.
+         * Note that amount doesn't mean blocks count, it is just an 
+         * input value for generation algorithm.
          */
-        amount?: number,
+        amount: number
+    }
+
+    interface MinableSizeParams extends IMinableParams {
         /**
-         * If amount is not specified, used to calculate amount.
+         * Amount ratio of ore vein per generation chunk.
+         * @default 1
          */
         ratio?: number,
         /**
-         * If amount is not specified, used to calculate amount,
-         * using simple formula `size * ratio * 3`.
+         * Used to calculate amount, using simple formula `size * ratio * 3`.
+         * Minimum allowed value of amount is `1`.
          */
-        size?: number
-    }): void;
+        size: number
+    }
+
+    type MinableParams = MinableAmountParams | MinableSizeParams;
+
+    /**
+     * Generates ore vein on the specified coordinates using specified params.
+     * @param params vein generation params
+     */
+    function genMinable(x: number, y: number, z: number, params: MinableParams): void;
 
     /**
      * Generates ore vein on the specified coordinates.
-     * @param id ore tile ID
-     * @param data ore data
-     * @param amount ore amount, use number at least 6 to be able to find 
-     * generated ore; note that amount doesn't mean blocks count, it is just an 
+     * @param id ore block ID
+     * @param data ore block data
+     * @param amount ore amount, use at least `6` to be able to find generated
+     * ore vein; note that amount doesn't mean blocks count, it is just an 
      * input value for generation algorithm
      * @param noStoneCheck if `true`, no check for stone is performed so the ore 
-     * may be generated in the air. Use this to debug ore generation in the 
+     * may be generated in the air; use this to debug ore generation in the 
      * superflat worlds
-     * @param seed random generation seed
      */
-    function generateOre(x: number, y: number, z: number, id: number, data: number, amount: number, noStoneCheck: boolean, seed?: number): void;
+    function generateOre(x: number, y: number, z: number, id: number, data: number, amount: number, noStoneCheck: boolean): void;
 
     /**
-     * Generates ore with custom whitelist/blacklist.
-     * @param mode if true, specified block IDs are used as whitelist for generation
-     * (only the IDs from the list can be replaced with ores), if false - specified 
+     * Generates ore vein on the specified coordinates with custom whitelist/blacklist.
+     * @param id ore block ID
+     * @param data ore block data
+     * @param amount ore amount, use at least `6` to be able to find generated
+     * ore vein; note that amount doesn't mean blocks count, it is just an 
+     * input value for generation algorithm
+     * @param noStoneCheck if `true`, no check for stone is performed so the ore 
+     * may be generated in the air; use this to debug ore generation in the 
+     * superflat worlds
+     * @param whitelist if `true`, specified block IDs are used as whitelist for generation
+     * (only the IDs from the list can be replaced with ores); if `false`, specified 
      * block IDs are used as a blacklist (only the IDs from the list canNOT be 
      * replaced with ores)
      * @param listOfIds array of block IDs to be used as whitelist or blacklist
-     * See {@link GenerationUtils.generateOre} for details.
      * @since 2.0.1b17
      */
-    function generateOreCustom(x: number, y: number, z: number, id: number, data: number, amount: number, mode: boolean, listOfIds: number[], seed?: number): void;
+    function generateOreCustom(x: number, y: number, z: number, id: number, data: number, amount: number, whitelist: boolean, listOfIds: number[]): void;
 
     /**
      * Retrieves perlin noise value at the specified coordinates.
