@@ -14,30 +14,42 @@ declare namespace ModAPI {
     /**
      * Registers new API for the mod and invokes mod API callback.
      * @param name API name used to import it in the other mods
-     * @param api object that is shared with the other mods. May contain other 
-     * objects, methods, variables, etc. Sometimes it is useful to provide the 
+     * @param api object that is shared with the other mods; may contain other 
+     * objects, methods, variables, etc.
+     * @param descr simple documentation for the mod API
+     * 
+     * @remarks
+     * Sometimes it is useful to provide the 
      * ability to run third party code in your own mod, you can create a method
      * that provides such possibility: 
      * ```js
      * requireGlobal(command) {
      *  return eval(command);
      * }
-     * ``` 
-     * @param descr simple documentation for the mod API
-     * @param descr.name full name of the API, if not specified, name parameter 
-     * value is used
-     * @param descr.props object containing descriptions of methods and 
-     * properties of the API, where keys are methods and properties names and 
-     * values are their descriptions
+     * ```
      */
-    function registerAPI(name: string, api: object, descr?: { name?: string, props?: object }): void;
+    function registerAPI(name: string, api: object, descr?: {
+        /**
+         * Full name of the API, if not specified, name parameter 
+         * value is used.
+         */
+        name?: string,
+        /**
+         * Object containing descriptions of methods and 
+         * properties of the API, where keys are methods and properties names and 
+         * values are their descriptions.
+         * @deprecated Writing documentation that way is not recommended.
+         */
+        props?: object
+    }): void;
 
     /**
      * Gets API by it's name. The best approach is to call this method in the
      * function passed as the second parameter of {@link ModAPI.addAPICallback}.
-     * @param name API name
+     * @param name API name from {@link ModAPI.registerAPI} call
      * @returns API object if an API with specified was previously registered,
      * `null` otherwise.
+     * 
      * @example
      * Importing API registered by IndustrialCraft PE:
      * ```js
@@ -61,7 +73,6 @@ declare namespace ModAPI {
 
     /**
      * Objects used to represent mod API documentation.
-     * @deprecated Writing documentation that way not recommended.
      */
     interface ModDocumentation {
         /**
@@ -76,41 +87,41 @@ declare namespace ModAPI {
     }
 
     /**
-     * @param name API name
+     * @param name API name from {@link ModAPI.registerAPI} call
      * @returns Documentation for the specified mod API.
-     * @deprecated Writing documentation that way is not better.
+     * @deprecated Writing documentation that way is not recommended.
      */
     function requireAPIdoc(name: string): Nullable<ModDocumentation>;
 
     /**
      * Fetches information about the method or property of mod API.
-     * @param name API name
+     * @param name API name from {@link ModAPI.registerAPI} call
      * @param prop property or method name
      * @returns String description of the method or null if no description was
      * provided by API vendor.
-     * @deprecated Writing documentation that way is not better.
+     * @deprecated Writing documentation that way is not recommended.
      */
     function requireAPIPropertyDoc(name: string, prop: string): Nullable<string>;
 
     /**
      * Adds callback for the specified mod API.
-     * @param apiName API name
+     * @param apiName API name from {@link ModAPI.registerAPI} call
      * @param func callback that is called when API is loaded
      */
-    function addAPICallback(apiName: string, func: (
+    function addAPICallback(apiName: string, func:
         /**
          * @param api shared mod API
          */
-        api: object
-    ) => void): void;
+        (api: object) => void
+    ): void;
 
     /**
      * Recursively copies (duplicates) the value to the new one.
      * @param api an object to be copied
-     * @param deep if `true`, copies the object recursively
+     * @param recursive if `true`, copies the object recursively
      * @returns A copy of the object.
      */
-    function cloneAPI<T>(api: T, deep?: boolean): T;
+    function cloneAPI<T>(api: T, recursive?: boolean): T;
 
     /**
      * Ensures target object has all the properties the source object has, if
@@ -128,7 +139,7 @@ declare namespace ModAPI {
      * @param recursive if `true`, copies the object recursively
      * @param depth current recursion state, if > 6, recursion stops; default 
      * value is 0
-     * @returns Cloned object, all the properties that are less then then 8 in
+     * @returns Cloned object, all the properties that are less then 8 in
      * depth, get copied.
      */
     function cloneObject<T extends object>(source: T, recursive?: boolean, depth?: number): T;
