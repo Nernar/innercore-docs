@@ -10,10 +10,10 @@ declare namespace MobRegistry {
 
     function getEntityUpdatable(entity: number): CustomEntity;
 
-    /**
-     * @deprecated Not implemented yet.
-     */
-    function registerNativeEntity(entity: number): undefined;
+    // /**
+    //  * @deprecated Not implemented yet.
+    //  */
+    // function registerNativeEntity(entity: number): undefined;
 
     function registerEntityRemove(entity: number): void;
 
@@ -28,7 +28,10 @@ declare namespace MobSpawnRegistry {
     function registerSpawn(entityType: number, rarity: number, condition?: () => boolean, denyNaturalDespawn?: boolean): void;
 
     interface SpawnInterface {
-        type: number, rarity: number, condition: Nullable<() => boolean>, denyNaturalDespawn: boolean;
+        type: number,
+        rarity: number,
+        condition: () => boolean,
+        denyNaturalDespawn?: boolean;
     }
 
     function getRandomSpawn(rarityMultiplier: number): any;
