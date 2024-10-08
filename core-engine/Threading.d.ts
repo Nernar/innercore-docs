@@ -8,7 +8,7 @@ declare namespace Threading {
      * access required thread by name.
      * @internal
      */
-    let threads: {
+    const threads: {
         [name: string]: java.lang.Thread
     };
 

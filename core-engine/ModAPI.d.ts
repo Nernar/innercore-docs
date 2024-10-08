@@ -7,7 +7,7 @@ declare namespace ModAPI {
      * to directly access required instance.
      * @internal
      */
-    let modAPIs: {
+    const modAPIs: {
         [name: string]: { api: string, descr: ModDocumentation }
     };
 
