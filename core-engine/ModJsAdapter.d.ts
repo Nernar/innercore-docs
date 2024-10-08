@@ -154,11 +154,6 @@ declare namespace Mod {
         RunMod(additionalScope: any): void;
         configureMultiplayer(name: string, version: string, isClientOnly: boolean): void;
         runCustomSource(name: string, additionalScope: any): void;
-
-        /**
-         * Other methods and properties.
-         */
-        [key: string]: any
     }
 
 }

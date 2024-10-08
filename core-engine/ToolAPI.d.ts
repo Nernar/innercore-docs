@@ -273,9 +273,9 @@ declare namespace ToolAPI {
 
     /**
      * Object containing additional parameters and functions used by Core Engine
-     * to work with the tool
+     * to work with the tool.
      */
-    interface ToolParams {
+    interface ToolParams extends Scriptable {
         /**
          * Numeric ID of the item that replaces tool item when it's broken.
          * By default the tool disappears.
@@ -463,12 +463,7 @@ declare namespace ToolAPI {
              * Entity UID of the player that destroyed the block.
              */
             player: number
-        ) => void,
-
-		/**
-         * Any other user-defined methods and properties
-         */
-		[key: string]: any
+        ) => void
     }
 
     /**

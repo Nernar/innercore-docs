@@ -1,3 +1,16 @@
+interface GameObjectPrototype extends Updatable {
+    /**
+     * Function that is called when a new instance of {@link GameObject} is created,
+     * the engine passes all the arguments of {@link GameObject.deploy} function to
+     * this function.
+     */
+    init?: (...args: any) => void,
+    /**
+     * Function that is called when a {@link GameObject} is loaded.
+     */
+    loaded?: () => void
+}
+
 /**
  * Class used to create and manipulate game objects. Game objects are {@link Updatable Updatables}
  * that are being saved between game launches.
@@ -59,24 +72,6 @@ declare class GameObject<T extends GameObjectPrototype> {
      * Destroys current game object.
      */
     destroy(): void;
-}
-
-interface GameObjectPrototype extends Updatable {
-    /**
-     * Function that is called when a new instance of {@link GameObject} is created,
-     * the engine passes all the arguments of {@link GameObject.deploy} function to
-     * this function.
-     */
-    init?: (...args: any) => void,
-    /**
-     * Function that is called when a {@link GameObject} is loaded.
-     */
-    loaded?: () => void,
-
-    /**
-     * Any other user-defined methods and properties.
-     */
-    [key: string]: any
 }
 
 declare namespace GameObjectRegistry {

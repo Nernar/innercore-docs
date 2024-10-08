@@ -32,10 +32,9 @@ declare module com {
                              * It means that each element must have coords on the GUI by X, Y, and additionally Z axis,
                              * and also you can specify how the element will behave when touched, in clicker object (optional).
                              */
-                            export interface BasicElementDescription {
+                            export interface BasicElementDescription extends Scriptable {
                                 x?: number, y?: number, z?: number,
-                                clicker?: UIClickEvent,
-                                [key: string]: any
+                                clicker?: UIClickEvent
                             }
                             /**
                              * This is the base Java abstract class, which are all Inner Core element types inherited from.
