@@ -32,7 +32,7 @@ that are being saved between game launches.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">GameObject</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17108">core-engine.d.ts:17108</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17327">core-engine.d.ts:17327</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -55,6 +55,8 @@ that are being saved between game launches.</p>
 <div class="codicon codicon-symbol-property tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>is<wbr/>Instance</span></a>
 <a href="GameObject.html#originalName" class="tsd-index-link">
 <div class="codicon codicon-symbol-property tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>original<wbr/>Name</span></a>
+<a href="GameObject.html#saverId" class="tsd-index-link">
+<div class="codicon codicon-symbol-property tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>saver<wbr/>Id</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Methods</h3>
@@ -62,6 +64,8 @@ that are being saved between game launches.</p>
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>deploy</span></a>
 <a href="GameObject.html#destroy" class="tsd-index-link">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>destroy</span></a>
+<a href="GameObject.html#instantiate" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>instantiate</span></a>
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Constructors</h2>
@@ -76,7 +80,7 @@ that are being saved between game launches.</p>
 <h4>Type Parameters</h4>
 <ul class="tsd-type-parameter-list">
 <li>
-<h4><span class="tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol"> extends </span><a href="../interfaces/GameObjectPrototype.html" class="tsd-signature-type tsd-kind-interface">GameObjectPrototype</a></h4></li></ul></section>
+<h4><span class="tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol"> extends </span><a href="../interfaces/GameObjectPrototype.html" class="tsd-signature-type tsd-kind-interface">GameObjectPrototype</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4></li></ul></section>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
@@ -92,40 +96,58 @@ ensure your game object name is unique</p>
 <h4 class="tsd-returns-title">Returns <a href="GameObject.html" class="tsd-signature-type tsd-kind-class">GameObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17115">core-engine.d.ts:17115</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17334">core-engine.d.ts:17334</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member"><a id="Prototype" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>Prototype</span><a href="#Prototype" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">Prototype</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type tsd-kind-type-parameter">T</span></div><aside class="tsd-sources">
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <code class="tsd-tag ts-flagInternal">Internal</code> <span>Prototype</span><a href="#Prototype" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">Prototype</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type tsd-kind-type-parameter">T</span></div>
+<div class="tsd-comment tsd-typography"><p>Prototype from which instantiated objects are created.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17126">core-engine.d.ts:17126</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17361">core-engine.d.ts:17361</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="gameobjectName" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>gameobject<wbr/>Name</span><a href="#gameobjectName" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">gameobject<wbr/>Name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
+<div class="tsd-signature"><span class="tsd-kind-property">gameobject<wbr/>Name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+<div class="tsd-comment tsd-typography"><p>Same as <a href="GameObject.html#originalName" class="tsd-kind-property">originalName</a>, but with suffix
+which are used for object saving to be unique.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17120">core-engine.d.ts:17120</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17343">core-engine.d.ts:17343</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="isDeployed" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>is<wbr/>Deployed</span><a href="#isDeployed" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Deployed</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-<div class="tsd-comment tsd-typography"><p><code>true</code> if current GameObject was deployed, <code>false</code> otherwise.</p>
+<div class="tsd-comment tsd-typography"><p><code>true</code> if current object was deployed or added directly.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17125">core-engine.d.ts:17125</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17356">core-engine.d.ts:17356</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="isInstance" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>is<wbr/>Instance</span><a href="#isInstance" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Instance</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
+<div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Instance</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+<div class="tsd-comment tsd-typography"><p><code>true</code> if current object is instance, prototype otherwise.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17121">core-engine.d.ts:17121</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17352">core-engine.d.ts:17352</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="originalName" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>original<wbr/>Name</span><a href="#originalName" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">original<wbr/>Name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-<div class="tsd-comment tsd-typography"><p>Original value passed to <a href="GameObject.html#constructor" class="tsd-kind-constructor">constructor</a>.</p>
+<div class="tsd-comment tsd-typography"><p>Original value passed to <a href="GameObject.html#constructor" class="tsd-kind-constructor">constructor</a> as type.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17119">core-engine.d.ts:17119</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17338">core-engine.d.ts:17338</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="saverId" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <code class="tsd-tag ts-flagInternal">Internal</code> <span>saver<wbr/>Id</span><a href="#saverId" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">saver<wbr/>Id</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-comment tsd-typography"><p>Used when <a href="../functions/Saver.registerObject.html" class="tsd-kind-function">registerObject</a> calling inside.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17348">core-engine.d.ts:17348</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member"><a id="deploy" class="tsd-anchor"></a>
@@ -133,23 +155,22 @@ ensure your game object name is unique</p>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="deploy.deploy-1"><span class="tsd-kind-call-signature">deploy</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="GameObject.html" class="tsd-signature-type tsd-kind-class">GameObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><a href="#deploy.deploy-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Creates a new game object with specified params and registers it for saving
-and as an <a href="../interfaces/Updatable-1.html" class="tsd-kind-interface">Updatable</a>.</p>
+<div class="tsd-comment tsd-typography"><p>Creates a new game object with specified params and registers
+it for saving and as an <a href="../interfaces/Updatable-1.html" class="tsd-kind-interface">Updatable</a>.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
 <h5><code class="tsd-tag ts-flagRest">Rest</code> <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span>: <span class="tsd-signature-type">any</span></h5>
-<div class="tsd-comment tsd-typography"><p>any arguments that are passed to <a href="../interfaces/GameObjectPrototype.html#init" class="tsd-kind-property">init</a>
-function</p>
+<div class="tsd-comment tsd-typography"><p>any arguments that are passed to <a href="../interfaces/GameObjectPrototype.html#init" class="tsd-kind-property">init</a> function</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="GameObject.html" class="tsd-signature-type tsd-kind-class">GameObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><p>Instantiated game object.</p>
 
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17134">core-engine.d.ts:17134</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17375">core-engine.d.ts:17375</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="destroy" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>destroy</span><a href="#destroy" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -160,7 +181,20 @@ function</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17138">core-engine.d.ts:17138</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17379">core-engine.d.ts:17379</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="instantiate" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>instantiate</span><a href="#instantiate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="instantiate.instantiate-1"><span class="tsd-kind-call-signature">instantiate</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="GameObject.html" class="tsd-signature-type tsd-kind-class">GameObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span><a href="#instantiate.instantiate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description"><code class="tsd-tag ts-flagInternal">Internal</code> 
+<div class="tsd-comment tsd-typography"><p>Creates a new game object without deploying it; you are shouldn&#39;t
+do it normally, it was called by <a href="GameObject.html#deploy" class="tsd-kind-method">deploy</a>.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <a href="GameObject.html" class="tsd-signature-type tsd-kind-class">GameObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type tsd-kind-type-parameter">T</span><span class="tsd-signature-symbol">&gt;</span></h4><p>Instantiated game object.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17368">core-engine.d.ts:17368</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -418,6 +452,8 @@ function</p>
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Instance</span></a></li>
 <li><a href="../interfaces/ItemModel-1.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Model</span></a></li>
+<li><a href="../interfaces/LocalTileEntity.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Local<wbr/>Tile<wbr/>Entity</span></a></li>
 <li><a href="../interfaces/LookAngle.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Look<wbr/>Angle</span></a></li>
 <li><a href="../interfaces/NativeTileEntity.html">

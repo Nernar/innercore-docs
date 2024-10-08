@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>registerNativeEntity | Core Engine</title><meta name="description" content="Documentation for Core Engine"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><link rel="stylesheet" href="../assets/codicon.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>activeGameObjects | Core Engine</title><meta name="description" content="Documentation for Core Engine"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><link rel="stylesheet" href="../assets/codicon.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
 <div class="tsd-toolbar-contents container">
 <div class="table-cell" id="tsd-search" data-base="..">
 <div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption">
@@ -15,24 +15,22 @@
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb">
 <li><a href="../index.html">Core Engine</a></li>
-<li><a href="../modules/MobRegistry.html">MobRegistry</a></li>
-<li><a href="MobRegistry.registerNativeEntity.html">registerNativeEntity</a></li></ul>
-<h1>Function registerNativeEntity</h1></div>
-<section class="tsd-panel">
-<ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="registerNativeEntity"><span class="tsd-kind-call-signature">register<wbr/>Native<wbr/>Entity</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">entity</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><a href="#registerNativeEntity" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
-<li class="tsd-description">
-<div class="tsd-parameters">
-<h4 class="tsd-parameters-title">Parameters</h4>
-<ul class="tsd-parameter-list">
-<li>
-<h5><span class="tsd-kind-parameter">entity</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span></h4>
-<div class="tsd-comment tsd-typography">
-<h4>Deprecated</h4><p>Not implemented yet.</p>
-</div><aside class="tsd-sources">
+<li><a href="../modules/GameObjectRegistry.html">GameObjectRegistry</a></li>
+<li><a href="GameObjectRegistry.activeGameObjects.html">activeGameObjects</a></li></ul>
+<h1>Variable activeGameObjects<code class="tsd-tag ts-flagConst">Const</code> <code class="tsd-tag ts-flagInternal">Internal</code> </h1></div>
+<div class="tsd-signature"><span class="tsd-kind-variable">active<wbr/>Game<wbr/>Objects</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span>[<span class="tsd-kind-index-signature">type</span>: <span class="tsd-signature-type">string</span>]<span class="tsd-signature-symbol">: </span><a href="../classes/GameObject.html" class="tsd-signature-type tsd-kind-class">GameObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span></div>
+<div class="tsd-comment tsd-typography"><p>Game objects which are deployed via <a href="../classes/GameObject.html#deploy" class="tsd-kind-method">deploy</a>
+or internally via <a href="../functions/GameObjectRegistry.deployGameObject.html" class="tsd-kind-function">deployGameObject</a>
+and <a href="../functions/GameObjectRegistry.addGameObject.html" class="tsd-kind-function">addGameObject</a>.</p>
+</div>
+<div class="tsd-type-declaration">
+<h4>Type declaration</h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter-index-signature">
+<h5><span class="tsd-signature-symbol">[</span><span class="tsd-kind-parameter">type</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../classes/GameObject.html" class="tsd-signature-type tsd-kind-class">GameObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5></li></ul></div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L19336">core-engine.d.ts:19336</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17396">core-engine.d.ts:17396</a></li></ul></aside></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -92,8 +90,33 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game</span></a></li>
 <li><a href="../modules/GameController.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game<wbr/>Controller</span></a></li>
-<li><a href="../modules/GameObjectRegistry.html">
-<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game<wbr/>Object<wbr/>Registry</span></a></li>
+<li>
+<details class="tsd-index-accordion" open data-key="GameObjectRegistry"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/GameObjectRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game<wbr/>Object<wbr/>Registry</span></a></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li><a href="GameObjectRegistry.activeGameObjects.html" class="current">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>active<wbr/>Game<wbr/>Objects</span></a></li>
+<li><a href="GameObjectRegistry.gameObjectTypes.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>game<wbr/>Object<wbr/>Types</span></a></li>
+<li><a href="../functions/GameObjectRegistry.addGameObject.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>add<wbr/>Game<wbr/>Object</span></a></li>
+<li><a href="../functions/GameObjectRegistry.callForType.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>call<wbr/>For<wbr/>Type</span></a></li>
+<li><a href="../functions/GameObjectRegistry.callForTypeSafe.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>call<wbr/>For<wbr/>Type<wbr/>Safe</span></a></li>
+<li><a href="../functions/GameObjectRegistry.deployGameObject.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>deploy<wbr/>Game<wbr/>Object</span></a></li>
+<li><a href="../functions/GameObjectRegistry.genUniqueName.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>gen<wbr/>Unique<wbr/>Name</span></a></li>
+<li><a href="../functions/GameObjectRegistry.getAllByType.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>All<wbr/>By<wbr/>Type</span></a></li>
+<li><a href="../functions/GameObjectRegistry.registerClass.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>register<wbr/>Class</span></a></li>
+<li><a href="../functions/GameObjectRegistry.removeGameObject.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>remove<wbr/>Game<wbr/>Object</span></a></li>
+<li><a href="../functions/GameObjectRegistry.resetEngine.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>reset<wbr/>Engine</span></a></li></ul></div></details></li>
 <li><a href="../modules/GenerationUtils.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Generation<wbr/>Utils</span></a></li>
 <li><a href="../modules/ICRender.html">
@@ -112,25 +135,8 @@
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Logger</span></a></li>
 <li><a href="../modules/LowLevelUtils.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Low<wbr/>Level<wbr/>Utils</span></a></li>
-<li>
-<details class="tsd-index-accordion deprecated" open data-key="MobRegistry"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/MobRegistry.html">
-<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mob<wbr/>Registry</span></a></summary>
-<div class="tsd-accordion-details">
-<ul class="tsd-nested-navigation">
-<li><a href="MobRegistry.getEntityUpdatable.html" class="deprecated">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>Entity<wbr/>Updatable</span></a></li>
-<li><a href="MobRegistry.registerEntity.html" class="deprecated">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>register<wbr/>Entity</span></a></li>
-<li><a href="MobRegistry.registerEntityRemove.html" class="deprecated">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>register<wbr/>Entity<wbr/>Remove</span></a></li>
-<li><a href="MobRegistry.registerNativeEntity.html" class="current deprecated">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>register<wbr/>Native<wbr/>Entity</span></a></li>
-<li><a href="MobRegistry.registerUpdatableAsEntity.html" class="deprecated">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>register<wbr/>Updatable<wbr/>As<wbr/>Entity</span></a></li>
-<li><a href="MobRegistry.resetEngine.html" class="deprecated">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>reset<wbr/>Engine</span></a></li>
-<li><a href="MobRegistry.spawnEntityAsPrototype.html" class="deprecated">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>spawn<wbr/>Entity<wbr/>As<wbr/>Prototype</span></a></li></ul></div></details></li>
+<li><a href="../modules/MobRegistry.html" class="deprecated">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mob<wbr/>Registry</span></a></li>
 <li><a href="../modules/MobSpawnRegistry.html" class="deprecated">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mob<wbr/>Spawn<wbr/>Registry</span></a></li>
 <li><a href="../modules/Mod.html">
@@ -307,6 +313,8 @@
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Instance</span></a></li>
 <li><a href="../interfaces/ItemModel-1.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Model</span></a></li>
+<li><a href="../interfaces/LocalTileEntity.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Local<wbr/>Tile<wbr/>Entity</span></a></li>
 <li><a href="../interfaces/LookAngle.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Look<wbr/>Angle</span></a></li>
 <li><a href="../interfaces/NativeTileEntity.html">
@@ -335,61 +343,61 @@
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Transfer<wbr/>Policy</span></a></li>
 <li><a href="../types/jbyte.html">
 <div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>jbyte</span></a></li>
-<li><a href="../variables/BlockID.html">
+<li><a href="BlockID.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>BlockID</span></a></li>
-<li><a href="../variables/ECS_INVALID_ENTITY.html">
+<li><a href="ECS_INVALID_ENTITY.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>ECS_<wbr/>INVALID_<wbr/>ENTITY</span></a></li>
-<li><a href="../variables/ECS_TAG_OBJECT.html">
+<li><a href="ECS_TAG_OBJECT.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>ECS_<wbr/>TAG_<wbr/>OBJECT</span></a></li>
-<li><a href="../variables/EntityManager.html">
+<li><a href="EntityManager.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>Entity<wbr/>Manager</span></a></li>
-<li><a href="../variables/ItemID.html">
+<li><a href="ItemID.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>ItemID</span></a></li>
-<li><a href="../variables/UpdatableAPI.html" class="deprecated">
+<li><a href="UpdatableAPI.html" class="deprecated">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>UpdatableAPI</span></a></li>
-<li><a href="../variables/__config__.html">
+<li><a href="__config__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__config__</span></a></li>
-<li><a href="../variables/__dir__.html">
+<li><a href="__dir__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__dir__</span></a></li>
-<li><a href="../variables/__mod__.html">
+<li><a href="__mod__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__mod__</span></a></li>
-<li><a href="../variables/__modpack__.html">
+<li><a href="__modpack__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__modpack__</span></a></li>
-<li><a href="../variables/__name__.html">
+<li><a href="__name__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__name__</span></a></li>
-<li><a href="../variables/__packdir__.html">
+<li><a href="__packdir__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__packdir__</span></a></li>
-<li><a href="../variables/__version__.html">
+<li><a href="__version__.html">
 <div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__version__</span></a></li>
-<li><a href="ConfigureMultiplayer.html">
+<li><a href="../functions/ConfigureMultiplayer.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>Configure<wbr/>Multiplayer</span></a></li>
-<li><a href="EXPORT.html">
+<li><a href="../functions/EXPORT.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>EXPORT</span></a></li>
-<li><a href="IMPORT.html">
+<li><a href="../functions/IMPORT.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>IMPORT</span></a></li>
-<li><a href="IMPORT_NATIVE.html">
+<li><a href="../functions/IMPORT_NATIVE.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>IMPORT_<wbr/>NATIVE</span></a></li>
-<li><a href="LIBRARY.html">
+<li><a href="../functions/LIBRARY.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>LIBRARY</span></a></li>
-<li><a href="WRAP_JAVA.html">
+<li><a href="../functions/WRAP_JAVA.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>WRAP_<wbr/>JAVA</span></a></li>
-<li><a href="WRAP_NATIVE.html">
+<li><a href="../functions/WRAP_NATIVE.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>WRAP_<wbr/>NATIVE</span></a></li>
-<li><a href="__debug_typecheck__.html">
+<li><a href="../functions/__debug_typecheck__.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>__debug_<wbr/>typecheck__</span></a></li>
-<li><a href="alert.html">
+<li><a href="../functions/alert.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>alert</span></a></li>
-<li><a href="getCoreAPILevel.html">
+<li><a href="../functions/getCoreAPILevel.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>CoreAPILevel</span></a></li>
-<li><a href="getMCPEVersion.html">
+<li><a href="../functions/getMCPEVersion.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>getMCPEVersion</span></a></li>
-<li><a href="importLib.html">
+<li><a href="../functions/importLib.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>import<wbr/>Lib</span></a></li>
-<li><a href="runCustomSource.html">
+<li><a href="../functions/runCustomSource.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>Custom<wbr/>Source</span></a></li>
-<li><a href="runOnClientThread.html">
+<li><a href="../functions/runOnClientThread.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>On<wbr/>Client<wbr/>Thread</span></a></li>
-<li><a href="runOnMainThread.html">
+<li><a href="../functions/runOnMainThread.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>On<wbr/>Main<wbr/>Thread</span></a></li></ul></nav></div></div></div>
 <div class="container tsd-generator">
 <p>Copyright © 2024 Nernar. Copyright © 2020 #mineprogramming. Built with ❤ and <a href="https://typedoc.org/" target="_blank">TypeDoc</a>.</p></div>

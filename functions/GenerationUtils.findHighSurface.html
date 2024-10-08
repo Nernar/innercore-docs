@@ -22,7 +22,7 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="findHighSurface"><span class="tsd-kind-call-signature">find<wbr/>High<wbr/>Surface</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">x</span>, <span class="tsd-kind-parameter">z</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/Vector.html" class="tsd-signature-type tsd-kind-interface">Vector</a><a href="#findHighSurface" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Finds nearest to y=128 coordinate empty space on the specified x and z
+<div class="tsd-comment tsd-typography"><p>Finds limited to <code>y=128</code> coordinate empty space on the specified x and z
 coordinates.</p>
 </div>
 <div class="tsd-parameters">
@@ -35,7 +35,7 @@ coordinates.</p>
 <h4 class="tsd-returns-title">Returns <a href="../interfaces/Vector.html" class="tsd-signature-type tsd-kind-interface">Vector</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/Nernar/api/blob/ade95a2/declarations/core-engine.d.ts#L17026">core-engine.d.ts:17026</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/Nernar/api/blob/7156114/declarations/core-engine.d.ts#L17206">core-engine.d.ts:17206</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -102,6 +102,14 @@ coordinates.</p>
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Generation<wbr/>Utils</span></a></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
+<li><a href="../interfaces/GenerationUtils.IMinableParams.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>IMinable<wbr/>Params</span></a></li>
+<li><a href="../interfaces/GenerationUtils.MinableAmountParams.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Minable<wbr/>Amount<wbr/>Params</span></a></li>
+<li><a href="../interfaces/GenerationUtils.MinableSizeParams.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Minable<wbr/>Size<wbr/>Params</span></a></li>
+<li><a href="../types/GenerationUtils.MinableParams.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Minable<wbr/>Params</span></a></li>
 <li><a href="GenerationUtils.canSeeSky.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>can<wbr/>See<wbr/>Sky</span></a></li>
 <li><a href="GenerationUtils.findHighSurface.html" class="current">
@@ -122,14 +130,10 @@ coordinates.</p>
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>is<wbr/>Terrain<wbr/>Block</span></a></li>
 <li><a href="GenerationUtils.isTransparentBlock.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>is<wbr/>Transparent<wbr/>Block</span></a></li>
-<li><a href="GenerationUtils.lockInBlock.html">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>lock<wbr/>In<wbr/>Block</span></a></li>
 <li><a href="GenerationUtils.randomCoords.html">
 <div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>random<wbr/>Coords</span></a></li>
 <li><a href="GenerationUtils.randomXZ.html">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>randomXZ</span></a></li>
-<li><a href="GenerationUtils.setLockedBlock.html">
-<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>set<wbr/>Locked<wbr/>Block</span></a></li></ul></div></details></li>
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>randomXZ</span></a></li></ul></div></details></li>
 <li><a href="../modules/ICRender.html">
 <div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>ICRender</span></a></li>
 <li><a href="../modules/IDData.html">
@@ -324,6 +328,8 @@ coordinates.</p>
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Instance</span></a></li>
 <li><a href="../interfaces/ItemModel-1.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Model</span></a></li>
+<li><a href="../interfaces/LocalTileEntity.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Local<wbr/>Tile<wbr/>Entity</span></a></li>
 <li><a href="../interfaces/LookAngle.html">
 <div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Look<wbr/>Angle</span></a></li>
 <li><a href="../interfaces/NativeTileEntity.html">
