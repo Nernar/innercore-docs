@@ -657,17 +657,29 @@ declare namespace Callback {
         (projectile: number, item: ItemInstance, target: ProjectileHitTarget): void
     }
 
+    interface RedstoneSignalParams {
+        /**
+         * Redstone signal power.
+         */
+        power: number,
+        /**
+         * Same as {@link RedstoneSignalParams.power}.
+         */
+        signal: number,
+        /**
+         * `true` if it is loading change.
+         */
+        onLoad: boolean
+    }
+
     /**
      * Function used in "RedstoneSignal" callback.
      * @param coords coordinates where redstone signal changed
      * @param params information about redstone signal
-     * @param params.power redstone signal power
-     * @param params.signal same as params.power
-     * @param params.onLoad always true
      * @param block information about the block on the specified coordinates
      */
     interface RedstoneSignalFunction {
-        (coords: Vector, params: { power: number, signal: number, onLoad: boolean }, block: Tile, world?: BlockSource): void
+        (coords: Vector, params: RedstoneSignalParams, block: Tile, region?: BlockSource): void
     }
 
     /**
