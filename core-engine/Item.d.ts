@@ -422,12 +422,6 @@ declare namespace Item {
     function registerDispenseFunction(nameID: string | number, func: Callback.ItemDispensedFunction): void;
 
     /**
-     * @deprecated Should not be used in new mods, consider using {@link Item} 
-     * properties setters instead.
-     */
-    function setPrototype(nameID: any, prototype: any): void;
-
-    /**
      * Invoke click on the block in world.
      * @param coords coords of click on the block
      * @param item item which used on the block
@@ -497,12 +491,57 @@ declare namespace Item {
      * All items name override functions object.
      * @internal
      */
-    var nameOverrideFunctions: { [key: number]: Callback.ItemNameOverrideFunction };
+    const nameOverrideFunctions: {
+        [key: number]: Callback.ItemNameOverrideFunction
+    };
 
     /**
      * All items icon override functions object.
      * @internal
      */
-    var iconOverrideFunctions: { [key: number]: Callback.ItemIconOverrideFunction };
+    const iconOverrideFunctions: {
+        [key: number]: Callback.ItemIconOverrideFunction
+    };
 
+	/**
+	 * Once upon a time, a new way of registering items, however,
+	 * in current state, either does not work or is undesirable to use.
+     * @deprecated
+	 */
+	interface ItemLegacyPrototype {
+        type: "createItem" | "createFoodItem" | "createArmorItem" | "createThrowableItem",
+		init?: () => void,
+		getName: (item: null) => Nullable<string>,
+		getTexture: (item: null) => Nullable<TextureData>,
+		getDefineParams?: (item: null) => Nullable<Item.ItemParams | Item.ArmorParams | Item.FoodParams>,
+		getMaxDamage?: (item: null) => Nullable<number>,
+		getCategory?: (item: null) => Nullable<number>,
+		getEnchant?: (item: null) => Nullable<number>,
+		getUseAnimation?: (item: null) => Nullable<EItemAnimation | number>,
+		getMaxUseDuration?: (item: null) => Nullable<number>,
+        /**
+         * Cannot be used, because of properties should be passed as string,
+         * but properties here internally depends on object.
+         */
+		getProperties?: (item: null) => Nullable<object>,
+		isToolRender?: (item: null) => Nullable<boolean>,
+		isStackedByData?: (item: null) => Nullable<boolean>,
+		isEnchanted?: (item: null) => Nullable<boolean>,
+		getToolMaterial?: (item: null) => Nullable<string | ToolAPI.ToolMaterial>,
+		getToolTarget?: (item: null) => Nullable<string[]>,
+		getToolPrototype?: (item: null) => Nullable<ToolAPI.ToolParams>,
+		getArmorFuncs?: (item: null) => Nullable<Armor.IArmorJSCallback>,
+		onUsed?: (coords: Vector, item: ItemInstance, block: Tile) => void,
+        /**
+         * Unused at all.
+         */
+		onTick?: (item: null) => void,
+		onThrowableImpact?: (projectile: number, item: ItemInstance, target: Callback.ProjectileHitTarget) => void
+	}
+
+    /**
+     * @deprecated Should not be used in new mods, consider using {@link Item} 
+     * properties setters instead.
+     */
+    function setPrototype(nameID: any, prototype: ItemLegacyPrototype): void;
 }

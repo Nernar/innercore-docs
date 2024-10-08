@@ -627,10 +627,10 @@ declare namespace Block {
 	 * Creates a new special type using specified params
 	 * and optionally registers it by name.
 	 * @param description special type properties
-	 * @param nameKey string name to register the special type
+	 * @param name string name to register the special type
 	 * @returns Special type name.
 	 */
-	function createSpecialType(description: SpecialType, nameKey?: string): string;
+	function createSpecialType(description: SpecialType, name?: string): string;
 
 	type ColorSource = "grass" | "leaves" | "water";
 
@@ -772,15 +772,14 @@ declare namespace Block {
 
 	/**
 	 * Function used to track random block ticks.
-	 * @param x x coordinate of the block that ticked
-	 * @param y y coordinate of the block that ticked
-	 * @param z z coordinate of the block that ticked
-	 * @param id block ID
-	 * @param data block data
-	 * @param region BlockSource object
 	 */
 	interface RandomTickFunction {
-		(x: number, y: number, z: number, id: number, data: number, region: BlockSource): void
+		/**
+		 * @param id block numeric identifier
+		 * @param data block data
+		 * @param region block source instance
+		 */
+		(x: number, y: number, z: number, id: number, data: number, region: BlockSource): void;
 	}
 
 	/**
@@ -794,20 +793,61 @@ declare namespace Block {
 
 	/**
 	 * Function used to track random block animation ticks.
-	 * @param x x coordinate of the block that should be updated
-	 * @param y y coordinate of the block that should be updated
-	 * @param z z coordinate of the block that should be updated
-	 * @param id block ID
-	 * @param data block data
 	 */
 	interface AnimateTickFunction {
-		(x: number, y: number, z: number, id: number, data: number): void
+		/**
+		 * @param id block numeric identifier
+		 * @param data block data
+		 */
+		(x: number, y: number, z: number, id: number, data: number): void;
+	}
+
+	/**
+	 * Once upon a time, a new way of registering blocks, however,
+	 * in current state, either does not work or is undesirable to use.
+	 */
+	interface BlockLegacyPrototype extends Scriptable {
+		type: "createBlock" | "createBlockWithRotation",
+		init?: () => void,
+		getVariations: (item: null) => BlockVariation[],
+		getSpecialType?: (item: null) => Nullable<SpecialType>,
+        /**
+         * Unused at all.
+         */
+		getCategory?: (item: null) => Nullable<number>,
+        /**
+         * Unused at all.
+         */
+		getEnchant?: (item: null) => Nullable<number>,
+        /**
+         * Unused at all.
+         */
+		getProperties?: (item: null) => Nullable<object>,
+        /**
+         * Unused at all.
+         */
+		isStackedByData?: (item: null) => Nullable<boolean>,
+        /**
+         * Unused at all.
+         */
+		isEnchanted?: (item: null) => Nullable<boolean>,
+		getMaterial?: (item: null) => Nullable<number>,
+		getDestroyLevel?: (item: null) => Nullable<number>,
+		getShape?: (item: null) => Nullable<number[]>,
+		getDrop?: (coords: Vector, id: number, data: number, diggingLevel: number, enchant: any) => ItemInstanceArray[],
+        /**
+         * Incorrect function, it will considered as {@link BlockLegacyPrototype.getDrop}
+         */
+		onPlaced?: (coords: Vector, item: ItemInstance, block: Tile) => void,
+        /**
+         * Unused at all.
+         */
+		onItemUsed?: (coords: Vector, item: ItemInstance, block: Tile) => void
 	}
 
 	/**
 	 * @deprecated Better performance should be inherited by manually
-	 * manipulation with properties and {@link Block.SpecialType SpecialType}.
+	 * manipulation with properties and {@link Block.SpecialType special type}.
 	 */
-	function setPrototype(nameID: string | number, Prototype: any): number;
-
+	function setPrototype(nameID: string, Prototype: BlockLegacyPrototype): void;
 }
