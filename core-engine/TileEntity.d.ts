@@ -335,7 +335,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     readonly networkData: SyncedNetworkData;
     /**
-     * Instance of {@link networkEntityType} for the tile.
+     * Instance of {@link TileEntity.networkEntityType} for the tile.
      */
     readonly networkEntity: NetworkEntity;
     /**
@@ -490,7 +490,7 @@ declare interface LocalTileEntity extends TileEntity.LocalTileEntityPrototype {
      */
     readonly networkData: SyncedNetworkData;
     /**
-     * Instance of {@link networkEntityType} for the tile.
+     * Instance of {@link TileEntity.networkEntityType} for the tile.
      */
     readonly networkEntity: NetworkEntity;
     /**
