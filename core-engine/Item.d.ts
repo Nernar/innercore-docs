@@ -348,7 +348,7 @@ declare namespace Item {
     /**
      * Same as {@link Item.registerUseFunction}, but supports numeric IDs only.
      */
-    function registerUseFunctionForID(numericID: number, useFunc: Callback.ItemUseLocalFunction): void;
+    function registerUseFunctionForID(numericID: number, useFunc: Callback.ItemUseFunction): void;
 
     /**
      * Registers function that is called when user touches some block in the
@@ -356,7 +356,7 @@ declare namespace Item {
      * @param nameID string or numeric ID of the item
      * @param useFunc function that is called when such an event occurs
      */
-    function registerUseFunction(nameID: string | number, useFunc: Callback.ItemUseLocalFunction): void;
+    function registerUseFunction(nameID: string | number, useFunc: Callback.ItemUseFunction): void;
 
     /**
      * Same as {@link Item.registerThrowableFunction}, but supports numeric IDs only.

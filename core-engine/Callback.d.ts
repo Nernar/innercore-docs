@@ -129,27 +129,26 @@ declare namespace Callback {
     /**
      * Function used in "ItemUse" and "ItemUseLocalServer" callbacks.
      */
-    interface ItemUseFunction {
+    interface LegacyItemUseFunction {
         /**
-         * 
          * @param coords set of all coordinate values that can be useful to write
          * custom use logics, relative and vectorized one
          * @param item item that was in the player's hand when it touched the block
          * @param block block that was touched
-         * @param isExternal received from external player on server, preventable
+         * @param isExternal received from external player on server
          * @param playerUid player entity UID
          */
         (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, playerUid: number): void
     }
 
-    function addCallback(name: "ItemUse", func: ItemUseFunction, priority?: number): void;
+    function addCallback(name: "ItemUse", func: LegacyItemUseFunction, priority?: number): void;
 
-    function addCallback(name: "ItemUseLocalServer", func: ItemUseFunction, priority?: number): void;
+    function addCallback(name: "ItemUseLocalServer", func: LegacyItemUseFunction, priority?: number): void;
 
     /**
-     * Function used in "ItemUseLocal" callback.
+     * Function used in "ItemUseServer" and "ItemUseLocal" callbacks.
      */
-    interface ItemUseLocalFunction {
+    interface ItemUseFunction {
         /**
          * @param coords set of all coordinate values that can be useful to write
          * custom use logics
@@ -160,10 +159,12 @@ declare namespace Callback {
         (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, playerUid: number): void
     }
 
+    function addCallback(name: "ItemUseServer", func: ItemUseFunction, priority?: number): void;
+
     /**
      * @since 2.1.0b57
      */
-    function addCallback(name: "ItemUseLocal", func: ItemUseLocalFunction, priority?: number): void;
+    function addCallback(name: "ItemUseLocal", func: ItemUseFunction, priority?: number): void;
 
     /**
      * Function used in "ItemUseNoTarget" callback.
