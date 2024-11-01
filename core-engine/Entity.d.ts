@@ -126,7 +126,7 @@ declare namespace Entity {
      * 23 | Fireworks | "death.attack.fireworks" | * went off with a bang
      * 24 | Lightning Bolt | "death.attack.lightningBolt" | * was struck by lightning
      */
-    type DamageSource = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24;
+    type DamageSource = number;
 
     /**
      * Damages entity.
@@ -134,7 +134,7 @@ declare namespace Entity {
      * @param cause existing {@link DamageSource} or any inclusive value between 25 and 32
      * @param properties additional damage source properties
      */
-    function damageEntity(entityUid: number, damage: number, cause?: DamageSource | number, properties?: {
+    function damageEntity(entityUid: number, damage: number, cause?: DamageSource, properties?: {
         /**
          * Entity that caused damage, determines actor of damage source.
          */
