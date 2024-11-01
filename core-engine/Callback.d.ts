@@ -650,6 +650,16 @@ declare namespace Callback {
     function addCallback(name: "ProjectileHit", func: ProjectileHitFunction, priority?: number): void;
 
     /**
+     * @since 2.4.0b122
+     */
+    function addCallback(name: "ChunkLoadingStateChanged", func: World.ChunkStateChangedFunction, priority?: number): void;
+
+    /**
+     * @since 2.4.0b122
+     */
+    function addCallback(name: "LocalChunkLoadingStateChanged", func: World.ChunkStateChangedFunction, priority?: number): void;
+
+    /**
      * Function used in all generation callbacks.
      */
     interface GenerateChunkFunction {

@@ -283,6 +283,40 @@ declare namespace World {
     function explode(x: number, y: number, z: number, power: number, fire: boolean): void;
 
     /**
+     * Function that is used in {@link World.addListenerChunkStateChanged} and {@link World.addLocalListenerChunkStateChanged}.
+     */
+    interface ChunkStateChangedFunction {
+        /**
+         * @param chunkX chunk X coordinate; multiply by 16 to receive
+         * corner block coordinates
+         * @param chunkZ chunk Z coordinate; multiply by 16 to receive
+         * corner block coordinates
+         * @param dimensionId current dimension's numeric ID
+         * @param lastState previous chunk loading state
+         * @param state new chunk loading state
+         * @param discarded was chunk previously loaded and unloaded from
+         * memory (only after generation was completed)
+         */
+        (chunkX: number, chunkZ: number, dimensionId: number, lastState: number, state: number, discarded: boolean): void
+    }
+
+    /**
+     * Listens for chunk loading state changes.
+     * @param listener chunk state function watcher
+     * @param states chunk states that should be received by watcher
+     * @since 2.4.0b122
+     */
+    function addListenerChunkStateChanged(listener: ChunkStateChangedFunction, states: number[]): void;
+
+    /**
+     * Listens for local chunk loading state changes.
+     * @param listener chunk state function watcher
+     * @param states chunk states that should be received by watcher
+     * @since 2.4.0b122
+     */
+    function addLocalListenerChunkStateChanged(listener: ChunkStateChangedFunction, states: number[]): void;
+
+    /**
      * Sets biome on the specified coordinates when generating biome map.
      * Should be called only in *GenerateBiomeMap* callback.
      * @param x block x coordinate
