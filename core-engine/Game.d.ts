@@ -71,15 +71,107 @@ declare namespace Game {
 
     /**
      * Sets current level game mode.
-     * @param gameMode new game mode, should be one of the {@link EGameMode}
+     * @param mode new game mode, should be one of the {@link EGameMode}
      * values
      */
-    function setGameMode(gameMode: number): void;
+    function setGameMode(mode: number): void;
 
     /**
      * @returns Current level game mode, one of the {@link EGameMode} values.
      */
     function getGameMode(): number;
+
+    /**
+     * Option types, which can be used to determine option data:
+     * 
+     * Type | Name | Description
+     * ---|---|---
+     * 0 | None | Internal type, it cannot be used.
+     * 1 | Boolean | `true` or `false` switch.
+     * 2 | Float | Field with float value.
+     * 3 | Float Slider | Slider with float value in specified ranges.
+     * 4 | String | Field with string text value.
+     * 5 | Int | Field with integer value.
+     * 6 | Int Slider | Slider with integer value in specified ranges.
+     * @since 2.4.0b122
+     */
+    type OptionType = number;
+
+    /**
+     * Option instance, which can be obtained via {@link Game.getOption}.
+     * @since 2.4.0b122
+     */
+    interface Option {
+        /**
+         * @internal
+         */
+        getPointer(): number;
+        /**
+         * Gets numeric option type, which can be used to
+         * determine data type and retrieve proper value.
+         */
+        getType(): OptionType;
+        /**
+         * Can option be changed in game settings.
+         */
+        canModify(): boolean;
+        /**
+         * Gets boolean value of option, suitable for
+         * boolean {@link OptionType}.
+         */
+        getBoolean(): boolean;
+        /**
+         * Gets boolean value of option, suitable for
+         * float and float slider {@link OptionType}s.
+         */
+        getFloat(): number;
+        /**
+         * Gets minimum value in slider range, suitable
+         * for float slider {@link OptionType}.
+         */
+        getFloatMin(): number;
+        /**
+         * Gets maximum value in slider range, suitable
+         * for float slider {@link OptionType}.
+         */
+        getFloatMax(): number;
+        /**
+         * Gets boolean value of option, suitable for
+         * string {@link OptionType}.
+         */
+        getString(): string;
+        /**
+         * Gets boolean value of option, suitable for
+         * int and int slider {@link OptionType}s.
+         */
+        getInt(): number;
+        /**
+         * Gets minimum value in slider range, suitable
+         * for int slider {@link OptionType}.
+         */
+        getIntMin(): number;
+        /**
+         * Gets maximum value in slider range, suitable
+         * for int slider {@link OptionType}.
+         */
+        getIntMax(): number;
+    }
+
+    /**
+     * Retrieves option by requested name, which instance
+     * could be used for getting values.
+     * @param name option name, suitable names could be found
+     * in your "options.txt" file or via {@link Game.getOptions}
+     * @since 2.4.0b122
+     */
+    function getOption(name: string): Nullable<Option>;
+
+    /**
+     * Fetches available option names, which can be used to
+     * obtain values via {@link Game.getOption}.
+     * @since 2.4.0b122
+     */
+    function getOptions(): string[];
 
     /**
      * String containing current Minecraft version.

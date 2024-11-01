@@ -920,6 +920,11 @@ declare namespace Callback {
     function addCallback(name: "PostLoaded", func: { (): void }, priority?: number): void;
 
     /**
+     * @since 2.4.0b122
+     */
+    function addCallback(name: "OptionsChanged", func: { (): void }, priority?: number): void;
+
+    /**
      * Function used in "LevelSelected" callback.
      */
     interface LevelSelectedFunction {
