@@ -9,45 +9,6 @@ export const EXTERNALS = new RegExp(`^(${
 })(\/|\.|$)`);
 
 class CodiconThemeContext extends DefaultThemeRenderContext {
-	constructor(theme: DefaultTheme, page: PageEvent<Reflection>, options: Options) {
-		super(theme, page, options);
-		this.icons = Object.assign({}, this.icons);
-		this.icons[ReflectionKind.Accessor] = () => this.codiconOfKind("symbol-field", "#FF4D4D");
-		this.icons[ReflectionKind.Class] = () => this.codiconOfKind("symbol-class", "var(--color-ts-class)");
-		this.icons[ReflectionKind.Constructor] = () => this.codiconOfKind("symbol-method", "#4D7FFF");
-		this.icons[ReflectionKind.Enum] = () => this.codiconOfKind("symbol-enum", "var(--color-ts-enum)");
-		this.icons[ReflectionKind.EnumMember] = () => this.codiconOfKind("symbol-enum-member", "#FF984D");
-		this.icons[ReflectionKind.Function] = () => this.codiconOfKind("symbol-method", "var(--color-ts-function)");
-		this.icons[ReflectionKind.Interface] = () => this.codiconOfKind("symbol-interface", "var(--color-ts-interface)");
-		this.icons[ReflectionKind.Method] = () => this.codiconOfKind("symbol-method", "#FF4DB8");
-		this.icons[ReflectionKind.Module] = () => this.codiconOfKind("symbol-structure", "var(--color-ts-namespace)");
-		this.icons[ReflectionKind.Namespace] = () => this.codiconOfKind("symbol-namespace", "var(--color-ts-namespace)");
-		this.icons[ReflectionKind.Parameter] = () => this.codiconOfKind("symbol-parameter", "#FF984D");
-		this.icons[ReflectionKind.Project] = () => this.codiconOfKind("package", "var(--color-ts-namespace)");
-		this.icons[ReflectionKind.Property] = () => this.codiconOfKind("symbol-property", "#FF984D");
-		this.icons[ReflectionKind.Reference] = () => this.codiconOfKind("key", "#FF4D82");
-		this.icons[ReflectionKind.TypeAlias] = () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)");
-		this.icons[ReflectionKind.Variable] = () => this.codiconOfKind("symbol-variable", "var(--color-ts-variable)");
-		this.icons["menu"] = () => this.codicon("menu", 16);
-		this.icons["search"] = () => this.codicon("search", 16);
-	}
-
-	private codiconOfKind(key: string, color: string | undefined) {
-		return this.codicon(key, 16, "tsd-kind-icon", color);
-	}
-
-	private codicon(key: string, size: number | undefined = undefined, kind: string | undefined = undefined, color: string | undefined = "var(--color-text)"): JSX.Element {
-		let attrs = [];
-		size != undefined && attrs.push(`font-size:${size}px`);
-		color != undefined && attrs.push(`color:${color}`); // 0.24.4+
-		return (
-			<div
-				class={`codicon codicon-${key}` + (kind != undefined ? ` ${kind}` : "")}
-				style={attrs.join(";")}
-			/>
-		);
-	}
-
 	private _header = this.header;
 	// Exclude homepage title duplication (exactly, treplication).
 	override header: (props: PageEvent<Reflection>) => JSX.Element = (props) => (
@@ -93,17 +54,53 @@ function copySync(input: string, dest: string, path: string) {
 class CodiconTheme extends DefaultTheme {
 	constructor(private renderer: Renderer) {
 		super(renderer);
-		this.listenTo(renderer, RendererEvent.BEGIN, (event: RendererEvent) => {
+		this.owner.on(RendererEvent.BEGIN, (event: RendererEvent) => {
 			const codicon = join(__dirname, "..", "..", "node_modules", "@vscode", "codicons", "dist");
-			if (!existsSync(codicon))
-			{
+			if (!existsSync(codicon)) {
 				console.error("Run `npm install` before running building!");
 				return;
 			}
 			const assets = join(event.outputDirectory, "assets");
-			copySync(codicon, assets, "codicon.css");
-			copySync(codicon, assets, "codicon.ttf");
+			copySync(codicon, assets, "codicon.svg");
 		});
+		this.overrideIcons();
+	}
+
+	private codiconOfKind(key: string, color: string | undefined) {
+		return this.codicon(key, 16, "tsd-kind-icon", color);
+	}
+
+	private codicon(key: string, size: number | undefined = undefined, kind: string | undefined = undefined, color: string | undefined = "var(--color-text)"): JSX.Element {
+		let attrs = [];
+		size != undefined && attrs.push(`font-size:${size}px`);
+		color != undefined && attrs.push(`color:${color}`); // 0.24.4+
+		return (
+			<svg style={attrs.join(";")}>
+				<use href={`assets/codicon.svg#${key}`} />
+			</svg>
+		);
+	}
+
+	private overrideIcons(): void {
+		this.icons = Object.assign({}, this.icons);
+		this.icons[ReflectionKind.Accessor] = () => this.codiconOfKind("symbol-field", "#FF4D4D");
+		this.icons[ReflectionKind.Class] = () => this.codiconOfKind("symbol-class", "var(--color-ts-class)");
+		this.icons[ReflectionKind.Constructor] = () => this.codiconOfKind("symbol-method", "#4D7FFF");
+		this.icons[ReflectionKind.Enum] = () => this.codiconOfKind("symbol-enum", "var(--color-ts-enum)");
+		this.icons[ReflectionKind.EnumMember] = () => this.codiconOfKind("symbol-enum-member", "#FF984D");
+		this.icons[ReflectionKind.Function] = () => this.codiconOfKind("symbol-method", "var(--color-ts-function)");
+		this.icons[ReflectionKind.Interface] = () => this.codiconOfKind("symbol-interface", "var(--color-ts-interface)");
+		this.icons[ReflectionKind.Method] = () => this.codiconOfKind("symbol-method", "#FF4DB8");
+		this.icons[ReflectionKind.Module] = () => this.codiconOfKind("symbol-structure", "var(--color-ts-namespace)");
+		this.icons[ReflectionKind.Namespace] = () => this.codiconOfKind("symbol-namespace", "var(--color-ts-namespace)");
+		this.icons[ReflectionKind.Parameter] = () => this.codiconOfKind("symbol-parameter", "#FF984D");
+		this.icons[ReflectionKind.Project] = () => this.codiconOfKind("package", "var(--color-ts-namespace)");
+		this.icons[ReflectionKind.Property] = () => this.codiconOfKind("symbol-property", "#FF984D");
+		this.icons[ReflectionKind.Reference] = () => this.codiconOfKind("key", "#FF4D82");
+		this.icons[ReflectionKind.TypeAlias] = () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)");
+		this.icons[ReflectionKind.Variable] = () => this.codiconOfKind("symbol-variable", "var(--color-ts-variable)");
+		this.icons["menu"] = () => this.codicon("menu", 16);
+		this.icons["search"] = () => this.codicon("search", 16);
 	}
 
 	private renderContext?: CodiconThemeContext;

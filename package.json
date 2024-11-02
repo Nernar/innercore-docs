@@ -32,10 +32,9 @@
       ]
     },
     "prebuild-declarations": {
-      "command": "tsx tools/rebuild_types.ts core-engine",
+      "command": "npx dts-generator --project . --out declarations/core-engine.d.ts --extern ./android.d.ts --exclude node_modules/**/*.d.ts --exclude declarations/android.d.ts",
       "files": [
         "tsconfig.json",
-        "tools/rebuild_types.ts",
         "core-engine/**/*.d.ts"
       ],
       "output": [
@@ -43,11 +42,11 @@
       ]
     },
     "typedoc": {
-      "command": "typedoc declarations/core-engine.d.ts",
+      "command": "typedoc",
       "files": [
         "typedoc.json",
-        "tsconfig-typedoc.json",
-        "declarations/core-engine.d.ts",
+        "tsconfig.json",
+        "core-engine/**/*.d.ts",
         "typedoc-codicon-theme/**/*"
       ],
       "dependencies": [
@@ -60,11 +59,14 @@
     }
   },
   "devDependencies": {
-    "glob": "^10.2.6",
-    "tsx": "^3.12.7",
-    "wireit": "^0.9.5"
+    "@types/dts-generator": "^2.1.11",
+    "dts-generator": "^3.0.0",
+    "glob": "^10.4.5",
+    "tsx": "^4.19.2",
+    "typedoc-plugin-merge-modules": "^6.0.3",
+    "wireit": "^0.14.9"
   },
   "dependencies": {
-    "typedoc": "^0.24.8"
+    "typedoc": "^0.26.11"
   }
 }
