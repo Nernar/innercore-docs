@@ -233,23 +233,23 @@ declare namespace Player {
      * @deprecated Consider using {@link Player.getExperience}, 
      * {@link Player.setExperience}, {@link Player.addExperience}.
      */
-    class PlayerExperience {
+    interface PlayerExperience {
         /**
          * @returns Player's current experience.
          */
-        public get(): number;
+        get(): number;
 
         /**
          * Sets player's experience.
          * @param exp experience value to be set
          */
-        public set(exp: number): void;
+        set(exp: number): void;
 
         /**
          * Adds specified amount of experience to the current value.
          * @param exp amount to be added
          */
-        public add(exp: number): void;
+        add(exp: number): void;
     }
 
     /**
