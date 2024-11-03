@@ -42,7 +42,7 @@
       ]
     },
     "typedoc": {
-      "command": "typedoc",
+      "command": "npx typedoc",
       "files": [
         "typedoc.json",
         "tsconfig.json",
@@ -67,6 +67,7 @@
     "wireit": "^0.14.9"
   },
   "dependencies": {
+    "html-to-react": "^1.7.0",
     "typedoc": "^0.26.11"
   }
 }
