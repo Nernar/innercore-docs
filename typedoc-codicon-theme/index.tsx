@@ -1,7 +1,7 @@
 import { Application, DeclarationReference, DefaultTheme, DefaultThemeRenderContext, JSX, PageEvent, ReferenceType, Reflection, ReflectionKind, Renderer, RendererEvent, Type } from "typedoc";
 
 import { dirname, join } from 'path';
-import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 
 const HtmlToReactParser = require('html-to-react').Parser;
 
@@ -50,11 +50,7 @@ class CodiconTheme extends DefaultTheme {
 	}
 
 	private codiconOfKind(key: string, color?: string | null): JSX.Element {
-		return this.codicon(key, 16, "tsd-kind-icon", color);
-	}
-
-	private codicon(key: string, size?: number | null, kind?: string | null, color?: string | null): JSX.Element {
-		return this.readCodiconFromFile(key, color, kind ? { class: kind } : null) || <svg />;
+		return this.readCodiconFromFile(key, color, { class: "tsd-kind-icon" }) || <svg />;
 	}
 
 	private overrideIcons(): void {
@@ -81,9 +77,7 @@ class CodiconTheme extends DefaultTheme {
 			[ReflectionKind.TypeAlias]: () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)"),
 			[ReflectionKind.TypeLiteral]: () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)"),
 			[ReflectionKind.TypeParameter]: () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)"),
-			[ReflectionKind.Variable]: () => this.codiconOfKind("symbol-variable", "var(--color-ts-variable)"),
-			["menu"]: () => this.codicon("menu", 16),
-			["search"]: () => this.codicon("search", 16)
+			[ReflectionKind.Variable]: () => this.codiconOfKind("symbol-variable", "var(--color-ts-variable)")
 		});
 	}
 
