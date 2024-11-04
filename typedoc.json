@@ -1,5 +1,7 @@
 {
 	"name": "Core Engine",
+	"includeVersion": true,
+	"basePath": "core-engine",
 	"tsconfig": "tsconfig.json",
 	"readme": "none",
 	"searchInComments": true,
@@ -8,6 +10,40 @@
 	],
 	"entryPoints": [
 		"core-engine/**/*.d.ts"
+	],
+	"kindSortOrder": [
+		"Document",
+		"Reference",
+		"Module",
+		"Namespace",
+		"Enum",
+		"EnumMember",
+		"Class",
+		"Interface",
+		"Constructor",
+		"Property",
+		"Variable",
+		"Function",
+		"Accessor",
+		"Method",
+		"TypeAlias"
+	],
+	"groupOrder": [
+		"Document",
+		"Reference",
+		"Module",
+		"Namespace",
+		"Enum",
+		"EnumMember",
+		"Class",
+		"Interface",
+		"Constructor",
+		"Property",
+		"Variable",
+		"Function",
+		"Accessor",
+		"Method",
+		"TypeAlias"
 	],
 	// TODO: typedoc#lib\converter\plugins\InheritDocPlugin.js#207 crashes on UI module
 	"entryPointStrategy": "expand",
@@ -18,9 +54,6 @@
 		"@deprecated": true
 	},
 	"customCss": "media/custom.css",
-	"navigation": {
-		"compactFolders": true
-	},
 	"navigationLinks": {
 		"Docs": "https://nernar.github.io/docs/intro"
 	},
