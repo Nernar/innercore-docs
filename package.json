@@ -19,6 +19,8 @@
   "scripts": {
     "prebuild-theme": "wireit",
     "prebuild-declarations": "wireit",
+    "typedoc-core": "wireit",
+    "typedoc-libraries": "wireit",
     "typedoc": "wireit"
   },
   "wireit": {
@@ -41,8 +43,8 @@
         "declarations/core-engine.d.ts"
       ]
     },
-    "typedoc": {
-      "command": "npx typedoc",
+    "typedoc-core": {
+      "command": "npx typedoc --out docs --tsconfig tsconfig.json core-engine/**/*.d.ts",
       "files": [
         "typedoc.json",
         "tsconfig.json",
@@ -55,6 +57,30 @@
       ],
       "output": [
         "docs"
+      ]
+    },
+    "typedoc-libraries": {
+      "command": "npx typedoc --out docs/libraries --options libraries/typedoc.json --tsconfig libraries/tsconfig.json libraries/**/*.d.ts",
+      "files": [
+        "typedoc.json",
+        "libraries/typedoc.json",
+        "libraries/tsconfig.json",
+        "libraries/**/*.d.ts",
+        "declarations/core-engine.d.ts",
+        "typedoc-codicon-theme/**/*"
+      ],
+      "dependencies": [
+        "prebuild-theme",
+        "prebuild-declarations"
+      ],
+      "output": [
+        "docs/libraries"
+      ]
+    },
+    "typedoc": {
+      "dependencies": [
+        "typedoc-core",
+        "typedoc-libraries"
       ]
     }
   },

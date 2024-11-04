@@ -1,15 +1,10 @@
 {
 	"name": "Core Engine",
 	"includeVersion": true,
-	"basePath": "core-engine",
-	"tsconfig": "tsconfig.json",
 	"readme": "none",
 	"searchInComments": true,
 	"intentionallyNotExported": [
 		"native.Array"
-	],
-	"entryPoints": [
-		"core-engine/**/*.d.ts"
 	],
 	"kindSortOrder": [
 		"Document",
