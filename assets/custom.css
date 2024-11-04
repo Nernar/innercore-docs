@@ -31,6 +31,13 @@ h3.tsd-index-heading.uppercase {
 	margin: 0;
 }
 
+/* TODO: https://github.com/TypeStrong/typedoc/blob/master/src/lib/output/themes/default/assets/typedoc/Navigation.ts#L102 */
+.tsd-navigation .tsd-kind-icon:not([color]) {
+	transform: scale(1.5) translate(0.25rem, 0.25rem);
+	fill: currentColor;
+	color: var(--color-icon-text);
+}
+
 pre, code.tsd-tag, .tsd-signatures .tsd-signature {
 	border: none;
 }
@@ -75,10 +82,10 @@ a.title:after {
 	background: none;
 }
 .tsd-navigation details a.current span, .tsd-page-navigation details a.current span {
-	-webkit-text-stroke: medium;
+	-webkit-text-stroke: thin;
 }
 .tsd-kind-icon {
-	margin-right: 0.25rem;
+	margin-right: 0.375rem;
 }
 .tsd-signature > .tsd-kind-icon {
 	margin-right: 0.4rem;
