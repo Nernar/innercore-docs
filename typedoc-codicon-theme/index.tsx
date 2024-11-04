@@ -1,19 +1,34 @@
-import { Application, DeclarationReference, DefaultTheme, DefaultThemeRenderContext, JSX, PageEvent, ReferenceType, Reflection, ReflectionKind, Renderer, RendererEvent, Type } from "typedoc";
-
+import {
+	Application, DeclarationReference, DefaultTheme, DefaultThemeRenderContext,
+	JSX, PageEvent, ReferenceType, Reflection, ReflectionKind, Renderer, RendererEvent, Type
+} from "typedoc";
+import { Parser as HtmlToReactParser } from 'html-to-react';
 import { dirname, join } from 'path';
-import { existsSync, readFileSync } from 'fs';
-
-const HtmlToReactParser = require('html-to-react').Parser;
+import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
 
 // Externals packages that will be redirected to Android Docs.
 export const ANDROID_EXTERNALS = new RegExp(`^(${
 	["android", "androidx", "dalvik", "java", "javax", "org"].join("|")
 })(\/|\.|$)`);
 
+const INLINE_REFLECTION_KINDS = [ReflectionKind.TypeAlias, ReflectionKind.Function, ReflectionKind.Variable];
+
 class CodiconTheme extends DefaultTheme {
 	constructor(private renderer: Renderer) {
 		super(renderer);
 		this.overrideIcons();
+		this.overrideTemplateMappings();
+		this.owner.on(RendererEvent.END, event => {
+			if (this.owner.theme instanceof CodiconTheme) {
+				const declaration = join(__dirname, "..", "..", "declarations", "core-engine.d.ts");
+				if (!existsSync(declaration)) {
+					console.warn("typedoc-codicon: Declaration could not be found, ignoring it!");
+				}
+				const output = join(event.outputDirectory, "core-engine.d.ts");
+				mkdirSync(dirname(output), { recursive: true });
+				copyFileSync(declaration, output);
+			}
+		})
 	}
 
 	private _icons: typeof this.icons = this.icons;
@@ -33,7 +48,7 @@ class CodiconTheme extends DefaultTheme {
 		}, children);
 	}
 
-	private _htmlToReactParser: any = new HtmlToReactParser();
+	private _htmlToReactParser = HtmlToReactParser();
 
 	private readCodiconFromFile(key: string, color?: string | null, props?: object | null): JSX.Element | null {
 		const codiconFile = join(__dirname, "..", "..", "node_modules", "@vscode", "codicons", "src", "icons", key + ".svg");
@@ -79,6 +94,22 @@ class CodiconTheme extends DefaultTheme {
 			[ReflectionKind.TypeParameter]: () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)"),
 			[ReflectionKind.Variable]: () => this.codiconOfKind("symbol-variable", "var(--color-ts-variable)")
 		});
+	}
+
+	private overrideTemplateMappings(): void {
+		// @ts-expect-error
+		const mappings = this.mappings;
+		for (let mapping = 0; mapping < mappings.length; mapping++) {
+			let kinds = mappings[mapping].kind;
+			for (let kind = 0; kind < kinds.length; kind++) {
+				if (INLINE_REFLECTION_KINDS.includes(kinds[kind])) {
+					kinds.splice(kind--, 1);
+				}
+			}
+			if (kinds.length == 0) {
+				mappings.splice(mapping--, 1);
+			}
+		}
 	}
 
 	private renderContext?: CodiconThemeRenderContext;
