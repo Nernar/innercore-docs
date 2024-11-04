@@ -35,7 +35,7 @@ class CodiconTheme extends DefaultTheme {
 
 	private _htmlToReactParser: any = new HtmlToReactParser();
 
-	private readCodiconFromFile(key: string): JSX.Element | null {
+	private readCodiconFromFile(key: string, color?: string | null, props?: object | null): JSX.Element | null {
 		const codiconFile = join(__dirname, "..", "..", "node_modules", "@vscode", "codicons", "src", "icons", key + ".svg");
 		if (!existsSync(codiconFile)) {
 			console.error("typedoc-codicon: Run `npm install` before running typedoc!");
@@ -43,37 +43,44 @@ class CodiconTheme extends DefaultTheme {
 		}
 		const codicon = readFileSync(codiconFile, { encoding: "utf-8" });
 		const element = this._htmlToReactParser.parse(codicon);
-		return this.createJsxFromReactElement(element, { color: "var(--color-icon-text)" });
+		return this.createJsxFromReactElement(element, {
+			color: color ?? "var(--color-icon-text)",
+			...props
+		});
 	}
 
-	private codiconOfKind(key: string, color: string | undefined): JSX.Element {
+	private codiconOfKind(key: string, color?: string | null): JSX.Element {
 		return this.codicon(key, 16, "tsd-kind-icon", color);
 	}
 
-	private codicon(key: string, size: number | undefined = undefined, kind: string | undefined = undefined, color: string | undefined = "var(--color-text)"): JSX.Element {
-		let attrs = [];
-		size == null || attrs.push(`font-size:${size}px`);
-		color == null || attrs.push(`color:${color}`); // 0.24.4+
-		return this.readCodiconFromFile(key) || <svg />;
+	private codicon(key: string, size?: number | null, kind?: string | null, color?: string | null): JSX.Element {
+		return this.readCodiconFromFile(key, color, kind ? { class: kind } : null) || <svg />;
 	}
 
 	private overrideIcons(): void {
 		this.icons = Object.assign(this._icons, {
-			[ReflectionKind.Accessor]: () => this.codiconOfKind("symbol-field", "#FF4D4D"),
+			[ReflectionKind.Accessor]: () => this.codiconOfKind("symbol-field", "var(--color-ts-accessor)"),
+			[ReflectionKind.CallSignature]: () => this.codiconOfKind("symbol-method", "var(--color-ts-function)"),
 			[ReflectionKind.Class]: () => this.codiconOfKind("symbol-class", "var(--color-ts-class)"),
-			[ReflectionKind.Constructor]: () => this.codiconOfKind("symbol-method", "#4D7FFF"),
+			[ReflectionKind.Constructor]: () => this.codiconOfKind("symbol-method", "var(--color-ts-constructor)"),
+			[ReflectionKind.ConstructorSignature]: () => this.codiconOfKind("symbol-method", "var(--color-ts-constructor)"),
 			[ReflectionKind.Enum]: () => this.codiconOfKind("symbol-enum", "var(--color-ts-enum)"),
-			[ReflectionKind.EnumMember]: () => this.codiconOfKind("symbol-enum-member", "#FF984D"),
+			[ReflectionKind.EnumMember]: () => this.codiconOfKind("symbol-enum-member", "var(--color-ts-property)"),
 			[ReflectionKind.Function]: () => this.codiconOfKind("symbol-method", "var(--color-ts-function)"),
+			[ReflectionKind.GetSignature]: () => this.codiconOfKind("symbol-field", "var(--color-ts-accessor)"),
+			[ReflectionKind.IndexSignature]: () => this.codiconOfKind("symbol-property", "var(--color-ts-property)"),
 			[ReflectionKind.Interface]: () => this.codiconOfKind("symbol-interface", "var(--color-ts-interface)"),
-			[ReflectionKind.Method]: () => this.codiconOfKind("symbol-method", "#FF4DB8"),
+			[ReflectionKind.Method]: () => this.codiconOfKind("symbol-method", "var(--color-ts-method)"),
 			[ReflectionKind.Module]: () => this.codiconOfKind("symbol-structure", "var(--color-ts-namespace)"),
 			[ReflectionKind.Namespace]: () => this.codiconOfKind("symbol-namespace", "var(--color-ts-namespace)"),
-			[ReflectionKind.Parameter]: () => this.codiconOfKind("symbol-parameter", "#FF984D"),
+			[ReflectionKind.Parameter]: () => this.codiconOfKind("symbol-parameter", "var(--color-ts-property)"),
 			[ReflectionKind.Project]: () => this.codiconOfKind("package", "var(--color-ts-namespace)"),
-			[ReflectionKind.Property]: () => this.codiconOfKind("symbol-property", "#FF984D"),
-			[ReflectionKind.Reference]: () => this.codiconOfKind("key", "#FF4D82"),
+			[ReflectionKind.Property]: () => this.codiconOfKind("symbol-property", "var(--color-ts-property)"),
+			[ReflectionKind.Reference]: () => this.codiconOfKind("key", "var(--color-ts-reference)"),
+			[ReflectionKind.SetSignature]: () => this.codiconOfKind("symbol-field", "var(--color-ts-accessor)"),
 			[ReflectionKind.TypeAlias]: () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)"),
+			[ReflectionKind.TypeLiteral]: () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)"),
+			[ReflectionKind.TypeParameter]: () => this.codiconOfKind("type-hierarchy-sub", "var(--color-ts-type-alias)"),
 			[ReflectionKind.Variable]: () => this.codiconOfKind("symbol-variable", "var(--color-ts-variable)"),
 			["menu"]: () => this.codicon("menu", 16),
 			["search"]: () => this.codicon("search", 16)
