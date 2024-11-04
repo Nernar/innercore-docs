@@ -282,7 +282,7 @@ declare namespace TileEntity {
         /**
          * Called on client side, returns the window to open.
          */
-        getScreenByName?: (screenName?: string) => Nullable<UI.IWindow>;
+        getScreenByName?: (screenName?: string, container?: ItemContainer) => Nullable<UI.IWindow>;
 
         /**
          * Called when more liquid is required.
@@ -441,7 +441,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
      * Called on client side, returns the window to open.
      */
-    getScreenByName: (screenName?: string) => Nullable<UI.IWindow>;
+    getScreenByName: (screenName?: string, container?: ItemContainer) => Nullable<UI.IWindow>;
     /**
      * Emulates click on this tile, calling {@link TileEntity.TileEntityPrototype.click}
      * or opening screen otherwise if window has present.
