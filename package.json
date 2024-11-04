@@ -1,14 +1,14 @@
 {
   "name": "innercore-api",
-  "version": "2.3.1b115",
+  "version": "2.4.0b122",
   "author": "Nernar",
   "description": "Inner Core API Reference",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nernar/API.git#master"
+    "url": "git+https://github.com/Nernar/api.git#master"
   },
   "bugs": {
-    "url": "https://github.com/Nernar/API/issues"
+    "url": "https://github.com/Nernar/api/issues"
   },
   "homepage": "https://t.me/ntInsideChat",
   "license": "GPL-3.0-or-later",
