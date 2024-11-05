@@ -1,5 +1,6 @@
 /**
  * Class used to create new entity AI types.
+ * @deprecated
  */
 declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     /**
@@ -24,19 +25,18 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
      * If set to true, it is an instance of AI type, else the pattern
      * (pattern should not be modified directly, AI controller calls
      * instantiate to create instances of AI type).
-     * 
-     * @todo Add link to AI controller type.
      */
     isInstance: boolean;
 
     /**
-     * @todo Determine type.
+     * Instantiated custom entity that uses this AI type
+     * instance or `null` if it is the pattern.
      */
-    parent: any;
+    parent?: CustomEntity;
 
     /**
-     * Id of the entity that uses this AI type instance or `null` if it is
-     * the pattern.
+     * Numeric unique entity idenifier that uses this AI type
+     * instance or `null` if it is the pattern.
      */
     entity?: number;
 
@@ -112,6 +112,9 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     data: object;
 }
 
+/**
+ * @deprecated
+ */
 declare namespace EntityAIClass {
     /**
      * Object used to register entity AI prototypes.
@@ -210,6 +213,7 @@ declare namespace EntityAIClass {
 
 /**
  * A set of predefined entity AI types.
+ * @deprecated
  */
 declare namespace EntityAI {
     /**
@@ -387,6 +391,7 @@ declare namespace EntityAI {
 /**
  * Parent class for {@link EntityAI.PanicWatcher}, does nothing
  * like {@link EntityAI.Idle}.
+ * @deprecated
  */
 declare class EntityAIWatcher extends EntityAIClass {
     /**
