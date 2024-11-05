@@ -30,7 +30,7 @@ declare namespace Armor {
     interface IArmorJSCallback {
         /**
          * Called every tick if player wears the armor.
-         * @param item current armor item instance
+         * @param slot current armor item instance
          * @param index armor slot, one of the {@link EArmorType} values
          * @param durability maximum damage the armor 
          * @returns `true`, if changes to the item parameter should be applied, 
@@ -41,7 +41,7 @@ declare namespace Armor {
         /**
          * Called when player deals damage if player wears the armor.
          * @param params additional data about damage
-         * @param item current armor item instance
+         * @param slot current armor item instance
          * @param index armor slot, one of the {@link EArmorType} values
          * @param durability maximum damage the armor 
          * @returns `true`, if changes to the item parameter should be applied, 
