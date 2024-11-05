@@ -62,30 +62,30 @@
  * ```
  */
 declare namespace TagRegistry {
-	interface TagGroup {
+	interface GenericTagGroup<T> {
 		readonly name: string;
 		/**
 		 * Tag factory determines additional tags, which should
 		 * be added for specific object in group.
 		 */
-		addTagFactory(factory: TagFactory): void;
+		addTagFactory(factory: GenericTagFactory<T>): void;
 		/**
 		 * Appends object to group to use in iterator and
 		 * filtering functions like {@link TagGroup.getAllWhere}, etc.
 		 * @param tags primary tags to be added for object
 		 */
-		addCommonObject(obj: any, ...tags: string[]): void;
+		addCommonObject(obj: T, ...tags: string[]): void;
 		/**
 		 * Removes object from group, so it no longer can
 		 * be fetched via {@link TagGroup.getAllWhere}, etc.
 		 */
-		removeCommonObject(obj: any): void;
+		removeCommonObject(obj: T): void;
 		/**
 		 * Appends primary tags for object; regardless of whether
 		 * object is in group or not, tags will be added.
 		 * @param tags primary tags to be added for object
 		 */
-		addTagsFor(obj: any, ...tags: string[]): void;
+		addTagsFor(obj: T, ...tags: string[]): void;
 		/**
 		 * Fetches object tags and appends it to a present
 		 * collection in fixed order: primary tags added via
@@ -93,32 +93,35 @@ declare namespace TagRegistry {
 		 * property, tags added from {@link TagGroup.addTagFactory}.
 		 * @param tags collection tor which tags applies
 		 */
-		addTags(obj: any, tags: java.util.Collection<string>): void;
+		addTags(obj: T, tags: java.util.Collection<string>): void;
 		/**
 		 * Removes primary tags from object.
 		 * @param tags primary tags to be removed from object
 		 */
-		removeTagsFor(obj: any, ...tags: string[]): void;
+		removeTagsFor(obj: T, ...tags: string[]): void;
 		/**
 		 * Fetches object tags in fixed order: primary tags added via
 		 * {@link TagGroup.addTags}, serialized tags from object `_tags`
 		 * property, tags added from {@link TagGroup.addTagFactory}.
 		 */
-		getTags(obj: any): java.util.HashSet<string>;
+		getTags(obj: T): java.util.HashSet<string>;
 		/**
 		 * Iterates over existing common objects added via
 		 * {@link TagGroup.addCommonObject} and collects objects
 		 * matched predicate to list.
 		 */
-		getAllWhere(predicate: TagPredicate): java.util.List<any>;
+		getAllWhere(predicate: GenericTagPredicate<T>): java.util.List<T>;
 		/**
 		 * Fetches objects which have all of presented tags.
 		 */
-		getAllWithTags(tags: java.util.Collection<string>): java.util.List<any>;
+		getAllWithTags(tags: java.util.Collection<string>): java.util.List<T>;
 		/**
 		 * Fetches objects which has presented tag.
 		 */
-		getAllWithTag(tag: string): java.util.List<any>;
+		getAllWithTag(tag: string): java.util.List<T>;
+	}
+
+	interface TagGroup extends GenericTagGroup<any> {
 	}
 
 	/**
@@ -127,12 +130,21 @@ declare namespace TagRegistry {
 	 */
 	function getOrCreateGroup(name: string): TagGroup;
 
-	interface TagFactory {
+	/**
+	 * Gets or creates a new tag group to append tags
+	 * for any objects with generic type.
+	 */
+	function getOrCreateGroup<T>(name: string): GenericTagGroup<T>;
+
+	interface GenericTagFactory<T> {
 		/**
 		 * @param obj object from group
 		 * @param tags changeable tags collection
 		 */
-		(obj: any, tags: java.util.Collection<string>): void;
+		(obj: T, tags: java.util.Collection<string>): void;
+	}
+
+	interface TagFactory extends GenericTagFactory<any> {
 	}
 
 	/**
@@ -155,11 +167,13 @@ declare namespace TagRegistry {
 	 * Appends primary tags for object in group; regardless of whether
 	 * object is in group or not, tags will be added.
 	 * @param tags primary tags to be added for object
+	 * @param useExistingObject do not append object to group
 	 */
 	function addTagsFor(group: string, obj: any, tags: string[], useExistingObject: boolean): void;
 	/**
 	 * Appends primary tag for object in group.
-	 * @param tags primary tags to be added for object
+	 * @param tag primary tag to be added for object
+	 * @param useExistingObject do not append object to group
 	 */
 	function addTagFor(group: string, obj: any, tag: string, useExistingObject: boolean): void;
 	/**
@@ -174,12 +188,15 @@ declare namespace TagRegistry {
 	 */
 	function getTagsFor(group: string, obj: any): string[];
 
-	interface TagPredicate {
+	interface GenericTagPredicate<T> {
 		/**
 		 * @param obj object from group
 		 * @param tags collection with all tags
 		 */
-		(obj: any, tags: java.util.Collection<string>): boolean;
+		(obj: T, tags: java.util.Collection<string>): boolean;
+	}
+
+	interface TagPredicate extends GenericTagPredicate<any> {
 	}
 
 	/**
