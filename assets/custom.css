@@ -75,9 +75,6 @@ a.tsd-index-link:hover > :not(:first-child), .tsd-navigation a:hover > :not(:fir
 .tsd-page-toolbar .tsd-toolbar-contents .codicon {
 	overflow: visible;
 }
-a.title:after {
-	content: " API";
-}
 .tsd-navigation details a.current, .tsd-page-navigation details a.current {
 	background: none;
 }
