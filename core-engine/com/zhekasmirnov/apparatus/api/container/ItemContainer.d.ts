@@ -118,9 +118,14 @@ declare module com {
                          * Set slot's content by it's name. If a slot with specified name doesn't
                          * exists, creates new with specified name and item.
                          * @param name slot name
-                         * @param extra item extra data.
                          */
                         setSlot(name: string, id: number, count: number, data: number): void;
+                        /**
+                         * Set slot's content by it's name. If a slot with specified name doesn't
+                         * exists, creates new with specified name and item.
+                         * @param name slot name
+                         * @param extra item extra data
+                         */
                         setSlot(name: string, id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>): void;
                         addToSlot(name: string, id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>, player: number): number;
                         getFromSlot(name: string, id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>, player: number): number;
@@ -159,7 +164,6 @@ declare module com {
                          * @param inventorySlot numeric index of the inventory slot, from where to retrieve the item
                          * @param slotName string name of the container slot, where to put taken item
                          * @param amount item count to be retrieved from inventory slot
-                         * @clientside
                          */
                         sendInventoryToSlotTransaction(inventorySlot: number, slotName: string, amount: number): void;
                         handleInventoryToSlotTransaction(player: number, inventorySlot: number, slotName: string, amount: number): void;
@@ -170,7 +174,6 @@ declare module com {
                          * @param slot1 string name of the container slot, from where to retrieve item
                          * @param slot2 string name of the container slot, where to put taken item
                          * @param amount item count to be retrieved from container slot
-                         * @clientside
                          */
                         sendSlotToSlotTransaction(slot1: string, slot2: string, amount: number): void;
                         handleSlotToSlotTransaction(player: number, slot1: string, slot2: string, amount: number): void;
@@ -182,7 +185,6 @@ declare module com {
                          * for example, in custom slot element touch events, etc.
                          * @param slot string name of the container slot, from where to retrieve item
                          * @param amount item count to be retrieved from container slot
-                         * @clientside
                          */
                         sendSlotToInventoryTransaction(slot: string, amount: number): void;
                         handleSlotToInventoryTransaction(player: number, slotName: string, inventorySlot: number, amount: number): void;

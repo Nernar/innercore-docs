@@ -260,7 +260,6 @@ declare namespace World {
     function setWeather(weather: Nullable<Weather>): void;
 
     /**
-     * @todo
      * @param mode certain modes also working with actors
      * @since 2.0.2b27
      */

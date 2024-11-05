@@ -137,9 +137,6 @@ declare namespace GenerationUtils {
      * @param amount ore amount, use at least `6` to be able to find generated
      * ore vein; note that amount doesn't mean blocks count, it is just an 
      * input value for generation algorithm
-     * @param noStoneCheck if `true`, no check for stone is performed so the ore 
-     * may be generated in the air; use this to debug ore generation in the 
-     * superflat worlds
      * @param whitelist if `true`, specified block IDs are used as whitelist for generation
      * (only the IDs from the list can be replaced with ores); if `false`, specified 
      * block IDs are used as a blacklist (only the IDs from the list canNOT be 

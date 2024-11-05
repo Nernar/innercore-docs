@@ -144,7 +144,6 @@ declare class BlockSource {
 	/**
 	 * Sets block on coords.
 	 * @param id ID of the block to set
-	 * @param data data of the block to set
 	 * @since 2.2.1b95
 	 */
 	setBlock(x: number, y: number, z: number, id: number): void;
@@ -224,7 +223,7 @@ declare class BlockSource {
 	/**
 	 * Destroys block on coords by entity using specified item.
 	 * @param allowDrop whether to provide drop for the block or not
-	 * @param entityUid entity ID or -1 ID if entity is not specified
+	 * @param item tool which broke block
 	 * @since 2.2.0b83
 	 */
 	breakBlock(x: number, y: number, z: number, allowDrop: boolean, item: ItemInstance): void;
@@ -253,16 +252,7 @@ declare class BlockSource {
 	explode(x: number, y: number, z: number, power: number, fire: boolean): void;
 
 	/**
-	 * 
-	 * @param x1 
-	 * @param y1 
-	 * @param z1 
-	 * @param x2 
-	 * @param y2 
-	 * @param z2 
-	 * @param mode 
-	 * @param output 
-	 * @returns Entity
+     * @param mode certain modes also working with actors
 	 */
 	clip(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, mode: number, output: number[]): number;
 

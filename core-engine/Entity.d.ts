@@ -736,7 +736,7 @@ declare namespace Entity {
 
     /**
      * Creates an object used to change entity's attributes.
-     * @param entity entity uid
+     * @param entityUid entity uid
      * @param attribute one of {@link Attribute} or your custom one
      * @returns Object used to manipulate entity's attributes.
      * @since 2.0.3b33
