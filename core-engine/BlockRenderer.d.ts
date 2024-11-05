@@ -266,8 +266,8 @@ declare namespace BlockRenderer {
 
         /**
          * Renders box at current block coordinates of the specified size.
-         * @param texName block texture name
-         * @param texId block texture ID
+         * @param id ID of the block to be used as texture source
+         * @param data data of the block to be used as texture source
          */
         renderBoxTextureHere(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
 
