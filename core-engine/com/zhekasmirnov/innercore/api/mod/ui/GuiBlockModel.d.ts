@@ -77,7 +77,6 @@ declare module com {
                                     intersects(b: PrecompiledBox): boolean;
                                     inFrontOf(b: PrecompiledBox): boolean;
                                     compile(): Box;
-                                    toString(): string;
                                 }
                             }
                             class VanillaRenderType extends java.lang.Object {

@@ -105,11 +105,6 @@ declare class BlockState implements Tile {
     getNamedStatesScriptable(): { [key: string]: number };
 
     /**
-     * @returns String representation of the following object.
-     */
-    toString(): string;
-
-    /**
      * @returns Whether the following object is equal to given,
      * according to different parameters.
      */
