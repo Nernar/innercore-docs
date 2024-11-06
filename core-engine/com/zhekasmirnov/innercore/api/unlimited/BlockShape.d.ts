@@ -1,9 +1,9 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module unlimited {
-                    export class BlockShape extends java.lang.Object {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace unlimited {
+                    class BlockShape extends java.lang.Object {
                         static class: java.lang.Class<BlockShape>;
                         x1: number;
                         x2: number;

@@ -1,11 +1,11 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module mod {
-                    export module ui {
-                        export module window {
-                            export class UIWindowElementDrawable extends android.graphics.drawable.Drawable implements UI.IElementProvider {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace mod {
+                    namespace ui {
+                        namespace window {
+                            class UIWindowElementDrawable extends android.graphics.drawable.Drawable implements UI.IElementProvider {
                                 static class: java.lang.Class<UIWindowElementDrawable>;
                                 isDebugEnabled: boolean;
                                 window: UI.Window;

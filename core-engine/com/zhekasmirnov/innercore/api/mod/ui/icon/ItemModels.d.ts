@@ -1,11 +1,11 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module mod {
-                    export module ui {
-                        export module icon {
-                            export class ItemModels extends java.lang.Object {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace mod {
+                    namespace ui {
+                        namespace icon {
+                            class ItemModels extends java.lang.Object {
                                 static class: java.lang.Class<ItemModels>;
                                 static readonly ATLAS_NAME = "textures/entity/camera_tripod";
                                 static readonly ATLAS_PATH: string;
@@ -26,8 +26,8 @@ declare module com {
                                 static setCustomUiModel(id: number, data: number, model: GuiBlockModel): void;
                                 static getItemOrBlockModel(id: number, count: number, data: number, scale: number, rX: number, rY: number, rZ: number, randomize: boolean): Render.Renderer;
                             }
-                            export module ItemModels {
-                                export class ModelInfo extends java.lang.Object {
+                            namespace ItemModels {
+                                class ModelInfo extends java.lang.Object {
                                     static class: java.lang.Class<ModelInfo>;
                                     private constructor(idKey: string);
                                     getModel(): GuiBlockModel;
@@ -38,7 +38,7 @@ declare module com {
                                     writeToCache(bmp: android.graphics.Bitmap): void;
                                     setShape(shape: unlimited.BlockShape): void;
                                 }
-                                export class AltasUnit extends java.lang.Object {
+                                class AltasUnit extends java.lang.Object {
                                     static class: java.lang.Class<AltasUnit>;
                                     readonly bitmap: android.graphics.Bitmap;
                                     readonly pos: number;

@@ -1,10 +1,10 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module mod {
-                    export module ui {
-                        export class ItemModelCacheManager extends java.lang.Object {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace mod {
+                    namespace ui {
+                        class ItemModelCacheManager extends java.lang.Object {
                             static class: java.lang.Class<ItemModelCacheManager>;
                             static getSingleton(): ItemModelCacheManager;
                             getCacheGroupDirectory(group: string): java.io.File;
