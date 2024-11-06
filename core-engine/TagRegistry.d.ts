@@ -62,13 +62,13 @@
  * ```
  */
 declare namespace TagRegistry {
-	interface GenericTagGroup<T> {
+	interface TagGroup<T = any> {
 		readonly name: string;
 		/**
 		 * Tag factory determines additional tags, which should
 		 * be added for specific object in group.
 		 */
-		addTagFactory(factory: GenericTagFactory<T>): void;
+		addTagFactory(factory: TagFactory<T>): void;
 		/**
 		 * Appends object to group to use in iterator and
 		 * filtering functions like {@link TagGroup.getAllWhere}, etc.
@@ -110,7 +110,7 @@ declare namespace TagRegistry {
 		 * {@link TagGroup.addCommonObject} and collects objects
 		 * matched predicate to list.
 		 */
-		getAllWhere(predicate: GenericTagPredicate<T>): java.util.List<T>;
+		getAllWhere(predicate: TagPredicate<T>): java.util.List<T>;
 		/**
 		 * Fetches objects which have all of presented tags.
 		 */
@@ -119,9 +119,6 @@ declare namespace TagRegistry {
 		 * Fetches objects which has presented tag.
 		 */
 		getAllWithTag(tag: string): java.util.List<T>;
-	}
-
-	interface TagGroup extends GenericTagGroup<any> {
 	}
 
 	/**
@@ -134,9 +131,9 @@ declare namespace TagRegistry {
 	 * Gets or creates a new tag group to append tags
 	 * for any objects with generic type.
 	 */
-	function getOrCreateGroup<T>(name: string): GenericTagGroup<T>;
+	function getOrCreateGroup<T>(name: string): TagGroup<T>;
 
-	interface GenericTagFactory<T> {
+	interface TagFactory<T = any> {
 		/**
 		 * @param obj object from group
 		 * @param tags changeable tags collection
@@ -144,14 +141,35 @@ declare namespace TagRegistry {
 		(obj: T, tags: java.util.Collection<string>): void;
 	}
 
-	interface TagFactory extends GenericTagFactory<any> {
-	}
-
 	/**
 	 * Tag factory determines additional tags, which should
 	 * be added for specific object in group.
 	 */
 	function addTagFactory(group: string, factory: TagFactory): void;
+
+	interface TagPredicate<T = any> {
+		/**
+		 * @param obj object from group
+		 * @param tags collection with all tags
+		 */
+		(obj: T, tags: java.util.Collection<string>): boolean;
+	}
+
+	/**
+	 * Iterates over existing common objects in group added via
+	 * {@link TagGroup.addCommonObject} and collects objects
+	 * matched predicate to list.
+	 */
+	function getAllWith(group: string, predicate: TagPredicate): any[];
+	/**
+	 * Fetches objects in group which have all of presented tags.
+	 */
+	function getAllWithTags(group: string, tags: string[]): any[];
+	/**
+	 * Fetches objects in group which has presented tag.
+	 */
+	function getAllWithTag(group: string, tag: string): any[];
+
 	/**
 	 * Appends object to group to use in iterator and
 	 * filtering functions like {@link TagRegistry.getAllWith}, etc.
@@ -187,30 +205,4 @@ declare namespace TagRegistry {
 	 * property, tags added from {@link TagRegistry.addTagFactory}.
 	 */
 	function getTagsFor(group: string, obj: any): string[];
-
-	interface GenericTagPredicate<T> {
-		/**
-		 * @param obj object from group
-		 * @param tags collection with all tags
-		 */
-		(obj: T, tags: java.util.Collection<string>): boolean;
-	}
-
-	interface TagPredicate extends GenericTagPredicate<any> {
-	}
-
-	/**
-	 * Iterates over existing common objects in group added via
-	 * {@link TagGroup.addCommonObject} and collects objects
-	 * matched predicate to list.
-	 */
-	function getAllWith(group: string, predicate: TagPredicate): any[];
-	/**
-	 * Fetches objects in group which have all of presented tags.
-	 */
-	function getAllWithTags(group: string, tags: string[]): any[];
-	/**
-	 * Fetches objects in group which has presented tag.
-	 */
-	function getAllWithTag(group: string, tag: string): any[];
 }
