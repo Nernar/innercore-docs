@@ -65,11 +65,11 @@ declare module com {
                          * @returns Mesh specified via {@link com.zhekasmirnov.innercore.api.NativeRenderer.ModelPart.setMesh setMesh} call or `null`, if 
                          * this part doesn't contain mesh.
                          */
-                        getMesh(): Nullable<NativeRenderMesh>;
+                        getMesh(): Nullable<RenderMesh>;
                         /**
-                         * Specifies {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} to be used as a part.
+                         * Specifies {@link RenderMesh} to be used as a part.
                          */
-                        setMesh(mesh: Nullable<NativeRenderMesh>): void;
+                        setMesh(mesh: Nullable<RenderMesh>): void;
                         /**
                          * Specifies part default offset.
                          */
