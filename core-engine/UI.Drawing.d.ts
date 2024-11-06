@@ -1,5 +1,5 @@
 declare namespace UI {
-	interface IDrawing {
+    interface IDrawing {
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onSetup(scriptable: object, style: Style): void;
 	}
@@ -88,4 +88,5 @@ declare namespace UI {
 		| LineDrawing
 		| TextDrawing
 	);
+	type DrawingSet = DrawingElements[];
 }
