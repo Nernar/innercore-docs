@@ -7,6 +7,43 @@ declare namespace UI {
 	 */
 	type BitmapTypes = string | string[] | android.graphics.Bitmap | android.graphics.Bitmap[];
 
+	type TouchEventType = "DOWN" | "UP" | "MOVE" | "CLICK" | "LONG_CLICK" | "CANCEL";
+
+	interface ITouchEvent {
+		_x: number;
+		_y: number;
+		downX: number;
+		downY: number;
+		localX: number;
+		localY: number;
+		type: TouchEventType;
+		x: number;
+		y: number;
+		hasMovedSinceLastDown(): boolean;
+		update(event: android.view.MotionEvent): void;
+		preparePosition(win: Window, rect: android.graphics.Rect): void;
+		posAsScriptable(): { x: number, y: number };
+		localPosAsScriptable(): { x: number, y: number };
+	}
+
+	interface IElementCleaner {
+		element: IElement;
+		rect: android.graphics.Rect;
+		clone(): IElementCleaner;
+		set(rect: android.graphics.Rect): void;
+		clean(canvas: android.graphics.Canvas, scale: number): void;
+		debug(canvas: android.graphics.Canvas, scale: number): void;
+	}
+
+	interface IScriptableWatcher {
+		object: object;
+		isDirty(): boolean;
+		validate(): void;
+		invalidate(): void;
+		setTarget(obj: object): void;
+		refresh(): void;
+	}
+
 	/**
 	 * There are 12 types of UI elements given by Inner Core, and you can also create your custom ones.
 	 * Each element type has it's own specific description object.
@@ -35,9 +72,9 @@ declare namespace UI {
 	 * see {@link UI.UICustomElement}.
 	 */
 	interface IElement {
-		cleaner: UIElementCleaner;
+		cleaner: IElementCleaner;
 		description: object;
-		descriptionWatcher: util.ScriptableWatcher;
+		descriptionWatcher: IScriptableWatcher;
 		elementName: string;
 		elementRect: android.graphics.Rect;
 		isDirty: boolean;
@@ -54,7 +91,7 @@ declare namespace UI {
 		 * with specified style applied.
 		 * See {@link UI.Texture.constructor} for parameters description.
 		 */
-		createTexture(obj: BitmapTypes): types.Texture;
+		createTexture(obj: BitmapTypes): Texture;
 		/**
 		 * Sets element's position in the window's unit coordinates.
 		 * @param x x position
@@ -67,8 +104,7 @@ declare namespace UI {
 		 * @param height element's height
 		 */
 		setSize(width: number, height: number): void;
-		constructor(window: Window, scriptable: object): IElement;
-		getCleanerCopy(): UIElementCleaner;
+		getCleanerCopy(): IElementCleaner;
 		/**
 		 * Passes any value to the element.
 		 * @param bindingName binding name, you can access the value from the
@@ -86,10 +122,10 @@ declare namespace UI {
 		 * @returns Value that was get from the element or `null` if the element 
 		 * doesn't exist.
 		 */
-		getBinding<T=any>(name: string): IElement | android.graphics.Rect | T;
+		getBinding<T = any>(name: string): IElement | android.graphics.Rect | T;
 		setupInitialBindings(container: UiAbstractContainer, elementName: string): void;
-		onTouchEvent(event: types.TouchEvent): void;
-		onTouchReleased(event: types.TouchEvent): void;
+		onTouchEvent(event: ITouchEvent): void;
+		onTouchReleased(event: ITouchEvent): void;
 		isReleased(): boolean;
 		onRelease(): void;
 		onReset(): void;
@@ -111,11 +147,10 @@ declare namespace UI {
 	}
 
 	interface ICustomElement extends IElement {
-		constructor(win: Window, desc: ICustomElement): ICustomElement;
 		getScope(): object;
 		onSetup<T = UICustomElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
-		onTouchReleased(event: types.TouchEvent): void;
+		onTouchReleased(event: ITouchEvent): void;
 		onBindingUpdated<T>(name: string, val: T): void;
 		onReset(): void;
 		onRelease(): void;
@@ -130,7 +165,6 @@ declare namespace UI {
 	}
 
 	interface IButtonElement extends IElement {
-		constructor(win: Window, desc: UIButtonElement): IButtonElement;
 		onSetup<T = UIButtonElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T>(name: string, value: T): void;
@@ -139,8 +173,7 @@ declare namespace UI {
     type UICloseButtonElement = UIButtonElement;
 
 	interface ICloseButtonElement extends IButtonElement {
-		constructor(window: Window, desc: UICloseButtonElement): ICloseButtonElement;
-		onTouchEvent(event: types.TouchEvent): void;
+		onTouchEvent(event: ITouchEvent): void;
 	}
 
 	interface FrameTextureSides {
@@ -161,7 +194,6 @@ declare namespace UI {
 	}
 
 	interface IFrameElement extends IElement {
-		constructor(win: Window, desc: UIFrameElement): IFrameElement;
 		onSetup<T = UIFrameElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T>(name: string, val: T): void;
@@ -178,11 +210,10 @@ declare namespace UI {
 
 	interface IImageElement extends IElement {
 		height: number;
-		overlay: types.Texture;
-		texture: types.Texture;
+		overlay: Texture;
+		texture: Texture;
 		textureScale: number;
 		width: number;
-		constructor(win: Window, desc: UIImageElement): IImageElement;
 		onSetup<T = UIImageElement>(desc: T): void;
 		isAnimated(): boolean;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
@@ -217,7 +248,6 @@ declare namespace UI {
 		/* static */ readonly DIRECTION_LEFT: number;
 		/* static */ readonly DIRECTION_RIGHT: number;
 		/* static */ readonly DIRECTION_UP: number;
-		constructor(win: Window, desc: UIScaleElement): IScaleElement;
 		onSetup<T = UIScaleElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T>(name: string, val: T): void;
@@ -244,12 +274,11 @@ declare namespace UI {
 	}
 
 	interface IScrollElement extends IElement {
-		constructor(win: Window, desc: UIScrollElement): IScrollElement;
 		onSetup<T = UIScrollElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T>(name: string, val: T): void;
 		onRelease(): void;
-		onTouchEvent(event: types.TouchEvent): void;
+		onTouchEvent(event: ITouchEvent): void;
 	}
 
 	interface UISlotElement extends UIElement {
@@ -288,7 +317,7 @@ declare namespace UI {
 	}
 
 	interface ISlotElement extends IElement {
-		background: types.Texture;
+		background: Texture;
 		curCount: number;
 		curData: number;
 		curExtra: Nullable<ItemExtraData>;
@@ -301,7 +330,6 @@ declare namespace UI {
 		slotName: string;
 		source: UiVisualSlotImpl;
 		textOverride: Nullable<string>;
-		constructor(win: Window, desc: UISlotElement): ISlotElement;
 		onSetup<T = UISlotElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T>(name: string, val: T): void;
@@ -311,18 +339,17 @@ declare namespace UI {
 		getMaxStackSize(): number;
 		isValidItem(id: number, count: number, data: number, extra: Nullable<ItemExtraData>): boolean;
 		getMaxItemTransferAmount(slot: ISlotElement): number;
-		onTouchEvent(event: types.TouchEvent): void;
+		onTouchEvent(event: ITouchEvent): void;
 	}
 
-	interface UIInvSlotElement extends UISlotElement {
+	interface UIInvSlotElement extends Omit<UISlotElement, "type"> {
 		type: "invSlot" | "invslot",
 		index?: number;
 	}
 
 	interface IInvSlotElement extends ISlotElement {
-		constructor(win: Window, desc: UIInvSlotElement): IInvSlotElement;
 		onSetup<T = UIInvSlotElement>(desc: T): void;
-		onTouchEvent(event: types.TouchEvent): void;
+		onTouchEvent(event: ITouchEvent): void;
 		onBindingUpdated<T>(name: string, val: T): void;
 		setupInitialBindings(container: UiAbstractContainer, elementName: string): void;
 	}
@@ -341,11 +368,10 @@ declare namespace UI {
 	}
 
 	interface ISwitchElement extends IElement {
-		constructor(win: Window, desc: UISwitchElement): ISwitchElement;
 		onSetup<T = UISwitchElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T=boolean>(name: string, val: T): void;
-		onTouchEvent(event: types.TouchEvent): void;
+		onTouchEvent(event: ITouchEvent): void;
 		onRelease(): void;
 	}
 
@@ -359,9 +385,8 @@ declare namespace UI {
 	}
 
 	interface ITabElement extends IFrameElement {
-		constructor(win: Window, desc: UITabElement): ITabElement;
 		onSetup<T = UITabElement>(desc: T): void;
-		onTouchEvent(event: types.TouchEvent): void;
+		onTouchEvent(event: ITouchEvent): void;
 		onReset(): void;
 	}
 
@@ -375,20 +400,18 @@ declare namespace UI {
 	}
 
 	interface ITextElement extends IElement {
-		constructor(win: Window, desc: UITextElement): ITextElement;
 		onSetup<T = UITextElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T>(name: string, val: T): void;
 	}
 
-	interface UIFPSTextElement extends UITextElement {
+	interface UIFPSTextElement extends Omit<UITextElement, "type"> {
 		type: "fps",
 		interpolate?: boolean,
 		period?: number;
 	}
 
 	interface IFPSTextElement extends ITextElement {
-		constructor(win: Window, desc: UIFPSTextElement): IFPSTextElement;
 		onSetup<T = UIFPSTextElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 	}
