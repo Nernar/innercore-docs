@@ -274,6 +274,4 @@ declare interface ItemModel {
     updateForBlockVariant(variant: any): void;
 
     getItemRenderMesh(count: number, randomize: boolean): RenderMesh;
-
-
 }

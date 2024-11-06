@@ -94,5 +94,4 @@ declare namespace LiquidRegistry {
      * @since 2.2.1b103
      */
     function getBlockByLiquid(liquidId: string, isStatic: boolean): number;
-
 }

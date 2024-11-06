@@ -179,5 +179,4 @@ declare namespace ModAPI {
      * @deprecated No longer supported.
      */
     function addTexturePack(path: any): void;
-
 }

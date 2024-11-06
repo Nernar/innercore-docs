@@ -1,6 +1,6 @@
 /**
  * @remarks
- * Availabled in preloader scripts only!
+ * Available in preloader scripts only!
  */
 declare namespace Resources {
 
@@ -16,51 +16,51 @@ declare namespace Resources {
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 */
 	function getAllResourceDirectories(): string[];
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 * @since 2.0.2b24
 	 */
 	function getAllResourceDirectoriesPaths(): string[];
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 */
 	function searchFilesInDir(result: Array<string>, baseDir: java.io.File, file: java.io.File, regex: string): void;
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 */
 	function getAllMatchingResourcesInDir(directory: Object, regex: string): string[];
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 */
 	function getAllMatchingResourcesInPath(directory: Object, regex: string): string[];
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 * @since 2.0.2b24
 	 */
 	function getAllMatchingResources(regex: string): string[];
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 */
 	function getResourcePathNoVariants(path: string): Nullable<java.io.File>;
 
 	/**
 	 * @remarks
-	 * Availabled in preloader scripts only!
+	 * Available in preloader scripts only!
 	 * @since 2.0.2b24
 	 */
 	function getResourcePath(path: string): Nullable<string>;
