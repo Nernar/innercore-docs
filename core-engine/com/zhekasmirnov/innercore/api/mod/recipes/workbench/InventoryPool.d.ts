@@ -8,17 +8,17 @@ declare module com {
                             export class InventoryPool extends java.lang.Object {
                                 static class: java.lang.Class<InventoryPool>;
                                 constructor(player: number);
-                                addRecipeEntry(entry: RecipeEntry): void;
+                                addRecipeEntry(entry: Recipes.RecipeEntry): void;
                                 addPoolEntry(entry: InventoryPool.PoolEntry): void;
-                                getPoolEntrySet(entry: RecipeEntry): Nullable<InventoryPool.PoolEntrySet>;
-                                getPoolEntries(entry: RecipeEntry): Nullable<java.util.ArrayList<InventoryPool.PoolEntry>>;
+                                getPoolEntrySet(entry: Recipes.RecipeEntry): Nullable<InventoryPool.PoolEntrySet>;
+                                getPoolEntries(entry: Recipes.RecipeEntry): Nullable<java.util.ArrayList<InventoryPool.PoolEntry>>;
                                 pullFromInventory(): void;
                             }
                             export module InventoryPool {
                                 interface PoolEntry {
                                     count: number,
                                     data: number,
-                                    extra: NativeItemInstanceExtra,
+                                    extra: ItemExtraData,
                                     id: number,
                                     slot: number,
                                     isMatchesWithExtra(other: PoolEntry): boolean;
@@ -38,7 +38,7 @@ declare module com {
                                     getFirstEntry(): PoolEntry;
                                     getTotalCount(): number;
                                     toString(): string;
-                                    spreadItems(slots: java.util.ArrayList<ui.container.AbstractSlot>): void;
+                                    spreadItems(slots: java.util.ArrayList<UI.AbstractSlot>): void;
                                 }
                             }
                         }

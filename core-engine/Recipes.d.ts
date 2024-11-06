@@ -457,7 +457,7 @@ declare namespace Recipes {
      * @param result recipe result item instance
      */
     interface CraftingFunction {
-        (api: WorkbenchFieldAPI, field: com.zhekasmirnov.innercore.api.mod.ui.container.Slot[], result: ItemInstance, player: number): void
+        (api: WorkbenchFieldAPI, field: UI.Slot[], result: ItemInstance, player: number): void
     }
 
     /**
@@ -468,17 +468,17 @@ declare namespace Recipes {
          * @param slot slot index
          * @returns Workbench slot instance by slot index.
          */
-        getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.AbstractSlot;
+        getFieldSlot(slot: number): UI.AbstractSlot;
 
         /**
          * @since 2.2.1b108
          */
-        getFieldSlot(x: number, y: number): com.zhekasmirnov.innercore.api.mod.ui.container.AbstractSlot;
+        getFieldSlot(x: number, y: number): UI.AbstractSlot;
 
         /**
          * @returns JS array of all slots.
          */
-        asScriptableField(): com.zhekasmirnov.innercore.api.mod.ui.container.Slot[];
+        asScriptableField(): UI.AbstractSlot[];
 
         /**
          * @since 2.2.1b106
@@ -495,7 +495,7 @@ declare namespace Recipes {
          * @param slot slot index
          * @returns Workbench slot instance by slot index.
          */
-        getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.Slot;
+        getFieldSlot(slot: number): UI.Slot;
 
         /**
          * Decreases item count in the specified slot, if possible.
@@ -522,20 +522,26 @@ declare namespace Recipes {
     /**
      * Crafting recipe entry.
      */
-    interface RecipeEntry extends java.lang.Object {
+    interface RecipeEntry {
+        readonly data: number;
+        readonly id: number;
+
+        getMask(): string;
+        getCodeByItem(id: number, data: number): number;
+        getCode(): number;
 
         /**
          * @param slot slot to compare with
          * @returns `true` if recipe entry matches the slot.
          */
-        isMatching(slot: com.zhekasmirnov.innercore.api.mod.ui.container.Slot): boolean;
+        isMatching(slot: UI.AbstractSlot): boolean;
 
         /**
          * @param slot slot to compare with
          * @returns `true` if recipe entry matches the slot.
          * @since 2.2.1b108
          */
-        isMatching(slot: Nullable<com.zhekasmirnov.innercore.api.mod.ui.container.Slot>): boolean;
+        isMatching(slot: Nullable<UI.AbstractSlot>): boolean;
 
         /**
          * @param entry entry to compare with
@@ -545,4 +551,3 @@ declare namespace Recipes {
     }
 
 }
-

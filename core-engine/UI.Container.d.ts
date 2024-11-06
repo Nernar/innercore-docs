@@ -43,15 +43,15 @@ declare namespace UI {
 		addElementInstance(element: IElement, name: string): void;
 		close(): void;
 		getBinding<T = any>(element: string, bindingName: string): IElement | android.graphics.Rect | T;
-		getElement(elementName: string): IElement;
+		getElement(elementName: string): Nullable<IElement>;
 		getParent(): any;
 		getSlotVisualImpl(slotName: string): UiVisualSlotImpl;
 		handleBindingDirty(element: string, bindingName: string): void;
-		handleInventoryToSlotTransaction(invSlot: number, containerSlot: string, count: number): void;
-		handleSlotToInventoryTransaction(containerSlot: string, invSlot: number): void;
-		handleSlotToSlotTransaction(slot1: string, slot2: string, count: number): void;
+		handleInventoryToSlotTransaction(inventorySlot: number, slot: string, amount: number): void;
+		handleSlotToInventoryTransaction(slot: string, amount: number): void;
+		handleSlotToSlotTransaction(slot1: string, slot2: string, amount: number): void;
 		onWindowClosed(): void;
-		openAs(win: IWindow): void;
+		openAs(window: IWindow): void;
 		setBinding<T>(element: string, bindingName: string, obj: T): void;
 	}
 
@@ -74,7 +74,7 @@ declare namespace UI {
 	 * This is a legacy container that does not synchronize between clients and server.
 	 * It should be used to store data on one side either server or client.
 	 */
-	class Container implements UiAbstractContainer, recipes.workbench.WorkbenchField {
+	class Container implements UiAbstractContainer, Recipes.WorkbenchField {
 		static readonly isContainer: boolean;
 		/**
 		 * If container is a part of {@link TileEntity}, this field stores reference
@@ -316,6 +316,11 @@ declare namespace UI {
 		 */
 		applyChanges(): void;
 		/**
+		 * @returns `false` if container supports multiplayer, `true` otherwise.
+		 */
+		isLegacyContainer(): boolean;
+
+		/**
 		 * If the container is a custom workbench, you can set the slot prefix
 		 * via this method call. {@link UI.Container.getFieldSlot}
 		 * will get field slot by `prefix + slot` name.
@@ -323,26 +328,22 @@ declare namespace UI {
 		 */
 		setWbSlotNamePrefix(wbsnp: string): void;
 		/**
-		 * @param slot slot index
-		 * @returns Workbench slot instance by slot index.
+         * @param slot slot index
+         * @returns Workbench slot instance by slot index.
 		 */
 		getFieldSlot(slot: number): Slot;
 		/**
-		 * @since 2.2.1b108
+         * @since 2.2.1b108
 		 */
 		getFieldSlot(x: number, y: number): AbstractSlot;
 		/**
-		 * @returns JS array of all slots.
+         * @returns JS array of all slots.
 		 */
 		asScriptableField(): Slot[];
 		/**
 		 * @returns `9`
-		 * @since 2.2.1b106
+         * @since 2.2.1b106
 		 */
 		getWorkbenchFieldSize(): number;
-		/**
-		 * @returns `false` if container supports multiplayer, `true` otherwise.
-		 */
-		isLegacyContainer(): boolean;
 	}
 }
