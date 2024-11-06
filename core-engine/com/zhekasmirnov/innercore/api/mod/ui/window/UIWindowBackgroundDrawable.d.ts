@@ -5,12 +5,12 @@ declare module com {
                 export module mod {
                     export module ui {
                         export module window {
-                            export class UIWindowBackgroundDrawable extends android.graphics.drawable.Drawable implements IBackgroundProvider {
+                            export class UIWindowBackgroundDrawable extends android.graphics.drawable.Drawable implements UI.IBackgroundProvider {
                                 static class: java.lang.Class<UIWindowBackgroundDrawable>;
-                                window: UIWindow;
-                                constructor(win: UIWindow);
+                                window: UI.Window;
+                                constructor(win: UI.Window);
                                 setBackgroundColor(color: number): void;
-                                addDrawing(drawing: background.IDrawing): void;
+                                addDrawing(drawing: UI.IDrawing): void;
                                 clearAll(): void;
                                 draw(canvas: NonNullable<android.graphics.Canvas>): void;
                                 prepareCache(): void;

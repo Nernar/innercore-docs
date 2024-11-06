@@ -12,8 +12,8 @@ declare module com {
                                 static getCacheFile(name: string): java.io.File;
                                 static getUseId(): number;
                                 static getStackPos(id: number): number;
-                                static registerWrap(wrap: BitmapWrap): void;
-                                static unregisterWrap(wrap: BitmapWrap): void;
+                                static registerWrap(wrap: UI.IBitmapWrap): void;
+                                static unregisterWrap(wrap: UI.IBitmapWrap): void;
                                 static writeToFile(file: java.io.File, bitmap: android.graphics.Bitmap): void;
                                 static readFromFile(file: java.io.File, bitmap: android.graphics.Bitmap): void;
                                 static testCaching(src: android.graphics.Bitmap): android.graphics.Bitmap;
