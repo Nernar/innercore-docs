@@ -56,8 +56,7 @@ declare interface ItemContainerUiHandler extends UI.UiAbstractContainer {
 /**
  * Type of TileEntity container that supports multiplayer.
  */
-declare class ItemContainer extends java.lang.Object implements Recipes.WorkbenchField {
-	static class: java.lang.Class<ItemContainer>;
+declare class ItemContainer implements Recipes.WorkbenchField {
 	readonly isServer: boolean;
 	readonly slots: {[key: string]: ItemContainerSlot};
 	readonly transactionLock: any;
@@ -118,7 +117,7 @@ declare class ItemContainer extends java.lang.Object implements Recipes.Workbenc
 	 */
 	getSlot(name: string): ItemContainerSlot;
 	/**
-	 * @deprecated Use {@link com.zhekasmirnov.apparatus.api.container.ItemContainer.getSlot getSlot} instead.
+	 * @deprecated Use {@link ItemContainer.getSlot} instead.
 	 */
 	getFullSlot(name: string): ItemContainerSlot;
 	markSlotDirty(name: string): void;
@@ -127,7 +126,7 @@ declare class ItemContainer extends java.lang.Object implements Recipes.Workbenc
 	 * Sets slot's content by it's name from given slot object. If a slot with specified
 	 * name doesn't exist, a new slot with specified name and item will be created.
 	 * @param name slot name
-	 * @param slot {@link com.zhekasmirnov.apparatus.api.container.ItemContainerSlot ItemContainerSlot} object to specify slot contents
+	 * @param slot {@link ItemContainerSlot} object to specify slot contents
 	 */
 	setSlot(name: string, slot: ItemContainerSlot): void;
 	/**
@@ -311,7 +310,7 @@ declare class ItemContainer extends java.lang.Object implements Recipes.Workbenc
 	 * @param slot slot index
 	 * @returns Workbench slot instance by slot index.
 	 */
-	getFieldSlot(index: number): UI.AbstractSlot;
+	getFieldSlot(slot: number): UI.AbstractSlot;
 	/**
 	 * @since 2.2.1b108
 	 */

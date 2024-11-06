@@ -226,7 +226,7 @@ declare namespace Recipes {
 
         /**
          * Constructs a new Workbench UI handler.
-         * @param target target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements WindowContent.elements} section
+         * @param target target {@link UI.WindowContent.elements} section
          * @param targetCon target container
          * @param field workbench field
          */

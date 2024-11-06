@@ -1,5 +1,5 @@
 declare namespace UI {
-	class UIAdaptiveWindow extends WindowGroup {
+	class AdaptiveWindow extends WindowGroup {
         /**
 	     * Constructs new {@link UI.AdaptiveWindow} with specified content.
 	     * @param content object containing window description

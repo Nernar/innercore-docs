@@ -42,7 +42,7 @@ declare namespace UI {
 	interface UiAbstractContainer {
 		addElementInstance(element: IElement, name: string): void;
 		close(): void;
-		getBinding<T = any>(element: string, bindingName: string): IElement | android.graphics.Rect | T;
+		getBinding<T = any>(element: string, bindingName: string): Nullable<IElement | android.graphics.Rect | T>;
 		getElement(elementName: string): Nullable<IElement>;
 		getParent(): any;
 		getSlotVisualImpl(slotName: string): UiVisualSlotImpl;

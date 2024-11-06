@@ -122,7 +122,7 @@ declare namespace UI {
 		 * @returns Value that was get from the element or `null` if the element 
 		 * doesn't exist.
 		 */
-		getBinding<T = any>(name: string): IElement | android.graphics.Rect | T;
+		getBinding<T = any>(name: string): Nullable<IElement | android.graphics.Rect | T>;
 		setupInitialBindings(container: UiAbstractContainer, elementName: string): void;
 		onTouchEvent(event: ITouchEvent): void;
 		onTouchReleased(event: ITouchEvent): void;
