@@ -112,10 +112,8 @@ class CodiconTheme extends DefaultTheme {
 		}
 	}
 
-	private renderContext?: CodiconThemeRenderContext;
-
 	override getRenderContext(pageEvent: PageEvent<Reflection>): DefaultThemeRenderContext {
-		return this.renderContext ||= new CodiconThemeRenderContext(this, pageEvent, this.application.options);
+		return new CodiconThemeRenderContext(this, pageEvent, this.application.options);
 	}
 }
 
