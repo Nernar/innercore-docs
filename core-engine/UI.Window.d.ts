@@ -32,6 +32,42 @@ declare namespace UI {
 		elements?: UI.ElementSet,
 	}
 
+	interface IBackgroundProvider {
+		addDrawing(idrawing: IDrawing): void;
+		clearAll(): void;
+		prepareCache(): void;
+		releaseCache(): void;
+		setBackgroundColor(color: number): void;
+	}
+
+	interface IContentProvider {
+		content: WindowContent;
+		drawing: object;
+		drawingWatcher: IScriptableWatcher;
+		elementMap: java.util.HashMap<string, IElement>;
+		elements: object;
+		window: Window;
+		setContentObject(content: WindowContent): void;
+		setupElements(): void;
+		refreshElements(): void;
+		setupDrawing(): void;
+		refreshDrawing(): void;
+		invalidateAllContent(): void;
+		toString(): string;
+	}
+
+	interface IElementProvider {
+		addOrRefreshElement(element: IElement): void;
+		getStyleFor(element: IElement): Style;
+		invalidateAll(): void;
+		releaseAll(): void;
+		removeElement(element: IElement): void;
+		resetAll(): void;
+		runCachePreparation(): void;
+		setBackgroundProvider(bgprovider: IBackgroundProvider): void;
+		setWindowStyle(style: Style): void;
+	}
+
     /**
 	 * Represents window of required size that can be opened in container to 
 	 * provide any required UI facilities.
@@ -196,7 +232,7 @@ declare namespace UI {
 		getLocation(): WindowLocation;
 		getElementProvider(): IElementProvider;
 		getBackgroundProvider(): IBackgroundProvider;
-		getContentProvider(): ContentProvider;
+		getContentProvider(): IContentProvider;
 		/**
 		 * @returns Unit size (in pixel) in the window's bounds.
 		 */
@@ -268,12 +304,12 @@ declare namespace UI {
 		/**
 		 * Sets listener to be notified about window opening/closing events.
 		 */
-		setEventListener(listener: UI.WindowEventListener | IWindowEventListener): void;
+		setEventListener(listener: UI.WindowEventListener): void;
 		/**
 		 * Gets listener to be notified about window opening/closing events.
 		 * @since 2.3.1b116
 		 */
-		getEventListener(): UI.WindowEventListener | IWindowEventListener;
+		getEventListener(): UI.WindowEventListener;
 
 		runCachePreparation(async: boolean): void;
 		/**

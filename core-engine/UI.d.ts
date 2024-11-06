@@ -85,7 +85,7 @@ declare namespace UI {
 		getStringProperty(name: string, fallback: string): string;
 		getBooleanProperty(name: string, fallback: boolean): boolean;
 		setProperty(name: string, value: any): void;
-		static getBitmapByDescription(style: Style, description: string): memory.BitmapWrap;
+		static getBitmapByDescription(style: Style, description: string): IBitmapWrap;
 	}
 
 	/**
@@ -173,7 +173,7 @@ declare namespace UI {
 		/**
 		 * Sets container for the current window. Be careful when calling it
 		 * manually. You should prefer opening the window via
-		 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.openAs Container.openAs} call.
+		 * {@link UI.Container.openAs} call.
 		 * @param container {@link UI.Container}
 		 * to be associated with current window or null to associate no container with current window
 		 */
@@ -200,12 +200,12 @@ declare namespace UI {
 		 * Called when the window is opened.
 		 * @param window current {@link UI.Window} object
 		 */
-		onOpen: (window: Window) => void;
+		onOpen?: (window: Window) => void;
 		/**
 		 * Called when the window is closed.
 		 * @param window current {@link UI.Window} object
 		 */
-		onClose: (window: Window) => void;
+		onClose?: (window: Window) => void;
 	}
 
 	interface IWindowLocation {
@@ -449,12 +449,33 @@ declare namespace UI {
 		windowToGlobal(val: number): number;
 	}
 
+	interface IBitmapWrap {
+		/* static */ readonly MISSING_BITMAP: android.graphics.Bitmap;
+		resize(x: number, y: number): IBitmapWrap;
+		restore(): boolean;
+		store(): boolean;
+		storeIfNeeded(): void;
+		restoreIfNeeded(): void;
+		getWidth(): number;
+		getHeight(): number;
+		getConfig(): android.graphics.Bitmap.Config;
+		getStackPos(): number;
+		get(): android.graphics.Bitmap;
+		isRecycled(): boolean;
+		recycle(): void;
+		removeCache(): void;
+		getResizedCache(width: number, height: number): android.graphics.Bitmap;
+		/* static */ wrap(bmp: android.graphics.Bitmap): IBitmapWrap;
+		/* static */ wrap(name: string, width: number, height: number): IBitmapWrap;
+		/* static */ wrap(name: string): IBitmapWrap;
+	}
+
 	/**
 	 * Class representing static or animated texture.
 	 */
 	class Texture {
-		animation: memory.BitmapWrap[];
-		bitmap: memory.BitmapWrap;
+		animation: IBitmapWrap[];
+		bitmap: IBitmapWrap;
 		delay: number;
 		isAnimation: boolean;
 		/**
@@ -492,7 +513,7 @@ declare namespace UI {
 		 * for the corresponding frame number.
 		 */
 		getBitmap(frame: number): android.graphics.Bitmap;
-		getBitmapWrap(frame: number): memory.BitmapWrap;
+		getBitmapWrap(frame: number): IBitmapWrap;
 		draw(canvas: android.graphics.Canvas, x: number, y: number, scale: number): void;
 		drawCutout(canvas: android.graphics.Canvas, cutout: android.graphics.RectF, x: number, y: number, scale: number): void;
 		/**
