@@ -9,8 +9,8 @@ declare module com {
                                 static class: java.lang.Class<WindowProvider>;
                                 static readonly instance: WindowProvider;
                                 static getFrame(): number;
-                                onWindowOpened(window: IWindow): void;
-                                onWindowClosed(window: IWindow): void;
+                                onWindowOpened(window: UI.IWindow): void;
+                                onWindowClosed(window: UI.IWindow): void;
                                 onBackPressed(): boolean;
                                 onActivityStopped(): void;
                             }
