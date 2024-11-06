@@ -1,11 +1,11 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module mod {
-                    export module ui {
-                        export module window {
-                            export class WindowParent extends java.lang.Object {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace mod {
+                    namespace ui {
+                        namespace window {
+                            class WindowParent extends java.lang.Object {
                                 static class: java.lang.Class<WindowParent>;
                                 static openWindow(window: UI.Window): void;
                                 static closeWindow(window: UI.Window): void;

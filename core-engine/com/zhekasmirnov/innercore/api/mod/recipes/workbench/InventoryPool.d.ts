@@ -1,11 +1,11 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module mod {
-                    export module recipes {
-                        export module workbench {
-                            export class InventoryPool extends java.lang.Object {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace mod {
+                    namespace recipes {
+                        namespace workbench {
+                            class InventoryPool extends java.lang.Object {
                                 static class: java.lang.Class<InventoryPool>;
                                 constructor(player: number);
                                 addRecipeEntry(entry: Recipes.RecipeEntry): void;
@@ -14,7 +14,7 @@ declare module com {
                                 getPoolEntries(entry: Recipes.RecipeEntry): Nullable<java.util.ArrayList<InventoryPool.PoolEntry>>;
                                 pullFromInventory(): void;
                             }
-                            export module InventoryPool {
+                            namespace InventoryPool {
                                 interface PoolEntry {
                                     count: number,
                                     data: number,
@@ -25,9 +25,8 @@ declare module com {
                                     isMatches(other: PoolEntry): boolean;
                                     hasExtra(): boolean;
                                     getAmountOfItem(amount: number): number;
-                                    toString(): string;
                                 }
-                                export class PoolEntrySet extends java.lang.Object {
+                                class PoolEntrySet extends java.lang.Object {
                                     static class: java.lang.Class<PoolEntrySet>;
                                     constructor();
                                     constructor(entries: java.util.ArrayList<PoolEntry>);
@@ -37,7 +36,6 @@ declare module com {
                                     removeMatchingEntries(set: PoolEntrySet): void;
                                     getFirstEntry(): PoolEntry;
                                     getTotalCount(): number;
-                                    toString(): string;
                                     spreadItems(slots: java.util.ArrayList<UI.AbstractSlot>): void;
                                 }
                             }

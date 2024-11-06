@@ -1,10 +1,10 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module mod {
-                    export module ui {
-                        export class GuiBlockModel extends java.lang.Object {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace mod {
+                    namespace ui {
+                        class GuiBlockModel extends java.lang.Object {
                             static class: java.lang.Class<GuiBlockModel>;
                             setShadow(shadow: boolean): void;
                             constructor(resolution: number);
@@ -23,10 +23,10 @@ declare module com {
                              * @since 2.2.0b75
                              */
                             addToRenderModelPart(modelPart: Render.ModelPart, x: number, y: number, z: number): void;
-                            static createModelForBlockVariant(variant: unlimited.BlockVariant): GuiBlockModel;
+                            static createModelForBlockVariant(variant: any): GuiBlockModel;
                         }
-                        export module GuiBlockModel {
-                            export class Box extends java.lang.Object {
+                        namespace GuiBlockModel {
+                            class Box extends java.lang.Object {
                                 static class: java.lang.Class<Box>;
                                 readonly enabledSides: [boolean, boolean, boolean, boolean, boolean, boolean];
                                 textureNames: java.util.ArrayList<android.util.Pair<string, number>>;
@@ -50,14 +50,14 @@ declare module com {
                                 genTexture(resolution: number): android.graphics.Bitmap;
                                 public addToMesh(mesh: RenderMesh, x: number, y: number, z: number): void;
                             }
-                            export class Builder extends java.lang.Object {
+                            class Builder extends java.lang.Object {
                                 static class: java.lang.Class<Builder>;
                                 build(resolveCollisionsAndSort: boolean): GuiBlockModel;
                                 add(box: Builder.PrecompiledBox): void;
                                 add(builder: Builder): void;
                             }
-                            export module Builder {
-                                export class PrecompiledBox extends java.lang.Object {
+                            namespace Builder {
+                                class PrecompiledBox extends java.lang.Object {
                                     static class: java.lang.Class<PrecompiledBox>;
                                     blockData: number;
                                     blockId: number;
@@ -80,7 +80,7 @@ declare module com {
                                     toString(): string;
                                 }
                             }
-                            export class VanillaRenderType extends java.lang.Object {
+                            class VanillaRenderType extends java.lang.Object {
                                 static class: java.lang.Class<VanillaRenderType>;
                                 static getFor(id: number): VanillaRenderType;
                                 buildModelFor(textures: string[], textureIds: number[]): GuiBlockModel;

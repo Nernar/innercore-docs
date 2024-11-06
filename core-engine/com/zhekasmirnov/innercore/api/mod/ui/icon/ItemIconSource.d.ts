@@ -1,11 +1,11 @@
 declare module com {
-    export module zhekasmirnov {
-        export module innercore {
-            export module api {
-                export module mod {
-                    export module ui {
-                        export module icon {
-                            export class ItemIconSource extends java.lang.Object {
+    namespace zhekasmirnov {
+        namespace innercore {
+            namespace api {
+                namespace mod {
+                    namespace ui {
+                        namespace icon {
+                            class ItemIconSource extends java.lang.Object {
                                 static class: java.lang.Class<ItemIconSource>;
                                 static readonly instance: ItemIconSource;
                                 private constructor();
