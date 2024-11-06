@@ -1,144 +1,146 @@
 declare namespace UI {
-	namespace StandardWindowDescriptionTypes {
-		interface StandardWindowBackground {
+	interface StandardWindowBackgroundDescription {
+		/**
+		 * If `true`, default window is created.
+		 */
+		standard?: boolean,
+		/**
+		 * If `true`, default window is created.
+		 * @deprecated Use {@link standard} instead.
+		 */
+		standart?: boolean,
+		/**
+		 * Background color integer value, produced by
+		 * {@link android.graphics.Color} class.
+		 * @default 0xfff // white
+		 */
+		color?: number,
+		/**
+		 * Background bitmap texture name. If the bitmap size doesn't
+		 * match the screen size, bitmap will be stretched to fit.
+		 */
+		bitmap?: string,
+		/**
+		 * Specifies window's frame parameters.
+		 */
+		frame?: {
 			/**
-			 * If `true`, default window is created.
+			 * Frame bitmap scale.
+			 * @default 3
 			 */
-			standard?: boolean,
+			scale?: number,
 			/**
-			 * If `true`, default window is created.
-			 * @deprecated Use {@link standard} instead.
-			 */
-			standart?: boolean,
-			/**
-			 * Background color integer value, produced by
-			 * {@link android.graphics.Color} class.
-			 * @default 0xfff // white
-			 */
-			color?: number,
-			/**
-			 * Background bitmap texture name. If the bitmap size doesn't
-			 * match the screen size, bitmap will be stretched to fit.
+			 * Frame bitmap gui texture name. Defaults to *"frame"*
+			 * style binding or, if not specified, to
+			 * *"default_frame_8"* gui texture
 			 */
 			bitmap?: string,
-			/**
-			 * Specifies window's frame parameters.
-			 */
-			frame?: {
-				/**
-				 * Frame bitmap scale.
-				 * @default 3
-				 */
-				scale?: number,
-				/**
-				 * Frame bitmap gui texture name. Defaults to *"frame"*
-				 * style binding or, if not specified, to
-				 * *"default_frame_8"* gui texture
-				 */
-				bitmap?: string,
-			},
-		}
-		interface StandardWindowHeaderText {
-			/**
-			 * Specifies header text.
-			 * @default "No Title"
-			 */
-			text?: string,
-			/**
-			 * Specifies font params for the header text, only 
-			 * {@link StandardWindowHeaderText.size}, {@link StandardWindowHeaderText.color}
-			 * and {@link StandardWindowHeaderText.shadow} properties are used.
-			 */
-			font?: FontDescription,
-			/**
-			 * If {@link StandardWindowHeaderText.font font} is not specified, used as
-			 * {@link StandardWindowHeaderText.size size} value.
-			 */
-			size?: number,
-			/**
-			 * If {@link StandardWindowHeaderText.font font} is not specified, used as
-			 * {@link StandardWindowHeaderText.color color} value.
-			 */
-			color?: number,
-			/**
-			 * If {@link StandardWindowHeaderText.font font} is not specified, used as
-			 * {@link StandardWindowHeaderText.shadow shadow} value.
-			 */
-			shadow?: number,
-		}
-		interface StandardWindowHeader {
-			/**
-			 * Specifies whether the header should have shadow or not. If
-			 * `true`, the shadow is not displayed.
-			 * @default false
-			 */
-			hideShadow?: boolean,
-			/**
-			 * Specifies header height in units.
-			 * @default 80
-			 */
-			height?: number,
-			/**
-			 * If *height* is not specified, used to specify header height
-			 * in units.
-			 */
-			width?: number,
-			/**
-			 * Frame bitmap gui texture name. Defaults to *"headerFrame"*
-			 * style binding or, if not specified, to
-			 * *"default_frame_7"* gui texture.
-			 */
-			frame?: string,
-			/**
-			 * Header background color integer value, produced by
-			 * {@link android.graphics.Color} class. Default is
-			 * *Color.rgb(0x72, 0x6a, 0x70)*.
-			 */
-			color?: number,
-			/**
-			 * Specifies header text styles and value.
-			 */
-			text?: StandardWindowHeaderText,
-			/**
-			 * If `true`, close button is not displayed.
-			 * @default false
-			 */
-			hideButton?: boolean,
-		}
-		interface StandardWindowInventory {
-			/**
-			 * Inventory width in units. Defaults to 300 units.
-			 */
-			width?: number,
-			/**
-			 * Specifies additional padding for the inventory in units.
-			 * Defaults to 20 units.
-			 */
-			padding?: number,
-			/**
-			 * If `true`, default window is created.
-			 */
-			standard?: boolean,
-		}
-		interface StandardWindowParams {
-			/**
-			 * Specifies minimum contents window height. If actual height is
-			 * less then desired, scrolling is used.
-			 */
-			minHeight?: number,
-			/**
-			 * Specifies background properties.
-			 */
-			background?: StandardWindowBackground,
-			/**
-			 * Specifies additional parameters for standard window's header.
-			 */
-			header?: StandardWindowHeader,
-			/**
-			 * Specifies parameters for standard inventory window.
-			 */
-			inventory?: StandardWindowInventory,
-		}
+		};
+	}
+
+	interface StandardWindowHeaderTextDescription {
+		/**
+		 * Specifies header text.
+		 * @default "No Title"
+		 */
+		text?: string,
+		/**
+		 * Specifies font params for the header text, only 
+		 * {@link StandardWindowHeaderTextDescription.size}, {@link StandardWindowHeaderTextDescription.color}
+		 * and {@link StandardWindowHeaderTextDescription.shadow} properties are used.
+		 */
+		font?: FontDescription,
+		/**
+		 * If {@link StandardWindowHeaderTextDescription.font font} is not specified, used as
+		 * {@link StandardWindowHeaderTextDescription.size size} value.
+		 */
+		size?: number,
+		/**
+		 * If {@link StandardWindowHeaderTextDescription.font font} is not specified, used as
+		 * {@link StandardWindowHeaderTextDescription.color color} value.
+		 */
+		color?: number,
+		/**
+		 * If {@link StandardWindowHeaderTextDescription.font font} is not specified, used as
+		 * {@link StandardWindowHeaderTextDescription.shadow shadow} value.
+		 */
+		shadow?: number;
+	}
+
+	interface StandardWindowHeaderDescription {
+		/**
+		 * Specifies whether the header should have shadow or not. If
+		 * `true`, the shadow is not displayed.
+		 * @default false
+		 */
+		hideShadow?: boolean,
+		/**
+		 * Specifies header height in units.
+		 * @default 80
+		 */
+		height?: number,
+		/**
+		 * If *height* is not specified, used to specify header height
+		 * in units.
+		 */
+		width?: number,
+		/**
+		 * Frame bitmap gui texture name. Defaults to *"headerFrame"*
+		 * style binding or, if not specified, to
+		 * *"default_frame_7"* gui texture.
+		 */
+		frame?: string,
+		/**
+		 * Header background color integer value, produced by
+		 * {@link android.graphics.Color} class. Default is
+		 * *Color.rgb(0x72, 0x6a, 0x70)*.
+		 */
+		color?: number,
+		/**
+		 * Specifies header text styles and value.
+		 */
+		text?: StandardWindowHeaderTextDescription,
+		/**
+		 * If `true`, close button is not displayed.
+		 * @default false
+		 */
+		hideButton?: boolean;
+	}
+
+	interface StandardWindowInventoryDescription {
+		/**
+		 * Inventory width in units. Defaults to 300 units.
+		 */
+		width?: number,
+		/**
+		 * Specifies additional padding for the inventory in units.
+		 * Defaults to 20 units.
+		 */
+		padding?: number,
+		/**
+		 * If `true`, default window is created.
+		 */
+		standard?: boolean;
+	}
+
+	interface StandardWindowDescription {
+		/**
+		 * Specifies minimum contents window height. If actual height is
+		 * less then desired, scrolling is used.
+		 */
+		minHeight?: number,
+		/**
+		 * Specifies background properties.
+		 */
+		background?: StandardWindowBackgroundDescription,
+		/**
+		 * Specifies additional parameters for standard window's header.
+		 */
+		header?: StandardWindowHeaderDescription,
+		/**
+		 * Specifies parameters for standard inventory window.
+		 */
+		inventory?: StandardWindowInventoryDescription;
 	}
 
 	/**
@@ -147,16 +149,16 @@ declare namespace UI {
 	 */                            
 	interface StandardWindowContent extends WindowContent {
 		/**
-		 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow StandardWindows}.
+		 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow}s.
 		 * Specifies additional parameters for standard windows.
 		 */
-		standard?: StandardWindowDescriptionTypes.StandardWindowParams,
+		standard?: StandardWindowDescription,
 		/**
-		 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow StandardWindows}.
+		 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow}s.
 		 * Specifies additional parameters for standard windows.
 		 * @deprecated Use {@link standard} instead.
 		 */
-		standart?: StandardWindowDescriptionTypes.StandardWindowParams,
+		standart?: StandardWindowDescription;
 	}
 
     /**
