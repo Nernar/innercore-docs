@@ -32,7 +32,7 @@
       ]
     },
     "prebuild-declarations": {
-      "command": "npx dts-generator --project . --out declarations/core-engine.d.ts --extern ./android.d.ts --exclude node_modules/**/*.d.ts --exclude declarations/android.d.ts",
+      "command": "npx dts-generator --project . --out declarations/core-engine.d.ts --extern ./android.d.ts --exclude **/node_modules/**/*.d.ts --exclude **/declarations/android.d.ts",
       "files": [
         "tsconfig.json",
         "core-engine/**/*.d.ts"
