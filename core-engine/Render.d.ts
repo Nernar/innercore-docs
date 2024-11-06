@@ -2,12 +2,15 @@
  * Class that is used to give mobs, animations and blocks custom shape.
  */
 declare class Render {
-    isEmpty: boolean;
-    isChangeable: boolean;
-    renderer: Nullable<Render.Renderer>;
-    model: Nullable<Render.Model>;
-    parts: { [key: string]: Render.ModelPart };
-    renderId: number;
+    readonly isEmpty: boolean;
+    readonly isChangeable: boolean;
+    readonly renderer: Nullable<Render.Renderer>;
+    readonly model: Nullable<Render.Model>;
+    /**
+     * @internal
+     */
+    readonly parts: { [key: string]: Render.ModelPart };
+    readonly renderId: number;
 
     /**
      * Creates a new Render instance with specified parameters.
@@ -18,18 +21,18 @@ declare class Render {
     constructor(parameters?: Render.RenderParameters | string | number);
 
     /**
-     * @deprecated Use {@link Render.getId getId} instead.
+     * @returns Render identifier that can be used to set render to the mob,
+     * animation or block.
      */
     getID(): number;
-
     /**
-     * @deprecated Use {@link Render.getId getId} instead.
+     * @returns Render identifier that can be used to set render to the mob,
+     * animation or block.
      */
     getRenderType(): number;
-
     /**
-     * @returns Render identifier that can be used to set render to the mob, animation 
-     * or block.
+     * @returns Render identifier that can be used to set render to the mob,
+     * animation or block.
      */
     getId(): number;
 
@@ -93,13 +96,31 @@ declare class Render {
      * @internal
      */
     _setPartRecursive(part: Render.ModelPart, data: Render.PartElement[], coords: Vector): void;
-    fromCache(data: Render.Cache): void;
-    toCache(): Render.Cache;
-    saveState(name: string, isLocal: boolean): void;
-    loadState(name: string, isLocal: boolean): void;
-    loadInitialState(name: string): void;
-    saveToNext(name: string, isLocal: boolean): void;
 
+    /**
+     * @deprecated Unavailable feature, renderers must be saved independently.
+     */
+    fromCache(data: Render.Cache): void;
+    /**
+     * @deprecated Unavailable feature, renderers must be saved independently.
+     */
+    toCache(): Render.Cache;
+    /**
+     * @deprecated Unavailable feature, renderers must be saved independently.
+     */
+    saveState(name: string, isLocal: boolean): void;
+    /**
+     * @deprecated Unavailable feature, renderers must be saved independently.
+     */
+    loadState(name: string, isLocal: boolean): void;
+    /**
+     * @deprecated Unavailable feature, renderers must be saved independently.
+     */
+    loadInitialState(name: string): void;
+    /**
+     * @deprecated Unavailable feature, renderers must be saved independently.
+     */
+    saveToNext(name: string, isLocal: boolean): void;
     /**
      * @deprecated Does nothing, not required anymore.
      */
@@ -117,6 +138,7 @@ declare namespace Render {
     interface RenderParameters {
         /**
          * Name of the cached Render object to be used.
+         * @deprecated Unavailable feature, renderers must be saved independently.
          */
         name?: string;
         /**
@@ -164,16 +186,63 @@ declare namespace Render {
     }
 
     /**
+     * @deprecated Unavailable feature, renderers must be saved independently.
+     */
+    interface Cache {
+        renderer: Nullable<Renderer>,
+        renderId: number,
+        model: Nullable<Model>,
+        isChangeable: boolean,
+        parts: { [key: string]: ModelPart }
+    }
+
+    /**
      * Interface used to perform transformation on the specified render object.
      */
-    interface Transform extends com.zhekasmirnov.innercore.api.NativeRenderer.Transform {
+    interface Transform {
+        /**
+         * Clears all the transformations applied to the render.
+         * @returns Reference to itself to be used in sequential calls.
+         */
+        clear(): Transform;
+        /**
+         * @returns Reference to itself to be used in sequential calls.
+         */
+        lock(): Transform;
+        /**
+         * Performs arbitrary matrix transformations on the render.
+         * @returns Reference to itself to be used in sequential calls.
+         */
+        matrix(m00: number, m01: number, m02: number, m03: number,
+                m10: number, m11: number, m12: number, m13: number,
+                m20: number, m21: number, m22: number, m23: number,
+                m30: number, m31: number, m32: number, m33: number): Transform;
+        /**
+         * Rotates render along three axes.
+         * @returns Reference to itself to be used in sequential calls.
+         */
+        rotate(rotX: number, rotY: number, rotZ: number): Transform;
+        /**
+         * Scales render along the three axes.
+         * @returns Reference to itself to be used in sequential calls.
+         */
+        scale(scaleX: number, scaleY: number, scaleZ: number): Transform;
         /**
          * Scales the render along all the three axes. Applicable only to the
          * {@link Animation}'s transformations.
          * @returns Reference to itself to be used in sequential calls.
-         * @deprecated Consider using {@link Render.Transform.scale Transform.scale} instead.
+         * @deprecated Consider using {@link Render.Transform.scale} instead.
          */
         scaleLegacy(scale: number): Transform;
+        /**
+         * Translates render along three axes.
+         * @returns Reference to itself to be used in sequential calls.
+         */
+        translate(x: number, y: number, z: number): Transform;
+        /**
+         * @returns Reference to itself to be used in sequential calls.
+         */
+        unlock(): Transform;
     }
 
     /**
@@ -213,15 +282,123 @@ declare namespace Render {
         rotation?: Vector | [number, number, number];
     }
 
-    interface Model extends com.zhekasmirnov.innercore.api.NativeRenderer.Model {}
-    interface ModelPart extends com.zhekasmirnov.innercore.api.NativeRenderer.ModelPart {}
-    interface Renderer extends com.zhekasmirnov.innercore.api.NativeRenderer.Renderer {}
+    interface Model {
+        /**
+         * Clears all parts of the model.
+         */
+        clearAllParts(): void;
+        /**
+         * @param partName part name
+         * @returns Part by it's name or null if part doesn't exist.
+         */
+        getPart(partName: string): Nullable<ModelPart>;
+        /**
+         * @param partName part name
+         * @returns `true` if part with specified name exists in the model, 
+         * `false` otherwise.
+         */
+        hasPart(partName: string): boolean;
+        /**
+         * Resets the model
+         */
+        reset(): void;
+    }
 
-    interface Cache {
-        renderer: Nullable<Renderer>,
-        renderId: number,
-        model: Nullable<Model>,
-        isChangeable: boolean,
-        parts: { [key: string]: ModelPart }
+    interface ModelPart {
+        /**
+         * Adds a new box to the part on the specified coordinates (relative to
+         * the part's coordinates) of the specified size (width, height, length).
+         */
+        addBox(x: number, y: number, z: number, w: number, h: number, l: number): void;
+        /**
+         * Adds a new box to the part on the specified coordinates (relative to
+         * the part's coordinates) of the specified size (width, height, length).
+         * @param add additional size to be added from all the six sizes of the 
+         * box
+         */
+        addBox(x: number, y: number, z: number, w: number, h: number, l: number, add: number): void;
+        /**
+         * Creates a new part with specified name. If a part with specified name
+         * already exists, returns the existing part.
+         * @param name name of the part to create or return
+         */
+        addPart(name: string): ModelPart;
+        /**
+         * Clears the contents of the part.
+         */
+        clear(): void;
+        /**
+         * @returns Mesh specified via {@link Render.ModelPart.setMesh} call or `null`,
+         * if this part doesn't contain mesh.
+         */
+        getMesh(): Nullable<RenderMesh>;
+        /**
+         * Specifies {@link RenderMesh} to be used as a part.
+         */
+        setMesh(mesh: Nullable<RenderMesh>): void;
+        /**
+         * Specifies part default offset.
+         */
+        setOffset(offsetX: number, offsetY: number, offsetZ: number): void;
+        /**
+         * Specifies part rotation.
+         */
+        setRotation(rotationX: number, rotationY: number, rotationZ: number): void;
+        /**
+         * Specifies texture UV offset.
+         */
+        setTextureOffset(u: number, v: number): void;
+        /**
+         * Specifies texture UV offset.
+         */
+        setTextureOffset(u: number, v: number): void;
+        /**
+         * Specifies texture UV offset.
+         * @param placeholder deprecated boolean parameter
+         * @deprecated Use same method without last parameter.
+         */
+        setTextureOffset(u: number, v: number, placeholder: boolean): void;
+        /**
+         * Specifies texture size size, use the real texture file size or change
+         * it to stretch texture.
+         */
+        setTextureSize(w: number, h: number): void;
+        /**
+         * Specifies texture size size, use the real texture file size or change
+         * it to stretch texture.
+         */
+        setTextureSize(w: number, h: number): void;
+        /**
+         * Specifies texture size size, use the real texture file size or change
+         * it to stretch texture.
+         * @param placeholder deprecated boolean parameter
+         * @deprecated Use same method without last parameter.
+         */
+        setTextureSize(w: number, h: number, placeholder: boolean): void;
+    }
+
+    interface FinalizeCallback {
+        onFinalized(renderer: Renderer): void;
+    }
+    interface FinalizeCallbackJS {
+        (renderer: Renderer): void;
+    }
+
+    interface Renderer {
+        isHumanoid: boolean;
+        transform: Transform;
+        addFinalizeCallback(callback: FinalizeCallback | FinalizeCallbackJS): void;
+        getModel(): Model;
+        getPointer(): number;
+        getRenderType(): number;
+        getScale(): number;
+        release(): void;
+        setFinalizeable(finalizeable: boolean): void;
+        setScale(scale: number): void;
+        setSkin(skin: string): void;
+    }
+
+    namespace Renderer {
+        type Transform = Render.Transform;
     }
 }

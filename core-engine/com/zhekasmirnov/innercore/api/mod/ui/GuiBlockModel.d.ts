@@ -22,7 +22,7 @@ declare module com {
                             /**
                              * @since 2.2.0b75
                              */
-                            addToRenderModelPart(modelPart: NativeRenderer.ModelPart, x: number, y: number, z: number): void;
+                            addToRenderModelPart(modelPart: Render.ModelPart, x: number, y: number, z: number): void;
                             static createModelForBlockVariant(variant: unlimited.BlockVariant): GuiBlockModel;
                         }
                         export module GuiBlockModel {
