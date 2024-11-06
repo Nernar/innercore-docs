@@ -12,7 +12,7 @@ type Nullable<T> = T | null;
  * Flattened hieracly, extendable in declarations.
  */
 type Scriptable = {
-    [key: string]: any
+    [key: string]: any;
 }
 
 /**
@@ -21,7 +21,7 @@ type Scriptable = {
 interface Vector {
     x: number,
     y: number,
-    z: number
+    z: number;
 }
 
 /**
@@ -31,7 +31,7 @@ interface BlockPosition extends Vector {
     /**
      * Side of the block, one of the {@link EBlockSide} constants.
      */
-    side: number
+    side: number;
 }
 
 /**
@@ -40,7 +40,7 @@ interface BlockPosition extends Vector {
 interface Color {
     r: number,
     g: number,
-    b: number
+    b: number;
 }
 
 /**
@@ -48,7 +48,7 @@ interface Color {
  */
 interface LookAngle {
     pitch: number,
-    yaw: number
+    yaw: number;
 }
 
 /**
@@ -73,7 +73,7 @@ interface ItemInstance {
      * Item extra data. Contains some additional item data such as enchants,
      * custom item name or some additional properties.
      */
-    extra?: ItemExtraData
+    extra?: ItemExtraData;
 }
 
 /**
@@ -87,7 +87,7 @@ type ItemInstanceArray = [number, number, number, ItemExtraData?];
  */
 interface Tile {
     id: number,
-    data: number
+    data: number;
 }
 
 /**
@@ -101,5 +101,5 @@ interface Weather {
     /**
      * Current lightning level, from 0 (no lightning) to 10.
      */
-    thunder: number
+    thunder: number;
 }
