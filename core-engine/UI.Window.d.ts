@@ -1,45 +1,4 @@
 declare namespace UI {
-	/**
-	 * Specifies contents and additional parameters for all types of windows.
-	 */
-	interface WindowContent {
-		/**
-		 * Specifies window's location, used for
-		 * {@link UI.Window}, {@link UI.TabbedWindow}
-		 * and {@link UI.StandartWindow}.
-		 */
-		location?: WindowLocationDescription,
-		/**
-		 * Specifies window's style, an object containing keys as style binding
-		 * names and values as gui texture names corresponding to the binding.
-		 */
-		style?: BindingSet,
-		/**
-		 * Specifies window's style, an object containing keys as style binding
-		 * names and values as gui texture names corresponding to the binding.
-		 * @deprecated Use {@link style} instead.
-		 */
-		params?: BindingSet,
-		/**
-		 * Array of drawings
-		 */
-		drawing?: UI.DrawingSet,
-		/**
-		 * Object containing keys as gui elements names and {@link UI.Elements}
-		 * instances as values. Gui elements are interactive components that are
-		 * used to create interfaces functionality.
-		 */
-		elements?: UI.ElementSet,
-	}
-
-	interface IBackgroundProvider {
-		addDrawing(idrawing: IDrawing): void;
-		clearAll(): void;
-		prepareCache(): void;
-		releaseCache(): void;
-		setBackgroundColor(color: number): void;
-	}
-
 	interface IContentProvider {
 		content: WindowContent;
 		drawing: object;
@@ -53,7 +12,6 @@ declare namespace UI {
 		setupDrawing(): void;
 		refreshDrawing(): void;
 		invalidateAllContent(): void;
-		toString(): string;
 	}
 
 	interface IElementProvider {
@@ -66,6 +24,14 @@ declare namespace UI {
 		runCachePreparation(): void;
 		setBackgroundProvider(bgprovider: IBackgroundProvider): void;
 		setWindowStyle(style: Style): void;
+	}
+
+	interface IBackgroundProvider {
+		addDrawing(idrawing: IDrawing): void;
+		clearAll(): void;
+		prepareCache(): void;
+		releaseCache(): void;
+		setBackgroundColor(color: number): void;
 	}
 
     /**
@@ -230,8 +196,8 @@ declare namespace UI {
 		 * @returns Window's current location object.
 		 */
 		getLocation(): WindowLocation;
-		getElementProvider(): IElementProvider;
-		getBackgroundProvider(): IBackgroundProvider;
+		getElementProvider<T extends IElementProvider = IElementProvider>(): T;
+		getBackgroundProvider<T extends IBackgroundProvider = IBackgroundProvider>(): T;
 		getContentProvider(): IContentProvider;
 		/**
 		 * @returns Unit size (in pixel) in the window's bounds.
