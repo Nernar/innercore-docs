@@ -846,7 +846,7 @@ declare namespace Callback {
          * @param byUser if `true`, container was closed by user,
          * from the code otherwise
          */
-        (container: UI.Container, window: com.zhekasmirnov.innercore.api.mod.ui.window.IWindow, byUser: boolean): void
+        (container: UI.Container, window: UI.IWindow, byUser: boolean): void
     }
 
     function addCallback(name: "ContainerClosed", func: ContainerClosedFunction, priority?: number): void;
@@ -859,7 +859,7 @@ declare namespace Callback {
          * @param container container that was opened
          * @param window window that was loaded in the container
          */
-        (container: UI.Container, window: com.zhekasmirnov.innercore.api.mod.ui.window.IWindow): void
+        (container: UI.Container, window: UI.IWindow): void
     }
 
     function addCallback(name: "ContainerOpened", func: ContainerOpenedFunction, priority?: number): void;
@@ -886,7 +886,7 @@ declare namespace Callback {
         /**
          * @param window window that was opened
          */
-        (window: com.zhekasmirnov.innercore.api.mod.ui.window.IWindow): void;
+        (window: UI.IWindow): void;
     }
 
     function addCallback(name: "CustomWindowOpened", func: CustomWindowFunction, priority?: number): void;

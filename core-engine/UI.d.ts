@@ -123,7 +123,7 @@ declare namespace UI {
 		 * @returns Window's content object
 		 * (usually specified in the window's constructor).
 		 */
-		getContent(): WindowContent;
+		getContent(): Nullable<WindowContent>;
 		/**
 		 * Gets all the elements in the window.
 		 * @returns HashMap containing string element name as keys and
@@ -667,7 +667,7 @@ declare namespace UI {
 		 */
 		getTextHeight(text: string, x: number, y: number, scale: number): number;
 		/**
-		 * Converts current {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font Font} object to scriptable font description.
+		 * Converts current {@link Font} object to scriptable font description.
 		 */
 		asScriptable(): FontDescription;
     }
@@ -682,13 +682,13 @@ declare namespace UI {
 		 * @param config configuration file to be loaded
 		 * @param prefix elements names prefix used for this visualizer
 		 */
-        constructor(config: com.zhekasmirnov.innercore.mod.build.Config, prefix: string);
+        constructor(config: Config, prefix: string);
 		/**
 		 * Constructs new {@link UI.ConfigVisualizer} instance with default elements 
 		 * names prefix (*config_vis*).
 		 * @param config configuration file to be loaded
 		 */
-        constructor(config: com.zhekasmirnov.innercore.mod.build.Config);
+        constructor(config: Config);
 		/**
 		 * Removes all elements with current element name prefix. In other
 		 * words, removes all elements that were created by this.

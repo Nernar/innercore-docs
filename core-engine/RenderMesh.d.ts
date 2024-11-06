@@ -67,7 +67,7 @@ declare class RenderMesh {
     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, keepRatio: boolean): void;
     /**
      * @returns Pointer to the native object instance of the
-     * following {@link RenderMeshh}, represented as long number.
+     * following {@link RenderMesh}, represented as long number.
      */
     getPtr(): number;
     getReadOnlyVertexData(): RenderMesh.ReadOnlyVertexData;

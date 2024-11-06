@@ -271,7 +271,7 @@ declare interface ItemModel {
 
     getCacheKey(): string;
 
-    updateForBlockVariant(variant: com.zhekasmirnov.innercore.api.unlimited.BlockVariant): void;
+    updateForBlockVariant(variant: any): void;
 
     getItemRenderMesh(count: number, randomize: boolean): RenderMesh;
 

@@ -84,8 +84,8 @@ declare namespace UI {
 		setTab(index: number, tabOverlay: UI.ElementSet, tabContent: WindowContent): void;
 		/**
 		 * Creates fake tab with no content.
-		 * @param index index of the tab, see {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setTab UI.TabbedWindow.setTab} for 
-		 * details
+		 * @param index index of the tab, see {@link UI.TabbedWindow.setTab}
+		 * for details
 		 * @param tabOverlay content of the tab selector
 		 */
 		setFakeTab(index: number, tabOverlay: UI.ElementSet): void;
@@ -115,7 +115,7 @@ declare namespace UI {
 		setEventListener(listener: WindowEventListener): void;
 		/**
 		 * Sets listener to be notified about tab with specified index opening/closing events.
-		 * @param tab tab index
+		 * @param index tab index
 		 * @param listener object to be notified about the events
 		 */
 		setTabEventListener(index: number, listener: WindowEventListener): void;
@@ -150,7 +150,11 @@ declare namespace UI {
 		 * represent texture gui names
 		 */
 		setStyle(style: BindingSet): void;
-		getStyle(): Nullable<Style>;
+		getStyle(): Style;
+		/**
+		 * @deprecated Same as {@link getStyle}, meant to override
+		 * fallback default style, but never properly used.
+		 */
 		getStyleSafe(): Style;
 		setCloseOnBackPressed(cobp: boolean): void;
 		onBackPressed(): boolean;

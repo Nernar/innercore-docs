@@ -45,26 +45,24 @@ declare namespace UI {
 			 */
 			text?: string,
 			/**
-			 * Specifies font params for the header text. Only 
-			 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size size},
-			 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color color}
-			 * and {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow shadow}
-			 * properties are used.
+			 * Specifies font params for the header text, only 
+			 * {@link StandardWindowHeaderText.size}, {@link StandardWindowHeaderText.color}
+			 * and {@link StandardWindowHeaderText.shadow} properties are used.
 			 */
 			font?: FontDescription,
 			/**
-			 * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font font} is not specified, used as
-			 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size size} value.
+			 * If {@link StandardWindowHeaderText.font font} is not specified, used as
+			 * {@link StandardWindowHeaderText.size size} value.
 			 */
 			size?: number,
 			/**
-			 * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font font} is not specified, used as
-			 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color color} value.
+			 * If {@link StandardWindowHeaderText.font font} is not specified, used as
+			 * {@link StandardWindowHeaderText.color color} value.
 			 */
 			color?: number,
 			/**
-			 * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font font} is not specified, used as
-			 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow shadow} value.
+			 * If {@link StandardWindowHeaderText.font font} is not specified, used as
+			 * {@link StandardWindowHeaderText.shadow shadow} value.
 			 */
 			shadow?: number,
 		}
@@ -144,7 +142,7 @@ declare namespace UI {
 	}
 
 	/**
-	 * Extended {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent WindowContent} object with additional params for
+	 * Extended {@link WindowContent} object with additional params for
 	 * {@link UI.StandartWindow} and {@link UI.StandardWindow}.
 	 */                            
 	interface StandardWindowContent extends WindowContent {

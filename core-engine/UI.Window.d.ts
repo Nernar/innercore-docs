@@ -206,7 +206,7 @@ declare namespace UI {
 		 * @returns Window's content object (usually specified in the window's 
 		 * constructor).
 		 */
-		getContent(): WindowContent;
+		getContent(): Nullable<WindowContent>;
 		/**
 		 * Specifies the content of the window.
 		 * @param content content object to be applied to the window
