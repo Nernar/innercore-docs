@@ -7,7 +7,7 @@ declare namespace UI {
 	 */
 	type BitmapTypes = string | string[] | android.graphics.Bitmap | android.graphics.Bitmap[];
 
-	type TouchEventType = "DOWN" | "UP" | "MOVE" | "CLICK" | "LONG_CLICK" | "CANCEL";
+    type TouchEventType = "DOWN" | "UP" | "MOVE" | "CLICK" | "LONG_CLICK" | "CANCEL";
 
 	interface ITouchEvent {
 		_x: number;
@@ -42,6 +42,20 @@ declare namespace UI {
 		invalidate(): void;
 		setTarget(obj: object): void;
 		refresh(): void;
+	}
+
+	/**
+	 * Object where you can specify how the UI element will behave on touch events.
+	 */
+	interface UIClickEvent {
+		/**
+		 * This function will be called when element is short touched.
+		 */
+		onClick?: (position: Vector, container: UiAbstractContainer | ItemContainer, tileEntity: Nullable<TileEntity> | any, window: IWindow, canvas: android.graphics.Canvas, scale: number) => void;
+		/**
+		 * This function will be called when element is long touched.
+		 */
+		onLongClick?: (position: Vector, container: UiAbstractContainer | ItemContainer, tileEntity: Nullable<TileEntity> | any, window: IWindow, canvas: android.graphics.Canvas, scale: number) => void;
 	}
 
 	/**
@@ -435,4 +449,40 @@ declare namespace UI {
 		| UIFPSTextElement
 		| UIInvSlotElement
 	);
+	interface ElementSet {
+		[key: string]: Elements;
+	}
+
+	/**
+	 * Class used to visualize configuration file contents in a simple way.
+	 */
+    class ConfigVisualizer {
+		/**
+		 * Constructs new {@link UI.ConfigVisualizer} instance with specified elements 
+		 * names prefix.
+		 * @param config configuration file to be loaded
+		 * @param prefix elements names prefix used for this visualizer
+		 */
+        constructor(config: Config, prefix: string);
+		/**
+		 * Constructs new {@link UI.ConfigVisualizer} instance with default elements 
+		 * names prefix (*config_vis*).
+		 * @param config configuration file to be loaded
+		 */
+        constructor(config: Config);
+		/**
+		 * Removes all elements with current element name prefix. In other
+		 * words, removes all elements that were created by this.
+		 * {@link UI.ConfigVisualizer} instance
+		 * @param elements target {@link UI.WindowContent.elements} section
+		 */
+		clearVisualContent(elements: UI.ElementSet): void;
+		/**
+		 * Creates elements in the window to visualize configuration file.
+		 * @param elements target {@link UI.WindowContent.elements} section
+		 * @param prefs top left position of the first element. Default position 
+		 * is (0, 0, 0)
+		 */
+		createVisualContent(elements: UI.ElementSet, prefs?: Partial<Vector>): void;
+    }
 }
