@@ -15575,7 +15575,7 @@ declare namespace TileEntity {
          * {@link TileEntity} object from destroying (but if the block was destroyed, returning
          * true from this function doesn't replace the missing block with a new one)
          */
-        destroy?: () => boolean | void;
+        destroy?: (fromDestroyBlock: boolean, isDropAllowed: boolean) => boolean | void;
 
         /**
          * Called to get the {@link UI.IWindow} object for the current {@link TileEntity}. The
@@ -15741,7 +15741,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      * {@link TileEntity} object from destroying (but if the block was destroyed, returning
      * true from this function doesn't replace the missing block with a new one)
      */
-    destroy: () => boolean | void;
+    destroy: (fromDestroyBlock: boolean, isDropAllowed: boolean) => boolean | void;
     /**
      * Called to get the {@link UI.IWindow} object for the current {@link TileEntity}. The
      * window is then opened within {@link TileEntity.container} when the player clicks it.
