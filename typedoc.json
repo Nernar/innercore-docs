@@ -61,6 +61,9 @@
 	"plugin": [
 		"typedoc-codicon-theme",
 		"typedoc-plugin-merge-modules"
+		// TODO: Settings like in @mxssfd/typedoc-theme.
+		// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
+		// TODO: Page groups like in typedoc-github-theme.
 	],
 	"mergeModulesMergeMode": "project"
 }
