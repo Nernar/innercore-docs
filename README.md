@@ -1,6 +1,9 @@
 # nernar.github.io/api
 
-Inner Core, Core Engine and Horizon documentation implemented in one place. Make it simple, keep it clean. This site powered by GitHub Pages, built with :heart: and Typedoc.
+Inner Core, Core Engine and Horizon documentation implemented in one place. This site subdomain is powered by GitHub Pages, built with :heart: and [Typedoc](https://typedoc.org).
+
+> [!CAUTION]
+> Repository has been been moved as subtree to [Nernar/nernar.github.io](https://github.com/Nernar/nernar.github.io), since Typedoc build now takes place using Docusaurus plugin and this repository is no longer relevant.
 
 ## Setting up
 
@@ -10,12 +13,6 @@ Inner Core, Core Engine and Horizon documentation implemented in one place. Make
 ```shell
 npm install && npm run typedoc
 ```
-
-## API Reference
-
-New era of Core Engine documentation, generated into single webpage like everything here. Forked from [mineprogramming/innercore-docs](https://github.com/mineprogramming/innercore-docs). See [LICENSE](./LICENSE) for licensing information about this portion of the documentation.
-
-You also can download [core-engine.d.ts](https://nernar.github.io/core-engine.d.ts) directly.
 
 ## Contribution
 
